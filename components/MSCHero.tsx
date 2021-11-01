@@ -14,8 +14,8 @@ const MSCHero: React.FC<MSCHeroProps> = ({ title, subtitle, actionLabel, actionL
     return (
         <section className="msc-hero">
             <div className="msc-hero__wrap">
-                <h2>{ title ?? site.name }</h2>
-                <p>{ subtitle ?? `UX Engineer. Creating a meaningful bridge from software to user.` }</p>
+                <h2>{ title || site.name }</h2>
+                <p>{ subtitle || `UX Engineer. Creating a meaningful bridge from software to user.` }</p>
                 { actionLabel &&
                 <div className="msc-hero__actions">
                     <MSCButton type="filled inverted" link={ actionLink }>{ actionLabel ?? `Get to know me` }</MSCButton>
