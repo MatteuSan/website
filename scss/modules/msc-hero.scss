@@ -1,0 +1,43 @@
+@use '~@matteusan/sentro';
+
+@mixin use() {
+    .msc-hero {
+        height: 55vh;
+        
+        display: grid;
+        place-items: center;
+        
+        margin-bottom: 1.2rem;
+        padding-top: 1rem;
+    
+        clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
+        
+        background: sentro.token-get('accent-gradient');
+        color: sentro.token-get('accent-ink');
+    
+        ::-moz-selection {
+            color: sentro.token-get('accent');
+            background: sentro.token-get('accent-ink');
+        }
+    
+        ::selection {
+            color: sentro.token-get('accent');
+            background: sentro.token-get('accent-ink');
+        }
+        
+        .msc-hero__wrap {
+            width: calc(100% - 50px);
+            max-width: 977px;
+            
+            h1,
+            h2,
+            h3 {
+                font-size: sentro.px-to-rem(37px);
+            }
+            
+            .msc-hero__actions {
+                margin-top: 0.7rem;
+            }
+        }
+    }
+}

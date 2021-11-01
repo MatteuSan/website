@@ -1,0 +1,29 @@
+@use '~@matteusan/sentro';
+
+@mixin use() {
+    .msc-footer {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        padding: 1.2rem 0;
+        background-color: sentro.token-get('surface');
+        
+        .msc-footer__site-name {
+            font-size: sentro.px-to-rem(28px);
+            user-select: none;
+            @include sentro.prefix(transition, all 0.1s ease);
+            
+            &:hover {
+                color: sentro.token-get('accent');
+            }
+            
+            span {
+                font-size: sentro.px-to-rem(12px);
+            }
+        }
+        
+        .msc-footer__copyright {
+            font-size: sentro.px-to-rem(14px);
+        }
+    }
+}

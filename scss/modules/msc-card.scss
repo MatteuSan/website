@@ -1,0 +1,106 @@
+@use '~@matteusan/sentro';
+
+@use '../helpers';
+
+@mixin use() {
+    .msc-card {
+        display: flex;
+        height: max-content;
+        flex-direction: column;
+        overflow: hidden;
+        width: 100%;
+        margin: 0;
+        border: none !important;
+        border-radius: sentro.token-get('radius-medium');
+    
+        @include sentro.prefix(transition, all 0.1s ease);
+        @include sentro.elevation-apply(2);
+        
+        @include helpers.breakpoint('large') {
+            &:hover {
+                transform: translateY(-0.3rem);
+                @include sentro.elevation-apply(4);
+            }
+        }
+    
+        .msc-card__media {
+            width: 100%;
+            height: 140px !important;
+            overflow-y: hidden;
+        
+            img {
+                width: 100%;
+                height: auto !important;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+    
+        .msc-card__content {
+            padding: 1rem;
+            color: inherit;
+            overflow: hidden;
+            background-color: sentro.token-get('surface');
+            border-radius: 0 0 sentro.token-get('radius-medium') sentro.token-get('radius-medium');
+        
+            .msc-card__title {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.3rem;
+            
+                h1,
+                h2,
+                h3 {
+                    color: inherit;
+                    font-size: sentro.key-create('card-title-text-size', sentro.px-to-rem(26px));
+                    line-height: 1.75rem;
+                }
+            
+                .msc-card__title__icon {
+                    font-size: sentro.px-to-rem(22px);
+                    margin-bottom: 0.175rem;
+                    margin-right: 0.5rem;
+                    color: sentro.key-create('card-title-icon-ink', var(--msc-theme-accent));
+                }
+            }
+        
+            .msc-card__subtitle {
+                font-size: sentro.key-create('card-subtitle-text-size', sentro.px-to-rem(15px));
+                color: inherit;
+                word-break: break-word;
+                overflow: hidden;
+                text-align: left;
+                line-height: 1.25rem;
+            }
+    
+            .msc-card__actions {
+                display: flex;
+                justify-content: flex-end;
+                position: relative;
+                margin-top: 1rem;
+        
+                & > * + * {
+                    margin-left: 0.5rem;
+                }
+        
+                a {
+                    width: max-content !important;
+            
+                    .msc-button {
+                        width: max-content !important;
+                        padding: 0.3rem 0.5rem;
+                
+                        &.msc-button--outlined,
+                        &.msc-button--filled {
+                            &.msc-button--icon {
+                                padding: 0.5rem;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

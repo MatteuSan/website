@@ -1,0 +1,130 @@
+@use '~@matteusan/sentro';
+
+$button-width: max-content;
+$button-padding: 0.4rem 0.6rem;
+$button-gap: 0.3rem;
+$button-fill: sentro.token-get('accent');
+$button-ink: sentro.token-get('accent-ink');
+$button-radius: sentro.token-get('radius-small');
+
+$button-label-size: sentro.px-to-rem(16px);
+
+$button-icon-size: sentro.px-to-rem(24px);
+$button-icon-ink: inherit;
+
+@mixin use() {
+    .msc-button {
+        width: 100%;
+        min-width: 90px;
+        max-width: sentro.key-create('button-width', $button-width);
+        
+        display: inline-flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        
+        padding: sentro.key-create('button-padding', $button-padding);
+        box-sizing: border-box;
+        @include sentro.prefix(transition, all 0.1s ease);
+    
+        background: rgba(0 0 0 / 0);
+        border: 1px solid rgba(0 0 0 / 0);
+        color: sentro.key-create('button-fill', $button-fill);
+    
+        border-radius: sentro.key-create('button-radius', $button-radius);
+        
+        user-select: none;
+        line-height: inherit;
+        overflow: visible;
+        vertical-align: middle;
+        cursor: pointer;
+        
+        & > * + * {
+            margin-left: sentro.key-create('button-gap', $button-gap);
+        }
+        
+        &::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+        
+        &:active {
+            color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+        }
+        
+        &:focus {
+            // outline: 3px dashed sentro.key-create('button-active-outline', rgba(#f1f1f1, 27%));
+        }
+        
+        &:disabled,
+        &.disabled {
+            @include sentro.key-bind('button-fill', sentro.token-get('accent-dark'));
+            @include sentro.key-bind('button-fill-active', sentro.token-get('accent-dark'));
+            cursor: default;
+        }
+        
+        .msc-button__icon {
+            position: relative;
+            font-size: sentro.key-create('button-icon-size', $button-icon-size);
+            color: sentro.key-create('button-icon-ink', $button-icon-ink);
+            /* @fallback */
+            width: sentro.key-create('button-icon-size', $button-icon-size);
+            height: sentro.key-create('button-icon-size', $button-icon-size);
+        }
+        
+        .msc-button__label {
+            font-size: sentro.key-create('button-label-size', $button-label-size);
+            color: sentro.key-create('button-label-ink', inherit);
+            line-height: 1.125rem;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        // Variants
+        &.msc-button--inverted {
+            @include sentro.key-bind('button-fill', sentro.token-get('accent-inverted'));
+            @include sentro.key-bind('button-ink', sentro.token-get('accent-inverted-ink'));
+            @include sentro.key-bind('button-fill-active', sentro.token-get('accent-inverted-light'));
+        }
+        
+        &.msc-button--outlined {
+            color: sentro.key-create('button-fill', $button-fill);
+            border-color: sentro.key-create('button-fill', $button-fill);
+            
+            &:hover {
+                background-color: sentro.key-create('button-fill', $button-fill);
+                color: sentro.key-create('button-ink', $button-ink);
+                border-color: sentro.key-create('button-fill', $button-fill);
+            }
+    
+            &:active {
+                background-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+                color: sentro.key-create('button-ink', $button-ink);
+                border-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+                // @include sentro.elevation-apply(4);
+            }
+    
+            &:disabled,
+            &.disabled {
+                @include sentro.key-bind('button-fill', sentro.token-get('accent-dark'));
+                @include sentro.key-bind('button-ink', sentro.token-get('accent-dark'));
+                @include sentro.key-bind('button-fill-active', sentro.token-get('accent-dark'));
+                background: rgba(0 0 0 / 0);
+            }
+        }
+    
+        &.msc-button--filled {
+            background: sentro.key-create('button-fill', $button-fill);
+            color: sentro.key-create('button-ink', $button-ink);
+            border-color: sentro.key-create('button-fill', $button-fill);
+            box-shadow: 0 3px sentro.token-get('accent-dark');
+        
+            &:active {
+                background-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+                border-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+                box-shadow: 0 0 sentro.token-get('accent-dark');
+                transform: translateY(2px);
+            }
+        }
+    }
+}
