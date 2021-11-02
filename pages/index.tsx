@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <DefaultLayout title="HOME" heroActionLabel="Get to know me" heroAction="#about-me" hasHero>
 
             <section className="grid about-me" id="about-me">
-                <MSCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user. If you wish to inquire about my work, or if you just want some help with your UI/UX Engineering journey, please click the button below">
+                <MSCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user. If you wish to inquire about my work, or if you just want some help with UI/UX Engineering, please click the button below">
                     <MSCButton type="filled" isDisabled>Resume</MSCButton>
                     <MSCButton type="filled" link="mailto:matteugt@gmail.com">Contact me</MSCButton>
                 </MSCCard>
