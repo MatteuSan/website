@@ -91,7 +91,7 @@ const Home: NextPage = () => {
                             </MSCCard>
                         );
                     }) }
-                    <MSCButton link="/work" type="outlined" icon="read_more">See more...</MSCButton>
+                    <MSCButton link="/tools" type="outlined" icon="read_more">See more...</MSCButton>
                 </div>
             </section>
 
