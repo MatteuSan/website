@@ -117,13 +117,22 @@ $button-icon-ink: inherit;
             background: sentro.key-create('button-fill', $button-fill);
             color: sentro.key-create('button-ink', $button-ink);
             border-color: sentro.key-create('button-fill', $button-fill);
-            box-shadow: 0 3px sentro.token-get('accent-dark');
+            box-shadow: 0 3px sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
         
             &:active {
                 background-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
                 border-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
-                box-shadow: 0 0 sentro.token-get('accent-dark');
+                box-shadow: 0 0 sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
                 transform: translateY(2px);
+            }
+            
+            &:disabled {
+                @include sentro.key-bind('button-shadow', sentro.token-get('accent-inverted-light'));
+    
+                &:active {
+                    box-shadow: 0 3px sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
+                    transform: none;
+                }
             }
         }
     }

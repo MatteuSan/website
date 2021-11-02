@@ -7,6 +7,7 @@ import MSCTitleBar from "../components/MSCTitleBar";
 
 import { tools } from "../constants/tools";
 import { works } from "../constants/works";
+import { site } from "../constants/site";
 
 const Home: NextPage = () => {
     const new_tools = tools.slice(0, 2);
@@ -63,10 +64,9 @@ const Home: NextPage = () => {
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
-                                media={ data.media }
+                                media={ `/img/` + data.media }
                             >
-                                <MSCButton link={ data.link } type="filled"
-                                           isDisabled={ data.link == null }>Visit</MSCButton>
+                                <MSCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</MSCButton>
                             </MSCCard>
                         );
                     }) }
@@ -84,10 +84,8 @@ const Home: NextPage = () => {
                                 title={ data.name }
                                 description={ data.desc }
                             >
-                                <MSCButton link={ data.links.docs } type="filled"
-                                           isDisabled={ data.links.docs == null }>Docs</MSCButton>
-                                <MSCButton link={ data.links.src } type="filled"
-                                           isDisabled={ data.links.src == null }>Source</MSCButton>
+                                <MSCButton link={ data.links.docs } type="filled" isDisabled={ data.links.docs == null }>Docs</MSCButton>
+                                <MSCButton link={ data.links.src } type="filled" isDisabled={ data.links.src == null }>Source</MSCButton>
                             </MSCCard>
                         );
                     }) }

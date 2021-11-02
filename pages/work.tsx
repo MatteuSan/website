@@ -17,7 +17,7 @@ const Work: NextPage = () => {
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
-                                media={ data.media }
+                                media={ `/img/` + data.media }
                             >
                                 <MSCButton link={ data.link } type="filled"
                                            isDisabled={ data.link == null }>Visit</MSCButton>
