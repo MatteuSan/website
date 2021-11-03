@@ -3,7 +3,7 @@ export const tools = [
         'name': "Sentro",
         'desc': "A low-level SCSS library for building and managing token-driven design systems.",
         'links': {
-            'docs': null,
+            'docs': "https://docs.matteusan.me/docs/sentro",
             'src': "https://github.com/MatteuSan/sentro"
         }
     },
