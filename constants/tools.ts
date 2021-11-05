@@ -8,11 +8,11 @@ export const tools = [
         }
     },
     {
-        'name': "Gaikan",
-        'desc': "An experimental library for building user interfaces made in PHP.",
+        'name': "Hibla",
+        'desc': "A mid-level SCSS library for composing styles using utilities in SCSS.",
         'links': {
             'docs': null,
-            'src': "https://github.com/Gaikan/Gaikan"
+            'src': "https://github.com/MatteuSan/hibla"
         }
     },
     {
@@ -37,6 +37,14 @@ export const tools = [
         'links': {
             'docs': "https://sph-docs.netlify.app/docs/ugnay",
             'src': "https://github.com/SurPathHub/ugnay-components-web"
+        }
+    },
+    {
+        'name': "Gaikan",
+        'desc': "An experimental library for building user interfaces made in PHP.",
+        'links': {
+            'docs': null,
+            'src': "https://github.com/Gaikan/Gaikan"
         }
     },
 ];
