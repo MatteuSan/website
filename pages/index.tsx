@@ -9,10 +9,10 @@ import { tools } from "../constants/tools";
 import { works } from "../constants/works";
 import { site } from "../constants/site";
 
-const Home: NextPage = () => {
-    const new_tools = tools.slice(0, 2);
-    const new_works = works.slice(0, 2);
+const new_tools = tools.slice(0, 2);
+const new_works = works.slice(0, 2);
 
+const Home: NextPage = () => {
     return (
         <DefaultLayout title="HOME" heroActionLabel="Get to know me" heroAction="#about-me" hasHero>
 
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
             </section>
 
             <section className="content-section">
-                <MSCTitleBar icon="dashboard">Latest works</MSCTitleBar>
+                <MSCTitleBar icon="dashboard">Featured works</MSCTitleBar>
                 <div className="grid" id="projects">
                     { new_works.map((data, key) => {
                         return (
@@ -70,12 +70,12 @@ const Home: NextPage = () => {
                             </MSCCard>
                         );
                     }) }
-                    <MSCButton link="/work" type="outlined" icon="read_more">See more...</MSCButton>
+                    <MSCButton link="/work" type="outlined" iconTrailing="arrow_forward">See more</MSCButton>
                 </div>
             </section>
 
             <section className="content-section">
-                <MSCTitleBar icon="construction">Latest tools</MSCTitleBar>
+                <MSCTitleBar icon="construction">Featured tools</MSCTitleBar>
                 <div className="grid" id="tools">
                     { new_tools.map((data, key) => {
                         return (
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
                             </MSCCard>
                         );
                     }) }
-                    <MSCButton link="/tools" type="outlined" icon="read_more">See more...</MSCButton>
+                    <MSCButton link="/tools" type="outlined" iconTrailing="arrow_forward">See more</MSCButton>
                 </div>
             </section>
 

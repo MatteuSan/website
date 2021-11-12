@@ -8,19 +8,11 @@ export const tools = [
         }
     },
     {
-        'name': "Hibla",
-        'desc': "A mid-level SCSS library for composing styles using utilities in SCSS.",
+        'name': "Ugnay Components Web",
+        'desc': "SurPath Hub's design system implementation for the web.",
         'links': {
-            'docs': null,
-            'src': "https://github.com/MatteuSan/hibla"
-        }
-    },
-    {
-        'name': "Scaffold",
-        'desc': "The core library of GrowStocks' design system implementation",
-        'links': {
-            'docs': null,
-            'src': "https://github.com/GrowStocks/stack/tree/main/src/SCCore"
+            'docs': "https://sph-docs.netlify.app/docs/ugnay",
+            'src': "https://github.com/SurPathHub/ugnay-components-web"
         }
     },
     {
@@ -32,11 +24,11 @@ export const tools = [
         }
     },
     {
-        'name': "Ugnay Components Web",
-        'desc': "SurPath Hub's design system implementation for the web.",
+        'name': "Scaffold",
+        'desc': "The core library of GrowStocks' design system implementation",
         'links': {
-            'docs': "https://sph-docs.netlify.app/docs/ugnay",
-            'src': "https://github.com/SurPathHub/ugnay-components-web"
+            'docs': null,
+            'src': "https://github.com/GrowStocks/stack/tree/main/src/SCCore"
         }
     },
     {
@@ -45,6 +37,14 @@ export const tools = [
         'links': {
             'docs': null,
             'src': "https://github.com/Gaikan/Gaikan"
+        }
+    },
+    {
+        'name': "Hibla",
+        'desc': "A mid-level SCSS library for composing styles using utilities in SCSS.",
+        'links': {
+            'docs': null,
+            'src': "https://github.com/MatteuSan/hibla"
         }
     },
 ];

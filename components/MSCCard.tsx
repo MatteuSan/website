@@ -14,15 +14,17 @@ const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, hasN
             <div className="msc-card">
                 { media &&
                 <div className="msc-card__media">
-                    <img src={ media } alt={ title + ` media` } />
+                    <img src={ media } alt={ title + ` media` } loading="lazy" />
                 </div>
                 }
                 <div className="msc-card__content">
-                    <div className="msc-card__title">
-                        { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
-                        <h2>{ title }</h2>
+                    <div>
+                        <div className="msc-card__title">
+                            { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
+                            <h2>{ title }</h2>
+                        </div>
+                        { children && <p className="msc-card__subtitle">{ children }</p> }
                     </div>
-                    { children && <p className="msc-card__subtitle">{ children }</p> }
                 </div>
             </div>
         );
@@ -35,11 +37,13 @@ const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, hasN
                 </div>
                 }
                 <div className="msc-card__content">
-                    <div className="msc-card__title">
-                        { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
-                        <h2>{ title }</h2>
+                    <div>
+                        <div className="msc-card__title">
+                            { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
+                            <h2>{ title }</h2>
+                        </div>
+                        { description && <p className="msc-card__subtitle">{ description }</p> }
                     </div>
-                    { description && <p className="msc-card__subtitle">{ description }</p> }
                     { children &&
                     <div className="msc-card__actions">
                         { children }

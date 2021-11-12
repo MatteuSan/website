@@ -8,7 +8,7 @@ import { tools } from "../constants/tools";
 
 const Tools: NextPage = () => {
     return (
-        <DefaultLayout title="TOOLS" heroTitle="Tools" heroSubtitle="Tools I made to help me (and you!) build user experiences." hasHero>
+        <DefaultLayout title="TOOLS" heroTitle="Tools" heroSubtitle="Tools I made to help me, and dev teams (and you!) build user experiences." hasHero>
             <section className="content-section">
                 <div className="grid" id="projects">
                     { tools.map((data, key) => {

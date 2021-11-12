@@ -116,19 +116,23 @@ body {
 
 .grid {
     margin-top: 0.7rem;
-    @include helpers.grid(1, 1fr);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
+    // grid-template-rows: masonry;
+    // align-tracks: stretch;
     
     @include helpers.breakpoint('medium') {
-        @include helpers.grid(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     
     @include helpers.breakpoint('large') {
-        @include helpers.grid(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
     
     > .msc-button {
         min-width: 100% !important;
+        border-radius: sentro.token-get('radius-medium');
     }
 }
 
