@@ -12,14 +12,14 @@
         margin: 0;
         border: none !important;
         border-radius: sentro.token-get('radius-medium');
-    
+        box-shadow: 0 3px sentro.token-get('surface-dark');
         @include sentro.prefix(transition, all 0.1s ease);
-        @include sentro.elevation-apply(2);
+        // @include sentro.elevation-apply(2);
         
         @include helpers.breakpoint('large') {
             &:hover {
                 transform: translateY(-0.3rem);
-                @include sentro.elevation-apply(4);
+                // @include sentro.elevation-apply(4);
             }
         }
     
@@ -70,6 +70,22 @@
                     margin-bottom: 0.175rem;
                     margin-right: 0.5rem;
                     color: sentro.key-create('card-title-icon-ink', var(--msc-theme-accent));
+                }
+            }
+            
+            .msc-card__tags {
+                display: flex;
+                flex-flow: row wrap;
+                overflow-x: scroll;
+                margin: 0.3rem 0 0.5rem 0;
+                gap: 0.3rem;
+                
+                & > * + * {
+                    // margin-left: 0.3rem;
+                }
+                
+                &::-webkit-scrollbar {
+                    display: none;
                 }
             }
         

@@ -1,0 +1,27 @@
+@use '~@matteusan/sentro';
+
+@use '../helpers';
+
+$fill: rgba(0 0 0 / 0);
+$ink: sentro.token-get('accent');
+$border-color: sentro.token-get('accent');
+
+$radius: sentro.token-get('radius-small');
+$size: sentro.px-to-rem(12px);
+
+@mixin use() {
+    .msc-tag {
+        width: 100%;
+        max-width: max-content;
+        padding: 0.2rem 0.4rem;
+        user-select: none;
+        
+        background-color: sentro.key-create('tag-fill', $fill);
+        color: sentro.key-create('tag-ink', $ink);
+        border: 1px solid sentro.key-create('tag-border', $border-color);
+        
+        border-radius: sentro.key-create('tag-radius', $radius);
+        
+        font-size: sentro.key-create('tag-size', $size);
+    }
+}

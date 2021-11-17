@@ -5,7 +5,8 @@ export const tools = [
         'links': {
             'docs': "https://docs.matteusan.me/docs/sentro",
             'src': "https://github.com/MatteuSan/sentro"
-        }
+        },
+        'tags': ['SCSS']
     },
     {
         'name': "Ugnay Components Web",
@@ -13,7 +14,8 @@ export const tools = [
         'links': {
             'docs': "https://sph-docs.netlify.app/docs/ugnay",
             'src': "https://github.com/SurPathHub/ugnay-components-web"
-        }
+        },
+        'tags': ['SCSS', 'TypeScript']
     },
     {
         'name': "Stack",
@@ -21,7 +23,8 @@ export const tools = [
         'links': {
             'docs': "https://stackcss.tech",
             'src': "https://github.com/GrowStocks/stack"
-        }
+        },
+        'tags': ['SCSS', 'TypeScript']
     },
     {
         'name': "Scaffold",
@@ -29,7 +32,17 @@ export const tools = [
         'links': {
             'docs': null,
             'src': "https://github.com/GrowStocks/stack/tree/main/src/SCCore"
-        }
+        },
+        'tags': ['SCSS', 'TypeScript']
+    },
+    {
+        'name': "Hashi",
+        'desc': "The web implementation of Dev Protocol's design system.",
+        'links': {
+            'docs': null,
+            'src': null
+        },
+        'tags': ['SCSS', 'TypeScript']
     },
     {
         'name': "Gaikan",
@@ -37,7 +50,8 @@ export const tools = [
         'links': {
             'docs': null,
             'src': "https://github.com/Gaikan/Gaikan"
-        }
+        },
+        'tags': ['PHP', 'TypeScript']
     },
     {
         'name': "Hibla",
@@ -45,6 +59,7 @@ export const tools = [
         'links': {
             'docs': null,
             'src': "https://github.com/MatteuSan/hibla"
-        }
+        },
+        'tags': ['SCSS']
     },
 ];

@@ -9,6 +9,7 @@
 
 @use 'modules/msc-button';
 @use 'modules/msc-card';
+@use 'modules/msc-tag';
 @use 'modules/msc-title-bar';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
@@ -148,4 +149,5 @@ body {
 
 @include msc-button.use();
 @include msc-card.use();
+@include msc-tag.use();
 @include msc-title-bar.use();

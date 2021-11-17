@@ -1,14 +1,17 @@
 import React from 'react';
+import MSCTag from "./MSCTag";
+import MSCButton from "./MSCButton";
 
 interface MSCCardProps {
     title: string;
     icon?: string;
     description?: string;
     media?: string;
+    tags?: any;
     hasNoAction?: boolean;
 }
 
-const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, hasNoAction, children }) => {
+const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, tags, hasNoAction, children }) => {
     if (hasNoAction) {
         return (
             <div className="msc-card">
@@ -23,6 +26,17 @@ const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, hasN
                             { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
                             <h2>{ title }</h2>
                         </div>
+                        { tags &&
+                        <div className="msc-card__tags">
+                            { tags.forEach((tag: string) => {
+                                return (
+                                    <MSCTag>
+                                        { tag }
+                                    </MSCTag>
+                                )
+                            }) }
+                        </div>
+                        }
                         { children && <p className="msc-card__subtitle">{ children }</p> }
                     </div>
                 </div>
@@ -42,6 +56,15 @@ const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, hasN
                             { icon && <i className="msc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
                             <h2>{ title }</h2>
                         </div>
+                        { tags &&
+                        <div className="msc-card__tags">
+                            { tags.map((tag: string) => {
+                                return (
+                                    <MSCTag>{ tag }</MSCTag>
+                                )
+                            }) }
+                        </div>
+                        }
                         { description && <p className="msc-card__subtitle">{ description }</p> }
                     </div>
                     { children &&

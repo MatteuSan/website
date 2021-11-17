@@ -17,9 +17,8 @@ const Home: NextPage = () => {
         <DefaultLayout title="HOME" heroActionLabel="Get to know me" heroAction="#about-me" hasHero>
 
             <section className="grid about-me" id="about-me">
-                <MSCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user. If you wish to inquire about my work, or if you just want some help with UI/UX Engineering, please click the button below">
+                <MSCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user.">
                     <MSCButton type="filled" isDisabled>Resume</MSCButton>
-                    <MSCButton type="filled" link="mailto:matteugt@gmail.com">Contact me</MSCButton>
                 </MSCCard>
 
                 <MSCCard title="Languages I speak" icon="code" hasNoAction>
@@ -41,17 +40,16 @@ const Home: NextPage = () => {
                     <li>PostgreSQL</li>
                 </MSCCard>
 
-                <MSCCard title="Projects" icon="dashboard" description="If you are interested in taking a look on what I've been working on lately, click the button below.">
+                <MSCCard title="Projects" icon="dashboard" description="If you are interested in taking a look on what I've been working on lately, click the button below." tags={['Web Apps', 'Websites', 'Design Systems']}>
                     <MSCButton type="filled" link="#projects">Projects</MSCButton>
                 </MSCCard>
 
-                <MSCCard title="Open Source" icon="public" description="If you wish to check out and use UI/UX tools I've been developing and open-sourcing the past few months, click the button below.">
+                <MSCCard title="Open Source" icon="public" description="I absolutely love doing open source projects! You can check out and use UI/UX tools I've been developing and open-sourcing the past few months by clicking the button below.">
                     <MSCButton type="filled" link="#tools">Open Source Tools</MSCButton>
                 </MSCCard>
 
-                <MSCCard title="Other stuff..." icon="celebration" description="I also do music for fun, mainly arrangements and stuff. You can check them here if you like :)">
-                    <MSCButton type="filled" link="https://musescore.com/MatteuSan">MuseScore</MSCButton>
-                    <MSCButton type="filled" link="https://soundcloud.com/matteuhernandez">Soundcloud</MSCButton>
+                <MSCCard title="Ready to collaborate?" icon="phone" description="I'd also be delighted to work on your project! Just click the contact button below and we'll keep in touch :)">
+                    <MSCButton type="filled" link="mailto:matteugt@gmail.com" isDisabled>Contact me</MSCButton>
                 </MSCCard>
             </section>
 
@@ -65,6 +63,7 @@ const Home: NextPage = () => {
                                 title={ data.name }
                                 description={ data.desc }
                                 media={ `/img/` + data.media }
+                                tags={ data.tags }
                             >
                                 <MSCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</MSCButton>
                             </MSCCard>
@@ -83,9 +82,10 @@ const Home: NextPage = () => {
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
+                                tags={ data.tags }
                             >
+                                <MSCButton link={ data.links.src } type="outlined" isDisabled={ data.links.src == null }>Source</MSCButton>
                                 <MSCButton link={ data.links.docs } type="filled" isDisabled={ data.links.docs == null }>Docs</MSCButton>
-                                <MSCButton link={ data.links.src } type="filled" isDisabled={ data.links.src == null }>Source</MSCButton>
                             </MSCCard>
                         );
                     }) }

@@ -18,6 +18,7 @@ const Work: NextPage = () => {
                                 title={ data.name }
                                 description={ data.desc }
                                 media={ `/img/` + data.media }
+                                tags={ data.tags }
                             >
                                 <MSCButton link={ data.link } type="filled"
                                            isDisabled={ data.link == null }>Visit</MSCButton>

@@ -90,17 +90,21 @@ $button-icon-ink: inherit;
         &.msc-button--outlined {
             color: sentro.key-create('button-fill', $button-fill);
             border-color: sentro.key-create('button-fill', $button-fill);
+            box-shadow: 0 3px sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
             
             &:hover {
                 background-color: sentro.key-create('button-fill', $button-fill);
                 color: sentro.key-create('button-ink', $button-ink);
                 border-color: sentro.key-create('button-fill', $button-fill);
+                
             }
     
             &:active {
                 background-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
                 color: sentro.key-create('button-ink', $button-ink);
                 border-color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
+                box-shadow: 0 0 sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
+                transform: translateY(2px);
                 // @include sentro.elevation-apply(4);
             }
     
@@ -110,6 +114,12 @@ $button-icon-ink: inherit;
                 @include sentro.key-bind('button-ink', sentro.token-get('accent-dark'));
                 @include sentro.key-bind('button-fill-active', sentro.token-get('accent-dark'));
                 background: rgba(0 0 0 / 0);
+                @include sentro.key-bind('button-shadow', sentro.token-get('accent-inverted-light'));
+    
+                &:active {
+                    box-shadow: 0 3px sentro.key-create('button-shadow', sentro.token-get('accent-dark'));
+                    transform: none;
+                }
             }
         }
     

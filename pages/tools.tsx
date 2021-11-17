@@ -17,11 +17,12 @@ const Tools: NextPage = () => {
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
+                                tags={ data.tags }
                             >
+                                <MSCButton link={ data.links.src } type="outlined"
+                                           isDisabled={ data.links.src == null }>Source</MSCButton>
                                 <MSCButton link={ data.links.docs } type="filled"
                                            isDisabled={ data.links.docs == null }>Docs</MSCButton>
-                                <MSCButton link={ data.links.src } type="filled"
-                                           isDisabled={ data.links.src == null }>Source</MSCButton>
                             </MSCCard>
                         );
                     }) }
