@@ -1,6 +1,5 @@
 import React from 'react';
 import MSCTag from "./MSCTag";
-import MSCButton from "./MSCButton";
 
 interface MSCCardProps {
     title: string;
@@ -58,9 +57,9 @@ const MSCCard: React.FC<MSCCardProps> = ({ title, icon, description, media, tags
                         </div>
                         { tags &&
                         <div className="msc-card__tags">
-                            { tags.map((tag: string) => {
+                            { tags.map((tag: string, key: any) => {
                                 return (
-                                    <MSCTag>{ tag }</MSCTag>
+                                    <MSCTag key={ key }>{ tag }</MSCTag>
                                 )
                             }) }
                         </div>

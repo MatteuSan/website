@@ -22,7 +22,7 @@ const MSCButton: React.FC<MSCButtonProps> = ({ label, icon, iconTrailing, type, 
     }
 
     return (
-        <Link href={ link }>
+        <Link href={ link } passHref>
             <button className={ `msc-button${ type?.includes('outlined') ? ' msc-button--outlined' : type?.includes('filled') ? ' msc-button--filled' : '' }${ type?.includes('inverted') ? ' msc-button--inverted' : '' }${ isDisabled ? ' disabled' : '' }` } disabled={isDisabled}>
                 { icon && <i className="msc-button__icon material-icons">{ icon }</i> }
                 { label || children && <span className="msc-button__label">{ label || children }</span> }
