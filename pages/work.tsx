@@ -1,8 +1,7 @@
 import React from 'react';
 import { NextPage } from "next";
-import MSCButton from "../components/MSCButton";
 import DefaultLayout from "./layouts/DefaultLayout";
-import MSCTitleBar from "../components/MSCTitleBar";
+import MSCButton from "../components/MSCButton";
 import MSCCard from "../components/MSCCard";
 import { works } from "../constants/works";
 

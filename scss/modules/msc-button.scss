@@ -52,8 +52,10 @@ $button-icon-ink: inherit;
             color: sentro.key-create('button-fill-active', sentro.token-get('accent-light'));
         }
         
+        &:hover,
         &:focus {
-            // outline: 3px dashed sentro.key-create('button-active-outline', rgba(#f1f1f1, 27%));
+            background-color: rgba(#fff, 10%);
+            border: 1px solid rgba(#fff, 10%);
         }
         
         &:disabled,

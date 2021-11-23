@@ -142,6 +142,17 @@ body {
     padding: 5vh 0;
 }
 
+.absolute-center {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.page-error {
+    width: calc(100% - 40px);
+    max-width: 420px;
+}
+
 @include msc-header.use();
 @include msc-navbar.use();
 @include msc-footer.use();

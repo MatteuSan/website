@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import MSCButton from "../components/MSCButton";
-import DefaultLayout from "./layouts/DefaultLayout";
 import React from "react";
+import type { NextPage } from 'next'
+import DefaultLayout from "./layouts/DefaultLayout";
+import MSCButton from "../components/MSCButton";
 import MSCCard from "../components/MSCCard";
 import MSCTitleBar from "../components/MSCTitleBar";
 
