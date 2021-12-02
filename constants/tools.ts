@@ -9,13 +9,13 @@ export const tools = [
         'tags': ['SCSS']
     },
     {
-        'name': "Ugnay Components Web",
-        'desc': "SurPath Hub's design system implementation for the web.",
+        'name': "Himig",
+        'desc': "MatteuSan's personal design system for making projects.",
         'links': {
-            'docs': "https://sph-docs.netlify.app/docs/ugnay",
-            'src': "https://github.com/SurPathHub/ugnay-components-web"
+            'docs': "https://docs.matteusan.me/docs/himig",
+            'src': "https://github.com/MatteuSan/himig"
         },
-        'tags': ['SCSS', 'TypeScript']
+        'tags': ['SCSS', 'TypeScript', 'React']
     },
     {
         'name': "Stack",
@@ -27,20 +27,29 @@ export const tools = [
         'tags': ['SCSS', 'TypeScript']
     },
     {
+        'name': "Hashi",
+        'desc': "The web implementation of Dev Protocol's design system.",
+        'links': {
+            'docs': null,
+            'src': "https://github.com/dev-protocol/hashi-web"
+        },
+        'tags': ['SCSS', 'TypeScript']
+    },
+    {
+        'name': "Ugnay Components Web",
+        'desc': "SurPath Hub's design system implementation for the web.",
+        'links': {
+            'docs': "https://sph-docs.netlify.app/docs/ugnay",
+            'src': "https://github.com/SurPathHub/ugnay-components-web"
+        },
+        'tags': ['SCSS', 'TypeScript']
+    },
+    {
         'name': "Scaffold",
         'desc': "The core library of GrowStocks' design system implementation",
         'links': {
             'docs': null,
             'src': "https://github.com/GrowStocks/stack/tree/main/src/SCCore"
-        },
-        'tags': ['SCSS', 'TypeScript']
-    },
-    {
-        'name': "Hashi",
-        'desc': "The web implementation of Dev Protocol's design system.",
-        'links': {
-            'docs': null,
-            'src': null
         },
         'tags': ['SCSS', 'TypeScript']
     },
