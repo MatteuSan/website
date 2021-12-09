@@ -1,35 +1,33 @@
 import React from "react";
 import type { NextPage } from 'next'
 import DefaultLayout from "./layouts/DefaultLayout";
-import MSCButton from "../components/MSCButton";
-import MSCCard from "../components/MSCCard";
-import MSCTitleBar from "../components/MSCTitleBar";
+
+import { HCButton, HCCard, HCTitleBar } from '../components';
 
 import { tools } from "../constants/tools";
 import { works } from "../constants/works";
-import { site } from "../constants/site";
 
 const new_tools = tools.slice(0, 2);
 const new_works = works.slice(0, 2);
 
 const Home: NextPage = () => {
     return (
-        <DefaultLayout title="HOME" heroActionLabel="Get to know me" heroAction="#about-me" hasHero>
+        <DefaultLayout title="HOME" heroTitle="MatteuSan" heroSubtitle="UX Engineer. Creating a meaningful bridge from software to user." heroAction={ <HCButton type="filled inverted" link="#about-me">Get to know me</HCButton> } hasHero>
 
             <section className="grid about-me" id="about-me">
-                <MSCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user.">
-                    <MSCButton type="filled" isDisabled>Resume</MSCButton>
-                </MSCCard>
+                <HCCard title="About me" icon="info" description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user.">
+                    <HCButton type="filled" isDisabled>Resume</HCButton>
+                </HCCard>
 
-                <MSCCard title="Languages I speak" icon="code" hasNoAction>
+                <HCCard title="Languages I speak" icon="code" hasNoAction>
                     <li>HTML</li>
                     <li>CSS/SCSS</li>
                     <li>JavaScript/TypeScript</li>
                     <li>PHP</li>
                     <li>and a bit of Python :)</li>
-                </MSCCard>
+                </HCCard>
 
-                <MSCCard title="Technologies I work with" icon="computer" hasNoAction>
+                <HCCard title="Technologies I work with" icon="computer" hasNoAction>
                     <li>Sentro (SCSS)</li>
                     <li>Tailwind CSS</li>
                     <li>ReactJS (+ Redux)</li>
@@ -38,58 +36,58 @@ const Home: NextPage = () => {
                     <li>Flask</li>
                     <li>MySQL</li>
                     <li>PostgreSQL</li>
-                </MSCCard>
+                </HCCard>
 
-                <MSCCard title="Projects" icon="dashboard" description="If you are interested in taking a look on what I've been working on lately, click the button below." tags={['Web Apps', 'Websites', 'Design Systems']}>
-                    <MSCButton type="filled" link="#projects">Projects</MSCButton>
-                </MSCCard>
+                <HCCard title="Projects" icon="dashboard" description="If you are interested in taking a look on what I've been working on lately, click the button below." tags={['Web Apps', 'Websites', 'Design Systems']}>
+                    <HCButton type="filled" link="#projects">Projects</HCButton>
+                </HCCard>
 
-                <MSCCard title="Open Source" icon="public" description="I absolutely love doing open source projects! You can check out and use UI/UX tools I've been developing and open-sourcing the past few months by clicking the button below.">
-                    <MSCButton type="filled" link="#tools">Open Source Tools</MSCButton>
-                </MSCCard>
+                <HCCard title="Open Source" icon="public" description="I absolutely love doing open source projects! You can check out and use UI/UX tools I've been developing and open-sourcing the past few months by clicking the button below.">
+                    <HCButton type="filled" link="#tools">Open Source Tools</HCButton>
+                </HCCard>
 
-                <MSCCard title="Ready to collaborate?" icon="phone" description="I'd also be delighted to work on your project! Just click the contact button below and we'll keep in touch :)">
-                    <MSCButton type="filled" link="mailto:matteugt@gmail.com" isDisabled>Contact me</MSCButton>
-                </MSCCard>
+                <HCCard title="Ready to collaborate?" icon="phone" description="I'd also be delighted to work on your project! Just click the contact button below and we'll keep in touch :)">
+                    <HCButton type="filled" link="mailto:matteugt@gmail.com" isDisabled>Contact me</HCButton>
+                </HCCard>
             </section>
 
             <section className="content-section">
-                <MSCTitleBar icon="dashboard">Featured works</MSCTitleBar>
+                <HCTitleBar icon="dashboard">Featured works</HCTitleBar>
                 <div className="grid" id="projects">
                     { new_works.map((data, key) => {
                         return (
-                            <MSCCard
+                            <HCCard
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
                                 media={ `/img/` + data.media }
                                 tags={ data.tags }
                             >
-                                <MSCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</MSCButton>
-                            </MSCCard>
+                                <HCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</HCButton>
+                            </HCCard>
                         );
                     }) }
-                    <MSCButton link="/work" type="outlined" iconTrailing="arrow_forward">See more</MSCButton>
+                    <HCButton link="/work" type="outlined full-width" iconTrailing="arrow_forward">See more</HCButton>
                 </div>
             </section>
 
             <section className="content-section">
-                <MSCTitleBar icon="construction">Featured tools</MSCTitleBar>
+                <HCTitleBar icon="construction">Featured tools</HCTitleBar>
                 <div className="grid" id="tools">
                     { new_tools.map((data, key) => {
                         return (
-                            <MSCCard
+                            <HCCard
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
                                 tags={ data.tags }
                             >
-                                <MSCButton link={ data.links.src } type="outlined" isDisabled={ data.links.src == null }>Source</MSCButton>
-                                <MSCButton link={ data.links.docs } type="filled" isDisabled={ data.links.docs == null }>Docs</MSCButton>
-                            </MSCCard>
+                                <HCButton link={ data.links.src } type="outlined" isDisabled={ data.links.src == null }>Source</HCButton>
+                                <HCButton link={ data.links.docs } type="filled" isDisabled={ data.links.docs == null }>Docs</HCButton>
+                            </HCCard>
                         );
                     }) }
-                    <MSCButton link="/tools" type="outlined" iconTrailing="arrow_forward">See more</MSCButton>
+                    <HCButton link="/tools" type="outlined full-width" iconTrailing="arrow_forward">See more</HCButton>
                 </div>
             </section>
 
@@ -97,4 +95,4 @@ const Home: NextPage = () => {
     )
 }
 
-export default Home
+export default Home;

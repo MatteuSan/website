@@ -1,9 +1,6 @@
 import React from 'react';
 import Head from "next/head";
 import { site } from "../../constants/site";
-import MSCHeader from "../../components/MSCHeader";
-import MSCHero from "../../components/MSCHero";
-import MSCFooter from "../../components/MSCFooter";
 
 interface BlankLayoutProps {
     title: string;

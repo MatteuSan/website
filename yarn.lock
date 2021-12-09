@@ -114,10 +114,17 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@matteusan/sentro@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.5.tgz#e3c3e9a0b7b2f6cc6fd335c26b593e9a509394bf"
-  integrity sha512-tkC2WaUbnnjvcUk4LpFVz5zoc8M++eJR7k+x3xwM5sJGw2FHCSyXGTAFnR8APLsd+zZKkNOTk5MBdATF09fFKA==
+"@matteusan/himig-web@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.1.tgz#44cfab41044fe99f9baafb43d71f442dd7e5fe40"
+  integrity sha512-fM93nHSJV8cRCidwz1fcJjGqw32NhKRFLnMFOyNLAOiz2Bg04vfY3GobY1TTNOwujq2/i2eo2vy1cg8rMKX6ag==
+  dependencies:
+    "@matteusan/sentro" "0.1.10"
+
+"@matteusan/sentro@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.10.tgz#27705324c9cf5a2e87928c318fd556d9a9dbb484"
+  integrity sha512-mLOeELvL1n13GngrkFFMcGV0pLhl8mno3kmsAhW7GbqXY5U3Q8esTmKGJo9ecksh9EooGXGWWimGf7sgZIi3KA==
 
 "@napi-rs/triples@^1.0.3":
   version "1.0.3"
@@ -280,7 +287,7 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
-"@types/three@^0.134.0":
+"@types/three@0.134.0":
   version "0.134.0"
   resolved "https://registry.yarnpkg.com/@types/three/-/three-0.134.0.tgz#22ae9892f4490faaf35f0ccea127df18407b8ab3"
   integrity sha512-4YB+99Rgqq27EjiYTItEoZtdjLnTh8W9LxowgpC9eWsjaQJIL4Kn/ZcUKAnW3gB/jS4hqGN8iqmid+RcUZDzpA==
@@ -2583,7 +2590,7 @@ safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.43.4:
+sass@1.43.4:
   version "1.43.4"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.43.4.tgz#68c7d6a1b004bef49af0d9caf750e9b252105d1f"
   integrity sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg==
@@ -2857,7 +2864,7 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.134.0:
+three@0.134.0:
   version "0.134.0"
   resolved "https://registry.yarnpkg.com/three/-/three-0.134.0.tgz#d7ad4d85d050da0861bf39749b06ddfb5f17157f"
   integrity sha512-LbBerg7GaSPjYtTOnu41AMp7tV6efUNR3p4Wk5NzkSsNTBuA5mDGOfwwZL1jhhVMLx9V20HolIUo0+U3AXehbg==

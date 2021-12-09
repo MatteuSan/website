@@ -1,164 +1,122 @@
-@use '~@matteusan/sentro' with ($prefix: 'msc', $context: 'theme');
+@use '~@matteusan/himig-web' as himig;
 
-@use 'helpers';
-
-@use 'modules/msc-header';
-@use 'modules/msc-navbar';
-@use 'modules/msc-footer';
-@use 'modules/msc-hero';
-
-@use 'modules/msc-button';
-@use 'modules/msc-card';
-@use 'modules/msc-tag';
-@use 'modules/msc-title-bar';
+@use '~@matteusan/himig-web/hc-button' with ($button-style: 'playful');
+@use '~@matteusan/himig-web/hc-card' with ($card-style: 'playful');
+@use '~@matteusan/himig-web/hc-footer';
+@use '~@matteusan/himig-web/hc-header' with ($header-style: 'scrollable');
+@use '~@matteusan/himig-web/hc-hero';
+@use '~@matteusan/himig-web/hc-navbar';
+@use '~@matteusan/himig-web/hc-tags';
+@use '~@matteusan/himig-web/hc-title-bar';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-:root {
-    color-scheme: dark;
-    @include sentro.token-add(
-        $background: (
-            'default': #181818,
-            'ink': #fff
-        ),
-        $surface: (
-            'default': #343434,
-            'dark': #232323,
-            'light': #454545,
-            'ink': #fff
-        ),
-        $accent: (
-            'default': #ff6a00,
-            'dark': #903a00,
-            'light': #ffa040,
-            'ink': #1d0c02,
-            'gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%)
-        ),
-        $accent-inverted: (
-            'default': #210c00,
-            'dark': #100500,
-            'light': #401d00,
-            'ink': #ff6a00,
-        ),
-        $radius: (
-            'small': 0.3rem,
-            'medium': 0.5rem,
-            'large': 0.7rem
-        ),
-        $global: (
-            'family': ('Inter', sans-serif),
-        ),
-        $title: (
-            'family': ('Bebas Neue', sans-serif)
-        )
-    );
-}
-
-* {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-    color: inherit;
-    font-family: sentro.token-get('global-family');
-    
-    &::before,
-    &::after {
-        box-sizing: inherit;
-        margin: 0;
-        padding: 0;
-        color: inherit;
-    }
-}
-
-h1,
-h2,
-h3 {
-    font-family: sentro.token-get('title-family');
-    font-weight: normal;
-}
-
-html {
-    box-sizing: border-box;
-    font-size: 100%;
-    scroll-behavior: smooth;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    background-color: sentro.token-get('background');
-    color: sentro.token-get('background-ink');
-}
-
-/*#__next {
-    height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-}*/
-
-::-moz-selection {
-    color: sentro.token-get('accent-ink');
-    background: sentro.token-get('accent');
-}
-
-::selection {
-    color: sentro.token-get('accent-ink');
-    background: sentro.token-get('accent');
-}
-
-.content-wrap {
-    width: calc(100% - 30px);
-    max-width: 977px;
-    margin: 0 auto;
-    padding: 0 0 40px 0;
-}
-
-.grid {
-    margin-top: 0.7rem;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1rem;
-    // grid-template-rows: masonry;
-    // align-tracks: stretch;
-    
-    @include helpers.breakpoint('medium') {
-        grid-template-columns: repeat(2, 1fr);
+@include himig.init(
+    $accent-inverted: (
+        'default': #210c00,
+        'dark': #100500,
+        'light': #401d00,
+        'ink': #ff6a00,
+    ),
+) {
+    ::-moz-selection {
+        color: himig.theme-token-get('accent-ink');
+        background: himig.theme-token-get('accent');
     }
     
-    @include helpers.breakpoint('large') {
-        grid-template-columns: repeat(3, 1fr);
+    ::selection {
+        color: himig.theme-token-get('accent-ink');
+        background: himig.theme-token-get('accent');
     }
     
-    > .msc-button {
-        min-width: 100% !important;
-        border-radius: sentro.token-get('radius-medium');
+    .content-wrap {
+        width: calc(100% - 30px);
+        max-width: 977px;
+        margin: 0 auto;
+        padding: 0 0 40px 0;
+    }
+    
+    .grid {
+        margin-top: 0.7rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+    
+        > a {
+            grid-column: revert;
+        }
+        
+        @include himig.helper-breakpoint('medium') {
+            grid-template-columns: repeat(2, 1fr);
+            
+            > a {
+                grid-column: span 2;
+            }
+        }
+        
+        @include himig.helper-breakpoint('large') {
+            grid-template-columns: repeat(3, 1fr);
+    
+            > a {
+                grid-column: revert;
+            }
+        }
+    }
+    
+    .content-section,
+    .about-me {
+        padding: 5vh 0;
+    }
+    
+    .absolute-center {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+    
+    .page-error {
+        width: calc(100% - 40px);
+        max-width: 420px;
+    }
+    
+    @include hc-button.use();
+    @include hc-card.use();
+    @include hc-footer.use();
+    @include hc-header.use();
+    @include hc-hero.use();
+    @include hc-navbar.use();
+    @include hc-tags.use();
+    @include hc-title-bar.use();
+    
+    .hc-button--full-width {
+        height: 100%;
+    }
+    
+    .hc-button.hc-button--inverted {
+        @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+        
+        &:hover,
+        &:focus {
+            @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+        }
+        
+        &:active {
+            @include hc-button.override('accent-inverted-light', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+        }
+    }
+    
+    .hc-navbar__item {
+        &:hover {
+            background-color: rgba(#fff, 30%);
+        }
+    
+        &:active {
+            border-color: rgba(#fff, 30%);
+        }
+    }
+    
+    .hc-footer__version {
+        margin-left: 0.2rem;
     }
 }
-
-.content-section,
-.about-me {
-    padding: 5vh 0;
-}
-
-.absolute-center {
-    height: 100vh;
-    display: grid;
-    place-items: center;
-}
-
-.page-error {
-    width: calc(100% - 40px);
-    max-width: 420px;
-}
-
-@include msc-header.use();
-@include msc-navbar.use();
-@include msc-footer.use();
-@include msc-hero.use();
-
-@include msc-button.use();
-@include msc-card.use();
-@include msc-tag.use();
-@include msc-title-bar.use();

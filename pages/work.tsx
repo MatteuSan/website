@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextPage } from "next";
 import DefaultLayout from "./layouts/DefaultLayout";
-import MSCButton from "../components/MSCButton";
-import MSCCard from "../components/MSCCard";
+import { HCButton, HCCard } from '../components';
+
 import { works } from "../constants/works";
 
 const Work: NextPage = () => {
@@ -12,16 +12,15 @@ const Work: NextPage = () => {
                 <div className="grid" id="projects">
                     { works.map((data, key) => {
                         return (
-                            <MSCCard
+                            <HCCard
                                 key={ key }
                                 title={ data.name }
                                 description={ data.desc }
                                 media={ `/img/` + data.media }
                                 tags={ data.tags }
                             >
-                                <MSCButton link={ data.link } type="filled"
-                                           isDisabled={ data.link == null }>Visit</MSCButton>
-                            </MSCCard>
+                                <HCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</HCButton>
+                            </HCCard>
                         );
                     }) }
                 </div>

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from "next/head";
-import MSCHero from "../../components/MSCHero";
-import MSCHeader from "../../components/MSCHeader";
-import MSCFooter from "../../components/MSCFooter";
+
+import {
+    HCHeader,
+    HCHero,
+    HCNavbar,
+    HCNavbarTrigger,
+    HCNavbarItem,
+    HCFooter, HCButton
+} from "../../components";
 
 import { site } from "../../constants/site";
 
@@ -11,13 +17,15 @@ interface DefaultLayoutProps {
     description?: string;
     hasHero?: boolean;
     hasHeroAction?: boolean;
-    heroTitle?: string;
-    heroSubtitle?: string;
-    heroAction?: string;
-    heroActionLabel?: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    heroAction?: any;
 }
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, heroActionLabel, children }) => {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, children }) => {
+
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
     return (
         <>
             <Head>
@@ -46,12 +54,25 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
 
                 <meta name="theme-color" content={ site.themeColor } />
             </Head>
-            <MSCHeader />
-            { hasHero && <MSCHero title={ heroTitle } subtitle={ heroSubtitle } actionLink={ heroAction } actionLabel={ heroActionLabel } /> }
+            <HCHeader title={ site.name } actionSection={
+                <>
+                <HCNavbarTrigger
+                    onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
+                    trigger={ isNavbarOpen }
+                />
+                <HCNavbar trigger={ isNavbarOpen }>
+                    <HCNavbarItem link="/">Home</HCNavbarItem>
+                    <HCNavbarItem link="/work">Work</HCNavbarItem>
+                    <HCNavbarItem link="/tools">Tools</HCNavbarItem>
+                    <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
+                </HCNavbar>
+                </>
+            } isScrollable />
+            { hasHero && <HCHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> }
             <main className="content-wrap">
                 { children }
             </main>
-            <MSCFooter />
+            <HCFooter title={ site.name } version={ site.version } author={ site.author } />
         </>
     );
 };
