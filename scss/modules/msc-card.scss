@@ -79,11 +79,9 @@
                 overflow-x: scroll;
                 margin: 0.3rem 0 0.5rem 0;
                 gap: 0.3rem;
-                
-                & > * + * {
-                    // margin-left: 0.3rem;
-                }
-                
+                // Mozilla //
+                scrollbar-width: none;
+    
                 &::-webkit-scrollbar {
                     display: none;
                 }
