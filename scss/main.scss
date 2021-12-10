@@ -93,6 +93,11 @@
         height: 100%;
     }
     
+    .hc-card__actions > a {
+        width: max-content !important;
+        min-width: max-content !important;
+    }
+    
     .hc-skeleton {
         width: 100%;
         height: 100%;

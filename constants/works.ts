@@ -14,6 +14,13 @@ export const works = [
         'tags': ['SCSS', 'PHP', 'Laravel']
     },
     {
+        'name': "Pycord",
+        'desc': "The library for making discord bots in python.",
+        'media': "pycord.png",
+        'link': "https://pycord.dev",
+        'tags': ['SCSS', 'TypeScript', 'React', 'Python']
+    },
+    {
         'name': "SurPathHub Documentation Site",
         'desc': "The official documentation website for all open source SurPathHub projects.",
         'media': "sph-docs.png",

@@ -23,6 +23,7 @@
 
 import React from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
 interface HCNavBarProps {
     trigger: boolean;
@@ -50,9 +51,9 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
     const router = useRouter();
     const isActive = router.pathname === link;
     return (
-        <a href={ link }>
+        <Link href={ link } passHref>
             <span className={`hc-navbar__item${ isActive ? ' active' : '' }`}>{ label || children }</span>
-        </a>
+        </Link>
     );
 }
 
