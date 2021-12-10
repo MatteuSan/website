@@ -22,6 +22,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface HCHeaderProps {
     title: string;
@@ -44,9 +45,9 @@ const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
     return (
         <header className={`hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }`}>
             <div className="hc-header__brand">
-                <a href="/">
+                <Link href="/" passHref>
                     <h2>{ title }</h2>
-                </a>
+                </Link>
             </div>
             { actionSection &&
             <div className="hc-header__actions">
