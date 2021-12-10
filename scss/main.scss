@@ -93,6 +93,13 @@
         height: 100%;
     }
     
+    .hc-skeleton {
+        width: 100%;
+        height: 100%;
+        background-color: himig.theme-token-get('surface');
+        border: 1px solid himig.theme-token-get('surface');
+    }
+    
     .hc-button.hc-button--inverted {
         @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
         
