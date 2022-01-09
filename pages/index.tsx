@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                             </HCCard>
                         );
                     }) }
-                    <HCButton link="/work" type="outlined full-width" iconTrailing="arrow_forward">See more</HCButton>
+                    <HCButton link="/work" type="outlined full-width" icon={['right', 'arrow_forward']}>See more</HCButton>
                 </div>
             </section>
 
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
                             </HCCard>
                         );
                     }) }
-                    <HCButton link="/tools" type="outlined full-width" iconTrailing="arrow_forward">See more</HCButton>
+                    <HCButton link="/tools" type="outlined full-width" icon={['right', 'arrow_forward']}>See more</HCButton>
                 </div>
             </section>
 

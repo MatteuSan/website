@@ -79,9 +79,9 @@ const HCButton: React.FC<HCButtonProps> = ({
             disabled={ isDisabled }
             role="button"
         >
-            { icon && icon[0] == 'left' && <i className="hc-button__icon">{ icon }</i> }
+            { icon && icon[0] == 'left' && <i className="hc-button__icon material-icons">{ icon }</i> }
             { label || children && <span className="hc-button__label">{ label || children }</span> }
-            { icon && icon[0] == 'right' && <i className="hc-button__icon">{ icon }</i> }
+            { icon && icon[0] == 'right' && <i className="hc-button__icon material-icons">{ icon }</i> }
         </button>
     );
 
