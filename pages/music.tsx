@@ -2,7 +2,7 @@ import React from 'react';
 import { NextPage } from "next";
 import BlankLayout from "./layouts/BlankLayout";
 
-const Music: NextPage = () => {
+const MusicPage: NextPage = () => {
     return (
         <BlankLayout title="MUSIC" description="MatteuSan Music - COMING SOON">
             <section className="absolute-center">
@@ -12,4 +12,4 @@ const Music: NextPage = () => {
     );
 };
 
-export default Music;
+export default MusicPage;

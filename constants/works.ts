@@ -7,18 +7,18 @@ export const works = [
         'tags': ['SCSS', 'TS', 'Vue', 'Firebase']
     },
     {
-        'name': "Luwal Sining Pagganap",
-        'desc': "LSP's main website and performance platform.",
-        'media': "luwal.png",
-        'link': "https://luwal-sining.xyz",
-        'tags': ['SCSS', 'PHP', 'Laravel']
-    },
-    {
         'name': "Pycord",
         'desc': "The library for making discord bots in python.",
         'media': "pycord.png",
         'link': "https://pycord.dev",
         'tags': ['SCSS', 'TypeScript', 'React', 'Python']
+    },
+    {
+        'name': "Luwal Sining Pagganap",
+        'desc': "LSP's main website and performance platform.",
+        'media': "luwal.png",
+        'link': "https://luwal-sining.xyz",
+        'tags': ['SCSS', 'PHP', 'Laravel']
     },
     {
         'name': "SurPathHub Documentation Site",

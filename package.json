@@ -1,6 +1,6 @@
 {
   "name": "matteu-san",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@matteusan/sentro": "0.1.10",
-    "@matteusan/himig-web": "0.1.1",
+    "@matteusan/himig-react": "0.1.4",
+    "@matteusan/sentro": "0.1.12",
     "@types/three": "0.134.0",
     "next": "12.0.1",
     "react": "17.0.2",

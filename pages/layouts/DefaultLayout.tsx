@@ -7,7 +7,7 @@ import {
     HCNavbar,
     HCNavbarTrigger,
     HCNavbarItem,
-    HCFooter, HCButton
+    HCFooter,
 } from "../../components";
 
 import { site } from "../../constants/site";
