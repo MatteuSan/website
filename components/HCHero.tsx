@@ -24,25 +24,25 @@
 import React from 'react';
 
 interface HCHeroProps {
-    title: string;
-    subtitle: string;
-    action?: any;
+  title: string;
+  subtitle: string;
+  action?: any;
 }
 
 const HCHero: React.FC<HCHeroProps> = ({ title, subtitle, action }) => {
-    return (
-        <section className="hc-hero">
-            <div className="hc-hero__wrap">
-                <h2>{ title }</h2>
-                <p>{ subtitle }</p>
-                { action &&
-                <div className="hc-hero__actions">
-                    { action }
-                </div>
-                }
-            </div>
-        </section>
-    );
+  return (
+    <section className="hc-hero">
+      <div className="hc-hero__wrap">
+        <h2>{ title }</h2>
+        <p>{ subtitle }</p>
+        { action &&
+          <div className="hc-hero__actions">
+            { action }
+          </div>
+        }
+      </div>
+    </section>
+  );
 };
 
 export default HCHero;

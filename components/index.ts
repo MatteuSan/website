@@ -21,24 +21,24 @@
  *
  */
 
-import HCButton from "./HCButton";
-import HCCard from "./HCCard";
-import HCFooter from "./HCFooter";
-import HCHeader from "./HCHeader";
-import HCHero from "./HCHero";
-import { HCNavbar, HCNavbarItem, HCNavbarTrigger } from "./HCNavbar";
-import HCTag from "./HCTag";
-import HCTitleBar from "./HCTitleBar";
+import HCButton from './HCButton';
+import HCCard from './HCCard';
+import HCFooter from './HCFooter';
+import HCHeader from './HCHeader';
+import HCHero from './HCHero';
+import { HCNavbar, HCNavbarItem, HCNavbarTrigger } from './HCNavbar';
+import HCTag from './HCTag';
+import HCTitleBar from './HCTitleBar';
 
 export {
-    HCButton,
-    HCCard,
-    HCFooter,
-    HCHeader,
-    HCHero,
-    HCNavbar,
-    HCNavbarItem,
-    HCNavbarTrigger,
-    HCTag,
-    HCTitleBar
-}
+  HCButton,
+  HCCard,
+  HCFooter,
+  HCHeader,
+  HCHero,
+  HCNavbar,
+  HCNavbarItem,
+  HCNavbarTrigger,
+  HCTag,
+  HCTitleBar
+};

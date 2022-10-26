@@ -26,74 +26,49 @@ import Link from 'next/link';
 type NativeButtonTypes = 'button' | 'submit' | 'reset' | undefined;
 
 interface HCButtonProps {
-    label?: string;
-    icon?: Array<React.ReactElement | string>;
-    type?: string;
-    nativeType?: NativeButtonTypes;
-    link?: string | null;
-    isDisabled?: boolean;
-    isSubmit?: boolean;
-    isReset?: boolean;
-    onClick?: (() => React.MouseEventHandler | void);
+  label?: string;
+  icon?: Array<React.ReactElement | string>;
+  type?: string;
+  nativeType?: NativeButtonTypes;
+  link?: string | null;
+  isDisabled?: boolean;
+  isSubmit?: boolean;
+  isReset?: boolean;
+  onClick?: (() => React.MouseEventHandler | void);
 }
 
-const HCButton: React.FC<HCButtonProps> = ({
-   label,
-   icon,
-   type,
-   link,
-   isDisabled,
-   onClick,
-   children,
-   nativeType = 'button',
-}) => {
+const HCButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled, onClick, children, nativeType = 'button' }) => {
+  const parseTypes = (type: string): string => {
+    const finalTypes: string[] = [];
+    type.split(' ').forEach((type: string) => {
+      finalTypes.push('hc-button--' + type);
+    });
+    return finalTypes.join(' ');
+  };
 
-    const VALID_BUTTON_TYPES: Array<string> = [
-        'outlined',
-        'filled',
-        'inverted',
-        'danger',
-        'warning',
-        'success'
-    ];
+  const ButtonBase = (
+    <button
+      className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` }
+      type={ nativeType }
+      onClick={ onClick }
+      disabled={ isDisabled }
+      role="button"
+    >
+      { icon && icon[0] == 'left' && <i className="hc-button__icon material-icons">{ icon[1] }</i> }
+      { label || children && <span className="hc-button__label">{ label || children }</span> }
+      { icon && icon[0] == 'right' && <i className="hc-button__icon material-icons">{ icon[1] }</i> }
+    </button>
+  );
 
-    if (type) {
-        type.split(' ').forEach((type: string) => {
-            if (!VALID_BUTTON_TYPES.includes(type)) throw new Error(`Invalid type: ${ type} ! Please use a valid button type: ${ VALID_BUTTON_TYPES.join(', ') }`);
-        });
-    }
+  if (!link) {
+    return ButtonBase;
+  }
 
-    const parseTypes = (type: string): string => {
-        const finalTypes: Array<string> = [];
-        type.split(' ').forEach((type: string) => {
-            finalTypes.push('hc-button--' + type);
-        });
-        return finalTypes.join(' ');
-    };
-
-    const ButtonBase = (
-        <button
-            className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` }
-            type={ nativeType }
-            onClick={ onClick }
-            disabled={ isDisabled }
-            role="button"
-        >
-            { icon && icon[0] == 'left' && <i className="hc-button__icon material-icons">{ icon }</i> }
-            { label || children && <span className="hc-button__label">{ label || children }</span> }
-            { icon && icon[0] == 'right' && <i className="hc-button__icon material-icons">{ icon }</i> }
-        </button>
-    );
-
-    if (!link) {
-        return ButtonBase;
-    }
-
-    return (
-        <Link href={ link } passHref>
-            { ButtonBase }
-        </Link>
-    );
+  return (
+    <Link href={ link } passHref>
+      { ButtonBase }
+    </Link>
+  );
 };
 
 export default HCButton;

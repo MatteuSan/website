@@ -22,47 +22,47 @@
  */
 
 import React from 'react';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 interface HCNavBarProps {
-    trigger: boolean;
+  trigger: boolean;
 }
 
 interface HCNavbarItemProps {
-    label?: string;
-    link: string;
+  label?: string;
+  link: string;
 }
 
 interface HCNavBarTriggerProps {
-    onClick: any;
-    trigger: boolean;
+  onClick: any;
+  trigger: boolean;
 }
 
 const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
-    return (
-        <nav className={`hc-navbar${ trigger ? ' open' : '' }`}>
-            { children }
-        </nav>
-    );
+  return (
+    <nav className={ `hc-navbar${ trigger ? ' open' : '' }` }>
+      { children }
+    </nav>
+  );
 };
 
 const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
-    const router = useRouter();
-    const isActive = router.pathname === link;
-    return (
-        <Link href={ link } passHref>
-            <span className={`hc-navbar__item${ isActive ? ' active' : '' }`}>{ label || children }</span>
-        </Link>
-    );
-}
+  const router = useRouter();
+  const isActive = router.pathname === link;
+  return (
+    <Link href={ link } passHref>
+      <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
+    </Link>
+  );
+};
 
 const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
-    return (
-        <button className="hc-js-navbar__trigger material-icons" onClick={ onClick }>
-            { trigger ? 'close' : 'menu' }
-        </button>
-    );
-}
+  return (
+    <button className="hc-js-navbar__trigger material-icons" onClick={ onClick }>
+      { trigger ? 'close' : 'menu' }
+    </button>
+  );
+};
 
-export { HCNavbar, HCNavbarItem, HCNavbarTrigger }
+export { HCNavbar, HCNavbarItem, HCNavbarTrigger };

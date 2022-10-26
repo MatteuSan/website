@@ -25,37 +25,38 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface HCHeaderProps {
-    title: string;
-    actionSection?: any;
-    isScrollable?: boolean;
+  title: string;
+  actionSection?: any;
+  isScrollable?: boolean;
 }
 
 const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
 
-    const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            window.addEventListener("scroll", () =>
-                setIsHeaderScrolled(window.pageYOffset > 200)
-            );
-        }
-    }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', () =>
+        setIsHeaderScrolled(window.pageYOffset > 200)
+      );
+    }
+  }, []);
 
-    return (
-        <header className={`hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }`}>
-            <div className="hc-header__brand">
-                <Link href="/" passHref>
-                    <h2>{ title }</h2>
-                </Link>
-            </div>
-            { actionSection &&
-            <div className="hc-header__actions">
-                { actionSection }
-            </div>
-            }
-        </header>
-    );
+  return (
+    <header
+      className={ `hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }` }>
+      <div className="hc-header__brand">
+        <Link href="/" passHref>
+          <h2>{ title }</h2>
+        </Link>
+      </div>
+      { actionSection &&
+        <div className="hc-header__actions">
+          { actionSection }
+        </div>
+      }
+    </header>
+  );
 };
 
 export default HCHeader;
