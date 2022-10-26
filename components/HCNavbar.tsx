@@ -48,11 +48,14 @@ const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
 };
 
 const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
-  const router = useRouter();
-  const isActive = router.pathname === link;
+  const isActive = useRouter().pathname === link;
+  const isLinkExternal: boolean = !!(link.startsWith('http://') || link.startsWith('https://'));
+
   return (
     <Link href={ link } passHref>
-      <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
+      <a role="link" target={isLinkExternal ? '_blank' : '_self'}>
+        <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
+      </a>
     </Link>
   );
 };

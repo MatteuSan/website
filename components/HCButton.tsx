@@ -47,26 +47,33 @@ const HCButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
   };
 
   const ButtonBase = (
-    <button
-      className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` }
-      type={ nativeType }
-      onClick={ onClick }
-      disabled={ isDisabled }
-      role="button"
-    >
+    <>
       { icon && icon[0] == 'left' && <i className="hc-button__icon material-icons">{ icon[1] }</i> }
       { label || children && <span className="hc-button__label">{ label || children }</span> }
       { icon && icon[0] == 'right' && <i className="hc-button__icon material-icons">{ icon[1] }</i> }
-    </button>
+    </>
   );
 
   if (!link) {
-    return ButtonBase;
+    return (
+      <button
+        className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` }
+        role="button"
+        onClick={ onClick }
+        disabled={ isDisabled }
+      >
+        { ButtonBase }
+      </button>
+    );
   }
+
+  const isLinkExternal: boolean = !!(link.startsWith('http://') || link.startsWith('https://'));
 
   return (
     <Link href={ link } passHref>
-      { ButtonBase }
+      <a className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
+        { ButtonBase }
+      </a>
     </Link>
   );
 };
