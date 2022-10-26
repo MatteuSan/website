@@ -31,9 +31,8 @@ const HomePage: NextPage = () => {
         </HCCard>
 
         <HCCard title="Technologies I work with" icon="computer" hasNoAction>
-          <li>Sentro (SCSS)</li>
-          <li>Tailwind CSS</li>
-          <li>ReactJS (+ Redux)</li>
+          <li>Tailwind</li>
+          <li>React</li>
           <li>Vue</li>
           <li>Laravel</li>
           <li>Flask</li>

@@ -21,6 +21,13 @@ export const works = [
     'tags': ['SCSS', 'TypeScript', 'React', 'Python']
   },
   {
+    'name': 'A-PEERS 2022',
+    'desc': 'Website in celebration of the National Arts Month 2022 in RLSAA.',
+    'media': 'apeers.png',
+    'link': 'https://apeer-2022.vercel.app/',
+    'tags': ['SCSS', 'TS', 'React']
+  },
+  {
     'name': 'Luwal Sining Pagganap',
     'desc': 'LSP\'s main website and performance platform.',
     'media': 'luwal.png',
