@@ -19,7 +19,7 @@ const HomePage: NextPage = () => {
       <section className="grid about-me" id="about-me">
         <HCCard title="About me" icon="info"
                 description="Hi! I'm Matt. I'm a UX Engineer based in the Philippines, and I am very passionate on building bridges from software to user.">
-          <HCButton type="filled" isDisabled>Resume</HCButton>
+          <HCButton type="filled" link="https://docs.google.com/document/d/1qeOuAPxwmPhXNEORQ6345JQMqEdK57KVsdxK4QmVFtQ/edit?usp=sharing">Resume</HCButton>
         </HCCard>
 
         <HCCard title="Languages I speak" icon="code" hasNoAction>

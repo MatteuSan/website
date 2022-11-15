@@ -20,6 +20,10 @@
     'ink': #ff6a00,
   ),
 ) {
+  a {
+    outline: none !important;
+  }
+  
   ::-moz-selection {
     color: himig.theme-token-get('accent-ink');
     background: himig.theme-token-get('accent');
@@ -89,13 +93,13 @@
   @include hc-tags.use();
   @include hc-title-bar.use();
   
-  .hc-button--full-width {
+  .hc-button.hc-button--full-width.hc-button--full-height {
     height: 100%;
   }
   
   .hc-card__actions > a {
     width: max-content !important;
-    min-width: max-content !important;
+    // min-width: max-content !important;
   }
   
   .hc-skeleton {

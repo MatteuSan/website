@@ -47,7 +47,9 @@ const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
       className={ `hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }` }>
       <div className="hc-header__brand">
         <Link href="/" passHref>
-          <h2>{ title }</h2>
+          <a>
+            <h2>{ title }</h2>
+          </a>
         </Link>
       </div>
       { actionSection &&

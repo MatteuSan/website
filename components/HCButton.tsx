@@ -67,7 +67,7 @@ const HCButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
     );
   }
 
-  const isLinkExternal: boolean = !!(link.startsWith('http://') || link.startsWith('https://'));
+  const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
     <Link href={ link } passHref>
