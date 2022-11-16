@@ -3,7 +3,7 @@ export const works = [
     'name': 'Dev Protocol',
     'desc': 'Decentralized funding for sustainable creator economy.',
     'media': 'devprotocol.png',
-    'link': 'https://purplecress.com',
+    'link': 'https://devprotocol.xyz',
     'tags': ['SCSS', 'Tailwind', 'TS', 'Vue']
   },
   {
