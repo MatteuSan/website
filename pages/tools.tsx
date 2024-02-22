@@ -19,9 +19,8 @@ const ToolsPage: NextPage = () => {
                 description={ data.desc }
                 tags={ data.tags }
               >
-                <HCButton link={ data.links.src } type="outlined"
-                          isDisabled={ data.links.src == null }>Source</HCButton>
-                <HCButton link={ data.links.docs } type="filled" isDisabled={ data.links.docs == null }>Docs</HCButton>
+                { data.links.src != null ? <HCButton link={ data.links.src } type="outlined">Source</HCButton> : null }
+                { data.links.docs != null ? <HCButton link={ data.links.docs } type="outlined">Docs</HCButton> : null }
               </HCCard>
             );
           }) }

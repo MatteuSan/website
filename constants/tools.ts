@@ -12,8 +12,7 @@ export const tools = [
     'name': 'Gaia',
     'desc': 'A design system for building living and breathing experiences for Growtopians.',
     'links': {
-      'docs': 'https://gaia.growstocks.org',
-      'src': 'https://github.com/GrowStocks/gaia'
+      'src': 'https://github.com/MatteuSan/gaia'
     },
     'tags': ['SCSS', 'TypeScript']
   },
@@ -22,7 +21,7 @@ export const tools = [
     'desc': 'The web implementation of Dev Protocol\'s design system.',
     'links': {
       'docs': 'https://hashi-docs.netlify.app',
-      'src': 'https://github.com/dev-protocol/hashi-web'
+      'src': 'https://github.com/dev-protocol/hashi'
     },
     'tags': ['SCSS', 'TypeScript']
   },
@@ -31,7 +30,7 @@ export const tools = [
     'desc': 'An experimental library for building user interfaces made in PHP.',
     'links': {
       'docs': null,
-      'src': 'https://github.com/Gaikan/Gaikan'
+      'src': 'https://github.com/TeuLabs/Gaikan'
     },
     'tags': ['PHP', 'TypeScript']
   },

@@ -19,7 +19,7 @@ const WorkPage: NextPage = () => {
                 media={ `/img/` + data.media }
                 tags={ data.tags }
               >
-                <HCButton link={ data.link } type="filled" isDisabled={ data.link == null }>Visit</HCButton>
+                { data.link != null ? <HCButton link={ data.link } type="outlined">Visit</HCButton> : null }
               </HCCard>
             );
           }) }

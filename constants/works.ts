@@ -10,7 +10,6 @@ export const works = [
     'name': 'Purple Cress',
     'desc': 'Purple Cress Scanlation\'s manga index and reader.',
     'media': 'purplecress.png',
-    'link': 'https://purplecress.com',
     'tags': ['SCSS', 'TS', 'Vue', 'Firebase']
   },
   {
@@ -45,14 +44,12 @@ export const works = [
     'name': 'GrowStocks',
     'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
     'media': 'growstocks.png',
-    'link': 'https://growstocks.xyz',
     'tags': ['SCSS', 'TS', 'React', 'PHP', 'Laravel']
   },
   {
     'name': 'BlockCorp',
     'desc': 'The platform to order Growtopia-related services.',
     'media': 'blockcorp.png',
-    'link': 'https://blockcorp.xyz',
     'tags': ['SCSS', 'Vue', 'Python', 'Flask']
   },
 ];
