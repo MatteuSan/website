@@ -27,7 +27,7 @@ type NativeButtonTypes = 'button' | 'submit' | 'reset' | undefined;
 
 interface HCButtonProps {
   label?: string;
-  icon?: Array<React.ReactElement | string>;
+  icon?: Array<React.ReactNode | string>;
   type?: string;
   nativeType?: NativeButtonTypes;
   link?: string | null;

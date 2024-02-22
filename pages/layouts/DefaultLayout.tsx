@@ -59,6 +59,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <meta name="twitter:site" content={ site.twitter } />
 
         <meta name="theme-color" content={ site.themeColor } />
+
+        <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <HCHeader title={ site.name } actionSection={
         <>

@@ -10,7 +10,7 @@ const ToolsPage: NextPage = () => {
     <DefaultLayout title="TOOLS" heroTitle="Tools"
                    heroSubtitle="Tools I made to help me, and dev teams (and you!) build user experiences." hasHero>
       <section className="content-section">
-        <div className="grid" id="projects">
+        <div className="grid is-3" id="projects">
           { tools.map((data, key) => {
             return (
               <HCCard

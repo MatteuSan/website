@@ -50,6 +50,16 @@
     > a {
       grid-column: revert;
     }
+
+    &.is-3 {
+      @include himig.helper-breakpoint('large') {
+        grid-template-columns: repeat(3, 1fr);
+
+        > a {
+          grid-column: revert;
+        }
+      }
+    }
     
     @include himig.helper-breakpoint('medium') {
       grid-template-columns: repeat(2, 1fr);
@@ -58,19 +68,10 @@
         grid-column: span 2;
       }
     }
-    
-    @include himig.helper-breakpoint('large') {
-      grid-template-columns: repeat(3, 1fr);
-      
-      > a {
-        grid-column: revert;
-      }
-    }
   }
   
-  .content-section,
-  .about-me {
-    padding: 5vh 0;
+  .content-section {
+    padding: 5rem 0 0;
   }
   
   .absolute-center {
@@ -92,6 +93,137 @@
   @include hc-navbar.use();
   @include hc-tags.use();
   @include hc-title-bar.use();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .hc-title-bar {
+      padding-top: 0;
+      margin: 1.5rem 0 0.5rem;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+
+  #about-me {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3rem;
+    margin: 2rem 0;
+
+    @include himig.helper-breakpoint('medium') {
+      margin: 5rem 0 10rem;
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .picture-frame {
+      width: clamp(300px, 30vw, 400px);
+      height: 100%;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      border: 20px solid #fff;
+      overflow: hidden;
+      transform: rotateZ(2deg);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+      }
+    }
+  }
+
+  #skills-and-technologies {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3rem;
+    margin: 2rem 0;
+
+    @include himig.helper-breakpoint('medium') {
+      margin: 10rem 0;
+      grid-template-columns: 1fr 2fr;
+    }
+
+    #technologies {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: repeat(3, 100px);
+      justify-content: center;
+
+      @include himig.helper-breakpoint('medium') {
+        grid-template-columns: repeat(4, 100px);
+      }
+
+      .technology {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.2rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--tech-color, #fff);
+        color: var(--tech-color, #fff);
+        transition: all 0.1s ease;
+
+        &#github {
+          &:hover {
+            background-color: #fff;
+            color: #211f1f !important;
+
+            .technology__label {
+              color: inherit;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: var(--tech-color, #fff);
+          color: #fff;
+        }
+
+        .technology__img {
+          width: clamp(24px, 100%, 40px);
+          height: clamp(24px, 100%, 40px);
+        }
+
+        .technology__label {
+          margin-top: 0.7rem;
+          font-size: 0.8rem;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  #stuff-i-do, #ready-to-collaborate {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .hc-title-bar {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  #ready-to-collaborate {
+    background: #211f1f;
+    box-shadow: 0 7px #363333;
+    padding: 3rem;
+    border-radius: 1rem;
+    margin-bottom: 10rem;
+  }
   
   .hc-button.hc-button--full-width.hc-button--full-height {
     height: 100%;
@@ -129,6 +261,21 @@
     
     &:active {
       border-color: rgba(#fff, 30%);
+    }
+  }
+
+  .hc-title-bar {
+    align-items: center;
+
+    .hc-title-bar__icon {
+      height: 100%;
+      display: grid;
+      place-items: center;
+
+      > * {
+        display: grid;
+        place-items: center;
+      }
     }
   }
   

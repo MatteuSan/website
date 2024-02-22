@@ -9,7 +9,7 @@ const WorkPage: NextPage = () => {
   return (
     <DefaultLayout title="WORK" heroTitle="Works" heroSubtitle="Projects made for clients, and for myself :)" hasHero>
       <section className="content-section">
-        <div className="grid" id="projects">
+        <div className="grid is-3" id="projects">
           { works.map((data, key) => {
             return (
               <HCCard
