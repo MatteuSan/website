@@ -27,11 +27,13 @@ import Link from 'next/link';
 
 interface HCNavBarProps {
   trigger: boolean;
+    children?: React.ReactNode;
 }
 
 interface HCNavbarItemProps {
   label?: string;
   link: string;
+    children?: React.ReactNode;
 }
 
 interface HCNavBarTriggerProps {
@@ -49,13 +51,11 @@ const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
 
 const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
   const isActive = useRouter().pathname === link;
-  const isLinkExternal: boolean = !!(link.startsWith('http://') || link.startsWith('https://'));
+  const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <Link href={ link } passHref>
-      <a role="link" target={isLinkExternal ? '_blank' : '_self'}>
-        <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
-      </a>
+    <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
+      <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
     </Link>
   );
 };

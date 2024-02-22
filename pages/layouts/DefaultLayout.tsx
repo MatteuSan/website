@@ -20,6 +20,7 @@ interface DefaultLayoutProps {
   heroTitle: string;
   heroSubtitle: string;
   heroAction?: any;
+  children: React.ReactNode;
 }
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, children }) => {
@@ -35,10 +36,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <title>{ title } - { site.name }</title>
         <meta property="description"
               content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` } />
-
-        <link
-          href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-          rel="stylesheet" />
 
         <link rel="apple-touch-icon" sizes="180x180" href={ `${ site.url }/img/favicon.png` } />
         <link rel="icon" type="img/png" sizes="32x32" href={ `${ site.url }/img/favicon.png` } />
@@ -60,7 +57,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
 
         <meta name="theme-color" content={ site.themeColor } />
 
-        <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <HCHeader title={ site.name } actionSection={
         <>

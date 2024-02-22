@@ -26,6 +26,7 @@ import React from 'react';
 interface HCTitleBarProps {
   title?: string;
   icon?: string;
+  children?: React.ReactNode;
 }
 
 const HCTitleBar: React.FC<HCTitleBarProps> = ({ title, icon, children }) => {

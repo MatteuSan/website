@@ -35,6 +35,7 @@ interface HCButtonProps {
   isSubmit?: boolean;
   isReset?: boolean;
   onClick?: (() => React.MouseEventHandler | void);
+  children?: React.ReactNode;
 }
 
 const HCButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled, onClick, children, nativeType = 'button' }) => {
@@ -70,10 +71,8 @@ const HCButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <Link href={ link } passHref>
-      <a className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
-        { ButtonBase }
-      </a>
+    <Link href={ link } className={ `hc-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
+      { ButtonBase }
     </Link>
   );
 };

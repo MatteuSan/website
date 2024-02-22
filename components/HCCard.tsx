@@ -31,6 +31,7 @@ interface HCCardProps {
   media?: string;
   tags?: any;
   hasNoAction?: boolean;
+  children?: React.ReactNode;
 }
 
 const HCCard: React.FC<HCCardProps> = ({ title, icon, description, media, tags, hasNoAction, children }) => {

@@ -5,6 +5,7 @@ import { site } from '../../constants/site';
 interface BlankLayoutProps {
   title: string;
   description?: string;
+  children: React.ReactNode;
 }
 
 const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, children }) => {

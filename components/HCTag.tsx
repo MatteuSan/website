@@ -25,6 +25,7 @@ import React from 'react';
 
 interface MSCTagProps {
   label?: string;
+  children?: React.ReactNode;
 }
 
 const HCTag: React.FC<MSCTagProps> = ({ label, children }) => {
