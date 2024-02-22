@@ -22,9 +22,8 @@ const HomePage: NextPage = () => {
         <div className="content">
           <HCTitleBar icon="info">About me</HCTitleBar>
           {/* eslint-disable-next-line react/no-unescaped-entities */}
-          <p>I'm a UX Engineer based in the Philippines, and I build bridges from software to user. With a keen focus on
-            user-centered design principles and profeciency in frontend development and design, I excel at creating
-            intuitive interfaces through a multi-disciplinary approach that enhance usability and drive business
+          <p>I'm a UX Engineer based in the Philippines, and I build bridges from software to user. With a keen focus on <span className="highlight">user-centered design</span> principles and profeciency in <span className="highlight">frontend development</span> and design, I excel at creating
+            intuitive interfaces through a <span className="highlight">multi-disciplinary approach</span> that enhance usability and drive business
             success.
           </p>
         </div>
@@ -80,16 +79,14 @@ const HomePage: NextPage = () => {
         </div>
         <div className="content">
           <HCTitleBar icon="code">Skills</HCTitleBar>
-          <p>Aside from my fluency in UI/UX design and development, my expertise extends to project management,
-            collaboration, and the development and management of design systems and even in open-source software.</p>
+          <p>Aside from my fluency in UI/UX design and development, my expertise extends to <span className="highlight">project management</span>,
+            collaboration, and the development and management of <span className="highlight">design systems</span> and even in <span className="highlight">open-source software</span>.</p>
           <br/>
           <HCTitleBar icon="laptop">Use of technology</HCTitleBar>
-          <p>When embarking on projects, I prioritize selecting technologies tailored to address specific challenges.
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            Yet, certain technologies hold a special place in my toolkit--they're the ones I trust. Whether it's UI/UX
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          <p>When embarking on projects, I prioritize selecting technologies tailored to address specific challenges. Whether it's UI/UX
             engineering, frontend development, or design, I choose tools based on their capacity to deliver optimal
-            solutions. While flexibility is key, these trusted technologies are the cornerstone of my approach, ensuring
-            reliability and efficiency in every project endeavor.</p>
+            solutions. While flexibility is key, these trusted technologies are the cornerstone of my approach, ensuring <span className="highlight">reliability</span>, <span className="highlight">scalability</span>, and <span className="highlight">efficiency</span> in every project endeavor.</p>
         </div>
       </div>
 
