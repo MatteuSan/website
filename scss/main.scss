@@ -232,6 +232,11 @@
     &:hover {
       transform: translateY(-10px);
     }
+
+    .hc-title-bar {
+      margin: 0;
+      padding: 0;
+    }
   }
   
   .hc-button.hc-button--full-width.hc-button--full-height {
