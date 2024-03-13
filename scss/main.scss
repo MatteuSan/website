@@ -1,233 +1,377 @@
-@use '~@matteusan/himig-web' as himig;
+@use '@matteusan/himig';
 
-@use '~@matteusan/himig-web/hc-button' with ($button-style: 'playful');
-@use '~@matteusan/himig-web/hc-card' with ($card-style: 'playful');
-@use '~@matteusan/himig-web/hc-footer';
-@use '~@matteusan/himig-web/hc-header' with ($header-style: 'scrollable');
-@use '~@matteusan/himig-web/hc-hero';
-@use '~@matteusan/himig-web/hc-navbar';
-@use '~@matteusan/himig-web/hc-tags';
-@use '~@matteusan/himig-web/hc-title-bar';
+@use '@matteusan/himig/ms-badge';
+@use '@matteusan/himig/ms-button';
+@use '@matteusan/himig/ms-card';
+@use '@matteusan/himig/ms-list';
+@use '@matteusan/himig/ms-utils';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@use 'components/ms-carousel';
+@use 'components/ms-footer';
+@use 'components/ms-header';
+@use 'components/ms-hero';
+@use 'components/ms-navbar';
+@use 'components/ms-title-bar';
 
 @include himig.init(
-  $accent-inverted: (
-    'default': #210c00,
-    'dark': #100500,
-    'light': #401d00,
-    'ink': #ff6a00,
+  $primary: (
+    200: #948b8b,
+    300: #6e6363,
+    400: #3d3838,
+    600: #211f1f,
+    800: #171111,
+    ink: #fff
   ),
+  $surface: (
+    200: #948b8b,
+    300: #6e6363,
+    400: #3d3838,
+    600: #211f1f,
+    800: #171111,
+    ink: #fff
+  ),
+  $supertitle: (
+    'family': 'family.serif',
+    'size': 'size.3xl',
+    'weight': 900,
+  ),
+  $title: (
+    'family': 'family.serif',
+    'size': 'size.xl',
+    'weight': 900
+  ),
+  $subtitle: (
+    'weight': 200
+  ),
+  $extend: (
+    'accent-ink': #100500 !important,
+    'ms-orange-inverted': (
+      '200': #59321d,
+      '300': #3d1f08,
+      '400': #281307,
+      '600': #100500,
+      'ink': #da6e28,
+    ),
+    'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%),
+    'transition-time': 0.2s
+  )
 ) {
-  a {
-    outline: none !important;
+  @include ms-badge.render();
+  @include ms-button.render(
+    $typography: (
+      'line-height': 'normal'
+    )
+  );
+
+  .ms-button__icon {
+    display: grid;
+    place-items: center;
+
+    & > * {
+      max-width: none !important;
+    }
   }
 
-  p {
-    line-height: 1.5;
+  @include ms-button.extend('small') {
+    @include ms-button.struct((
+      'padding': ('sm' 'md')
+    ));
   }
+
+  @include ms-button.extend('large') {
+    @include ms-button.struct((
+      'padding': ('md' 'lg')
+    ));
+    @include ms-button.typography((
+      'size': 'md'
+    ));
+  }
+
+  @include ms-button.extend('outlined') {
+    box-shadow: 0 3px 0 himig.token-get('accent-800');
+
+    &:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 himig.token-get('accent-800');
+    }
+  }
+
+  @include ms-button.extend('filled') {
+    box-shadow: 0 3px 0 himig.token-get('accent-800');
+
+    &:active {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 himig.token-get('accent-800');
+    }
+  }
+
+  @include ms-button.extend('full-width') {
+    @include ms-button.struct((
+      width: (
+        default: 100%,
+        max: 100%,
+      ),
+      height: 100%
+    ));
+  }
+
+  @include ms-button.extend('inverted') {
+    @include ms-button.color((
+      fill: 'ms-orange-inverted-400',
+      ink: 'ms-orange-inverted-ink',
+      border: 'ms-orange-inverted-400',
+    ));
+    box-shadow: 0 3px 0 himig.token-get('ms-orange-inverted-200');
+
+    &:hover{
+      @include ms-button.color((
+        fill: 'ms-orange-inverted-300',
+        ink: 'ms-orange-inverted-ink',
+        border: 'ms-orange-inverted-300',
+      ));
+    }
+
+    &:focus {
+      @include ms-button.color((
+        fill: 'ms-orange-inverted-300',
+        ink: 'ms-orange-inverted-ink',
+        border: 'ms-orange-inverted-300',
+      ));
+
+      &:active {
+        @include himig.key-bind('button-outline', 2px solid rgba(himig.token-get-raw('ms-orange-inverted-300'), himig.$color-outline-focus-opacity));
+      }
+    }
+
+    &:active {
+      @include ms-button.color((
+        fill: 'ms-orange-inverted-200',
+        ink: 'ms-orange-inverted-ink',
+        border: 'ms-orange-inverted-200',
+      ));
+      transform: translateY(3px);
+      box-shadow: 0 0 0 himig.token-get('ms-orange-inverted-200');
+    }
+  }
+
+  @include ms-card.render(
+    $color: (
+      fill: 'surface-400',
+      border: rgba(0 0 0 / 0)
+    ),
+    $typography: (
+      family: (
+        title: 'title',
+      ),
+      weight: (
+        title: 'supertitle'
+      )
+    )
+  );
+
+  .ms-card {
+    backdrop-filter: blur(8px);
+    box-shadow: 0 3px 0 himig.token-get('surface-600');
+    transition: all var(--ms-transition-time) ease;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+
+  .ms-card__icon {
+    --ms-card-icon-size: 30px;
+  }
+
+  @include ms-list.render(
+    $struct: (padding: ('md' 'lg'))
+  );
+
+  .ms-list__item {
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+
+    a {
+      width: 100%;
+      display: inline-block;
+      text-align: inherit;
+      padding: himig.key-get('list-item-padding');
+    }
+
+    &.is-active {
+      @include himig.color-bind('list-item', (
+        fill: 'surface-200',
+        ink: 'surface-ink',
+        border: 'surface-200'
+      ));
+      @include himig.typography-bind('list-item', (
+        weight: 700
+      ));
+    }
+
+    &.is-external {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+
+      a::after {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+        color: #fff;
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E%0A");
+        margin-left: 0.5rem;
+        align-self: center;
+      }
+    }
+  }
+
+  @include ms-carousel.render();
+  @include ms-footer.render();
+  @include ms-header.render();
+  @include ms-hero.render();
+  @include ms-navbar.render();
+  @include ms-title-bar.render();
+
+  .ms-title-bar {
+    align-items: center;
+
+    .ms-title-bar__icon {
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  @include ms-utils.layout();
+  @include ms-utils.struct($include: 'm');
+  @include ms-utils.typography($include: ('preset'));
 
   .highlight {
-    display: inline-block;
-    color: himig.theme-token-get('accent');
+    display: inline;
+    color: himig.token-get('accent-400');
     font-weight: bold;
     text-decoration: underline dotted;
     text-decoration-thickness: 2px;
 
     &::-moz-selection,
     &::selection {
-      color: himig.theme-token-get('accent-inverted-ink') !important;
-      background: himig.theme-token-get('accent-inverted') !important;
+      color: himig.token-get('ms-orange-inverted-ink') !important;
+      background: himig.token-get('ms-orange-inverted-400') !important;
     }
   }
-  
+
   ::-moz-selection,
   ::selection {
-    color: himig.theme-token-get('accent-ink');
-    background: himig.theme-token-get('accent');
+    color: himig.token-get('accent-ink');
+    background: himig.token-get('accent-400');
   }
-  
-  .content-wrap {
-    width: calc(100% - 30px);
-    max-width: 977px;
-    margin: 0 auto;
-    padding: 0 0 40px 0;
-  }
-  
-  .grid {
-    margin-top: 0.7rem;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1rem;
-    
-    > a {
-      grid-column: revert;
-    }
 
-    &.is-3 {
-      @include himig.helper-breakpoint('large') {
-        grid-template-columns: repeat(3, 1fr);
-
-        > a {
-          grid-column: revert;
-        }
-      }
-    }
-    
-    @include himig.helper-breakpoint('medium') {
-      grid-template-columns: repeat(2, 1fr);
-      
-      > a {
-        grid-column: span 2;
-      }
-    }
-  }
-  
   .content-section {
     padding: 5rem 0 0;
   }
-  
+
   .absolute-center {
     height: 100vh;
     display: grid;
     place-items: center;
   }
-  
+
   .page-error {
     width: calc(100% - 40px);
     max-width: 420px;
   }
-  
-  @include hc-button.use();
-  @include hc-card.use();
-  @include hc-footer.use();
-  @include hc-header.use();
-  @include hc-hero.use();
-  @include hc-navbar.use();
-  @include hc-tags.use();
-  @include hc-title-bar.use();
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .picture-frame {
+    width: clamp(300px, 30vw, 400px);
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    border: 20px solid #fff;
+    overflow: hidden;
+    transform: rotateZ(2deg);
+    user-select: none;
+    animation: load-in 0.5s ease;
+    transition: all var(--ms-transition-time) ease;
 
-    .hc-title-bar {
-      padding-top: 0;
-      margin: 1.5rem 0 0.5rem;
+    &:hover {
+      transform: rotateZ(0) translateY(-10px);
+    }
 
-      &:first-of-type {
-        margin-top: 0;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      object-position: center;
     }
   }
 
-  #about-me {
+  #technologies {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 3rem;
-    margin: 2rem 0;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    animation: load-in 0.5s ease;
 
-    @include himig.helper-breakpoint('medium') {
-      margin: 5rem 0 10rem;
-      grid-template-columns: 2fr 1fr;
+    @include himig.breakpoint-create('medium') {
+      grid-template-columns: repeat(4, 100px);
     }
 
-    .picture-frame {
-      width: clamp(300px, 30vw, 400px);
+    .technology {
+      width: 100%;
       height: 100%;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      border: 20px solid #fff;
-      overflow: hidden;
-      transform: rotateZ(2deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.2rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--tech-color, #fff);
+      color: var(--tech-color, #fff);
+      transition: all var(--ms-transition-time) ease;
       user-select: none;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-        object-position: center;
-      }
-    }
-  }
+      &#github {
+        &:hover {
+          background-color: #fff;
+          color: #211f1f !important;
 
-  #skills-and-technologies {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 3rem;
-    margin: 2rem 0;
-
-    @include himig.helper-breakpoint('medium') {
-      margin: 10rem 0;
-      grid-template-columns: 1fr 2fr;
-    }
-
-    #technologies {
-      display: grid;
-      grid-gap: 1rem;
-      grid-template-columns: repeat(3, 100px);
-      justify-content: center;
-
-      @include himig.helper-breakpoint('medium') {
-        grid-template-columns: repeat(4, 100px);
-      }
-
-      .technology {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem 1.2rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--tech-color, #fff);
-        color: var(--tech-color, #fff);
-        transition: all 0.1s ease;
-        user-select: none;
-
-        &#github {
-          &:hover {
-            background-color: #fff;
-            color: #211f1f !important;
-
-            .technology__label {
-              color: inherit;
-            }
+          .technology__label {
+            color: inherit;
           }
         }
+      }
 
-        &:hover {
-          background-color: var(--tech-color, #fff);
-          color: #fff;
-        }
+      &:hover {
+        background-color: var(--tech-color, #fff);
+        color: #fff;
+        transform: translateY(-10px);
+      }
 
-        .technology__img {
-          width: clamp(24px, 100%, 40px);
-          height: clamp(24px, 100%, 40px);
-        }
+      .technology__img {
+        width: clamp(24px, 100%, 40px);
+        height: clamp(24px, 100%, 40px);
+      }
 
-        .technology__label {
-          margin-top: 0.7rem;
-          font-size: 0.8rem;
-          text-align: center;
-          color: #fff;
-        }
+      .technology__label {
+        margin-top: 0.7rem;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #fff;
       }
     }
   }
 
   #stuff-i-do {
-    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: load-in 0.5s ease;
 
-    .hc-title-bar {
+    .ms-title-bar {
       margin: 0;
       padding: 0;
     }
@@ -241,75 +385,31 @@
     justify-content: center;
     padding: 2rem;
     border-radius: 1rem;
-    background: #211f1f;
-    box-shadow: 0 7px #363333;
+    background: #3d3838;
+    box-shadow: 0 7px #211f1f;
     transition: all 0.1s ease;
+    animation: load-in 0.5s ease;
 
     &:hover {
       transform: translateY(-10px);
     }
 
-    .hc-title-bar {
+    .ms-title-bar {
       margin: 0;
       padding: 0;
     }
   }
-  
-  .hc-button.hc-button--full-width.hc-button--full-height {
-    height: 100%;
-  }
-  
-  .hc-card__actions > a {
-    width: max-content !important;
-    // min-width: max-content !important;
-  }
-  
-  .hc-skeleton {
-    width: 100%;
-    height: 100%;
-    background-color: himig.theme-token-get('surface');
-    border: 1px solid himig.theme-token-get('surface');
-  }
-  
-  .hc-button.hc-button--inverted {
-    @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
-    
-    &:hover,
-    &:focus {
-      @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+
+  @keyframes load-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    
-    &:active {
-      @include hc-button.override('accent-inverted-light', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
-    }
-  }
-  
-  .hc-navbar__item {
-    &:hover {
-      background-color: rgba(#fff, 30%);
-    }
-    
-    &:active {
-      border-color: rgba(#fff, 30%);
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  .hc-title-bar {
-    align-items: center;
-
-    .hc-title-bar__icon {
-      height: 100%;
-      display: grid;
-      place-items: center;
-
-      > * {
-        display: grid;
-        place-items: center;
-      }
-    }
-  }
-  
-  .hc-footer__version {
-    margin-left: 0.2rem;
-  }
 }

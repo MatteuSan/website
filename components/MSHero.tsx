@@ -23,19 +23,26 @@
 
 import React from 'react';
 
-interface HCTitleBarProps {
-  title?: string;
-  icon?: string;
-  children?: React.ReactNode;
+interface MSHeroProps {
+  title: string;
+  subtitle: string;
+  action?: any;
 }
 
-const HCTitleBar: React.FC<HCTitleBarProps> = ({ title, icon, children }) => {
+const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
   return (
-    <div className="hc-title-bar">
-      { icon && <i className="hc-title-bar__icon material-icons">{ icon }</i> }
-      <h2 className="hc-title-bar__title">{ title || children }</h2>
-    </div>
+    <section className="hc-hero">
+      <div className="hc-hero__wrap">
+        <h2 className="supertitle">{ title }</h2>
+        <p className="subtitle">{ subtitle }</p>
+        { action &&
+          <div className="hc-hero__actions">
+            { action }
+          </div>
+        }
+      </div>
+    </section>
   );
 };
 
-export default HCTitleBar;
+export default MSHero;

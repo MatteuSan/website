@@ -23,26 +23,17 @@
 
 import React from 'react';
 
-interface HCHeroProps {
-  title: string;
-  subtitle: string;
-  action?: any;
+interface MSTagProps {
+  label?: string;
+  children?: React.ReactNode;
 }
 
-const HCHero: React.FC<HCHeroProps> = ({ title, subtitle, action }) => {
+const MSTag: React.FC<MSTagProps> = ({ label, children }) => {
   return (
-    <section className="hc-hero">
-      <div className="hc-hero__wrap">
-        <h2>{ title }</h2>
-        <p>{ subtitle }</p>
-        { action &&
-          <div className="hc-hero__actions">
-            { action }
-          </div>
-        }
-      </div>
-    </section>
+    <span className="ms-badge is-outlined">
+      <span className="ms-badge__label">{ label || children }</span>
+    </span>
   );
 };
 
-export default HCHero;
+export default MSTag;

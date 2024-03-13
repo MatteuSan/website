@@ -1,0 +1,62 @@
+@use '@matteusan/himig';
+
+@mixin render() {
+  .ms-navbar__trigger {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    @include himig.color-apply('navbar-trigger', (
+      fill: rgba(0 0 0 / 0),
+      ink: inherit
+    ));
+    @include himig.struct-apply('navbar-trigger', (
+      radius: 'small',
+      padding: 'sm'
+    ));
+    border: none;
+    cursor: pointer;
+    transition: all var(--ms-transition-time) ease;
+
+    &:hover {
+      @include himig.color-fill('navbar-trigger', rgba(255 255 255 / 20%));
+    }
+
+    @include himig.breakpoint-create('large') {
+      display: none;
+    }
+  }
+
+  .ms-navbar {
+    display: none;
+    position: fixed;
+    top: himig.key-create('navbar-bottom', calc(40px + 1.2rem));
+    right: himig.key-create('navbar-right', calc(1.2rem));
+    transition: all var(--ms-transition-time) ease;
+    z-index: 90;
+
+    .ms-list__item {
+      text-align: left;
+    }
+
+    @include himig.breakpoint-create('large') {
+      display: block;
+      @include himig.key-bind('navbar-bottom', calc(0.7rem));
+      @include himig.key-bind('navbar-right', calc(1.2rem));
+
+      .ms-list {
+        flex-flow: row nowrap;
+
+        .ms-list__item {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+      }
+    }
+
+    &.is-open {
+      display: block;
+    }
+  }
+}

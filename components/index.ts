@@ -21,24 +21,24 @@
  *
  */
 
-import HCButton from './HCButton';
-import HCCard from './HCCard';
-import HCFooter from './HCFooter';
-import HCHeader from './HCHeader';
-import HCHero from './HCHero';
-import { HCNavbar, HCNavbarItem, HCNavbarTrigger } from './HCNavbar';
-import HCTag from './HCTag';
-import HCTitleBar from './HCTitleBar';
+import MSButton from './MSButton';
+import MSCard from './MSCard';
+import MSFooter from './MSFooter';
+import MSHeader from './MSHeader';
+import MSHero from './MSHero';
+import { MSNavbar, HCNavbarItem, HCNavbarTrigger } from './MSNavbar';
+import MSTag from './MSTag';
+import MSTitleBar from './MSTitleBar';
 
 export {
-  HCButton,
-  HCCard,
-  HCFooter,
-  HCHeader,
-  HCHero,
-  HCNavbar,
+  MSButton,
+  MSCard,
+  MSFooter,
+  MSHeader,
+  MSHero,
+  MSNavbar,
   HCNavbarItem,
   HCNavbarTrigger,
-  HCTag,
-  HCTitleBar
+  MSTag,
+  MSTitleBar
 };

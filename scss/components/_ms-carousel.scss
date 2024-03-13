@@ -1,0 +1,25 @@
+@use '@matteusan/himig';
+
+@mixin render() {
+  .ms-carousel {
+    margin: 0 auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(#{5}, 350px);
+    grid-gap: 1rem;
+    grid-template-rows: none;
+    backdrop-filter: blur(8px);
+    overflow-x: scroll;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+
+    > * {
+      scroll-snap-align: center;
+    }
+
+    scrollbar-width: none !important;
+    &::-webkit-scrollbar-track {
+      background: rgba(0 0 0 / 0) !important;
+    }
+  }
+}

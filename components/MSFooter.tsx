@@ -23,17 +23,22 @@
 
 import React from 'react';
 
-interface MSCTagProps {
-  label?: string;
-  children?: React.ReactNode;
+interface MSFooterProps {
+  title: string;
+  version?: string | number;
+  author?: string;
 }
 
-const HCTag: React.FC<MSCTagProps> = ({ label, children }) => {
+const MSFooter: React.FC<MSFooterProps> = ({ title, version, author }) => {
   return (
-    <span className="hc-tag">
-            { label || children }
-        </span>
+    <footer className="ms-footer">
+      <h3 className="ms-footer__title">
+        { title }
+        { version && <span className="ms-footer__version">v{ version }</span> }
+      </h3>
+      <p className="ms-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
+    </footer>
   );
 };
 
-export default HCTag;
+export default MSFooter;

@@ -1,0 +1,54 @@
+@use '@matteusan/himig';
+
+@use 'lib/media-variables';
+
+$hero-fill: 'accent-gradient' !default;
+$hero-ink: 'accent-ink' !default;
+
+$hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
+
+@mixin render() {
+  .hc-hero {
+    height: 55vh;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 1.2rem;
+    padding-top: 1rem;
+
+    clip-path: #{$hero-clip};
+
+    background-image: media-variables.$hero-image;
+    // background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: calc(100% - 50%);
+    color: himig.key-create('hero-ink', himig.token-switch($hero-ink));
+
+    ::-moz-selection {
+      color: himig.token-get('accent-400');
+      background: himig.token-get('accent-ink');
+    }
+
+    ::selection {
+      color: himig.token-get('accent-400');
+      background: himig.token-get('accent-ink');
+    }
+
+    .hc-hero__wrap {
+      width: calc(100% - 50px);
+      max-width: 1077px;
+
+      h1,
+      h2,
+      h3 {
+        // font-size: himig.to-rem(37px);
+      }
+
+      .hc-hero__actions {
+        margin-top: 0.7rem;
+      }
+    }
+  }
+}

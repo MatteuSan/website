@@ -1,0 +1,44 @@
+@use '@matteusan/himig';
+
+@mixin render() {
+  .ms-footer {
+    width: 100%;
+    text-align: center;
+
+    @include himig.color-apply('footer', (
+      fill: 'surface-alpha-400',
+      ink: 'surface-ink',
+      border: 'surface-alpha-400'
+    ));
+    @include himig.struct-apply('footer', (
+      padding: ('lg' 'lg'),
+    ));
+
+    .ms-footer__title {
+      @include himig.color-ink('footer-title', inherit);
+      @include himig.typography-apply('footer-title', (
+        family: 'supertitle',
+        size: 'subtitle',
+        weight: 'supertitle',
+        line-height: 'condensed'
+      ));
+      transition: all var(--ms-transition-time) ease;
+      cursor: default;
+
+      &:hover {
+        @include himig.color-ink('footer-title', 'accent-400', 'bind');
+      }
+    }
+
+    .ms-footer__version {
+      margin-left: 0.2rem;
+
+      @include himig.typography-apply('footer-version', (
+        family: 'small',
+        size: 'small',
+        weight: 'small',
+        line-height: 'small'
+      ));
+    }
+  }
+}

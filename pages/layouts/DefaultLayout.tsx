@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 
 import {
-  HCHeader,
-  HCHero,
-  HCNavbar,
+  MSHeader,
+  MSHero,
+  MSNavbar,
   HCNavbarTrigger,
   HCNavbarItem,
-  HCFooter,
+  MSFooter,
 } from '../../components';
 
 import { site } from '../../constants/site';
@@ -62,25 +62,25 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <meta name="theme-color" content={ site.themeColor }/>
 
       </Head>
-      <HCHeader title={ site.name } actionSection={
+      <MSHeader title={ site.name } actionSection={
         <>
           <HCNavbarTrigger
             onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
             trigger={ isNavbarOpen }
           />
-          <HCNavbar trigger={ isNavbarOpen }>
+          <MSNavbar trigger={ isNavbarOpen }>
             <HCNavbarItem link="/">Home</HCNavbarItem>
             <HCNavbarItem link="/work">Work</HCNavbarItem>
             <HCNavbarItem link="/tools">Tools</HCNavbarItem>
             <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
-          </HCNavbar>
+          </MSNavbar>
         </>
       } isScrollable />
-      { hasHero && <HCHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> }
+      { hasHero && <MSHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> }
       <main className="content-wrap">
         { children }
       </main>
-      <HCFooter title={ site.name } version={ site.version } author={ site.author } />
+      <MSFooter title={ site.name } version={ site.version } author={ site.author } />
     </>
   );
 };

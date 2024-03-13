@@ -30,7 +30,7 @@ interface HCHeaderProps {
   isScrollable?: boolean;
 }
 
-const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
+const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
 
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
@@ -44,14 +44,14 @@ const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
 
   return (
     <header
-      className={ `hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }` }>
-      <div className="hc-header__brand">
+      className={ `ms-header${ isScrollable ? ' is-scrollable' : '' }${ isHeaderScrolled ? ' is-scrolled' : '' }` }>
+      <div className="ms-header__brand">
         <Link href="/" passHref>
-          <h2>{ title }</h2>
+          <h2 className="title">{ title }</h2>
         </Link>
       </div>
       { actionSection &&
-        <div className="hc-header__actions">
+        <div className="ms-header__actions">
           { actionSection }
         </div>
       }
@@ -59,4 +59,4 @@ const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
   );
 };
 
-export default HCHeader;
+export default MSHeader;

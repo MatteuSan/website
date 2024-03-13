@@ -24,6 +24,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { Bars2Icon } from '@heroicons/react/24/outline';
+import { CloseIcon } from "next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon";
 
 interface HCNavBarProps {
   trigger: boolean;
@@ -41,10 +43,12 @@ interface HCNavBarTriggerProps {
   trigger: boolean;
 }
 
-const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
+const MSNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
   return (
-    <nav className={ `hc-navbar${ trigger ? ' open' : '' }` }>
-      { children }
+    <nav className={ `ms-navbar${ trigger ? ' is-open' : '' }` }>
+      <ul className="ms-list is-selectable is-raised">
+        { children }
+      </ul>
     </nav>
   );
 };
@@ -54,18 +58,20 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
-      <span className={ `hc-navbar__item${ isActive ? ' active' : '' }` }>{ label || children }</span>
-    </Link>
+    <li className={ `ms-list__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
+      <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
+        <span>{ label || children }</span>
+      </Link>
+    </li>
   );
 };
 
 const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
   return (
-    <button className="hc-js-navbar__trigger material-icons" onClick={ onClick }>
-      { trigger ? 'close' : 'menu' }
+    <button className="ms-navbar__trigger" onClick={ onClick }>
+      { trigger ? <CloseIcon /> : <Bars2Icon /> }
     </button>
   );
 };
 
-export { HCNavbar, HCNavbarItem, HCNavbarTrigger };
+export { MSNavbar, HCNavbarItem, HCNavbarTrigger };
