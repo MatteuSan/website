@@ -4,6 +4,13 @@ import remarkGfm from 'remark-gfm';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  async redirects() {
+    return [{
+      source: '/github',
+      destination: 'https://github.com/MatteuSan',
+      permanent: true,
+    }]
+  },
 }
 
 const withMDX = createMDX({
