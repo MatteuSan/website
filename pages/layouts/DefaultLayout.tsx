@@ -50,10 +50,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <link rel="icon" type="img/png" sizes="32x32" href={ `/img/favicon.webp` }/>
         <link rel="icon" type="img/png" sizes="16x16" href={ `/img/favicon.webp` }/>
 
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp&display=optional"
-          rel="stylesheet"/>
-
         <meta property="og:title" content={ `${ title } - ${ site.name }` }/>
         <meta property="og:description"
               content={ description || `UX Engineer. Creating bridges from software to user.` }/>
