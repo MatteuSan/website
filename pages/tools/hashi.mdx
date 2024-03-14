@@ -62,7 +62,7 @@ export const HashiInfo = tools.filter(tool => tool.name === 'Hashi')[0];
 
 export default function HashiPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description}>
+    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/hashi/hashi-cover.webp">
       <section className="py-4xl">
         <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/tools" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all tools</MSButton>
         {children}

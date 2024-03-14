@@ -20,6 +20,7 @@ interface DefaultLayoutProps {
   heroTitle?: string;
   heroSubtitle?: string;
   heroAction?: any;
+  previewImage?: string;
   children: React.ReactNode;
 }
 
@@ -29,7 +30,7 @@ const ogImageMap = {
   'tools': '/img/og-image-tools.webp',
 };
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, children }) => {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, previewImage, children }) => {
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
@@ -56,7 +57,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <meta property="og:description"
               content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content={ ogImage }/>
+        <meta property="og:image" content={ previewImage ? previewImage : ogImage }/>
         <meta property="og:url" content={ site.url }/>
 
         <meta name="twitter:title" content={ `${ title } - ${ site.name }` }/>
