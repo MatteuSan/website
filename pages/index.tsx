@@ -53,7 +53,7 @@ const HomePage: NextPage = () => {
           </p>
         </div>
         <div className="picture-frame start-1 end-1 @large:start-3 @large:end-3">
-          <Image src="/img/matt-headshot.jpg" alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
+          <Image src="/img/matt-headshot.webp" alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
         </div>
       </MSAnimatedSection>
 
