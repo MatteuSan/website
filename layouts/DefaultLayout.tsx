@@ -63,7 +63,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
         <meta name="twitter:title" content={ `${ title } - ${ site.name }` }/>
         <meta name="twitter:description"
               content={ description || `UX Engineer. Creating bridges from software to user.` }/>
-        <meta name="twitter:image" content={ `/img/favicon.webp` }/>
+        <meta name="twitter:image" content={ previewImage ? previewImage : ogImage }/>
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:site" content={ site.twitter }/>
         <meta name="theme-color" content={ site.themeColor }/>
