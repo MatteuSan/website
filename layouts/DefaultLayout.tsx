@@ -79,6 +79,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
             <HCNavbarItem link="/">Home</HCNavbarItem>
             <HCNavbarItem link="/work">Work</HCNavbarItem>
             <HCNavbarItem link="/tools">Tools</HCNavbarItem>
+            <HCNavbarItem link="/blog">Blog</HCNavbarItem>
             <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
           </MSNavbar>
         </>
