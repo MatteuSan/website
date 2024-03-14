@@ -5,11 +5,18 @@ import remarkGfm from 'remark-gfm';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   async redirects() {
-    return [{
-      source: '/github',
-      destination: 'https://github.com/MatteuSan',
-      permanent: true,
-    }]
+    return [
+      {
+        source: '/github',
+        destination: 'https://github.com/MatteuSan',
+        permanent: true,
+      },
+      {
+        source: '/linkedin',
+        destination: 'https://linkedin.com/in/matteusan',
+        permanent: true,
+      }
+    ]
   },
 }
 
