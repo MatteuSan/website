@@ -57,7 +57,7 @@ const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay,
       transition={ { duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 } }
       initial="initial"
       animate={ cardControl }
-      className="ms-card flex flow-column jc-start">
+      className={`ms-card${ link ? ' is-clickable' : '' } flex flow-column jc-start`}>
       { media &&
         <div className="ms-card__media">
           <Image width={ 1920 } height={ 1080 } src={ media } alt={ title + ` media` } loading="lazy"/>

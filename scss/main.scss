@@ -3,6 +3,7 @@
 @use '@matteusan/himig/ms-badge';
 @use '@matteusan/himig/ms-button';
 @use '@matteusan/himig/ms-card';
+@use '@matteusan/himig/ms-card/card-extend' as card;
 @use '@matteusan/himig/ms-list';
 @use '@matteusan/himig/ms-utils';
 
@@ -181,21 +182,18 @@
     )
   );
 
-  .ms-card {
-    backdrop-filter: blur(8px);
-    box-shadow: 0 3px 0 himig.token-get('surface-600');
-    // transition: all var(--ms-transition-time) ease;
-    // transition-delay: var(--ms-transition-time);
+  @include card.extend('clickable') {
+    outline: 0 solid himig.token-get('accent-alpha-600');
+    outline-offset: 3px;
+    transition: outline-color var(--ms-transition-time) ease,
+                outline-offset var(--ms-transition-time) ease,
+                outline-width var(--ms-transition-time) ease,
+                outline-style var(--ms-transition-time) ease;
 
-    @include himig.breakpoint-create('large') {
-      &:hover {
-        transform: translateY(-10px);
+    &:hover,
+    &:focus {
+      outline-width: 3px;
       }
-    }
-  }
-
-  .ms-card__icon {
-    --ms-card-icon-size: 30px;
   }
 
   @include ms-list.render(
