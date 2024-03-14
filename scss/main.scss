@@ -305,7 +305,8 @@
     overflow: hidden;
     transform: rotateZ(2deg);
     user-select: none;
-    animation: load-in 0.5s ease;
+    animation-delay: 1s;
+    animation: load-in 0.8s ease;
     transition: all var(--ms-transition-time) ease;
 
     @include himig.breakpoint-create('large') {
@@ -323,6 +324,7 @@
   }
 
   #technologies {
+    $children: 12;
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(3, 100px);
@@ -345,6 +347,7 @@
       border: 1px solid var(--tech-color, #fff);
       color: var(--tech-color, #fff);
       transition: all var(--ms-transition-time) ease;
+      animation: load-in 0.2s ease;
       user-select: none;
 
       @include himig.breakpoint-create('large') {
@@ -417,12 +420,12 @@
   }
 
   @keyframes load-in {
-    from {
+    0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(40px);
     }
 
-    to {
+    100% {
       opacity: 1;
       transform: translateY(0);
     }
