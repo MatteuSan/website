@@ -38,7 +38,7 @@ const new_works = works.slice(0, 4);
 const HomePage: NextPage = () => {
   return (
     <DefaultLayout title="HOME" heroTitle="MatteuSan"
-                   heroSubtitle="UX Engineer. Creating a meaningful bridge from software to user."
+                   heroSubtitle="UX Engineer. Creating bridges from software to user."
                    heroAction={ <MSButton type="filled large inverted" link="#about-me">Get to know me</MSButton> } hasHero>
 
       <MSAnimatedSection id="about-me" className="grid cols-1 my-2xl gap-2xl start-1 end-4 @large:cols-3 @large:mt-xl @large:mb-6xl @large:start-1 @large:end-8">
@@ -126,7 +126,7 @@ const HomePage: NextPage = () => {
               </MSCard>
             );
           }) }
-          <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See more</MSButton>
+          <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all works</MSButton>
           {/*<div className="ms-carousel__start">
             ←
             Swipe right
@@ -151,7 +151,7 @@ const HomePage: NextPage = () => {
               </MSCard>
             );
           }) }
-          <MSButton link="/tools" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See more</MSButton>
+          <MSButton link="/tools" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all tools</MSButton>
         </div>
       </MSAnimatedSection>
 

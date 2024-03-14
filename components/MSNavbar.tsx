@@ -60,7 +60,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
   return (
     <li className={ `ms-list__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
       <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
-        <span>{ label || children }</span>
+        { label || children }
       </Link>
     </li>
   );
@@ -68,7 +68,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
 
 const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
   return (
-    <button className="ms-navbar__trigger" onClick={ onClick }>
+    <button className="ms-navbar__trigger" onClick={ onClick } type="button" aria-label="Navigation Trigger">
       { trigger ? <CloseIcon /> : <Bars2Icon /> }
     </button>
   );

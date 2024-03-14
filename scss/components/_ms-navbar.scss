@@ -31,7 +31,7 @@
     display: none;
     position: fixed;
     top: himig.key-create('navbar-bottom', calc(40px + 1.2rem));
-    right: himig.key-create('navbar-right', calc(1.2rem));
+    right: himig.key-create('navbar-right', calc(1.5rem));
     transition: all var(--ms-transition-time) ease;
     z-index: 90;
 
@@ -41,7 +41,7 @@
 
     @include himig.breakpoint-create('large') {
       display: block;
-      @include himig.key-bind('navbar-bottom', calc(0.7rem));
+      @include himig.key-bind('navbar-bottom', calc(0.5rem));
       @include himig.key-bind('navbar-right', calc(1.2rem));
 
       .ms-list {

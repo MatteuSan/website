@@ -25,6 +25,8 @@ import React, { useEffect, useRef } from 'react';
 import MSTag from './MSTag';
 import { m, useAnimation, useInView } from 'framer-motion';
 
+import Image from 'next/image';
+
 interface MSCardProps {
   title: string;
   description?: string;
@@ -56,7 +58,7 @@ const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay,
       className="ms-card flex flow-column jc-start">
       { media &&
         <div className="ms-card__media">
-          <img src={ media } alt={ title + ` media` } loading="lazy"/>
+          <Image width={1920} height={1080} src={ media } alt={ title + ` media` } loading="lazy"/>
         </div>
       }
       <div className="ms-card__header">

@@ -195,7 +195,7 @@
   }
 
   @include ms-list.render(
-    $struct: (padding: ('md' 'lg'))
+    $struct: (padding: (0.5rem 'lg'))
   );
 
   .ms-list__item {

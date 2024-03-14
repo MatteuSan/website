@@ -23,7 +23,7 @@ $header-style: 'default' !default;
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0.6em 1.2em;
+    padding: 1em 1.5em;
     z-index: 100;
     @include himig.prefix(transition, all var(--ms-theme-transition-time) ease);
 
@@ -48,8 +48,11 @@ $header-style: 'default' !default;
 
       &.is-scrolled {
         backdrop-filter: blur(8px);
-        background: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
-        filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
+        @include himig.color-bind('header', (
+          fill: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%),
+          border: red
+        ));
+        // filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
 
         --ms-header-brand-visibility: block;
         @include himig.color-bind('header', (
