@@ -1,10 +1,10 @@
 import React from 'react';
 import { NextPage } from 'next';
-import DefaultLayout from './layouts/DefaultLayout';
-import { MSAnimatedSection, MSButton, MSCard } from '../components';
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { MSAnimatedSection, MSButton, MSCard } from '../../components';
 
-import { works } from '../constants/works';
-import { stagger } from '../lib/helpers';
+import { works } from '../../constants/works';
+import { stagger } from '../../lib/helpers';
 
 const itemsWithoutArchived = works.filter((item) => !item.tags.includes('Archived') && !item.tags.includes('Deprecated'));
 const itemsWithArchived = works.filter((item) => item.tags.includes('Archived') || item.tags.includes('Deprecated'));
@@ -27,7 +27,7 @@ const WorkPage: NextPage = () => {
                   media={ `/img/` + item.media }
                   tags={ item.tags }
                 >
-                  { item.link != null ? <MSButton link={ item.link } type="outlined">Visit</MSButton> : null }
+                  { item.link != null ? <MSButton link={ item.link } type="small outlined">Visit</MSButton> : null }
                 </MSCard>
               );
             }) }

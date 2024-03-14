@@ -1,10 +1,12 @@
 import React from 'react';
 import { NextPage } from 'next';
-import DefaultLayout from './layouts/DefaultLayout';
-import { MSButton, MSCard } from '../components';
+import DefaultLayout from '../../layouts/DefaultLayout';
+import { MSButton, MSCard } from '../../components';
 
-import { tools } from '../constants/tools';
-import { stagger } from "../lib/helpers";
+import { tools } from '../../constants/tools';
+import { stagger } from "../../lib/helpers";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
 
 const itemsWithoutArchived: any = tools.filter((item) => !item.tags.includes('Archived') && !item.tags.includes('Deprecated'));
 const itemsWithArchived: any = tools.filter((item) => item.tags.includes('Archived') || item.tags.includes('Deprecated'));
@@ -29,9 +31,10 @@ const ToolsPage: NextPage = () => {
                   title={ item.name }
                   description={ item.desc }
                   tags={ item.tags }
+                  link={ item.slug ? `/tools/${ item.slug }` : null }
                 >
-                  { item.links.src != null ? <MSButton link={ item.links.src } type="outlined">Source</MSButton> : null }
-                  { item.links.docs != null ? <MSButton link={ item.links.docs } type="outlined">Docs</MSButton> : null }
+                  { item.links.src != null ? <MSButton link={ item.links.src } icon={['left', <SiGithub />]} type="small outlined">Source</MSButton> : null }
+                  { item.links.docs != null ? <MSButton link={ item.links.docs } icon={['left', <BookOpenIcon />]} type="small outlined">Docs</MSButton> : null }
                 </MSCard>
               );
             }) }

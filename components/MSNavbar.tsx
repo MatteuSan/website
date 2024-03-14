@@ -54,7 +54,7 @@ const MSNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
 };
 
 const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
-  const isActive = useRouter().pathname === link;
+  const isActive = `/${useRouter().pathname.split('/')[1]}` === link;
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
@@ -68,7 +68,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
 
 const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
   return (
-    <button className="ms-navbar__trigger" onClick={ onClick } type="button" aria-label="Navigation Trigger">
+    <button className="ms-navbar__trigger" onClick={ onClick } type="button" aria-label={ trigger ? 'Close' : 'Open' }>
       { trigger ? <CloseIcon /> : <Bars2Icon /> }
     </button>
   );

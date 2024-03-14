@@ -30,9 +30,9 @@ interface MSTitleBarProps {
   children?: React.ReactNode;
 }
 
-const MSTitleBar: React.FC<MSTitleBarProps> = ({ title, icon, typePreset, children }) => {
+const MSTitleBar: React.FC<MSTitleBarProps> = ({ title, icon, typePreset, children, ...props }) => {
   return (
-    <div className="ms-title-bar">
+    <div className="ms-title-bar" {...props}>
       { icon && <i className="ms-title-bar__icon">{ icon }</i> }
       <h2 className={`ms-title-bar__title${typePreset ? ` ${typePreset}` : ' title'}`}>{ title || children }</h2>
     </div>

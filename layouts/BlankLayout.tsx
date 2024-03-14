@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { site } from '../../constants/site';
+import { site } from '../constants/site';
 
 interface BlankLayoutProps {
   title: string;

@@ -8,17 +8,17 @@ import {
   HCNavbarTrigger,
   HCNavbarItem,
   MSFooter,
-} from '../../components';
+} from '../components';
 
-import { site } from '../../constants/site';
+import { site } from '../constants/site';
 
 interface DefaultLayoutProps {
   title: string;
   description?: string;
   hasHero?: boolean;
   hasHeroAction?: boolean;
-  heroTitle: string;
-  heroSubtitle: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
   heroAction?: any;
   children: React.ReactNode;
 }
@@ -81,8 +81,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
             <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
           </MSNavbar>
         </>
-      } isScrollable />
-      { hasHero && <MSHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> }
+      } isScrollable={hasHero} />
+      { hasHero && heroTitle && heroSubtitle ? <MSHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> : null}
       <main className="content-wrap">
         { children }
       </main>

@@ -27,13 +27,13 @@ $header-style: 'default' !default;
     z-index: 100;
     @include himig.prefix(transition, all var(--ms-theme-transition-time) ease);
 
-    &.is-scrollable {
-      @include himig.color-apply('header', (
-        fill: $header-un-scrolled-fill,
-        ink: $header-un-scrolled-ink,
-        border: $header-un-scrolled-border
-      ));
+    @include himig.color-apply('header', (
+      fill: $header-un-scrolled-fill,
+      ink: $header-un-scrolled-ink,
+      border: $header-un-scrolled-border
+    ));
 
+    &.is-scrollable {
       &:not(.is-scrolled) {
         .ms-list__item {
           --ms-list-item-fill: var(--ms-theme-surface-alpha-400) ;
@@ -47,18 +47,23 @@ $header-style: 'default' !default;
       }
 
       &.is-scrolled {
-        backdrop-filter: blur(8px);
         @include himig.color-bind('header', (
           fill: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%),
-          border: red
-        ));
-        // filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
-
-        --ms-header-brand-visibility: block;
-        @include himig.color-bind('header', (
           ink: $header-ink,
         ));
+        backdrop-filter: blur(8px);
+        // filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
+        --ms-header-brand-visibility: block;
       }
+    }
+
+    &:not(.is-scrollable) {
+      @include himig.color-bind('header', (
+        fill: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%),
+        ink: $header-ink,
+      ));
+      backdrop-filter: blur(8px);
+      // filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
     }
 
     .ms-header__brand {

@@ -26,6 +26,7 @@ import MSTag from './MSTag';
 import { m, useAnimation, useInView } from 'framer-motion';
 
 import Image from 'next/image';
+import Link from "next/link";
 
 interface MSCardProps {
   title: string;
@@ -34,9 +35,10 @@ interface MSCardProps {
   tags?: any;
   delay?: number;
   children?: React.ReactNode;
+  link?: string | null;
 }
 
-const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, children }) => {
+const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, link, children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const cardControl = useAnimation();
@@ -45,20 +47,20 @@ const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay,
     if (isInView) cardControl.start('final').then(r => r);
   }, [isInView]);
 
-  return (
+  const CardBase = (
     <m.div
       ref={ ref }
-      variants={{
+      variants={ {
         initial: { opacity: 0, y: 40 },
         final: { opacity: 1, y: 0 }
-      }}
-      transition={{ duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 }}
+      } }
+      transition={ { duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 } }
       initial="initial"
       animate={ cardControl }
       className="ms-card flex flow-column jc-start">
       { media &&
         <div className="ms-card__media">
-          <Image width={1920} height={1080} src={ media } alt={ title + ` media` } loading="lazy"/>
+          <Image width={ 1920 } height={ 1080 } src={ media } alt={ title + ` media` } loading="lazy"/>
         </div>
       }
       <div className="ms-card__header">
@@ -96,6 +98,16 @@ const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay,
         </div>
       }
     </m.div>
+  );
+
+  if (!link) {
+    return CardBase;
+  }
+
+  return (
+    <Link href={link} style={{ display: 'inherit' }}>
+      {CardBase}
+    </Link>
   );
 };
 

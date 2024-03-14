@@ -38,7 +38,7 @@ interface HCButtonProps {
   children?: React.ReactNode;
 }
 
-const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled, onClick, children, nativeType = 'button' }) => {
+const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled, onClick, children, nativeType = 'button', ...props }) => {
   const parseTypes = (type: string): string => {
     const finalTypes: string[] = [];
     type.split(' ').forEach((type: string) => {
@@ -49,9 +49,9 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
 
   const ButtonBase = (
     <>
-      { icon && icon[0] == 'left' && <i className="ms-button__icon">{ icon[1] }</i> }
+      { icon && icon[0] == 'left' && <i className="ms-button__icon" aria-hidden="true">{ icon[1] }</i> }
       { label || children && <span className="ms-button__label">{ label || children }</span> }
-      { icon && icon[0] == 'right' && <i className="ms-button__icon">{ icon[1] }</i> }
+      { icon && icon[0] == 'right' && <i className="ms-button__icon" aria-hidden="true">{ icon[1] }</i> }
     </>
   );
 
@@ -62,6 +62,8 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
         role="button"
         onClick={ onClick }
         disabled={ isDisabled }
+        type={nativeType}
+        {...props}
       >
         { ButtonBase }
       </button>
@@ -71,7 +73,7 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <Link href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
+    <Link {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
       { ButtonBase }
     </Link>
   );

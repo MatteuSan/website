@@ -56,6 +56,10 @@
     'transition-time': 0.2s
   )
 ) {
+  main.content-wrap {
+    width: calc(100% - 50px) !important;
+  }
+
   @include ms-badge.render();
   @include ms-badge.extend('archived') {
     @include ms-badge.color((
@@ -257,7 +261,7 @@
 
   @include ms-utils.layout();
   @include ms-utils.color();
-  @include ms-utils.struct($include: 'm');
+  @include ms-utils.struct();
   @include ms-utils.typography($include: ('preset', 'family', 'weight'));
 
   .highlight {
@@ -416,6 +420,26 @@
     .ms-title-bar {
       margin: 0;
       padding: 0;
+    }
+  }
+
+  .preview-image {
+    position: relative;
+
+    &:hover {
+      &::after {
+        content: attr(data-alt);
+        position: absolute;
+        bottom: 1.2rem;
+        left: 1.2rem;
+        padding: 0.3rem 0.5rem;
+        background: himig.token-get('surface-400');
+        color: himig.token-get('surface-ink');
+        border-radius: 0.5rem;
+        font-size: himig.primitive-token-get('size.sm');
+        animation: load-in 0.5s ease;
+        @include himig.struct-shadow('preview-image-tooltip', 'low');
+      }
     }
   }
 

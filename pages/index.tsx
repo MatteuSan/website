@@ -1,7 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Image from "next/image";
-import DefaultLayout from './layouts/DefaultLayout';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 import { MSAnimatedSection, MSButton, MSCard, MSTitleBar } from '../components';
 
@@ -24,7 +24,7 @@ import {
   BriefcaseIcon,
   CodeBracketSquareIcon, EnvelopeIcon,
   InformationCircleIcon,
-  DocumentIcon, QuestionMarkCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon
+  DocumentIcon, QuestionMarkCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon, BookOpenIcon
 } from "@heroicons/react/24/outline";
 
 import { tools } from '../constants/tools';
@@ -122,7 +122,7 @@ const HomePage: NextPage = () => {
                 media={ `/img/` + data.media }
                 tags={ data.tags }
               >
-                { data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
+                { data.link != null ? <MSButton link={ data.link } type="small outlined">Visit</MSButton> : null }
               </MSCard>
             );
           }) }
@@ -146,8 +146,8 @@ const HomePage: NextPage = () => {
                 description={ data.desc }
                 tags={ data.tags }
               >
-                { data.links.src != null ? <MSButton link={ data.links.src } type="outlined">Source</MSButton> : null }
-                { data.links.docs != null ? <MSButton link={ data.links.docs } type="outlined">Docs</MSButton> : null }
+                { data.links.src != null ? <MSButton link={ data.links.src } icon={['left', <SiGithub />]} type="small outlined">Source</MSButton> : null }
+                { data.links.docs != null ? <MSButton link={ data.links.docs } icon={['left', <BookOpenIcon />]} type="small outlined">Docs</MSButton> : null }
               </MSCard>
             );
           }) }

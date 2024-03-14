@@ -9,8 +9,8 @@ export const tools = [
     'tags': ['SCSS']
   },
   {
-    'name': 'Gaia',
-    'desc': 'A design system for building living and breathing experiences for Growtopians.',
+    'name': 'Himig',
+    'desc': 'MatteuSan\'s personal design system for building user interfaces.',
     'links': {
       'src': 'https://github.com/MatteuSan/himig'
     },
@@ -19,9 +19,11 @@ export const tools = [
   {
     'name': 'Hashi',
     'desc': 'The web implementation of Dev Protocol\'s design system.',
+    'slug': 'hashi',
     'links': {
       'docs': 'https://hashi-docs.netlify.app',
-      'src': 'https://github.com/dev-protocol/hashi'
+      'src': 'https://github.com/dev-protocol/hashi',
+      'figma': 'https://www.figma.com/community/file/1289131280114725916',
     },
     'tags': ['SCSS', 'TypeScript']
   },
@@ -33,15 +35,6 @@ export const tools = [
       'src': 'https://github.com/TeuLabs/Gaikan'
     },
     'tags': ['PHP', 'TypeScript']
-  },
-  {
-    'name': 'Himig',
-    'desc': 'MatteuSan\'s personal design system for making projects.',
-    'links': {
-      'docs': 'https://docs.matteusan.me/docs/himig',
-      'src': 'https://github.com/MatteuSan/himig-old'
-    },
-    'tags': ['Archived', 'SCSS', 'TypeScript', 'React']
   },
   {
     'name': 'Ugnay',
