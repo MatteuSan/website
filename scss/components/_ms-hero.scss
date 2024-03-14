@@ -42,8 +42,14 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
       h1,
       h2,
-      h3 {
-        // font-size: himig.to-rem(37px);
+      h3,
+      p {
+        max-width: max-content;
+        /// background: linear-gradient(rgba(himig.token-get-raw('ms-orange-inverted-600'), 90%) 0%, rgba(himig.token-get-raw('ms-orange-inverted-400'), 80%) 100%);
+        // background: himig.token-get-raw('ms-orange-inverted-600');
+        // color: himig.token-get('ms-orange-inverted-ink');
+        // backdrop-filter: blur(8px);
+        // border-radius: himig.token-get('radius-small');
       }
 
       .hc-hero__actions {

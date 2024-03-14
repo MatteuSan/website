@@ -10,7 +10,7 @@ export const works = [
     'name': 'Purple Cress',
     'desc': 'Purple Cress Scanlation\'s manga index and reader.',
     'media': 'purplecress.png',
-    'tags': ['SCSS', 'TS', 'Vue', 'Firebase']
+    'tags': ['Archived', 'SCSS', 'TS', 'Vue', 'Firebase']
   },
   {
     'name': 'Pycord',
@@ -30,8 +30,7 @@ export const works = [
     'name': 'Luwal Sining Pagganap',
     'desc': 'LSP\'s main website and performance platform.',
     'media': 'luwal.png',
-    'link': 'https://luwal-sining.xyz',
-    'tags': ['SCSS', 'PHP', 'Laravel']
+    'tags': ['Archived', 'SCSS', 'PHP', 'Laravel']
   },
   {
     'name': 'SurPathHub Documentation Site',
@@ -44,12 +43,12 @@ export const works = [
     'name': 'GrowStocks',
     'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
     'media': 'growstocks.png',
-    'tags': ['SCSS', 'TS', 'React', 'PHP', 'Laravel']
+    'tags': ['Archived', 'SCSS', 'TS', 'React', 'PHP', 'Laravel']
   },
   {
     'name': 'BlockCorp',
     'desc': 'The platform to order Growtopia-related services.',
     'media': 'blockcorp.png',
-    'tags': ['SCSS', 'Vue', 'Python', 'Flask']
+    'tags': ['Archived', 'SCSS', 'Vue', 'Python', 'Flask']
   },
 ];

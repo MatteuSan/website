@@ -47,16 +47,14 @@ $header-style: 'default' !default;
       }
 
       &.is-scrolled {
+        backdrop-filter: blur(8px);
+        background: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
+        filter: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255 255 / 0) 100%);
+
         --ms-header-brand-visibility: block;
         @include himig.color-bind('header', (
           ink: $header-ink,
         ));
-
-        .ms-header__brand h2 {
-          backdrop-filter: blur(8px);
-          background: linear-gradient(rgba(255 255 255 / 0) 0%, rgba(255 255 255 / 0) 100%);
-          filter: linear-gradient(rgba(255 255 255 / 10%) 0%, rgba(255 255 255 / 0) 100%);
-        }
       }
     }
 
@@ -76,7 +74,7 @@ $header-style: 'default' !default;
         user-select: none;
         @include himig.struct-shadow('header-title', 'high');
 
-        @include himig.breakpoint-create('medium') {
+        @include himig.breakpoint-create('large') {
           --ms-header-brand-visibility: block;
         }
       }

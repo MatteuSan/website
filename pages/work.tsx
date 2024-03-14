@@ -1,29 +1,40 @@
 import React from 'react';
 import { NextPage } from 'next';
 import DefaultLayout from './layouts/DefaultLayout';
-import { MSButton, MSCard } from '../components';
+import { MSAnimatedSection, MSButton, MSCard } from '../components';
 
 import { works } from '../constants/works';
+import { stagger } from '../lib/helpers';
+
+import { stagger as staggerMotion } from 'framer-motion';
+
+const itemsWithoutArchived = works.filter((item) => !item.tags.includes('Archived') && !item.tags.includes('Deprecated'));
+const itemsWithArchived = works.filter((item) => item.tags.includes('Archived') || item.tags.includes('Deprecated'));
+
+const cleanedItems = itemsWithoutArchived.concat(itemsWithArchived);
 
 const WorkPage: NextPage = () => {
   return (
     <DefaultLayout title="WORK" heroTitle="Works" heroSubtitle="Projects made for clients, and for myself :)" hasHero>
       <section className="content-section">
-        <div className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
-          { works.map((data, key) => {
-            return (
-              <MSCard
-                key={ key }
-                title={ data.name }
-                description={ data.desc }
-                media={ `/img/` + data.media }
-                tags={ data.tags }
-              >
-                { data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
-              </MSCard>
-            );
-          }) }
-        </div>
+        <MSAnimatedSection delay={0} stagger={0.2} className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
+          <>
+            { cleanedItems.map((item: any, key: number) => {
+              return (
+                <MSCard
+                  delay={0.2 + stagger(key, 0.2)}
+                  key={ key }
+                  title={ item.name }
+                  description={ item.desc }
+                  media={ `/img/` + item.media }
+                  tags={ item.tags }
+                >
+                  { item.link != null ? <MSButton link={ item.link } type="outlined">Visit</MSButton> : null }
+                </MSCard>
+              );
+            }) }
+          </>
+        </MSAnimatedSection>
       </section>
     </DefaultLayout>
   );

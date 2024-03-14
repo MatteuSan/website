@@ -1,10 +1,17 @@
 import type { AppProps } from 'next/app';
 import React from 'react';
+import { LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 
 import '../scss/main.scss';
 
 function App({ Component, pageProps }: AppProps) {
-  return <Component { ...pageProps } />;
+  return (
+    <MotionConfig reducedMotion="user">
+      <LazyMotion features={ domAnimation }>
+        <Component { ...pageProps } />
+      </LazyMotion>
+    </MotionConfig>
+  );
 }
 
 export default App;

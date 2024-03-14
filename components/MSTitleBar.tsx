@@ -26,14 +26,15 @@ import React from 'react';
 interface MSTitleBarProps {
   title?: string;
   icon?: string | React.ReactNode;
+  typePreset?: string;
   children?: React.ReactNode;
 }
 
-const MSTitleBar: React.FC<MSTitleBarProps> = ({ title, icon, children }) => {
+const MSTitleBar: React.FC<MSTitleBarProps> = ({ title, icon, typePreset, children }) => {
   return (
     <div className="ms-title-bar">
       { icon && <i className="ms-title-bar__icon">{ icon }</i> }
-      <h2 className="ms-title-bar__title title">{ title || children }</h2>
+      <h2 className={`ms-title-bar__title${typePreset ? ` ${typePreset}` : ' title'}`}>{ title || children }</h2>
     </div>
   );
 };

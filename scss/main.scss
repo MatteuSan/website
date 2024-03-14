@@ -57,6 +57,14 @@
   )
 ) {
   @include ms-badge.render();
+  @include ms-badge.extend('archived') {
+    @include ms-badge.color((
+      fill: 'ms-yellow.400',
+      ink: 'accent-ink',
+      border: 'ms-yellow.400'
+    ));
+  }
+
   @include ms-button.render(
     $typography: (
       'line-height': 'normal'
@@ -172,10 +180,13 @@
   .ms-card {
     backdrop-filter: blur(8px);
     box-shadow: 0 3px 0 himig.token-get('surface-600');
-    transition: all var(--ms-transition-time) ease;
+    // transition: all var(--ms-transition-time) ease;
+    // transition-delay: var(--ms-transition-time);
 
-    &:hover {
-      transform: translateY(-10px);
+    @include himig.breakpoint-create('large') {
+      &:hover {
+        transform: translateY(-10px);
+      }
     }
   }
 
@@ -245,8 +256,9 @@
   }
 
   @include ms-utils.layout();
+  @include ms-utils.color();
   @include ms-utils.struct($include: 'm');
-  @include ms-utils.typography($include: ('preset'));
+  @include ms-utils.typography($include: ('preset', 'family', 'weight'));
 
   .highlight {
     display: inline;
@@ -269,7 +281,7 @@
   }
 
   .content-section {
-    padding: 5rem 0 0;
+    padding: 1rem 0 7rem;
   }
 
   .absolute-center {
@@ -296,8 +308,10 @@
     animation: load-in 0.5s ease;
     transition: all var(--ms-transition-time) ease;
 
-    &:hover {
-      transform: rotateZ(0) translateY(-10px);
+    @include himig.breakpoint-create('large') {
+      &:hover {
+        transform: rotateZ(0) translateY(-10px);
+      }
     }
 
     img {
@@ -333,21 +347,23 @@
       transition: all var(--ms-transition-time) ease;
       user-select: none;
 
-      &#github {
-        &:hover {
-          background-color: #fff;
-          color: #211f1f !important;
+      @include himig.breakpoint-create('large') {
+        &#github {
+          &:hover {
+            background-color: #fff;
+            color: #211f1f !important;
 
-          .technology__label {
-            color: inherit;
+            .technology__label {
+              color: inherit;
+            }
           }
         }
-      }
 
-      &:hover {
-        background-color: var(--tech-color, #fff);
-        color: #fff;
-        transform: translateY(-10px);
+        &:hover {
+          background-color: var(--tech-color, #fff);
+          color: #fff;
+          transform: translateY(-10px);
+        }
       }
 
       .technology__img {
@@ -390,8 +406,10 @@
     transition: all 0.1s ease;
     animation: load-in 0.5s ease;
 
-    &:hover {
-      transform: translateY(-10px);
+    @include himig.breakpoint-create('large') {
+      &:hover {
+        transform: translateY(-10px);
+      }
     }
 
     .ms-title-bar {

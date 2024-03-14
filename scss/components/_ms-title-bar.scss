@@ -19,7 +19,7 @@ $title-bar-icon-ink: 'accent-400' !default;
     border-radius: himig.key-create('title-bar-radius', himig.token-switch($title-bar-radius));
     cursor: default;
 
-    @include himig.breakpoint-create('medium') {
+    @include himig.breakpoint-create('large') {
       &:hover {
         .ms-title-bar__title::before {
           content: '';

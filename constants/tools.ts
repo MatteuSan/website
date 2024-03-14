@@ -12,7 +12,7 @@ export const tools = [
     'name': 'Gaia',
     'desc': 'A design system for building living and breathing experiences for Growtopians.',
     'links': {
-      'src': 'https://github.com/MatteuSan/gaia'
+      'src': 'https://github.com/MatteuSan/himig'
     },
     'tags': ['SCSS', 'TypeScript']
   },
@@ -39,9 +39,9 @@ export const tools = [
     'desc': 'MatteuSan\'s personal design system for making projects.',
     'links': {
       'docs': 'https://docs.matteusan.me/docs/himig',
-      'src': 'https://github.com/MatteuSan/himig'
+      'src': 'https://github.com/MatteuSan/himig-old'
     },
-    'tags': ['SCSS', 'TypeScript', 'React']
+    'tags': ['Archived', 'SCSS', 'TypeScript', 'React']
   },
   {
     'name': 'Ugnay',

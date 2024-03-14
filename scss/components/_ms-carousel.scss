@@ -5,12 +5,12 @@
     margin: 0 auto;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(#{5}, 350px);
+    grid-template-columns: repeat(#{5}, calc((1077px / 5) * 1.6));
     grid-gap: 1rem;
     grid-template-rows: none;
     backdrop-filter: blur(8px);
     overflow-x: scroll;
-    overflow-y: visible;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
 
     > * {

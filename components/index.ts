@@ -21,6 +21,7 @@
  *
  */
 
+import MSAnimatedSection from './MSAnimatedSection';
 import MSButton from './MSButton';
 import MSCard from './MSCard';
 import MSFooter from './MSFooter';
@@ -31,6 +32,7 @@ import MSTag from './MSTag';
 import MSTitleBar from './MSTitleBar';
 
 export {
+  MSAnimatedSection,
   MSButton,
   MSCard,
   MSFooter,

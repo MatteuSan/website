@@ -21,30 +21,47 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import MSTag from './MSTag';
+import { m, useAnimation, useInView } from 'framer-motion';
 
 interface MSCardProps {
   title: string;
-  icon?: string | React.ReactNode;
   description?: string;
   media?: string;
   tags?: any;
-  hasNoAction?: boolean;
+  delay?: number;
   children?: React.ReactNode;
 }
 
-const MSCard: React.FC<MSCardProps> = ({ title, icon, description, media, tags, hasNoAction, children }) => {
+const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, children }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const cardControl = useAnimation();
+
+  useEffect(() => {
+    if (isInView) cardControl.start('final').then(r => r);
+  }, [isInView]);
+
   return (
-    <div className="ms-card flex flow-column jc-start">
+    <m.div
+      ref={ ref }
+      variants={{
+        initial: { opacity: 0, y: 40 },
+        final: { opacity: 1, y: 0 }
+      }}
+      transition={{ duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 }}
+      initial="initial"
+      animate={ cardControl }
+      className="ms-card flex flow-column jc-start">
       { media &&
         <div className="ms-card__media">
-          <img src={ media } alt={ title + ` media` } loading="lazy" />
+          <img src={ media } alt={ title + ` media` } loading="lazy"/>
         </div>
       }
       <div className="ms-card__header">
         <>
-          {/* icon && <i className="ms-card__icon" aria-hidden="true">{ icon }</i>*/}
+          {/* icon && <i className="ms-card__icon" aria-hidden="true">{ icon }</i>*/ }
           <div className="ms-card__mast">
             <div className="ms-card__title">
               <h2>{ title }</h2>
@@ -52,6 +69,11 @@ const MSCard: React.FC<MSCardProps> = ({ title, icon, description, media, tags, 
             { tags &&
               <div className="flex flow-row gap-xs mt-sm">
                 { tags.map((tag: string, key: any) => {
+                  if (tag == 'Archived' || tag == 'Deprecated') {
+                    return (
+                      <MSTag isArchived key={ key }>{ tag }</MSTag>
+                    );
+                  }
                   return (
                     <MSTag key={ key }>{ tag }</MSTag>
                   );
@@ -71,7 +93,7 @@ const MSCard: React.FC<MSCardProps> = ({ title, icon, description, media, tags, 
           { children }
         </div>
       }
-    </div>
+    </m.div>
   );
 };
 
