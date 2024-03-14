@@ -403,8 +403,6 @@
     border-radius: 1rem;
     background: #3d3838;
     box-shadow: 0 7px #211f1f;
-    transition: all 0.1s ease;
-    animation: load-in 0.5s ease;
 
     @include himig.breakpoint-create('large') {
       &:hover {

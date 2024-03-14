@@ -23,8 +23,6 @@ import {
   ArrowRightIcon,
   BriefcaseIcon,
   CodeBracketSquareIcon, EnvelopeIcon,
-  FolderIcon,
-  GlobeAltIcon,
   InformationCircleIcon,
   DocumentIcon, QuestionMarkCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon
 } from "@heroicons/react/24/outline";
@@ -32,7 +30,7 @@ import {
 import { tools } from '../constants/tools';
 import { works } from '../constants/works';
 import Technology from "../components/Technology";
-import { animate, stagger } from "framer-motion";
+import { stagger } from "../lib/helpers";
 
 const new_tools = tools.slice(0, 4);
 const new_works = works.slice(0, 4);
@@ -54,9 +52,9 @@ const HomePage: NextPage = () => {
             success.
           </p>
         </div>
-        <MSAnimatedSection delay={0.4} className="picture-frame start-1 end-1 @large:start-3 @large:end-3">
+        <div className="picture-frame start-1 end-1 @large:start-3 @large:end-3">
           <Image src="/img/matt-headshot.jpg" alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
-        </MSAnimatedSection>
+        </div>
       </MSAnimatedSection>
 
       <MSAnimatedSection id="skills-and-technologies" className="grid cols-1 my-6xl gap-2xl start-1 end-4 @large:cols-3 @large:mt-xl @large:mb-6xl @large:start-1 @large:end-8">
@@ -117,7 +115,7 @@ const HomePage: NextPage = () => {
           { new_works.map((data, key) => {
             return (
               <MSCard
-                delay={0.4 + (key * 0.2)}
+                delay={0.1 + stagger(key, 0.1)}
                 key={ key }
                 title={ data.name }
                 description={ data.desc }
@@ -142,7 +140,7 @@ const HomePage: NextPage = () => {
           { new_tools.map((data, key) => {
             return (
               <MSCard
-                delay={0.4 + (key * 0.2)}
+                delay={0.1 + stagger(key, 0.1)}
                 key={ key }
                 title={ data.name }
                 description={ data.desc }

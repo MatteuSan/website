@@ -16,15 +16,15 @@ const ToolsPage: NextPage = () => {
     <DefaultLayout title="TOOLS" heroTitle="Tools"
                    heroSubtitle="Empowering teams (and you!) to build better user experiences." hasHero>
       <section className="content-section">
-        <div className="flex flow-row no-wrap jc-end ai-center mb-lg">
+        {/*<div className="flex flow-row no-wrap jc-end ai-center mb-lg">
           <MSButton type="small outlined">Filter</MSButton>
-        </div>
+        </div>*/}
         <div className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
           <>
             { cleanedItems.map((item: any, key: any) => {
               return (
                 <MSCard
-                  delay={0.2 + stagger(key, 0.2)}
+                  delay={0.1 + stagger(key, 0.1)}
                   key={ key }
                   title={ item.name }
                   description={ item.desc }
