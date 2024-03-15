@@ -26,6 +26,7 @@
     "sass": "1.43.4"
   },
   "devDependencies": {
+    "@nonsugarless/webp-converter": "^1.0.4",
     "@types/node": "20.11.20",
     "@types/react": "18.2.57",
     "typescript": "5.3.3"

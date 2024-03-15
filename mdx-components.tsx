@@ -8,6 +8,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: ({ children }) => <h3 className="subtitle">{children}</h3>,
     h4: ({ children }) => <h4 className="subtitle">{children}</h4>,
     p: ({ children }) => <p className="body mb-md">{children}</p>,
+    a: ({ children, href }) => {
+      const isLinkExternal: boolean|undefined = href?.startsWith('http') || href?.startsWith('mailto') || href?.startsWith('tel') || href?.startsWith('sms') || href?.startsWith('tg');
+      return (
+        <a href={href}
+           className="ink-accent-400"
+           style={{ textDecoration: 'underline' }}
+           target={isLinkExternal ? '_blank' : '_self'}
+           rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      );
+    },
     img: (props) => {
       return (
         <Image

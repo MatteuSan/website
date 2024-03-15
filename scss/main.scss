@@ -71,8 +71,11 @@
   }
 
   @include ms-button.render(
+    $struct: (
+      padding: ('sm' 'md')
+    ),
     $typography: (
-      'line-height': 'normal'
+      line-height: 'normal'
     )
   );
 
@@ -88,6 +91,9 @@
   @include ms-button.extend('small') {
     @include ms-button.struct((
       'padding': ('sm' 'md')
+    ));
+    @include ms-button.typography((
+      'size': himig.to-rem(12px)
     ));
   }
 
@@ -182,64 +188,26 @@
     )
   );
 
-  @include card.extend('clickable') {
-    outline: 0 solid himig.token-get('accent-alpha-600');
-    outline-offset: 3px;
-    transition: outline-color var(--ms-transition-time) ease,
-                outline-offset var(--ms-transition-time) ease,
-                outline-width var(--ms-transition-time) ease,
-                outline-style var(--ms-transition-time) ease;
+  @include card.extend('archived') {
+    position: relative;
 
-    &:hover,
-    &:focus {
-      outline-width: 3px;
-      }
+    &::after {
+      content: 'Archived';
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.3rem 0.5rem;
+      background: himig.primitive-token-get('ms-yellow.400');
+      color: himig.token-get('accent-ink');
+      font-size: himig.to-rem(12px);
+      font-weight: 700;
+      border-radius: 0 0 0 0.5rem;
+    }
   }
 
   @include ms-list.render(
-    $struct: (padding: (0.5rem 'lg'))
+    $struct: (padding: ('sm' 0))
   );
-
-  .ms-list__item {
-    display: flex;
-    justify-content: center;
-    padding: 0 !important;
-
-    a {
-      width: 100%;
-      display: inline-block;
-      text-align: inherit;
-      padding: himig.key-get('list-item-padding');
-    }
-
-    &.is-active {
-      @include himig.color-bind('list-item', (
-        fill: 'surface-200',
-        ink: 'surface-ink',
-        border: 'surface-200'
-      ));
-      @include himig.typography-bind('list-item', (
-        weight: 700
-      ));
-    }
-
-    &.is-external {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-
-      a::after {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        font-size: 16px;
-        color: #fff;
-        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E%0A");
-        margin-left: 0.5rem;
-        align-self: center;
-      }
-    }
-  }
 
   @include ms-carousel.render();
   @include ms-footer.render();

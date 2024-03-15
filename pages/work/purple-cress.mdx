@@ -1,23 +1,21 @@
 import DefaultLayout from "../../layouts/DefaultLayout";
 
-import { tools } from '../../constants/tools';
 import { MSAnimatedSection, MSButton, MSTag, MSTitleBar } from "../../components";
 import {
   ArrowLeftIcon,
-  BookOpenIcon,
-  PaintBrushIcon,
   PhotoIcon,
   QuestionMarkCircleIcon
 } from "@heroicons/react/24/outline";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import PreviewImage from "../../components/markdown/PreviewImage";
+import { works } from "../../constants/works";
 
 export const metadata = {
-  title: 'Hashi',
-  description: 'Dev Protocol\'s design system for building bridges from software to user.',
+  title: 'Purple Cress',
+  description: 'Purple Cress Scanlation\'s manga library and reader web application.',
 }
 
-export const HashiInfo = tools.filter(tool => tool.name === 'Hashi')[0];
+export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 <MSAnimatedSection>
   # { metadata.title }
@@ -28,10 +26,10 @@ export const HashiInfo = tools.filter(tool => tool.name === 'Hashi')[0];
 
 <MSAnimatedSection delay={0.4}>
   <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/hashi/hashi-cover.webp" alt="Hashi's cover image." />
+    <PreviewImage src="/img/purplecress.webp" alt="Purple Cress' website." />
   </div>
 
-  Hashi is Dev Protocol's design system. Aiming to bring a unified user experience when using Dev Protocol products, to present an elegant user interface for consumers to interact with, and to be able to create the same user interfaces regardless of any frontend framework.
+  Purple Cress was a Japanese manga scanlation group. Their scanlation work is diverse. From one-shots, to short form series, to the larger serialized series.
 </MSAnimatedSection>
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
@@ -39,31 +37,30 @@ export const HashiInfo = tools.filter(tool => tool.name === 'Hashi')[0];
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
       <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **[Dev Protocol](https://devprotocol.xyz)**</li>
-        <li className="ms-list__item mt-sm">{ HashiInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
+        <li className="ms-list__item">Client: **Purple Cress**</li>
+        <li className="ms-list__item">Status: **{ WorkInfo.status }**</li>
+        <li className="ms-list__item mt-sm">{ WorkInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
       </ul>
       #### Links
       <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
-        <MSButton link={HashiInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
-        <MSButton link={HashiInfo.links['figma']} icon={['left', <PaintBrushIcon />]} type="small filled">Figma</MSButton>
-        <MSButton link={HashiInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
+        There are no links for this project.
       </div>
     </div>
   </MSAnimatedSection>
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/hashi.webp" alt="A screen capture of Hashi's website" />
-      <PreviewImage src="/img/hashi/hashi-cover--dark.webp" alt="Hashi's cover image but in dark mode." />
+      <PreviewImage src="/img/purplecress/purplecress-chapter-view.webp" alt="A screen capture of the series preview page." />
+      <PreviewImage src="/img/purplecress/purplecress-reader.webp" alt="A screen capture of the chapter reader." />
     </div>
   </MSAnimatedSection>
 </MSAnimatedSection>
 
-export default function ToolPage({ children }) {
+export default function WorkPage({ children }) {
   return (
     <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/hashi/hashi-cover.webp">
       <section className="py-4xl">
-        <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/tools" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all tools</MSButton>
+        <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/work" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all work</MSButton>
         {children}
       </section>
     </DefaultLayout>

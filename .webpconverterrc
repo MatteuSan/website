@@ -1,0 +1,5 @@
+{
+	"destDir": "./public/img/",
+	"originalDir": "./public/img/",
+	"targetExt": ".+(jpg|png|gif)",
+}

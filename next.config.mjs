@@ -15,6 +15,11 @@ const nextConfig = {
         source: '/linkedin',
         destination: 'https://linkedin.com/in/matteusan',
         permanent: true,
+      },
+      {
+        source: '/resume',
+        destination: '/resources/Matthew-Hernandez_Resume.pdf',
+        permanent: true,
       }
     ]
   },

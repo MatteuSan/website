@@ -6,8 +6,8 @@ import { MSAnimatedSection, MSButton, MSCard } from '../../components';
 import { works } from '../../constants/works';
 import { stagger } from '../../lib/helpers';
 
-const itemsWithoutArchived = works.filter((item) => !item.tags.includes('Archived') && !item.tags.includes('Deprecated'));
-const itemsWithArchived = works.filter((item) => item.tags.includes('Archived') || item.tags.includes('Deprecated'));
+const itemsWithoutArchived = works.filter((item) => item?.status != 'Archived');
+const itemsWithArchived = works.filter((item) => item?.status == 'Archived');
 
 const cleanedItems = itemsWithoutArchived.concat(itemsWithArchived);
 
@@ -26,8 +26,10 @@ const WorkPage: NextPage = () => {
                   description={ item.desc }
                   media={ `/img/` + item.media }
                   tags={ item.tags }
+                  isArchived={ item.status == 'Archived' }
                 >
-                  { item.link != null ? <MSButton link={ item.link } type="small outlined">Visit</MSButton> : null }
+                  { item.slug != null ? <MSButton link={ `/work/${item.slug}` } type="outlined">View project details</MSButton> : null }
+                  { !item.slug && item.link != null ? <MSButton link={ item.link } type="outlined">Visit</MSButton> : null }
                 </MSCard>
               );
             }) }

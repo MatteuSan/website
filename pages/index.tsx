@@ -122,7 +122,7 @@ const HomePage: NextPage = () => {
                 media={ `/img/` + data.media }
                 tags={ data.tags }
               >
-                { data.link != null ? <MSButton link={ data.link } type="small outlined">Visit</MSButton> : null }
+                { data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
               </MSCard>
             );
           }) }
@@ -146,8 +146,9 @@ const HomePage: NextPage = () => {
                 description={ data.desc }
                 tags={ data.tags }
               >
-                { data.links.src != null ? <MSButton link={ data.links.src } icon={['left', <SiGithub />]} type="small outlined">Source</MSButton> : null }
-                { data.links.docs != null ? <MSButton link={ data.links.docs } icon={['left', <BookOpenIcon />]} type="small outlined">Docs</MSButton> : null }
+                { data.slug ? <MSButton link={ `/tools/${ data.slug }` } type="outlined">View project details</MSButton> : null }
+                { !data.slug && data.links.src != null ? <MSButton link={ data.links.src } icon={['left', <SiGithub />]} type="outlined">Source</MSButton> : null }
+                { !data.slug && data.links.docs != null ? <MSButton link={ data.links.docs } icon={['left', <BookOpenIcon />]} type="outlined">Docs</MSButton> : null }
               </MSCard>
             );
           }) }
@@ -161,7 +162,7 @@ const HomePage: NextPage = () => {
           <p style={ { margin: '1rem 0' } }>More of me and my work can be found in my resume and in my GitHub page. The
             buttons below should take you there.</p>
           <div className="flex flow-row gap-md jc-center mt-lg">
-            <MSButton type="filled" icon={ ['left', <DocumentIcon />] } link="mailto:matteugt@gmail.com"
+            <MSButton type="filled" icon={ ['left', <DocumentIcon />] } link="/resume"
                       isDisabled>Resume</MSButton>
             <MSButton type="filled" icon={ ['left', <SiGithub />] } link="https://github.com/MatteuSan" isDisabled>GitHub</MSButton>
           </div>
@@ -170,7 +171,7 @@ const HomePage: NextPage = () => {
           <MSTitleBar typePreset="subtitle family-supertitle weight-supertitle" icon={<PhoneIcon />}>Ready to make the leap?</MSTitleBar>
           <p style={ { margin: '1rem 0' } }>I'd be delighted to work on your project! Just click any of the contact buttons  below and we'll keep in touch :)</p>
           <div className="flex flow-row gap-md jc-center mt-lg">
-            <MSButton type="filled" icon={ ['left', <EnvelopeIcon />] } link="mailto:matteugt@gmail.com"
+            <MSButton type="filled" icon={ ['left', <EnvelopeIcon />] } link="mailto:matt@matteusan.com"
                       isDisabled>Email</MSButton>
             <MSButton type="filled" icon={ ['left', <SiLinkedin />] } link="https://linkedin.com/matteu.san" isDisabled>LinkedIn</MSButton>
           </div>

@@ -31,10 +31,10 @@ const ToolsPage: NextPage = () => {
                   title={ item.name }
                   description={ item.desc }
                   tags={ item.tags }
-                  link={ item.slug ? `/tools/${ item.slug }` : null }
                 >
-                  { item.links.src != null ? <MSButton link={ item.links.src } icon={['left', <SiGithub />]} type="small outlined">Source</MSButton> : null }
-                  { item.links.docs != null ? <MSButton link={ item.links.docs } icon={['left', <BookOpenIcon />]} type="small outlined">Docs</MSButton> : null }
+                  { item.slug ? <MSButton link={ `/tools/${ item.slug }` } type="outlined">View project details</MSButton> : null }
+                  { !item.slug && item.links.src != null ? <MSButton link={ item.links.src } icon={['left', <SiGithub />]} type="outlined">Source</MSButton> : null }
+                  { !item.slug && item.links.docs != null ? <MSButton link={ item.links.docs } icon={['left', <BookOpenIcon />]} type="outlined">Docs</MSButton> : null }
                 </MSCard>
               );
             }) }
