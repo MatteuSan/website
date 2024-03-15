@@ -129,7 +129,7 @@ const HomePage: NextPage = () => {
                 description={ data.desc }
                 media={ `/img/` + data.media }
                 tags={ data.tags }
-                isArchived={ data.status == 'Archived' }
+                status={ data.status }
               >
                 { data.slug != null ? <MSButton link={ `/work/${data.slug}` } type="outlined">View project details</MSButton> : null }
                 { !data.slug && data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
@@ -155,6 +155,7 @@ const HomePage: NextPage = () => {
                 title={ data.name }
                 description={ data.desc }
                 tags={ data.tags }
+                status={ data.status }
               >
                 { data.slug ? <MSButton link={ `/tools/${ data.slug }` } type="outlined">View project details</MSButton> : null }
                 { !data.slug && data.links.src != null ? <MSButton link={ data.links.src } icon={['left', <SiGithub />]} type="outlined">Source</MSButton> : null }
