@@ -188,20 +188,36 @@
     )
   );
 
+  %status-chip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.3rem 0.5rem;
+    font-weight: 700;
+    border-radius: 0 0 0 0.5rem;
+  }
+
   @include card.extend('archived') {
     position: relative;
 
     &::after {
+      @extend %status-chip;
       content: 'Archived';
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 0.3rem 0.5rem;
       background: himig.primitive-token-get('ms-yellow.400');
       color: himig.token-get('accent-ink');
       font-size: himig.to-rem(12px);
-      font-weight: 700;
-      border-radius: 0 0 0 0.5rem;
+    }
+  }
+
+  @include card.extend('hiatus') {
+    position: relative;
+
+    &::after {
+      @extend %status-chip;
+      content: 'On-hiatus';
+      background: himig.primitive-token-get('ms-grey.400');
+      color: #fff;
+      font-size: himig.to-rem(12px);
     }
   }
 

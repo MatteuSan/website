@@ -11,8 +11,8 @@ import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
 
 export const metadata = {
-  title: 'GrowStocks',
-  description: 'The online price index and marketplace for Growtopia.',
+  title: 'Dev Protocol',
+  description: 'Decentralized funding for sustainable creator economy.',
 }
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
@@ -26,10 +26,10 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 <MSAnimatedSection delay={0.4}>
   <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/growstocks.webp" alt="GrowStocks' webapp design." />
+    <PreviewImage src="/img/devprotocol.webp" alt="Dev Protocol's landing page." />
   </div>
 
-  GrowStocks was an online price index and marketplace for Growtopia. It was founded and created by Matteu back in 2018 and maintained ownership of it up until 2020 when it was transferred to a good friend of his and colleague [Christopher Khawand](https://christopher.khawand.dev). The frontend of the application continued to be maintained through its [end of life](https://christopher.khawand.dev/posts/farewell-growstocks) in December of 2023. It featured state of the art price indexing features, reliable and optimized search, a dashboard to manage the data, a marketplace, a payment platform, and a community that was always growing. The application was proudly built using React, SCSS, and Laravel. And it gave birth to a few [open source projects](https://github.com/GrowStocks).
+  Dev Protocol is a solution for sustainability issues of creators activities, it is designed for the blockchain solution and enhance creators to grow their economy. During my time with the company we've made a lot of significant improvements with how they handle user interfaces. It gave birth to their design system, [Hashi](/tools/hashi). With its implementation, the new unified design language now spans across multiple products in the ecosystem. It also laid the foundation for their numerous products including [Niwa](https://niwa.xyz), [Clubs](https://clubs.place), and their main website.
 </MSAnimatedSection>
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
@@ -37,28 +37,31 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
       <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **GrowStocks**</li>
+        <li className="ms-list__item">Client: **FRAME00**</li>
         <li className="ms-list__item">Status: **{ WorkInfo.status }**</li>
         <li className="ms-list__item mt-sm">{ WorkInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
       </ul>
       #### Links
       <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
-        There are no links for this project.
+        <MSButton link="https://devprotocol.xyz" type="small filled">Website</MSButton>
+        <MSButton link="https://github.com/dev-protocol" type="small filled" icon={['left', <SiGithub />]}>GitHub</MSButton>
       </div>
     </div>
   </MSAnimatedSection>
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/growstocks/growstocks-item-view.webp" alt="A screen capture of the item page." />
-      <PreviewImage src="/img/growstocks/growstocks-wip.webp" alt="A screen capture of a work-in-progress GrowStocks." />
+      <PreviewImage src="/img/devprotocol/devprotocol-clubs.webp" alt="Dev Protocol's Clubs." />
+      <PreviewImage src="/img/devprotocol/devprotocol-clubs-dashboard.webp" alt="Dev Protocol's Clubs dashboard." />
+      <PreviewImage src="/img/devprotocol/devprotocol-niwa.webp" alt="Dev Protocol's Niwa." />
+      <PreviewImage src="/img/devprotocol/devprotocol-stakes-social.webp" alt="Dev Protocol's stakes.social." />
     </div>
   </MSAnimatedSection>
 </MSAnimatedSection>
 
 export default function WorkPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/growstocks.webp">
+    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/devprotocol.webp">
       <section className="py-4xl">
         <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/work" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all work</MSButton>
         {children}

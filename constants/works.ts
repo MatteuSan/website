@@ -4,8 +4,17 @@ export const works = [
     'desc': 'Decentralized funding for sustainable creator economy.',
     'media': 'devprotocol.webp',
     'link': 'https://devprotocol.xyz',
+    'slug': 'dev-protocol',
     'status': 'Active',
-    'tags': ['SCSS', 'Tailwind', 'TS', 'Vue']
+    'tags': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte']
+  },
+  {
+    'name': 'GrowStocks',
+    'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
+    'media': 'growstocks.webp',
+    'status': 'Archived',
+    'slug': 'growstocks',
+    'tags': ['SCSS', 'TS', 'React', 'PHP', 'Laravel']
   },
   {
     'name': 'Purple Cress',
@@ -21,6 +30,7 @@ export const works = [
     'desc': 'The library for making discord bots in python.',
     'media': 'pycord.webp',
     'link': 'https://pycord.dev',
+    'slug': 'pycord',
     'status': 'Active',
     'tags': ['SCSS', 'TypeScript', 'React', 'Python']
   },
@@ -29,13 +39,15 @@ export const works = [
     'desc': 'Website in celebration of the National Arts Month 2022 in RLSAA.',
     'media': 'apeers.webp',
     'link': 'https://apeer-2022.vercel.app/',
+    'slug': 'a-peers-2022',
     'status': 'Active',
     'tags': ['SCSS', 'TS', 'React']
   },
   {
-    'name': 'Luwal Sining Pagganap',
+    'name': 'Luwal Sining-Pagganap',
     'desc': 'LSP\'s main website and performance platform.',
     'media': 'luwal.webp',
+    'slug': 'luwal-sining-pagganap',
     'status': 'Archived',
     'tags': ['SCSS', 'PHP', 'Laravel']
   },
@@ -44,21 +56,14 @@ export const works = [
     'desc': 'The official documentation website for all open source SurPathHub projects.',
     'media': 'sph-docs.webp',
     'link': 'https://sph-docs.netlify.app/',
-    'status': 'Active',
-    'tags': ['SCSS', 'TS', 'React', 'Docusaurus']
-  },
-  {
-    'name': 'GrowStocks',
-    'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
-    'media': 'growstocks.webp',
     'status': 'Archived',
-    'slug': 'growstocks',
-    'tags': ['SCSS', 'TS', 'React', 'PHP', 'Laravel']
+    'tags': ['SCSS', 'TS', 'React', 'Docusaurus']
   },
   {
     'name': 'BlockCorp',
     'desc': 'The platform to order Growtopia-related services.',
     'media': 'blockcorp.webp',
+    'slug': 'blockcorp',
     'status': 'Archived',
     'tags': ['SCSS', 'Vue', 'Python', 'Flask']
   },

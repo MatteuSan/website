@@ -2,6 +2,8 @@ export const tools = [
   {
     'name': 'Sentro',
     'desc': 'A low-level SCSS library for building and managing token-driven design systems.',
+    'slug': 'sentro',
+    'status': 'Active',
     'links': {
       'docs': 'https://docs.matteusan.me/docs/sentro',
       'src': 'https://github.com/MatteuSan/sentro'
@@ -11,6 +13,7 @@ export const tools = [
   {
     'name': 'Himig',
     'desc': 'MatteuSan\'s personal design system for building user interfaces.',
+    'status': 'Active',
     'links': {
       'src': 'https://github.com/MatteuSan/himig'
     },
@@ -20,6 +23,7 @@ export const tools = [
     'name': 'Hashi',
     'desc': 'The web implementation of Dev Protocol\'s design system.',
     'slug': 'hashi',
+    'status': 'Active',
     'links': {
       'docs': 'https://hashi-docs.netlify.app',
       'src': 'https://github.com/dev-protocol/hashi',
@@ -30,6 +34,7 @@ export const tools = [
   {
     'name': 'Gaikan',
     'desc': 'An experimental library for building user interfaces made in PHP.',
+    'status': 'Hiatus',
     'links': {
       'docs': null,
       'src': 'https://github.com/TeuLabs/Gaikan'
@@ -39,6 +44,7 @@ export const tools = [
   {
     'name': 'Ugnay',
     'desc': 'SurPath Hub\'s design system implementation for the web.',
+    'status': 'Active',
     'links': {
       'docs': 'https://sph-docs.netlify.app/docs/ugnay',
       'src': 'https://github.com/SurPathHub/ugnay-components-web'

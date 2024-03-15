@@ -35,10 +35,11 @@ interface MSCardProps {
   delay?: number;
   children?: React.ReactNode;
   isArchived?: boolean;
+  status?: string;
   link?: string | null;
 }
 
-const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, isArchived, link, children }) => {
+const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, isArchived, status, link, children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const cardControl = useAnimation();
@@ -57,7 +58,7 @@ const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay,
       transition={ { duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 } }
       initial="initial"
       animate={ cardControl }
-      className={ `ms-card${ isArchived ? ' is-archived' : '' } flex flow-column jc-start` }>
+      className={ `ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start` }>
       { media &&
         <div className="ms-card__media">
           <Image width={ 1920 } height={ 1080 } src={ media } alt={ title + ` media` } loading="lazy"/>

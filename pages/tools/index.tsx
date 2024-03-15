@@ -8,10 +8,10 @@ import { stagger } from "../../lib/helpers";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 
-const itemsWithoutArchived: any = tools.filter((item) => !item.tags.includes('Archived') && !item.tags.includes('Deprecated'));
-const itemsWithArchived: any = tools.filter((item) => item.tags.includes('Archived') || item.tags.includes('Deprecated'));
+const itemsWithSlug = tools.filter((item) => item?.slug != null);
+const itemsWithoutSlug = tools.filter((item) => item?.slug == null);
 
-const cleanedItems = itemsWithoutArchived.concat(itemsWithArchived);
+const cleanedItems = itemsWithSlug.concat(itemsWithoutSlug);
 
 const ToolsPage: NextPage = () => {
   return (
@@ -31,6 +31,7 @@ const ToolsPage: NextPage = () => {
                   title={ item.name }
                   description={ item.desc }
                   tags={ item.tags }
+                  status={ item.status }
                 >
                   { item.slug ? <MSButton link={ `/tools/${ item.slug }` } type="outlined">View project details</MSButton> : null }
                   { !item.slug && item.links.src != null ? <MSButton link={ item.links.src } icon={['left', <SiGithub />]} type="outlined">Source</MSButton> : null }

@@ -6,13 +6,12 @@ import {
   PhotoIcon,
   QuestionMarkCircleIcon
 } from "@heroicons/react/24/outline";
-import { SiGithub } from "@icons-pack/react-simple-icons";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
 
 export const metadata = {
-  title: 'GrowStocks',
-  description: 'The online price index and marketplace for Growtopia.',
+  title: 'Luwal Sining-Pagganap',
+  description: 'LSP\'s main website and performance platform.',
 }
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
@@ -26,10 +25,10 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 <MSAnimatedSection delay={0.4}>
   <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/growstocks.webp" alt="GrowStocks' webapp design." />
+    <PreviewImage src="/img/luwal.webp" alt="The Luwal Sining-Pagganap website landing page." />
   </div>
 
-  GrowStocks was an online price index and marketplace for Growtopia. It was founded and created by Matteu back in 2018 and maintained ownership of it up until 2020 when it was transferred to a good friend of his and colleague [Christopher Khawand](https://christopher.khawand.dev). The frontend of the application continued to be maintained through its [end of life](https://christopher.khawand.dev/posts/farewell-growstocks) in December of 2023. It featured state of the art price indexing features, reliable and optimized search, a dashboard to manage the data, a marketplace, a payment platform, and a community that was always growing. The application was proudly built using React, SCSS, and Laravel. And it gave birth to a few [open source projects](https://github.com/GrowStocks).
+  LSP's main website and performance platform. It featured an online show catalogue, platform for online shows, artist directory, dashboard to edit information, and show scheduling.
 </MSAnimatedSection>
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
@@ -37,7 +36,7 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
       <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **GrowStocks**</li>
+        <li className="ms-list__item">Client: **Luwal Sining-Pagganap**</li>
         <li className="ms-list__item">Status: **{ WorkInfo.status }**</li>
         <li className="ms-list__item mt-sm">{ WorkInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
       </ul>
@@ -50,15 +49,16 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/growstocks/growstocks-item-view.webp" alt="A screen capture of the item page." />
-      <PreviewImage src="/img/growstocks/growstocks-wip.webp" alt="A screen capture of a work-in-progress GrowStocks." />
+      <div className="w-full h-full grid pi-center">
+        <p className="subtitle">No images to show.</p>
+      </div>
     </div>
   </MSAnimatedSection>
 </MSAnimatedSection>
 
 export default function WorkPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/growstocks.webp">
+    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/luwal.webp">
       <section className="py-4xl">
         <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/work" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all work</MSButton>
         {children}

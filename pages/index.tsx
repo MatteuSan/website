@@ -32,8 +32,16 @@ import { works } from '../constants/works';
 import Technology from "../components/Technology";
 import { stagger } from "../lib/helpers";
 
-const new_tools = tools.slice(0, 4);
-const new_works = works.slice(0, 4);
+const workItemsWithSlug = works.filter((item) => item?.slug != null);
+const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
+const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
+
+const toolsItemsWithSlug = tools.filter((item) => item?.slug != null);
+const toolsItemsWithoutSlug = tools.filter((item) => item?.slug == null);
+const toolsCleanedItems = toolsItemsWithSlug.concat(toolsItemsWithoutSlug);
+
+const new_works = workCleanedItems.slice(0, 4);
+const new_tools = toolsCleanedItems.slice(0, 4);
 
 const HomePage: NextPage = () => {
   return (
@@ -121,8 +129,10 @@ const HomePage: NextPage = () => {
                 description={ data.desc }
                 media={ `/img/` + data.media }
                 tags={ data.tags }
+                isArchived={ data.status == 'Archived' }
               >
-                { data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
+                { data.slug != null ? <MSButton link={ `/work/${data.slug}` } type="outlined">View project details</MSButton> : null }
+                { !data.slug && data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
               </MSCard>
             );
           }) }
