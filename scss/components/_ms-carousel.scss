@@ -5,7 +5,7 @@
     margin: 0 auto;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(#{5}, calc((1077px / 5) * 1.6));
+    grid-template-columns: repeat(#{5}, clamp(325px, 30vw, calc((1077px / 5) * 1.6)));
     grid-gap: 1rem;
     grid-template-rows: none;
     backdrop-filter: blur(8px);
