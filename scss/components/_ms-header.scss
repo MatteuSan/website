@@ -84,7 +84,7 @@ $header-style: 'default' !default;
         @include himig.struct-shadow('header-title', 'high');
 
         @include himig.breakpoint-create('large') {
-          --ms-header-brand-visibility: block;
+          // --ms-header-brand-visibility: block;
         }
       }
     }
