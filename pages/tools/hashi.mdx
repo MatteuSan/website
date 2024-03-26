@@ -1,9 +1,6 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-
 import { tools } from '../../constants/tools';
-import { MSAnimatedSection, MSButton, MSTag, MSTitleBar } from "../../components";
+import { MSAnimatedSection, MSButton, MSTitleBar } from "../../components";
 import {
-  ArrowLeftIcon,
   BookOpenIcon,
   PaintBrushIcon,
   PhotoIcon,
@@ -11,6 +8,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import PreviewImage from "../../components/markdown/PreviewImage";
+import Info from "../../components/markdown/Info";
+import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
   title: 'Hashi',
@@ -19,39 +18,18 @@ export const metadata = {
 
 export const ToolInfo = tools.filter(tool => tool.name === 'Hashi')[0];
 
-<MSAnimatedSection>
-  # { metadata.title }
-</MSAnimatedSection>
-<MSAnimatedSection delay={0.3}>
-  ### { metadata.description }
-</MSAnimatedSection>
+Hashi is Dev Protocol's design system. Aiming to bring a unified user experience when using Dev Protocol products, to present an elegant user interface for consumers to interact with, and to be able to create the same user interfaces regardless of any frontend framework. It powers most of the experiences in the Dev Protocol ecosystem including but not limited to: the [Dev Protocol website](https://devprotocol.xyz), [Clubs](https://clubs.place), [Niwa](https://niwa.xyz), and many more products.
 
-<MSAnimatedSection delay={0.4}>
-  <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/hashi/hashi-cover.webp" alt="Hashi's cover image." />
-  </div>
-
-  Hashi is Dev Protocol's design system. Aiming to bring a unified user experience when using Dev Protocol products, to present an elegant user interface for consumers to interact with, and to be able to create the same user interfaces regardless of any frontend framework. It powers most of the experiences in the Dev Protocol ecosystem including but not limited to: the [Dev Protocol website](https://devprotocol.xyz), [Clubs](https://clubs.place), [Niwa](https://niwa.xyz), and many more products.
-
-  It boasts a wide range of utilities, scalable component architecture, great API and developer experience, and the ability to scale the design system based on the product's own design needs. It gives you the ability to customize the global and component-level themes, create layouts, build specialized components and layouts, and more without compromise.
-</MSAnimatedSection>
+It boasts a wide range of utilities, scalable component architecture, great API and developer experience, and the ability to scale the design system based on the product's own design needs. It gives you the ability to customize the global and component-level themes, create layouts, build specialized components and layouts, and more without compromise.
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
   <MSAnimatedSection>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
-      <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **[Dev Protocol](https://devprotocol.xyz)**</li>
-        <li className="ms-list__item">Status: **{ ToolInfo.status }**</li>
-        <li className="ms-list__item mt-sm">{ ToolInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
-      </ul>
-      #### Links
-      <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
-        <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
-        <MSButton link={ToolInfo.links['figma']} icon={['left', <PaintBrushIcon />]} type="small filled">Figma</MSButton>
-        <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
-      </div>
-    </div>
+    <Info data={ ToolInfo }>
+      <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
+      <MSButton link={ToolInfo.links['figma']} icon={['left', <PaintBrushIcon />]} type="small filled">Figma</MSButton>
+      <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
+    </Info>
   </MSAnimatedSection>
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
@@ -64,11 +42,8 @@ export const ToolInfo = tools.filter(tool => tool.name === 'Hashi')[0];
 
 export default function ToolPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/hashi/hashi-cover.webp">
-      <section className="py-4xl">
-        <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/tools" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all tools</MSButton>
-        {children}
-      </section>
-    </DefaultLayout>
+    <MarkdownLayout data={ ToolInfo } metadata={ metadata } previewImage="hashi.webp" previewImageAlt="Hashi's cover image.">
+      { children }
+    </MarkdownLayout>
   );
 }

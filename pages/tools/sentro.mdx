@@ -1,16 +1,15 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-
 import { tools } from '../../constants/tools';
 import { MSAnimatedSection, MSButton, MSTag, MSTitleBar } from "../../components";
 import {
   ArrowLeftIcon,
   BookOpenIcon,
-  PaintBrushIcon,
   PhotoIcon,
   QuestionMarkCircleIcon
 } from "@heroicons/react/24/outline";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import PreviewImage from "../../components/markdown/PreviewImage";
+import MarkdownLayout from "../../layouts/MarkdownLayout";
+import Info from "../../components/markdown/Info";
 
 export const metadata = {
   title: 'Sentro',
@@ -19,36 +18,15 @@ export const metadata = {
 
 export const ToolInfo = tools.filter(tool => tool.name === metadata.title)[0];
 
-<MSAnimatedSection>
-  # { metadata.title }
-</MSAnimatedSection>
-<MSAnimatedSection delay={0.3}>
-  ### { metadata.description }
-</MSAnimatedSection>
-
-<MSAnimatedSection delay={0.4}>
-  <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/sentro/sentro.webp" alt="Sentro's cover image." />
-  </div>
-
-  Sentro is a low-level library for building token-driven design systems. It features token and key management, a way to create themeable and scalable components, helpful tools to improve the developer experiece, a way to manage themes, and create consistent and maintainable design systems.
-</MSAnimatedSection>
+Sentro is a low-level library for building token-driven design systems. It features token and key management, a way to create themeable and scalable components, helpful tools to improve the developer experiece, a way to manage themes, and create consistent and maintainable design systems.
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
   <MSAnimatedSection>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
-      <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **Matteu**</li>
-        <li className="ms-list__item">Status: **{ ToolInfo.status }**</li>
-        <li className="ms-list__item mt-sm">{ ToolInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
-      </ul>
-      #### Links
-      <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
-        <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
-        <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
-      </div>
-    </div>
+    <Info data={ ToolInfo }>
+      <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
+      <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
+    </Info>
   </MSAnimatedSection>
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
@@ -60,11 +38,8 @@ export const ToolInfo = tools.filter(tool => tool.name === metadata.title)[0];
 
 export default function ToolPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/sentro/sentro.webp">
-      <section className="py-4xl">
-        <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/tools" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all tools</MSButton>
-        {children}
-      </section>
-    </DefaultLayout>
+    <MarkdownLayout data={ ToolInfo } metadata={ metadata } previewImage="sentro/sentro.webp" previewImageAlt="Sentro's cover image.">
+      { children }
+    </MarkdownLayout>
   );
 }

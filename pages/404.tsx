@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import BlankLayout from '../layouts/BlankLayout';
-import { MSButton, MSCard } from '../components';
+import { MSButton, MSCard, MSCardFooter, MSCardHeader } from '../components';
 
 const NotFound: NextPage = () => {
   return (
@@ -9,7 +9,10 @@ const NotFound: NextPage = () => {
       <section className="absolute-center">
         <div className="page-error">
           <MSCard title="404" description="Page not found...">
-            <MSButton link="/" type="filled">Return home</MSButton>
+            <MSCardHeader title="404" subtitle="Page not found..." />
+            <MSCardFooter>
+              <MSButton link="/" type="filled">Return home</MSButton>
+            </MSCardFooter>
           </MSCard>
         </div>
       </section>

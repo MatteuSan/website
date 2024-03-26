@@ -5,10 +5,12 @@ export const tools = [
     'slug': 'sentro',
     'status': 'Active',
     'links': {
-      'docs': 'https://docs.matteusan.me/docs/sentro',
+      'docs': 'https://docs.matteusan.com/sentro',
       'src': 'https://github.com/MatteuSan/sentro'
     },
-    'tags': ['SCSS']
+    'tech': ['SCSS'],
+    'tags': ['Library', 'Design System', 'Open Source'],
+    'duration': [2020, 'Present']
   },
   {
     'name': 'Himig',
@@ -17,7 +19,9 @@ export const tools = [
     'links': {
       'src': 'https://github.com/MatteuSan/himig'
     },
-    'tags': ['SCSS', 'TypeScript']
+    'tech': ['SCSS', 'TypeScript'],
+    'tags': ['Design System', 'Open Source'],
+    'duration': [2020, 'Present']
   },
   {
     'name': 'Hashi',
@@ -29,7 +33,9 @@ export const tools = [
       'src': 'https://github.com/dev-protocol/hashi',
       'figma': 'https://www.figma.com/community/file/1289131280114725916',
     },
-    'tags': ['SCSS', 'TypeScript']
+    'tech': ['SCSS', 'TypeScript'],
+    'tags': ['Design System', 'Open Source'],
+    'duration': [2021, 'Present']
   },
   {
     'name': 'Gaikan',
@@ -39,7 +45,9 @@ export const tools = [
       'docs': null,
       'src': 'https://github.com/TeuLabs/Gaikan'
     },
-    'tags': ['PHP', 'TypeScript']
+    'tech': ['PHP', 'TypeScript'],
+    'tags': ['Library', 'Open Source'],
+    'duration': [2020, 2021]
   },
   {
     'name': 'Ugnay',
@@ -49,6 +57,8 @@ export const tools = [
       'docs': 'https://sph-docs.netlify.app/docs/ugnay',
       'src': 'https://github.com/SurPathHub/ugnay-components-web'
     },
-    'tags': ['SCSS', 'TypeScript']
+    'tech': ['SCSS', 'TypeScript'],
+    'tags': ['Design System', 'Open Source'],
+    'duration': [2020]
   },
 ];

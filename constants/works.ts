@@ -6,7 +6,9 @@ export const works = [
     'link': 'https://devprotocol.xyz',
     'slug': 'dev-protocol',
     'status': 'Active',
-    'tags': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte']
+    'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
+    'tags': ['Website', 'Open Source'],
+    'duration': [2021, 2024],
   },
   {
     'name': 'GrowStocks',
@@ -14,7 +16,9 @@ export const works = [
     'media': 'growstocks.webp',
     'status': 'Archived',
     'slug': 'growstocks',
-    'tags': ['SCSS', 'TS', 'React', 'PHP', 'Laravel']
+    'tech': ['SCSS', 'TS', 'React', 'PHP', 'Laravel'],
+    'tags': ['Web App'],
+    'duration': [2018, 2023]
   },
   {
     'name': 'Purple Cress',
@@ -23,7 +27,9 @@ export const works = [
     'slug': 'purple-cress',
     'link': 'https://github.com/PurpleCress/website',
     'status': 'Archived',
-    'tags': ['SCSS', 'TS', 'Vue', 'Firebase']
+    'tech': ['SCSS', 'TS', 'Vue', 'Firebase'],
+    'tags': ['Web App'],
+    'duration': [2021, 2022]
   },
   {
     'name': 'Pycord',
@@ -32,7 +38,9 @@ export const works = [
     'link': 'https://pycord.dev',
     'slug': 'pycord',
     'status': 'Active',
-    'tags': ['SCSS', 'TypeScript', 'React', 'Python']
+    'tech': ['SCSS', 'TypeScript', 'React', 'Python'],
+    'tags': ['Website', 'Open Source'],
+    'duration': [2022]
   },
   {
     'name': 'A-PEERS 2022',
@@ -41,7 +49,9 @@ export const works = [
     'link': 'https://apeer-2022.vercel.app/',
     'slug': 'a-peers-2022',
     'status': 'Active',
-    'tags': ['SCSS', 'TS', 'React']
+    'tech': ['SCSS', 'TS', 'React'],
+    'tags': ['Website'],
+    'duration': [2022]
   },
   {
     'name': 'Luwal Sining-Pagganap',
@@ -49,7 +59,9 @@ export const works = [
     'media': 'luwal.webp',
     'slug': 'luwal-sining-pagganap',
     'status': 'Archived',
-    'tags': ['SCSS', 'PHP', 'Laravel']
+    'tech': ['SCSS', 'PHP', 'Laravel'],
+    'tags': ['Web App'],
+    'duration': [2020, 2022]
   },
   {
     'name': 'SurPathHub Documentation Site',
@@ -57,7 +69,9 @@ export const works = [
     'media': 'sph-docs.webp',
     'link': 'https://sph-docs.netlify.app/',
     'status': 'Archived',
-    'tags': ['SCSS', 'TS', 'React', 'Docusaurus']
+    'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
+    'tags': ['Website', 'Open Source'],
+    'duration': [2021]
   },
   {
     'name': 'BlockCorp',
@@ -65,6 +79,8 @@ export const works = [
     'media': 'blockcorp.webp',
     'slug': 'blockcorp',
     'status': 'Archived',
-    'tags': ['SCSS', 'Vue', 'Python', 'Flask']
+    'tech': ['SCSS', 'Vue', 'Python', 'Flask'],
+    'tags': ['Web App'],
+    'duration': [2020, 2021]
   },
 ];

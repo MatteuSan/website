@@ -22,6 +22,7 @@
  */
 
 import React from 'react';
+import Link from "next/link";
 
 interface MSFooterProps {
   title: string;
@@ -37,6 +38,7 @@ const MSFooter: React.FC<MSFooterProps> = ({ title, version, author }) => {
         { version && <span className="ms-footer__version">v{ version }</span> }
       </h3>
       <p className="ms-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
+      <small className="small">Prefer a printed format? Here's <Link className="ink-accent-400" style={{ textDecoration: 'underline' }} href="/resume" rel="noopener noreferrer">my resume</Link>.</small>
     </footer>
   );
 };

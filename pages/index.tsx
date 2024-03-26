@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Image from "next/image";
 import DefaultLayout from '../layouts/DefaultLayout';
 
-import { MSAnimatedSection, MSButton, MSCard, MSTitleBar } from '../components';
+import {
+  MSAnimatedSection,
+  MSButton,
+  MSCard,
+  MSCardContent,
+  MSCardFooter,
+  MSCardHeader, MSInfoCard,
+  MSTitleBar
+} from '../components';
 
 import {
   SiHtml5,
@@ -23,14 +31,12 @@ import {
   ArrowRightIcon,
   BriefcaseIcon,
   CodeBracketSquareIcon, EnvelopeIcon,
-  InformationCircleIcon,
-  DocumentIcon, QuestionMarkCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon, BookOpenIcon
+  InformationCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon
 } from "@heroicons/react/24/outline";
 
 import { tools } from '../constants/tools';
 import { works } from '../constants/works';
 import Technology from "../components/Technology";
-import { stagger } from "../lib/helpers";
 
 const workItemsWithSlug = works.filter((item) => item?.slug != null);
 const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
@@ -44,6 +50,8 @@ const new_works = workCleanedItems.slice(0, 4);
 const new_tools = toolsCleanedItems.slice(0, 4);
 
 const HomePage: NextPage = () => {
+  const [cardCount, setCardCount] = useState(1)
+
   return (
     <DefaultLayout title="HOME" heroTitle="MatteuSan"
                    heroSubtitle="UX Engineer. Creating bridges from software to user."
@@ -53,11 +61,10 @@ const HomePage: NextPage = () => {
         <div className="flex flow-column jc-center start-1 end-1 @large:end-2">
           <MSTitleBar icon={ <InformationCircleIcon /> }>About me</MSTitleBar>
           {/* eslint-disable-next-line react/no-unescaped-entities */ }
-          <p className="mt-sm">I'm a UX Engineer based in the Philippines, and I build bridges from software to user. With a keen focus
-            on <span className="highlight">user-centered design</span> principles and profeciency in <span
-              className="highlight">frontend development</span> and design, I excel at creating
-            intuitive interfaces through a <span className="highlight">multi-disciplinary approach</span> that enhance usability and drive business
-            success.
+          <p className="mt-sm">
+            I'm a UX Engineer based in the Philippines, and I build bridges from software to user. I create <span
+            className="highlight">beautiful</span> and <span className="highlight">intuitive interfaces</span> for the web, making it <span
+            className="highlight">accessible</span> to all and curating <span className="highlight">delightful experiences</span>.
           </p>
         </div>
         <div className="picture-frame start-1 end-1 @large:start-3 @large:end-3">
@@ -87,108 +94,106 @@ const HomePage: NextPage = () => {
               className="highlight">project management</span>, collaboration, and the development and management
             of <span
               className="highlight">design systems</span> and even in <span
-              className="highlight">open-source software</span>. <br/> <br/> I prioritize selecting technologies
-            tailored
-            to address specific challenges and to deliver optimal solutions. While flexibility is key, here are some of
-            the
-            technologies I keep in my toolbelt. Ensuring <span
-              className="highlight">reliability</span>, <span className="highlight">scalability</span>, and <span
-              className="highlight">efficiency</span> in every project endeavor. </p>
-          {/*<HCTitleBar icon={ <ComputerDesktopIcon/> }>Use of technology</HCTitleBar>*/ }
+              className="highlight">open-source software</span>. </p>
         </div>
       </MSAnimatedSection>
 
       <MSAnimatedSection id="stuff-i-do" className="start-1 end-4 mb-2xl @large:end-12 @large:mb-6xl">
         <MSTitleBar icon={<BriefcaseIcon />}>Stuff I do</MSTitleBar>
-        <div className="grid cols-1 @medium:cols-2 gap-lg mt-md">
-          <MSCard title="Projects"
-                  description="If you are interested in taking a look on what I've been working on lately, my most recent projects should located below and in the projects page."
-                  tags={ ['Web Apps', 'Websites', 'Design Systems'] }>
-            <MSButton type="filled" link="#projects">Projects</MSButton>
+        <p className="mt-sm mb-md">Here are a few of the things I can do...</p>
+        <div className="grid cols-1 @medium:cols-2 gap-lg mt-lg" style={ { maxWidth: '877px' } }>
+          <ul className="services-list">
+            <li
+              className={ `services-list__item family-title size-xl weight-body${ cardCount == 1 ? ' is-active' : '' }` }
+              onClick={ () => setCardCount(1) }>Web Apps
+            </li>
+            <li
+              className={ `services-list__item family-title size-xl weight-body${ cardCount == 2 ? ' is-active' : '' }` }
+              onClick={ () => setCardCount(2) }>Websites
+            </li>
+            <li
+              className={ `services-list__item family-title size-xl weight-body${ cardCount == 3 ? ' is-active' : '' }` }
+              onClick={ () => setCardCount(3) }>Design Systems
+            </li>
+            <li
+              className={ `services-list__item family-title size-xl weight-body${ cardCount == 4 ? ' is-active' : '' }` }
+              onClick={ () => setCardCount(4) }>Open Source
+            </li>
+          </ul>
+          <MSCard style={ cardCount == 1 ? {} : { display: 'none' } } delay={ 0.4 }>
+            <MSCardHeader title="Web Apps" />
+            <MSCardContent>
+              I design and develop intuitive interfaces and create delightful experiences for software products hosted on the web.
+            </MSCardContent>
+            <MSCardFooter>
+              <MSButton type="filled" link="/work">See examples</MSButton>
+            </MSCardFooter>
           </MSCard>
-          <MSCard title="Open Source" delay={0.4}
-                  description="I absolutely love doing open source projects! You can check out and use the tools I've been developing and open-sourcing the past few months below and in the tools page.">
-            <MSButton type="filled" link="#tools">Open Source Tools</MSButton>
+          <MSCard style={ cardCount == 2 ? {} : { display: 'none' } } delay={ 0.4 }>
+            <MSCardHeader title="Websites" />
+            <MSCardContent>
+              Sort of the same thing I do for web apps... but this time for content-driven websites!
+            </MSCardContent>
+            <MSCardFooter>
+              <MSButton type="filled" link="/work">See examples</MSButton>
+            </MSCardFooter>
+          </MSCard>
+          <MSCard style={ cardCount == 3 ? {} : { display: 'none' } } delay={ 0.4 }>
+            <MSCardHeader title="Design Systems" />
+            <MSCardContent>
+              I build custom tools that govern interfaces from design to development across an ecosystem of products to unify experiences, and increase designer and developer productivity.
+            </MSCardContent>
+            <MSCardFooter>
+              <MSButton type="filled" link="/tools">See examples</MSButton>
+            </MSCardFooter>
+          </MSCard>
+          <MSCard style={ cardCount == 4 ? {} : { display: 'none' } } delay={ 0.4 }>
+            <MSCardHeader title="Open Source" />
+            <MSCardContent>
+              I absolutely love doing open source projects! I open source most of my concept projects and also the tools that I use on an everyday basis.
+            </MSCardContent>
+            <MSCardFooter>
+              <MSButton type="filled" link="/tools">See examples</MSButton>
+            </MSCardFooter>
           </MSCard>
         </div>
       </MSAnimatedSection>
 
       <MSAnimatedSection className="content-section @large:start-1 @large:end-4 start-1 end-12">
-        <MSTitleBar icon={<StarIcon />}>Featured works</MSTitleBar>
+        <MSTitleBar icon={ <StarIcon/> }>Featured works</MSTitleBar>
         <div className="ms-carousel mt-md" id="projects">
-          {/*<div className="ms-carousel__start">
-            Swipe left
-            →
-          </div>*/}
-          { new_works.map((data, key) => {
+          { new_works.map((item, key) => {
             return (
-              <MSCard
-                delay={0.1 + stagger(key, 0.1)}
-                key={ key }
-                title={ data.name }
-                description={ data.desc }
-                media={ `/img/` + data.media }
-                tags={ data.tags }
-                status={ data.status }
-              >
-                { data.slug != null ? <MSButton link={ `/work/${data.slug}` } type="outlined">View project details</MSButton> : null }
-                { !data.slug && data.link != null ? <MSButton link={ data.link } type="outlined">Visit</MSButton> : null }
-              </MSCard>
+              <MSInfoCard key={ key } reference={ key } item={ item } linkBase="work"/>
             );
           }) }
           <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all works</MSButton>
-          {/*<div className="ms-carousel__start">
-            ←
-            Swipe right
-          </div>*/}
         </div>
       </MSAnimatedSection>
 
       <MSAnimatedSection className="content-section @large:start-1 @large:end-4 start-1 end-12">
         <MSTitleBar icon={<WrenchScrewdriverIcon />}>Featured tools</MSTitleBar>
         <div className="ms-carousel mt-md" id="tools">
-          { new_tools.map((data, key) => {
+          { new_tools.map((item, key) => {
             return (
-              <MSCard
-                delay={0.1 + stagger(key, 0.1)}
-                key={ key }
-                title={ data.name }
-                description={ data.desc }
-                tags={ data.tags }
-                status={ data.status }
-              >
-                { data.slug ? <MSButton link={ `/tools/${ data.slug }` } type="outlined">View project details</MSButton> : null }
-                { !data.slug && data.links.src != null ? <MSButton link={ data.links.src } icon={['left', <SiGithub />]} type="outlined">Source</MSButton> : null }
-                { !data.slug && data.links.docs != null ? <MSButton link={ data.links.docs } icon={['left', <BookOpenIcon />]} type="outlined">Docs</MSButton> : null }
-              </MSCard>
+              <MSInfoCard key={ key } reference={ key } item={ item } linkBase="tools"/>
             );
           }) }
           <MSButton link="/tools" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all tools</MSButton>
         </div>
       </MSAnimatedSection>
 
-      <MSAnimatedSection className="grid cols-1 gap-xl mb-3xl @medium:cols-2 @large:mt-3xl @large:mb-6xl">
-        <MSAnimatedSection id="ready-to-collaborate">
-          <MSTitleBar typePreset="subtitle family-supertitle weight-supertitle" icon={<QuestionMarkCircleIcon />}>Need more info?</MSTitleBar>
-          <p style={ { margin: '1rem 0' } }>More of me and my work can be found in my resume and in my GitHub page. The
-            buttons below should take you there.</p>
-          <div className="flex flow-row gap-md jc-center mt-lg">
-            <MSButton type="filled" icon={ ['left', <DocumentIcon />] } link="/resume"
-                      isDisabled>Resume</MSButton>
-            <MSButton type="filled" icon={ ['left', <SiGithub />] } link="https://github.com/MatteuSan" isDisabled>GitHub</MSButton>
-          </div>
-        </MSAnimatedSection>
+      <MSAnimatedSection className="grid pi-center @large:mt-3xl @large:mb-6xl">
         <MSAnimatedSection delay={0.4} id="ready-to-collaborate">
-          <MSTitleBar typePreset="subtitle family-supertitle weight-supertitle" icon={<PhoneIcon />}>Ready to make the leap?</MSTitleBar>
-          <p style={ { margin: '1rem 0' } }>I'd be delighted to work on your project! Just click any of the contact buttons  below and we'll keep in touch :)</p>
+          <MSTitleBar typePreset="subtitle family-supertitle" icon={<PhoneIcon />}>Ready to make the leap?</MSTitleBar>
+          <p style={ { margin: '1rem 0' } }>I'd be delighted to work on your project! Just click any of the contact buttons below and we'll keep in touch :)</p>
           <div className="flex flow-row gap-md jc-center mt-lg">
             <MSButton type="filled" icon={ ['left', <EnvelopeIcon />] } link="mailto:matt@matteusan.com"
                       isDisabled>Email</MSButton>
-            <MSButton type="filled" icon={ ['left', <SiLinkedin />] } link="https://linkedin.com/matteu.san" isDisabled>LinkedIn</MSButton>
+            <MSButton type="filled" icon={ ['left', <SiLinkedin />] } link="/linkedin" isDisabled>LinkedIn</MSButton>
           </div>
         </MSAnimatedSection>
       </MSAnimatedSection>
-
     </DefaultLayout>
   );
 };

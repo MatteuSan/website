@@ -20,12 +20,12 @@
  *  SOFTWARE.
  */
 
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 
 type NativeButtonTypes = 'button' | 'submit' | 'reset' | undefined;
 
-interface HCButtonProps {
+interface HCButtonProps extends ComponentPropsWithoutRef<any> {
   label?: string;
   icon?: [string, React.ReactNode];
   type?: string;

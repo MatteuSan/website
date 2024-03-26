@@ -23,7 +23,7 @@
 
 import MSAnimatedSection from './MSAnimatedSection';
 import MSButton from './MSButton';
-import MSCard from './MSCard';
+import { MSCard, MSCardHeader, MSCardContent, MSCardFooter, MSCardMedia} from './MSCard';
 import MSFooter from './MSFooter';
 import MSHeader from './MSHeader';
 import MSHero from './MSHero';
@@ -35,6 +35,10 @@ export {
   MSAnimatedSection,
   MSButton,
   MSCard,
+  MSCardHeader,
+  MSCardContent,
+  MSCardFooter,
+  MSCardMedia,
   MSFooter,
   MSHeader,
   MSHero,
@@ -44,3 +48,4 @@ export {
   MSTag,
   MSTitleBar
 };
+export { MSInfoCard } from "./cards/MSInfoCard";

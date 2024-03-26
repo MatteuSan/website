@@ -1,13 +1,11 @@
-import DefaultLayout from "../../layouts/DefaultLayout";
-
-import { MSAnimatedSection, MSButton, MSTag, MSTitleBar } from "../../components";
+import { MSAnimatedSection, MSTitleBar } from "../../components";
 import {
-  ArrowLeftIcon,
   PhotoIcon,
   QuestionMarkCircleIcon
 } from "@heroicons/react/24/outline";
-import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
+import Info from "../../components/markdown/Info";
+import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
   title: 'BlockCorp',
@@ -16,35 +14,14 @@ export const metadata = {
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
-<MSAnimatedSection>
-  # { metadata.title }
-</MSAnimatedSection>
-<MSAnimatedSection delay={0.3}>
-  ### { metadata.description }
-</MSAnimatedSection>
-
-<MSAnimatedSection delay={0.4}>
-  <div className="w-full h-full max-h-md r-lg my-md" style={{ overflow: 'hidden'}}>
-    <PreviewImage src="/img/blockcorp.webp" alt="Blockcorp's landing page." />
-  </div>
-
-  The platform to order Growtopia-related services.
-</MSAnimatedSection>
+The platform to order Growtopia-related services.
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
   <MSAnimatedSection>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md" style={{ height: 'max-content' }}>
-      <ul className="ms-list mb-md">
-        <li className="ms-list__item">Client: **BlockCorp**</li>
-        <li className="ms-list__item">Status: **{ WorkInfo.status }**</li>
-        <li className="ms-list__item mt-sm">{ WorkInfo.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }</li>
-      </ul>
-      #### Links
-      <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
-        There are no links for this project.
-      </div>
-    </div>
+    <Info data={ WorkInfo }>
+      There are no links for this project.
+    </Info>
   </MSAnimatedSection>
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
@@ -58,11 +35,8 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 export default function WorkPage({ children }) {
   return (
-    <DefaultLayout title={metadata.title} description={metadata.description} previewImage="/img/blockcorp.webp">
-      <section className="py-4xl">
-        <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' }} link="/work" type="small" icon={['left', <ArrowLeftIcon />]}>Back to all work</MSButton>
-        {children}
-      </section>
-    </DefaultLayout>
+    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="blockcorp.webp" previewImageAlt="Blockcorp's landing page.">
+      { children }
+    </MarkdownLayout>
   );
 }
