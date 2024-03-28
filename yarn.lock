@@ -65,13 +65,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/himig@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "@matteusan/himig@npm:1.4.1"
+"@matteusan/himig@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "@matteusan/himig@npm:1.5.1"
   dependencies:
     "@matteusan/pintig": 1.4.0
     "@matteusan/sentro": 0.1.25
-  checksum: 68c41996e1c31d0a73c6f2d5510cb55fa49abf3602333727a098103e4e2fcb6879bddec28f4d909a690e565b1c60929a5f6843760b14b2fcd4c388df0f714b67
+  checksum: abcfc38d1b92310e6e2f2ccfab47f5c7912e14afe77d6a5b341216c55e0c3c5c6ac6b05fd78dae9283125f3582f36f97710bbc7c464612d18a05fc1bce571811
   languageName: node
   linkType: hard
 
@@ -1492,7 +1492,7 @@ __metadata:
   dependencies:
     "@heroicons/react": ^2.1.1
     "@icons-pack/react-simple-icons": ^9.3.0
-    "@matteusan/himig": ^1.4.1
+    "@matteusan/himig": ^1.5.1
     "@matteusan/sentro": 0.1.25
     "@mdx-js/loader": ^3.0.1
     "@mdx-js/react": ^3.0.1
