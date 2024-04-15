@@ -120,7 +120,7 @@ const HomePage: NextPage = () => {
               onClick={ () => setCardCount(4) }>Open Source
             </li>
           </ul>
-          <MSCard style={ cardCount == 1 ? {} : { display: 'none' } } delay={ 0.4 }>
+          <MSCard style={ cardCount == 1 ? {} : { display: 'none' } }>
             <MSCardHeader title="Web Apps" />
             <MSCardContent>
               I design and develop intuitive interfaces and create delightful experiences for software products hosted on the web.
@@ -129,7 +129,7 @@ const HomePage: NextPage = () => {
               <MSButton type="filled" link="/work">See examples</MSButton>
             </MSCardFooter>
           </MSCard>
-          <MSCard style={ cardCount == 2 ? {} : { display: 'none' } } delay={ 0.4 }>
+          <MSCard style={ cardCount == 2 ? {} : { display: 'none' } }>
             <MSCardHeader title="Websites" />
             <MSCardContent>
               Sort of the same thing I do for web apps... but this time for content-driven websites!
@@ -138,7 +138,7 @@ const HomePage: NextPage = () => {
               <MSButton type="filled" link="/work">See examples</MSButton>
             </MSCardFooter>
           </MSCard>
-          <MSCard style={ cardCount == 3 ? {} : { display: 'none' } } delay={ 0.4 }>
+          <MSCard style={ cardCount == 3 ? {} : { display: 'none' } }>
             <MSCardHeader title="Design Systems" />
             <MSCardContent>
               I build custom tools that govern interfaces from design to development across an ecosystem of products to unify experiences, and increase designer and developer productivity.
@@ -147,7 +147,7 @@ const HomePage: NextPage = () => {
               <MSButton type="filled" link="/tools">See examples</MSButton>
             </MSCardFooter>
           </MSCard>
-          <MSCard style={ cardCount == 4 ? {} : { display: 'none' } } delay={ 0.4 }>
+          <MSCard style={ cardCount == 4 ? {} : { display: 'none' } }>
             <MSCardHeader title="Open Source" />
             <MSCardContent>
               I absolutely love doing open source projects! I open source most of my concept projects and also the tools that I use on an everyday basis.
