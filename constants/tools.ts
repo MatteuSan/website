@@ -5,7 +5,7 @@ export const tools = [
     'slug': 'sentro',
     'status': 'Active',
     'links': {
-      'docs': 'https://docs.matteusan.com/sentro',
+      'docs': 'https://sentro.matteusan.com',
       'src': 'https://github.com/MatteuSan/sentro'
     },
     'tech': ['SCSS'],
