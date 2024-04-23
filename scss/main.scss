@@ -22,7 +22,7 @@
     400: #3d3838,
     600: #211f1f,
     800: #171111,
-    ink: #fff
+    'ink': #fff
   ),
   $surface: (
     200: #948b8b,
@@ -30,7 +30,7 @@
     400: #3d3838,
     600: #211f1f,
     800: #171111,
-    ink: #fff
+    'ink': #fff
   ),
   $supertitle: (
     'family': 'family.serif',
@@ -58,6 +58,15 @@
     'transition-time': 0.2s
   )
 ) {
+  #__next {
+    overflow-x: clip;
+  }
+
+  html {
+    scroll-padding-block-start: calc(55px + 2em);
+    scroll-behavior: smooth;
+  }
+
   main.content-wrap {
     width: calc(100% - 50px) !important;
   }
