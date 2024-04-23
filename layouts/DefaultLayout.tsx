@@ -16,10 +16,6 @@ interface DefaultLayoutProps {
   title: string;
   description?: string;
   hasHero?: boolean;
-  hasHeroAction?: boolean;
-  heroTitle?: string;
-  heroSubtitle?: string;
-  heroAction?: any;
   previewImage?: string;
   children: React.ReactNode;
 }
@@ -30,7 +26,15 @@ const ogImageMap = {
   'tools': '/img/og-image-tools.webp',
 };
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, heroTitle, heroSubtitle, heroAction, previewImage, children }) => {
+export const MainContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <main className="content-wrap">
+      { children }
+    </main>
+  );
+}
+
+export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
@@ -84,13 +88,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHe
           </MSNavbar>
         </>
       } isScrollable={hasHero} />
-      { hasHero && heroTitle && heroSubtitle ? <MSHero title={ heroTitle } subtitle={ heroSubtitle } action={ heroAction } /> : null}
-      <main className="content-wrap">
-        { children }
-      </main>
+      { children }
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />
     </>
   );
 };
-
-export default DefaultLayout;
