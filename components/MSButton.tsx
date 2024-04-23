@@ -22,6 +22,7 @@
 
 import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
+import { UrlObject } from "node:url";
 
 type NativeButtonTypes = 'button' | 'submit' | 'reset' | undefined;
 
@@ -30,7 +31,7 @@ interface HCButtonProps extends ComponentPropsWithoutRef<any> {
   icon?: [string, React.ReactNode];
   type?: string;
   nativeType?: NativeButtonTypes;
-  link?: string | null;
+  link?: string | UrlObject | null;
   isDisabled?: boolean;
   isSubmit?: boolean;
   isReset?: boolean;
@@ -70,7 +71,7 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
     );
   }
 
-  const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
+  const isLinkExternal: boolean = (typeof link == 'string' ? link.startsWith('http://') || link.startsWith('https://') : false);
 
   return (
     <Link {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
