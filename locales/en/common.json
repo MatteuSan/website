@@ -1,0 +1,15 @@
+{
+  "matteusan": "MatteuSan",
+  "home": "Home",
+  "work": "Work",
+  "tools": "Tools",
+  "blog": "Blog",
+  "hero": {
+    "home_title": "MatteuSan",
+    "home_subtitle": "UX Engineer. Building bridges from software to user.",
+    "work_title": "Work",
+    "work_subtitle": "Projects made for clients, and for myself :)",
+    "tools_title": "Tools",
+    "tools_subtitle": "Empowering teams (and you!) to build better user experiences."
+  }
+}
