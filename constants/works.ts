@@ -11,6 +11,16 @@ export const works = [
     'duration': [2021, 2024],
   },
   {
+    'name': 'wearecoral',
+    'desc': 'Support the artists and music scenes you love.',
+    'media': 'wearecoral/wearecoral-conversion.webp',
+    'slug': 'wearecoral',
+    'status': 'Active',
+    'tech': ['Figma', 'React', 'Tailwind'],
+    'tags': ['Design', 'Development', 'Web App'],
+    'duration': [2024, 'Present']
+  },
+  {
     'name': 'GrowStocks',
     'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
     'media': 'growstocks.webp',

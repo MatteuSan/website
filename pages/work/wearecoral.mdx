@@ -1,0 +1,45 @@
+import { MSAnimatedSection, MSButton, MSTitleBar } from "../../components";
+import {
+  PhotoIcon,
+  QuestionMarkCircleIcon
+} from "@heroicons/react/24/outline";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import PreviewImage from "../../components/markdown/PreviewImage";
+import { works } from "../../constants/works";
+import Info from "../../components/markdown/Info";
+import MarkdownLayout from "../../layouts/MarkdownLayout";
+
+export const metadata = {
+  title: 'wearecoral',
+  description: 'Support the artists and music scenes you love.',
+}
+
+export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
+
+Coral is an innovative crowdfunding platform dedicated to nurturing the musicians and scenes we love. Monthly pledges are dispersed among various musicians through user-led allocation models, creating meaningful impact not only for individual artists but also within the music communities we're passionate about.
+
+### What did I do?
+I designed and implemented the conversion pages. The experience was carefully crafted, so it takes the users on a journey from the surface to the thriving ecosystem of corals below. The pages were designed to be responsive, accessible, beautiful, and delightful to use.
+
+<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <MSAnimatedSection>
+    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
+    <Info data={ WorkInfo }>
+      <MSButton link="https://www.wearecoral.org/" type="small filled">Website</MSButton>
+    </Info>
+  </MSAnimatedSection>
+  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
+    <div className="w-full grid cols-1 gap-md mt-md">
+      <PreviewImage src="/img/wearecoral/wearecoral-conversion.webp" alt="The wearecoral conversion page." />
+    </div>
+  </MSAnimatedSection>
+</MSAnimatedSection>
+
+export default function WorkPage({ children }) {
+  return (
+    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="wearecoral/wearecoral-conversion.webp" previewImageAlt="The wearecoral conversion page.">
+      { children }
+    </MarkdownLayout>
+  );
+}
