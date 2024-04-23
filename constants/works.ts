@@ -7,7 +7,7 @@ export const works = [
     'slug': 'dev-protocol',
     'status': 'Active',
     'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
-    'tags': ['Website', 'Open Source'],
+    'tags': ['Development', 'Website', 'Open Source'],
     'duration': [2021, 2024],
   },
   {
@@ -17,7 +17,7 @@ export const works = [
     'status': 'Archived',
     'slug': 'growstocks',
     'tech': ['SCSS', 'TS', 'React', 'PHP', 'Laravel'],
-    'tags': ['Web App'],
+    'tags': ['Design', 'Development', 'Web App'],
     'duration': [2018, 2023]
   },
   {
@@ -28,7 +28,7 @@ export const works = [
     'link': 'https://github.com/PurpleCress/website',
     'status': 'Archived',
     'tech': ['SCSS', 'TS', 'Vue', 'Firebase'],
-    'tags': ['Web App'],
+    'tags': ['Design', 'Development', 'Web App'],
     'duration': [2021, 2022]
   },
   {
@@ -39,7 +39,7 @@ export const works = [
     'slug': 'pycord',
     'status': 'Active',
     'tech': ['SCSS', 'TypeScript', 'React', 'Python'],
-    'tags': ['Website', 'Open Source'],
+    'tags': ['Development', 'Website', 'Open Source'],
     'duration': [2022]
   },
   {
@@ -50,7 +50,7 @@ export const works = [
     'slug': 'a-peers-2022',
     'status': 'Active',
     'tech': ['SCSS', 'TS', 'React'],
-    'tags': ['Website'],
+    'tags': ['Design', 'Development', 'Website'],
     'duration': [2022]
   },
   {
@@ -60,7 +60,7 @@ export const works = [
     'slug': 'luwal-sining-pagganap',
     'status': 'Archived',
     'tech': ['SCSS', 'PHP', 'Laravel'],
-    'tags': ['Web App'],
+    'tags': ['Design', 'Development', 'Web App'],
     'duration': [2020, 2022]
   },
   {
@@ -70,7 +70,7 @@ export const works = [
     'link': 'https://sph-docs.netlify.app/',
     'status': 'Archived',
     'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
-    'tags': ['Website', 'Open Source'],
+    'tags': ['Development', 'Website', 'Open Source'],
     'duration': [2021]
   },
   {
@@ -80,7 +80,7 @@ export const works = [
     'slug': 'blockcorp',
     'status': 'Archived',
     'tech': ['SCSS', 'Vue', 'Python', 'Flask'],
-    'tags': ['Web App'],
+    'tags': ['Development', 'Web App'],
     'duration': [2020, 2021]
   },
 ];
