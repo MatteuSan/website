@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
-import DefaultLayout from '../../layouts/DefaultLayout';
-import { MSInfoCard } from '../../components';
+import { DefaultLayout, MainContent } from '../../layouts/DefaultLayout';
+import { MSHero, MSInfoCard } from '../../components';
 
 import { tools } from '../../constants/tools';
 import { useRouter } from "next/router";
@@ -54,6 +54,38 @@ const ToolsPage: NextPage = () => {
           </>
         </div>
       </section>
+    <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better user experiences." hasHero>
+      <MSHero title="Tools" subtitle="Empowering teams (and you!) to build better user experiences." />
+      <MainContent>
+        <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
+          <h3 className="subtitle">
+            { filteredItems.length != 0 ? `Found ${ filteredItems.length } ${ filteredItems.length >= 2 ? 'items' : 'item' }.` : (
+              <span style={ { color: 'rgba(0,0,0,0)' } } aria-hidden="true">Hidden text</span>) }
+          </h3>
+          <label className="ms-select-field" style={ { maxWidth: 'max-content' } }>
+              <option value="all">Filter</option>
+              { validToolTags.map((tag, key) => (
+                <option key={ key } value={ tag }>{ tag }</option>
+              )) }
+            </select>
+          </label>
+        </section>
+        <section className="content-section">
+          <div className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
+            <>
+              { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
+                return (
+                  <MSInfoCard key={ key } reference={ key } item={ item } linkBase="tools"/>
+                );
+              }) : (
+                <div className="grid pi-center p-2xl border-xs start-1 end-3">
+                  <p className="subtitle">No items found.</p>
+                </div>
+              ) }
+            </>
+          </div>
+        </section>
+      </MainContent>
     </DefaultLayout>
   );
 };
