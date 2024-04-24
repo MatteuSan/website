@@ -15,6 +15,20 @@ interface MarkdownLayoutProps {
   children?: React.ReactNode | string;
 }
 
+export const MarkDownHeader: React.FC<{ title: string, description: string, small?: string }> = ({ title, description, small }) => {
+  return (
+    <>
+      <MSAnimatedSection>
+        <h1 className="supertitle">{ title } { small ? <small
+          className="small">{ small }</small> : 'null' }</h1>
+      </MSAnimatedSection>
+      <MSAnimatedSection delay={ 0.3 }>
+        <h2 className="subtitle">{ description }</h2>
+      </MSAnimatedSection>
+    </>
+  );
+}
+
 const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, description, previewImage, previewImageAlt, children }) => {
   return (
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/${previewImage}` }>
@@ -34,7 +48,9 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, descrip
               <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
             </div>
           </MSAnimatedSection>
-          { children }
+          <section className="ms-markdown">
+            { children }
+          </section>
         </section>
       </MainContent>
     </DefaultLayout>
