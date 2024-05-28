@@ -8,7 +8,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'jp'],
     defaultLocale: 'en',
-    localeDetection: true,
+    localeDetection: false,
   },
   async redirects() {
     return [
