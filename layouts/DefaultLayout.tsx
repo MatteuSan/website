@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import {
   MSHeader,
-  MSHero,
   MSNavbar,
   HCNavbarTrigger,
   HCNavbarItem,
