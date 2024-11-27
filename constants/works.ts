@@ -11,6 +11,17 @@ export const works = [
     'duration': [2021, 2024],
   },
   {
+    'name': 'INM Audio',
+    'desc': 'Proudly Philippine-built custom in-ear monitors.',
+    'media': 'inmaudio.webp',
+    'link': 'https://inmaudio.com',
+    'slug': 'inm-audio',
+    'status': 'Active',
+    'tech': ['SCSS', 'TS', 'React'],
+    'tags': ['Design', 'Development', 'Web App'],
+    'duration': [2024, 'present'],
+  },
+  {
     'name': 'wearecoral',
     'desc': 'Support the artists and music scenes you love.',
     'media': 'wearecoral/wearecoral-conversion.webp',
@@ -18,7 +29,7 @@ export const works = [
     'status': 'Active',
     'tech': ['Figma', 'React', 'Tailwind'],
     'tags': ['Design', 'Development', 'Web App'],
-    'duration': [2024, 'Present']
+    'duration': [2024]
   },
   {
     'name': 'GrowStocks',
