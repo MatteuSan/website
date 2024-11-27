@@ -5,6 +5,7 @@
 @use '@matteusan/himig/ms-card';
 @use '@matteusan/himig/ms-card/card-extend' as card;
 @use '@matteusan/himig/ms-list';
+@use '@matteusan/himig/ms-link';
 @use '@matteusan/himig/ms-select-field';
 @use '@matteusan/himig/ms-utils';
 
@@ -247,6 +248,8 @@
   @include ms-list.render(
     $struct: (padding: ('sm' 0))
   );
+
+  @include ms-link.render();
 
   @include ms-select-field.render(
     $struct:(
