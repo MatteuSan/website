@@ -6,6 +6,7 @@ import {
 import { works } from "../../constants/works";
 import Info from "../../components/markdown/Info";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
+import PreviewImage from "../../components/markdown/PreviewImage";
 
 export const metadata = {
   title: 'INM Audio',
@@ -14,7 +15,9 @@ export const metadata = {
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
-Proudly Philippine-built custom in-ear monitors.
+INM Audio is one of the Philippine's leading brands when it comes in custom in-ear monitors. Their clients range from the average audiophile seeking a unique tuning, to professionals working on the stage or in the studio. They offer a wide range of products and services, from custom in-ear monitors, to ear impressions, to repairs and maintenance. The company is based in Meycauayan, Bulacan and has been in the industry since 2019.
+
+They've tasked me to make a webapp that would help them streamline the first half of the ordering process (choosing the model, and designing the IEM) and make it more engaging and personal to the end-user. The webapp was built using React, Three, and SCSS.
 
 <MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
   <MSAnimatedSection>
@@ -26,16 +29,16 @@ Proudly Philippine-built custom in-ear monitors.
   <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
-      <div className="w-full h-full grid pi-center">
-        <p className="subtitle">No images to show.</p>
-      </div>
+      <PreviewImage src="/img/inm-audio/inm-audio-iem-designer.webp" alt="A screen capture of the INM Audio IEM designer." />
+      <PreviewImage src="/img/inm-audio/inm-audio-models-page.webp" alt="A screen capture of the models page." />
+      <PreviewImage src="/img/inm-audio/inm-audio-model-view.webp" alt="A screen capture of the model page." />
     </div>
   </MSAnimatedSection>
 </MSAnimatedSection>
 
 export default function WorkPage({ children }) {
   return (
-    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="apeers.webp" previewImageAlt="The A-PEER 2022 landing page.">
+    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="inm-audio.webp" previewImageAlt="The INM Audio landing page.">
       { children }
     </MarkdownLayout>
   );
