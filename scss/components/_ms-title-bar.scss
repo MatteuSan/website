@@ -39,7 +39,6 @@ $title-bar-icon-ink: 'accent-400' !default;
           background: himig.token-get('accent-400');
           color: himig.token-get('accent-ink');
           padding: himig.primitive-token-get('padding.sm');
-          border-radius: himig.primitive-token-get('radius.circle');
         }
       }
     }
@@ -59,6 +58,7 @@ $title-bar-icon-ink: 'accent-400' !default;
       color: himig.key-create('title-bar-icon-ink', himig.token-switch($title-bar-icon-ink));
       user-select: none;
       transition: all var(--ms-transition-time) ease;
+      border-radius: himig.primitive-token-get('radius.circle');
     }
   }
 

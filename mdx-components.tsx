@@ -25,8 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
       return (
         <a href={href}
-           className="ink-accent-400"
-           style={{ textDecoration: 'underline' }}
+           className="ms-link"
            target={isLinkExternal ? '_blank' : '_self'}
            rel="noopener noreferrer"
         >

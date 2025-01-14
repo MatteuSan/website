@@ -299,7 +299,7 @@
   }
 
   .content-section {
-    padding: 1rem 0 7rem;
+    padding: 0 0 7rem;
   }
 
   .absolute-center {
@@ -430,10 +430,11 @@
       display: flex;
       flex-flow: var(--direction, row) nowrap;
       gap: himig.primitive-token-get('gap.lg');
-      justify-content: space-between;
       overflow-x: var(--overflow, scroll);
       overflow-y: hidden;
+      margin: 0 auto;
       padding: 0 0 himig.primitive-token-get('padding.md');
+      text-align: center;
 
       scrollbar-width: none !important;
       &::-webkit-scrollbar-track {
@@ -441,8 +442,7 @@
       }
 
       @include himig.breakpoint-create('medium') {
-        --direction: column;
-        --overflow: hidden;
+        justify-content: center;
       }
 
       .services-list__item {
@@ -471,6 +471,56 @@
             background-color: himig.token-get('accent-400');
             animation: show-lines 0.3s ease;
             transform-origin: left;
+          }
+        }
+      }
+    }
+
+    .service {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      transition: all var(--ms-transition-time) ease;
+      border-radius: 0.5rem;
+
+      @include himig.breakpoint-create('medium') {
+        &:hover {
+          box-shadow: 0 5px 40px rgba(#fff, 0.1);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .service__content {
+        @include himig.breakpoint-create('medium') {
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: max(1.2rem, 1.5vw);
+          border-radius: 0.5rem;
+          background: linear-gradient(180deg,
+            rgba(#100500, 0%) 0%,
+            rgba(#100500, 60%) 40%,
+            rgba(#100500, 90%) 70%,
+            rgba(#100500, 100%) 100%
+          );
+
+          > * {
+            max-width: 540px;
+
+            &:is(.ms-button) {
+              max-width: max-content;
+            }
           }
         }
       }

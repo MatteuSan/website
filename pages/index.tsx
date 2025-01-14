@@ -38,6 +38,10 @@ import { tools } from '../constants/tools';
 import { works } from '../constants/works';
 import Technology from "../components/Technology";
 
+import DesignHero from '../assets/static/design--hero.png';
+import DevelopmentHero from '../assets/static/development--hero.png';
+import DesignSystemsHero from '../assets/static/design-systems--hero.png';
+
 const workItemsWithSlug = works.filter((item) => item?.slug != null);
 const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
 const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
@@ -56,8 +60,8 @@ const HomePage: NextPage = () => {
     <DefaultLayout title="HOME" hasHero>
       <MSHero title="MatteuSan" subtitle="UX Engineer. Creating bridges from software to user." action={ <MSButton type="filled large inverted" link="#about-me">Get to know me</MSButton> } />
       <MainContent>
-        <MSAnimatedSection id="about-me" className="grid cols-1 my-2xl gap-2xl start-1 end-4 @large:cols-3 @large:mt-xl @large:mb-6xl @large:start-1 @large:end-8">
-          <div className="flex flow-column jc-center start-1 end-1 @large:end-2">
+        <MSAnimatedSection id="about-me" className="mt-2xl mb-xl @large:mt-4xl @large:mb-2xl flex flow-column gap-xl @medium:gap-2xl @medium:grid @medium:cols-2">
+          <div className="flex flow-column jc-center start-1 end-1">
             <MSTitleBar icon={ <InformationCircleIcon /> }>About me</MSTitleBar>
             <p className="mt-sm">
               I'm a UX Engineer based in the Philippines, and I build bridges from software to user. I create <span
@@ -65,13 +69,14 @@ const HomePage: NextPage = () => {
               className="highlight">accessible</span> to all and curating <span className="highlight">delightful experiences</span>.
             </p>
           </div>
-          <div className="picture-frame start-1 end-1 @large:start-3 @large:end-3">
-            <Image src="/img/matt-headshot.webp" alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
+          <div className="picture-frame start-2 end-2">
+            <Image src="/img/matt-headshot.webp" style={{ aspectRatio: '16/9', objectFit: 'cover' }} alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
           </div>
         </MSAnimatedSection>
 
-        <MSAnimatedSection id="skills-and-technologies" className="grid cols-1 my-6xl gap-2xl start-1 end-4 @large:cols-3 @large:mt-xl @large:mb-6xl @large:start-1 @large:end-8">
-          <MSAnimatedSection delay={0.4} id="technologies" className="start-1 end-1 @large:start-1 @large:end-1" aria-hidden="true">
+        <MSAnimatedSection id="skills-and-technologies"
+                           className="my-xl @large:my-2xl flex flow-column-reverse gap-xl @medium:gap-2xl @medium:grid @medium:cols-2">
+          <MSAnimatedSection delay={ 0.4 } id="technologies" className="start-1 end-1" aria-hidden="true">
             <Technology icon={ <SiHtml5/> } label="HTML" color="#E44D26"/>
             <Technology icon={ <SiCss3/> } label="CSS" color="#2965F1"/>
             <Technology icon={ <SiJavascript/> } label="JavaScript" color="#F7DF1E"/>
@@ -85,7 +90,7 @@ const HomePage: NextPage = () => {
             <Technology icon={ <SiGit/> } label="Git" color="#F05032"/>
             <Technology icon={ <SiGithub/> } label="GitHub" color="#fff"/>
           </MSAnimatedSection>
-          <div className="flex flow-column jc-center start-1 end-1 @large:start-2 @large:end-3">
+          <div className="flex flow-column jc-center start-2 end-2">
             <MSTitleBar icon={ <CodeBracketSquareIcon/> }>Skills & Technology</MSTitleBar>
             <p className="mb-lg mt-sm">Aside from my fluency in UI/UX design and development, my expertise extends
               to <span
@@ -96,10 +101,10 @@ const HomePage: NextPage = () => {
           </div>
         </MSAnimatedSection>
 
-        <MSAnimatedSection id="stuff-i-do" className="start-1 end-4 mb-2xl @large:end-12 @large:mb-6xl">
-          <MSTitleBar icon={<BriefcaseIcon />}>Stuff I do</MSTitleBar>
+        <MSAnimatedSection id="stuff-i-do" className="my-xl @large:my-2xl start-1 end-4 @large:end-12 @large:mb-6xl">
+          <MSTitleBar icon={ <BriefcaseIcon/> }>Stuff I do</MSTitleBar>
           <p className="mt-sm mb-md">Here are a few of the things I can do...</p>
-          <div className="grid cols-1 @medium:cols-2 gap-lg mt-lg" style={ { maxWidth: '877px' } }>
+          <div className="grid cols-1 gap-lg mt-lg">
             <ul className="services-list">
               <li
                 className={ `services-list__item family-title size-xl weight-body${ cardCount == 1 ? ' is-active' : '' }` }
@@ -113,51 +118,46 @@ const HomePage: NextPage = () => {
                 className={ `services-list__item family-title size-xl weight-body${ cardCount == 3 ? ' is-active' : '' }` }
                 onClick={ () => setCardCount(3) }>Design Systems
               </li>
-              <li
-                className={ `services-list__item family-title size-xl weight-body${ cardCount == 4 ? ' is-active' : '' }` }
-                onClick={ () => setCardCount(4) }>Open Source
-              </li>
             </ul>
-            <MSCard style={ cardCount == 1 ? {} : { display: 'none' } }>
-              <MSCardHeader title="Design" />
-              <MSCardContent>
-                I design beautiful interfaces and delightful experiences for websites and applications.
-              </MSCardContent>
-              <MSCardFooter>
-                <MSButton type="filled" link={{ pathname: '/work', query: { filter: 'Design' } }}>See examples</MSButton>
-              </MSCardFooter>
-            </MSCard>
-            <MSCard style={ cardCount == 2 ? {} : { display: 'none' } }>
-              <MSCardHeader title="Development" />
-              <MSCardContent>
-                I develop websites and web applications that are pleasing to look at, delightful to use, and accessible to all.
-              </MSCardContent>
-              <MSCardFooter>
-                <MSButton type="filled" link={{ pathname: '/work', query: { filter: 'Development' } }}>See examples</MSButton>
-              </MSCardFooter>
-            </MSCard>
-            <MSCard style={ cardCount == 3 ? {} : { display: 'none' } }>
-              <MSCardHeader title="Design Systems" />
-              <MSCardContent>
-                I build custom tools that govern interfaces from design to development across an ecosystem of products to unify experiences, and increase designer and developer productivity.
-              </MSCardContent>
-              <MSCardFooter>
-                <MSButton type="filled" link={{ pathname: '/tools', query: { filter: 'Design System' } }}>See examples</MSButton>
-              </MSCardFooter>
-            </MSCard>
-            <MSCard style={ cardCount == 4 ? {} : { display: 'none' } }>
-              <MSCardHeader title="Open Source" />
-              <MSCardContent>
-                I absolutely love doing open source projects! I open source most of my concept projects and also the tools that I use on an everyday basis.
-              </MSCardContent>
-              <MSCardFooter>
-                <MSButton type="filled" link={{ pathname: '/tools', query: { filter: 'Open Source' } }}>See examples</MSButton>
-              </MSCardFooter>
-            </MSCard>
+            <div className="service" style={ cardCount == 1 ? {} : { display: 'none' } }>
+              <Image src={ DesignHero } alt="Design Hero"/>
+              <div className="service__content">
+                <h4 className="title mt-md @medium:mt-4xl">Design</h4>
+                <p className="body mb-md">
+                  I design websites and applications with Figma that are visually appealing, and delightful to use, leaving a lasting impression on your users.
+                </p>
+                <MSButton type="outlined" link={ { pathname: '/work', query: { filter: 'Design' } } }>See
+                  examples</MSButton>
+              </div>
+            </div>
+            <div className="service" style={ cardCount == 2 ? {} : { display: 'none' } }>
+              <Image src={ DevelopmentHero } alt="Development Hero"/>
+              <div className="service__content">
+                <h4 className="title mt-md @medium:mt-4xl">Development</h4>
+                <p className="body mb-md">
+                  I develop websites and web applications that are pleasing to look at, delightful to use, and accessible
+                  to all using the most up-to-date and reliable technologies to meet your business' demanding needs.
+                </p>
+                <MSButton type="outlined" link={ { pathname: '/work', query: { filter: 'Development' } } }>See
+                  examples</MSButton>
+              </div>
+            </div>
+            <div className="service" style={ cardCount == 3 ? {} : { display: 'none' } }>
+              <Image src={ DesignSystemsHero } alt="Design Systems Hero"/>
+              <div className="service__content">
+                <h4 className="title mt-md @medium:mt-4xl">Design Systems</h4>
+                <p className="body mb-md">
+                  I build custom tools that govern interfaces from design to development across an ecosystem of products
+                  to unify experiences and increase designer and developer productivity.
+                </p>
+                <MSButton type="outlined" link={ { pathname: '/tools', query: { filter: 'Design System' } } }>See
+                  examples</MSButton>
+              </div>
+            </div>
           </div>
         </MSAnimatedSection>
 
-        <MSAnimatedSection className="content-section @large:start-1 @large:end-4 start-1 end-12">
+        <MSAnimatedSection className="content-section mt-lg @large:mt-xl @large:start-1 @large:end-4 start-1 end-12">
           <MSTitleBar icon={ <StarIcon/> }>Featured works</MSTitleBar>
           <div className="ms-carousel mt-md" id="projects">
             { new_works.map((item, key) => {
@@ -165,11 +165,11 @@ const HomePage: NextPage = () => {
                 <MSInfoCard key={ key } reference={ key } item={ item } linkBase="work"/>
               );
             }) }
-            <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all works</MSButton>
+            <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all
+              works</MSButton>
           </div>
         </MSAnimatedSection>
-
-        <MSAnimatedSection className="content-section @large:start-1 @large:end-4 start-1 end-12">
+        <MSAnimatedSection className="content-section mb-lg @large:mb-xl @large:start-1 @large:end-4 start-1 end-12">
           <MSTitleBar icon={<WrenchScrewdriverIcon />}>Featured tools</MSTitleBar>
           <div className="ms-carousel mt-md" id="tools">
             { new_tools.map((item, key) => {
@@ -181,7 +181,7 @@ const HomePage: NextPage = () => {
           </div>
         </MSAnimatedSection>
 
-        <MSAnimatedSection className="grid pi-center @large:mt-3xl @large:mb-6xl">
+        <MSAnimatedSection className="grid pi-center mt-xs mb-2xl @large:mt-sm @large:mb-4xl">
           <MSAnimatedSection delay={0.4} id="ready-to-collaborate">
             <MSTitleBar typePreset="subtitle family-supertitle" icon={<PhoneIcon />}>Ready to make the leap?</MSTitleBar>
             <p style={ { margin: '1rem 0' } }>I'd be delighted to work on your project! Just click any of the contact buttons below and we'll keep in touch :)</p>

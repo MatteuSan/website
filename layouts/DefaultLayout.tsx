@@ -46,7 +46,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"/>
 
-        <title>{ title } - { site.name }</title>
+        <title>{ title + ' - ' +  site.name }</title>
         <meta property="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta name="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
 
