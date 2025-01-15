@@ -52,9 +52,9 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
 
         <link rel="preload" fetchPriority="high" as="image" href="/hero.svg" type="image/svg+xml"/>
 
-        <link rel="apple-touch-icon" sizes="180x180" href={ `/img/favicon.webp` }/>
-        <link rel="icon" type="img/png" sizes="32x32" href={ `/img/favicon.webp` }/>
-        <link rel="icon" type="img/png" sizes="16x16" href={ `/img/favicon.webp` }/>
+        <link rel="apple-touch-icon" sizes="180x180" href={ `/img/favicon.png` }/>
+        <link rel="icon" type="img/png" sizes="32x32" href={ `/img/favicon.png` }/>
+        <link rel="icon" type="img/png" sizes="16x16" href={ `/img/favicon.png` }/>
 
         <meta property="og:title" content={ `${ title } - ${ site.name }` }/>
         <meta property="og:description"

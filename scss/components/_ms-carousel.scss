@@ -3,14 +3,11 @@
 @mixin render() {
   .ms-carousel {
     margin: 0 auto;
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(#{5}, clamp(325px, 30vw, calc((1077px / 5) * 1.6)));
+    grid-template-columns: repeat(#{6}, clamp(325px, 30vw, calc((1077px / 5) * 1.6)));
     grid-gap: 1rem;
-    grid-template-rows: none;
-    backdrop-filter: blur(8px);
     overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
 
     > * {
@@ -20,6 +17,12 @@
     scrollbar-width: none !important;
     &::-webkit-scrollbar-track {
       background: rgba(0 0 0 / 0) !important;
+    }
+
+    @include himig.breakpoint-create('large') {
+      overflow-x: auto;
+      overflow-y: auto;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

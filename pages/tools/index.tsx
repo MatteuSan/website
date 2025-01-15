@@ -42,7 +42,7 @@ const ToolsPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="content-section">
+        <section className="content-section mb-4xl">
           <div className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
             <>
               { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {

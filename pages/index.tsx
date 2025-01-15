@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Image from "next/image";
-import { DefaultLayout, MainContent } from '../layouts/DefaultLayout';
+import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
 
 import {
   MSAnimatedSection,
   MSButton,
-  MSCard,
-  MSCardContent,
-  MSCardFooter,
-  MSCardHeader, MSHero, MSInfoCard,
+  MSHero,
+  MSInfoCard,
   MSTitleBar
 } from '../components';
 
@@ -31,27 +29,21 @@ import {
   ArrowRightIcon,
   BriefcaseIcon,
   CodeBracketSquareIcon, EnvelopeIcon,
-  InformationCircleIcon, PhoneIcon, StarIcon, WrenchScrewdriverIcon
+  InformationCircleIcon, PhoneIcon, StarIcon
 } from "@heroicons/react/24/outline";
 
-import { tools } from '../constants/tools';
-import { works } from '../constants/works';
-import Technology from "../components/Technology";
+import { works } from '@/constants/works';
+import Technology from "@/components/Technology";
 
-import DesignHero from '../assets/static/design--hero.png';
-import DevelopmentHero from '../assets/static/development--hero.png';
-import DesignSystemsHero from '../assets/static/design-systems--hero.png';
+import DesignHero from '@/assets/static/design--hero.png';
+import DevelopmentHero from '@/assets/static/development--hero.png';
+import DesignSystemsHero from '@/assets/static/design-systems--hero.png';
 
 const workItemsWithSlug = works.filter((item) => item?.slug != null);
 const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
 const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
 
-const toolsItemsWithSlug = tools.filter((item) => item?.slug != null);
-const toolsItemsWithoutSlug = tools.filter((item) => item?.slug == null);
-const toolsCleanedItems = toolsItemsWithSlug.concat(toolsItemsWithoutSlug);
-
-const new_works = workCleanedItems.slice(0, 4);
-const new_tools = toolsCleanedItems.slice(0, 4);
+const new_works = workCleanedItems.slice(0, 5);
 
 const HomePage: NextPage = () => {
   const [cardCount, setCardCount] = useState(1)
@@ -60,7 +52,7 @@ const HomePage: NextPage = () => {
     <DefaultLayout title="HOME" hasHero>
       <MSHero title="MatteuSan" subtitle="UX Engineer. Creating bridges from software to user." action={ <MSButton type="filled large inverted" link="#about-me">Get to know me</MSButton> } />
       <MainContent>
-        <MSAnimatedSection id="about-me" className="mt-2xl mb-xl @large:mt-4xl @large:mb-2xl flex flow-column gap-xl @medium:gap-2xl @medium:grid @medium:cols-2">
+        <MSAnimatedSection id="about-me" className="mt-2xl mb-xl @large:mt-4xl @large:mb-2xl flex flow-column gap-xl @medium:gap-md @medium:grid @medium:cols-2">
           <div className="flex flow-column jc-center start-1 end-1">
             <MSTitleBar icon={ <InformationCircleIcon /> }>About me</MSTitleBar>
             <p className="mt-sm">
@@ -70,7 +62,7 @@ const HomePage: NextPage = () => {
             </p>
           </div>
           <div className="picture-frame start-2 end-2">
-            <Image src="/img/matt-headshot.webp" style={{ aspectRatio: '16/9', objectFit: 'cover' }} alt="Matteu Headshot" width={ 3000 } height={ 2000 }/>
+            <Image src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
           </div>
         </MSAnimatedSection>
 
@@ -157,7 +149,7 @@ const HomePage: NextPage = () => {
           </div>
         </MSAnimatedSection>
 
-        <MSAnimatedSection className="content-section mt-lg @large:mt-xl @large:start-1 @large:end-4 start-1 end-12">
+        <MSAnimatedSection className="content-section my-lg @large:my-xl @large:start-1 @large:end-4 start-1 end-12">
           <MSTitleBar icon={ <StarIcon/> }>Featured works</MSTitleBar>
           <div className="ms-carousel mt-md" id="projects">
             { new_works.map((item, key) => {
@@ -169,19 +161,8 @@ const HomePage: NextPage = () => {
               works</MSButton>
           </div>
         </MSAnimatedSection>
-        <MSAnimatedSection className="content-section mb-lg @large:mb-xl @large:start-1 @large:end-4 start-1 end-12">
-          <MSTitleBar icon={<WrenchScrewdriverIcon />}>Featured tools</MSTitleBar>
-          <div className="ms-carousel mt-md" id="tools">
-            { new_tools.map((item, key) => {
-              return (
-                <MSInfoCard key={ key } reference={ key } item={ item } linkBase="tools"/>
-              );
-            }) }
-            <MSButton link="/tools" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all tools</MSButton>
-          </div>
-        </MSAnimatedSection>
 
-        <MSAnimatedSection className="grid pi-center mt-xs mb-2xl @large:mt-sm @large:mb-4xl">
+        <MSAnimatedSection className="grid pi-center mt-2xl mb-4xl @large:mt-4xl @large:mb-6xl">
           <MSAnimatedSection delay={0.4} id="ready-to-collaborate">
             <MSTitleBar typePreset="subtitle family-supertitle" icon={<PhoneIcon />}>Ready to make the leap?</MSTitleBar>
             <p style={ { margin: '1rem 0' } }>I'd be delighted to work on your project! Just click any of the contact buttons below and we'll keep in touch :)</p>

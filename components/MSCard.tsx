@@ -88,7 +88,7 @@ export const MSCardContent: React.FC<MSCardContentProps> = ({ children }) => {
 
 export const MSCardFooter: React.FC<MSCardFooterProps> = ({ children }) => {
   return (
-    <div className="ms-card__footer mt-auto">
+    <div className="ms-card__footer">
       { children }
     </div>
   );
