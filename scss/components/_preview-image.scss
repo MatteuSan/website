@@ -1,0 +1,33 @@
+@use 'pkg:@matteusan/himig';
+
+@mixin render() {
+  .preview-image {
+    aspect-ratio: 16 / 9;
+    position: relative;
+
+    &::after {
+      content: attr(data-alt);
+      position: absolute;
+      bottom: 1rem;
+      left: 0.8rem;
+      padding: 0.3rem 0.5rem;
+      background: himig.token-get('primary-600');
+      background: himig.token-get('primary-600');
+      color: himig.token-get('primary-ink');
+      border-radius: 0.5rem;
+      font-size: himig.primitive-token-get('size.sm');
+      animation: load-out 0.3s ease;
+      opacity: 0;
+      user-select: none;
+      @include himig.struct-shadow('preview-image-tooltip', 'low');
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+        user-select: text;
+        animation: load-in 0.3s ease;
+      }
+    }
+  }
+}

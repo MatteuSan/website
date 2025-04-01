@@ -1,0 +1,29 @@
+@use 'pkg:@matteusan/himig';
+
+@mixin render() {
+  .highlight {
+    display: inline-block;
+    background: himig.token-get('surface-alpha-400');
+    color: himig.token-get('accent-400');
+    font-family: himig.primitive-token-get('family.mono');
+    font-weight: 400;
+    padding: 0.2rem 0.5rem;
+    border-radius: himig.token-get('radius-small');
+
+    &::-moz-selection,
+    &::selection {
+      color: himig.token-get('ms-orange-inverted-ink') !important;
+      background: himig.token-get('ms-orange-inverted-400') !important;
+    }
+  }
+
+  .de-emphasize {
+    color: himig.token-get('primary-200');
+  }
+
+  .absolute-center {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+}

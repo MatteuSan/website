@@ -1,0 +1,75 @@
+@use 'pkg:@matteusan/himig';
+
+@mixin render() {
+  #technologies {
+    $children: 12;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    animation: load-in 0.5s ease;
+
+    @include himig.breakpoint-create('medium') {
+      grid-template-columns: repeat(4, 100px);
+    }
+
+    .technology {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.2rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--ink, rgba(255 255 255 / 25%));
+      color: var(--ink, rgba(255 255 255 / 50%));
+      transition: all var(--ms-transition-time) ease;
+      animation: load-in 0.2s ease;
+      user-select: none;
+
+      @include himig.breakpoint-create('large') {
+        &:hover {
+          transform: translateY(-10px);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--tech-color, #fff);
+        color: #fff;
+        border-color: var(--tech-color, #fff);
+
+        &#github {
+          background-color: #fff;
+          color: #211f1f !important;
+          border-color: #fff;
+
+          .technology__label {
+            color: inherit;
+          }
+        }
+
+        &#javascript {
+          color: #211f1f !important;
+
+          .technology__label {
+            color: inherit;
+          }
+        }
+      }
+
+      .technology__img {
+        width: clamp(24px, 100%, 40px);
+        height: clamp(24px, 100%, 40px);
+      }
+
+      .technology__label {
+        margin-top: 0.7rem;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+}

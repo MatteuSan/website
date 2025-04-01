@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: repeat(#{6}, clamp(325px, 30vw, calc((1077px / 5) * 1.6)));
     grid-gap: 1rem;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     scrollbar-width: none !important;
@@ -21,7 +21,7 @@
 
     @include himig.breakpoint-create('large') {
       overflow-x: auto;
-      overflow-y: auto;
+      overflow-y: visible;
       grid-template-columns: repeat(3, 1fr);
     }
   }
