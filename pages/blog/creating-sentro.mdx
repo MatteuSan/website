@@ -5,120 +5,39 @@ import PreviewImage from "../../components/markdown/PreviewImage";
 import { MarkDownHeader } from "../../layouts/MarkdownLayout";
 export const metadata = {
   title: 'Creating Sentro',
-  description: 'Creating a tool to build and manage design systems at scale.'
+  description: 'Creating a tool to build and manage design systems that scale with your company\'s vision.'
 }
 
-This blog post has been a long time in the making. I've been working on Sentro since 2020, and it has surely grown to meet the needs of design teams and engineering teams (yes, this includes myself) that I've worked with in these past few years. I'm excited to share the story of how Sentro came to be and how it has evolved over time, as well as how it has helped teams build and manage design systems at scale, and why it might be the right tool for your team.
+Over the past few years, I've been working on design systems for myself and a few other companies and projects. Throughout my development process I've noticed key components and traits that I've found myself using time and time again to build and manage these systems. Despite companies having different visions and goals, these components and traits are always in-line with whatever vision the company has. After extracting these components and traits, it led to the creation of a tool to build and manage design systems that scale with your company's vision called Sentro.
 
-## Filling the need
-Back in 2020, I started investing my time in creating a design system for a personal project that was growing in size. As I was working on a major refactoring of the UI, I stumbled upon resources saying how design systems can solve problems with scaling your UI. I was intrigued and started to look into design systems and how they can help me with my project.
+## Introducing Sentro
+Sentro is a low-level SCSS library for building and managing token-driven design systems. It provides the functionality to create and manage tokens, themes, keys, breakpoints, etc. It is designed to be framework-agnostic, to create an API right out of the box as you shape your design system, and it is based on the usage of design tokens.
 
-I started creating a design system using SCSS. Architected using simple file imports, default variables, and a few helper functions. It was simple, and it worked! However, glaring problems start to popup concerning the scalability of the design system. Will this design system scale as the project grows and more people start to work on it? How can I make sure that the design system will scale even if there's a major refactoring with how the design system is structured?
+Sentro is built using [Sass](https://sass-lang.com), as I wanted it to be closer to CSS more than anything. Despite wanting a more minimal approach, avoiding the hassle of setting up build scripts and steps, this is the closest I can try to get to it: one build command, and one peer dependency.
 
-## Building the right tool
-After a while I've decided to refactor the design system and started working on a core module. It should be able to plug and play into any project. It should not force a specific convention, but rather foster a convention that the team can agree upon. It should not give too much, but still give the essentials. And it should be simple to use.
-
-### Shaping the API
-Early on I already have an idea on how I would want to use this. I wanted to write up something like this:
-```scss
-// main.scss
-
-@use '@matteusan/core' with ($prefix: 'gs', $context: 'theme');
-
-:root {
-  @include core.theme-config(
-    $primary: (
-      'default': #122c53,
-      'light': #536b99,
-      'dark': #061021,
-      'ink': #fff
-    ),
-    $secondary: (
-      'default': #ffac00,
-      'light': #ffd77e,
-      'dark': #533800,
-      'ink': #000
-    ),
-    $radius: (
-      'small': 0.3rem,
-      'medium': 0.5rem,
-      'large': 0.7rem
-    ),
-  );
-}
-
-.sdc-component {
-  background-color: core.key-create('component-fill', core.theme-get('primary'));
-  border-radius: core.key-create('component-radius', core.theme-get('radius-medium'));
-}
-```
-
-And then get something like this:
-
-```css
-/* main.css */
-
-:root {
-  --gs-theme-primary: #122c53;
-  --gs-theme-primary-light: #536b99;
-  --gs-theme-primary-dark: #061021;
-  --gs-theme-on-primary: #fff;
-  --gs-theme-secondary: #ffac00;
-  --gs-theme-secondary-light: #ffd77e;
-  --gs-theme-secondary-dark: #533800;
-  --gs-theme-on-secondary: #000;
-  --gs-theme-radius-small: 0.3rem;
-  --gs-theme-radius-medium: 0.5rem;
-  --gs-theme-radius-large: 0.7rem;
-}
-
-.sdc-component {
-  background-color: var(--gs-component-fill, var(--gs-theme-primary));
-  border-radius: var(--gs-component-radius, var(--gs-theme-radius-medium));
-}
-```
-
-This already aligns with the goals I've set for the tool. It's simple to use, and it's also flexible enough to be used in any project.
-
-### Evolution
-After building the core functionality, I started to build the design system around it. And as the design system grew, so did the core's shortcomings at the time. Gradually, as I made additions to the design system, I made sure to attend to the core's needs. Token validation, breakpoint system, error handling, data validation, feature validation were all added due to the amount of needs in the design system to function.
-
-## What happened next
-After a while, I started exploring creating a personal design system for my personal projects. I tried creating one from scratch using the same approach. I then realized that instead of reinventing the wheel, I can just use the core module again and build on top of it. I mean it already has the essentials, why not use it?
-
-Overtime as I join different teams and communities within the programming circle, I've started to get requests to develop a design system or refactor their UI for them. The core library since then has grown on me and has become an essential tool in my workflow. Its philosophies and principles are so in-line with how I code styles that I cannot stop writing that way.
-
-I decided to publish the core module as Sentro (meaning center or core in Tagalog).
-
-### Hashi
-[Hashi](https://hashi-docs.netlify.app) is [Dev Protocol](https://devprotocol.xyz)'s design system for building cohesive interfaces and intuitive experiences that govern their ecosystem of products.
-
-### Before Hashi
-Dev Protocol's interfaces were mostly built using Tailwind CSS. It allowed the development team to move fast. Really fast. However, from auditing the UI one glaring issue is that the maintainability of their interfaces in the long term was not good. Products in their ecosystem all have different user interfaces and experiences which created a sense of fragmentation. The team's way of using Tailwind encouraged too much leniency, and promoted an unstructured way of creating interfaces. One dropdown functioned differently from the other, button variants were all over the place, feedback indicators were different from application to application. They needed something to govern and unify the experience across their products. They needed a design system.
-
-### The solution
-They wanted a design system that is framework-agnostic, can be used with plain CSS, and is based on the use of design tokens. Additionally, they still wanted to keep the freedom of using utility classes for immediate changes while still maintaining patterns and practices.
-
-Sentro serves as the foundation of the design system. It provides the functionality to create and manage tokens, themes, keys, breakpoints, etc. Initially, it was served without abstractions. Sentro was used directly with every aspect of the design system.
+### Architecture
+Sentro is designed to be your design system's foundation. It provides the functionality to create and manage tokens, themes, keys, breakpoints, etc. Its conventions with how you consume and manage tokens can be used directly.
 
 <div className="mx-auto my-lg" style={{ maxWidth: '540px' }}>
-  <PreviewImage src="/img/blog/creating-sentro/heirarchy-slim.png" alt="The initial implementation of Sentro in the design system." />
+  <PreviewImage src="/img/blog/creating-sentro/heirarchy-slim.png" alt="Sentro as your core library." />
 </div>
 
-However, it was quickly realized that adding another abstraction layer to extend Sentro was much needed. Common patterns to color, struct, typography, etc. were made into functions and mixins to ease the development of the design system. Abstractions like `theme-merge`, `color-apply`, `struct-bind`, etc. were added as these were common patterns found in the design system.
+You can also try adding another abstraction layer to extend Sentro. Common patterns to color, struct, typography, etc. can be made into functions and mixins to ease the development of the design system. This allows you to create your own conventions and patterns on top of Sentro, enabling you to create your own portable core library.
 
 <div className="mx-auto my-lg" style={{ maxWidth: '540px' }}>
-  <PreviewImage src="/img/blog/creating-sentro/heirarchy.png" alt="The final implementation of Sentro in the design system." />
+  <PreviewImage src="/img/blog/creating-sentro/heirarchy.png" alt="Sentro as your foundation for the core library." />
 </div>
 
-Additionally, Sentro's `token-registry-get()` feature did wonders in making sure that all the theme tokens are present in the utility classes.
+Additionally, Sentro does not enforce any specific design pattern apart from its opinion on token management and consumption. All terminologies of functions and mixins are left to the developer to decide. This allows for a more flexible and customizable design system; more fit to the overall vision of the product and company.
+
+
 
 export default function BlogPage({ children }) {
   return (
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/blog/creating-sentro/headliner.png` }>
       <MainContent>
         <section className="py-4xl">
-          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/work"
+          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/blog"
                     type="small" icon={ ['left', <ArrowLeftIcon/>] }>Back to all posts</MSButton>
           <MarkDownHeader title={ metadata.title } description={ metadata.description } small="Published 4/23/24" />
           <MSAnimatedSection delay={ 0.4 }>
