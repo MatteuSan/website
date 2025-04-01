@@ -1,13 +1,12 @@
-@use '@matteusan/himig';
+@use 'node_modules/@matteusan/himig';
 
-@use '@matteusan/himig/ms-badge';
-@use '@matteusan/himig/ms-button';
-@use '@matteusan/himig/ms-card';
-@use '@matteusan/himig/ms-card/card-extend' as card;
-@use '@matteusan/himig/ms-list';
-@use '@matteusan/himig/ms-link';
-@use '@matteusan/himig/ms-select-field';
-@use '@matteusan/himig/ms-utils';
+@use 'node_modules/@matteusan/himig/ms-badge';
+@use 'node_modules/@matteusan/himig/ms-button';
+@use 'node_modules/@matteusan/himig/ms-card';
+@use 'node_modules/@matteusan/himig/ms-list';
+@use 'node_modules/@matteusan/himig/ms-link';
+@use 'node_modules/@matteusan/himig/ms-select-field';
+@use 'node_modules/@matteusan/himig/ms-utils';
 
 @use 'components/ms-carousel';
 @use 'components/ms-footer';
@@ -288,7 +287,7 @@
     border-radius: 0.5rem;
   }
 
-  @include card.extend('archived') {
+  @include ms-card.extend('archived') {
     position: relative;
 
     &::after {
@@ -300,7 +299,7 @@
     }
   }
 
-  @include card.extend('hiatus') {
+  @include ms-card.extend('hiatus') {
     position: relative;
 
     &::after {
@@ -671,6 +670,10 @@
   }
 
   .ms-markdown {
+    .preview-image {
+      aspect-ratio: auto;
+    }
+
     p {
       &:only-of-type {
         margin: 0 !important;
@@ -694,10 +697,10 @@
       margin-block: 1rem;
     }
 
-    ul, ol {
+    ul:not(.ms-list), ol:not(.ms-list) {
       margin-block: 1rem;
 
-      li {
+      li:not(.ms-list__item) {
         margin-inline-start: 1.2rem;
 
         &::marker {

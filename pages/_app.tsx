@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app';
 import React from 'react';
 import { LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { appWithTranslation } from 'next-i18next';
 
+import type { AppProps } from 'next/app';
 import '../scss/main.scss';
 
 function App({ Component, pageProps }: AppProps) {

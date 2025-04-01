@@ -9,12 +9,12 @@
     overflow-x: scroll;
     overflow-y: visible;
     scroll-snap-type: x mandatory;
+    scrollbar-width: none !important;
 
     > * {
       scroll-snap-align: center;
     }
 
-    scrollbar-width: none !important;
     &::-webkit-scrollbar-track {
       background: rgba(0 0 0 / 0) !important;
     }
