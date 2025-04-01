@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, ComponentPropsWithoutRef } from 'react';
-import { DynamicOption, m, useAnimation, useInView } from 'framer-motion';
+import { m, useAnimation, useInView } from 'framer-motion';
 
 interface MSAnimatedSectionProps extends ComponentPropsWithoutRef<any> {
   delay?: number;

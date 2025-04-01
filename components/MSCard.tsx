@@ -1,5 +1,4 @@
-import React, { ComponentPropsWithoutRef, HTMLAttributes, useEffect, useRef } from 'react';
-import MSTag from './MSTag';
+import React, { ComponentPropsWithoutRef, useEffect, useRef } from 'react';
 import { m, useAnimation, useInView } from 'framer-motion';
 
 import Image from 'next/image';
