@@ -17,7 +17,7 @@ export const works = [
     'link': 'https://inmaudio.com',
     'slug': 'inm-audio',
     'status': 'Active',
-    'tech': ['SCSS', 'TS', 'React', 'Three', 'React Three Fiber'],
+    'tech': ['SCSS', 'TS', 'React', 'Three', 'R3F'],
     'tags': ['Design', 'Development', 'Web App'],
     'duration': [2024, 'present'],
   },
