@@ -51,6 +51,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gsap/react@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@gsap/react@npm:2.1.2"
+  peerDependencies:
+    gsap: ^3.12.5
+    react: ">=17"
+  checksum: 237288d9923a5c0f243a7986e655cb09ab600db7cc117d6329334f1e895e31567635ca53587aabf65924e0cc02887b054aeda5f0b04c7d2091c95e75f7d8162d
+  languageName: node
+  linkType: hard
+
 "@heroicons/react@npm:^2.1.1":
   version: 2.1.1
   resolution: "@heroicons/react@npm:2.1.1"
@@ -1431,26 +1441,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.0.12":
-  version: 11.0.12
-  resolution: "framer-motion@npm:11.0.12"
-  dependencies:
-    tslib: ^2.4.0
-  peerDependencies:
-    "@emotion/is-prop-valid": "*"
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  peerDependenciesMeta:
-    "@emotion/is-prop-valid":
-      optional: true
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 071e2e81f5de5faf15ae9ccafefc981d3904934a034a37659a741c7818d0905efde3a304aa2ce5a1925249ca2e3cf54d6c360c11f0822cfebfd64df9e754ea93
-  languageName: node
-  linkType: hard
-
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -1537,6 +1527,13 @@ __metadata:
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
+  languageName: node
+  linkType: hard
+
+"gsap@npm:^3.12.7":
+  version: 3.12.7
+  resolution: "gsap@npm:3.12.7"
+  checksum: 15f5da56d02f04be8eb4b58cb733fbd71619647608c0854717697da8b1922a5ce4ea5487cba0c66f428aa645247e143e462bec885f8470725c2c9ab393247e25
   languageName: node
   linkType: hard
 
@@ -1987,6 +1984,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "matteu-san@workspace:."
   dependencies:
+    "@gsap/react": ^2.1.2
     "@heroicons/react": ^2.1.1
     "@icons-pack/react-simple-icons": ^9.3.0
     "@matteusan/himig": ^1.7.1
@@ -1999,7 +1997,7 @@ __metadata:
     "@types/mdx": ^2.0.11
     "@types/node": 20.11.20
     "@types/react": 18.2.57
-    framer-motion: ^11.0.12
+    gsap: ^3.12.7
     i18next: ^23.11.2
     next: 15.1.2
     next-i18next: ^15.3.0
