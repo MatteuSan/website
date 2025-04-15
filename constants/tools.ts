@@ -1,4 +1,6 @@
-export const tools = [
+import { Tool } from "@/lib/types";
+
+export const tools: Tool[] = [
   {
     'name': 'Sentro',
     'desc': 'A low-level SCSS library for building and managing token-driven design systems.',

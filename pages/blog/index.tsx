@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { DefaultLayout, MainContent } from "../../layouts/DefaultLayout";
+import { DefaultLayout, MainContent } from "@/layouts/DefaultLayout";
 
 const BlogMainPage: NextPage = () => {
   return (

@@ -8,14 +8,14 @@ $hero-ink: 'accent-ink' !default;
 $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
 @mixin render() {
-  .hc-hero {
-    height: 55vh;
+  .ms-hero {
+    height: 90svh;
 
     display: grid;
     place-items: center;
 
-    margin-bottom: 1.2rem;
-    padding-top: 1rem;
+    margin-block-end: himig.primitive-token-get('margin.xl');
+    // padding-block-start: himig.primitive-token-get('margin.md');
 
     clip-path: #{$hero-clip};
 
@@ -36,7 +36,7 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
       background: himig.token-get('accent-ink');
     }
 
-    .hc-hero__wrap {
+    .ms-hero__wrap {
       width: calc(100% - 50px);
       max-width: 67.3125rem;
 
@@ -45,15 +45,10 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
       h3,
       p {
         max-width: max-content;
-        /// background: linear-gradient(rgba(himig.token-get-raw('ms-orange-inverted-600'), 90%) 0%, rgba(himig.token-get-raw('ms-orange-inverted-400'), 80%) 100%);
-        // background: himig.token-get-raw('ms-orange-inverted-600');
-        // color: himig.token-get('ms-orange-inverted-ink');
-        // backdrop-filter: blur(8px);
-        // border-radius: himig.token-get('radius-small');
       }
 
-      .hc-hero__actions {
-        margin-top: 0.7rem;
+      .ms-hero__actions {
+        margin-block-start: himig.primitive-token-get('margin.lg');
       }
     }
   }

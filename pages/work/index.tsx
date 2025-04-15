@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
-import { DefaultLayout, MainContent } from '../../layouts/DefaultLayout';
-import {
-  MSAnimatedSection, MSHero, MSInfoCard
-} from '../../components';
+import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
+import { MSHero, MSInfoCard
+} from '@/components';
 
-import { works } from '../../constants/works';
+import { works } from '@/constants/works';
 import { useRouter } from "next/router";
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
@@ -43,7 +42,7 @@ const WorkPage: NextPage = () => {
           </label>
         </section>
         <section className="content-section mb-4xl">
-          <MSAnimatedSection delay={ 0 } stagger={ 0.2 } className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg"
+          <section className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg"
                              id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: any, key: number) => {
                 return (
@@ -56,7 +55,7 @@ const WorkPage: NextPage = () => {
                 </div>
               )
             }
-          </MSAnimatedSection>
+          </section>
         </section>
       </MainContent>
     </DefaultLayout>

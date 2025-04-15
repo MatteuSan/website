@@ -11,7 +11,7 @@
       border: 'surface-alpha-400'
     ));
     @include himig.struct-apply('footer', (
-      padding: ('lg' 'lg'),
+      padding: ('xl' 'lg'),
     ));
 
     .ms-footer__title {
@@ -19,7 +19,7 @@
       @include himig.typography-apply('footer-title', (
         family: 'supertitle',
         size: 'subtitle',
-        weight: 'supertitle',
+        weight: 'body',
         line-height: 'condensed'
       ));
       transition: all var(--ms-transition-time) ease;

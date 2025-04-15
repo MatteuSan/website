@@ -11,6 +11,7 @@
     border-radius: 1rem;
     background: #3d3838;
     box-shadow: 0 7px #211f1f;
+    transition: all var(--ms-transition-time) ease;
 
     @include himig.breakpoint-create('large') {
       &:hover {

@@ -1,9 +1,8 @@
-import React, { ComponentPropsWithoutRef, useEffect, useRef } from 'react';
-import { m, useAnimation, useInView } from 'framer-motion';
+import React, { ComponentPropsWithoutRef, ComponentPropsWithRef, useRef } from 'react';
 
 import Image from 'next/image';
 
-interface MSCardHeaderProps {
+interface MSCardHeaderProps extends ComponentPropsWithoutRef<any> {
   title: string
   subtitle?: string;
   icon?: string|React.ReactNode;
@@ -12,20 +11,20 @@ interface MSCardHeaderProps {
   link?: string;
 }
 
-interface MSCardMediaProps {
+interface MSCardMediaProps extends ComponentPropsWithoutRef<any> {
   media: string;
   alt: string;
 }
 
-interface MSCardContentProps {
+interface MSCardContentProps extends ComponentPropsWithoutRef<any> {
   children: string|React.ReactNode;
 }
 
-interface MSCardFooterProps {
+interface MSCardFooterProps extends ComponentPropsWithoutRef<any> {
   children: string|React.ReactNode;
 }
 
-interface MSCardProps extends ComponentPropsWithoutRef<any> {
+interface MSCardProps extends ComponentPropsWithRef<any> {
   delay?: number;
   children?: React.ReactNode;
   isArchived?: boolean;
@@ -40,13 +39,13 @@ export const MSCardMedia: React.FC<MSCardMediaProps> = ({ media, alt }) => {
   );
 }
 
-export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, icon, iconPosition, link, children }) => {
+export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, icon, iconPosition, link, children, ...props }) => {
   return (
-    <div className="ms-card__header">
+    <div className="ms-card__header" {...props}>
       { iconPosition == 'trailing' && <i className="ms-card__icon">{ icon }</i> }
       { React.createElement((link ? 'a' : 'div'), { className: 'ms-card__mast', href: link ?? null },
         (<h2 className="ms-card__title">{ title }</h2>),
-        (<h3 className="ms-card__subtitle">{ subtitle }</h3>)
+        (<h3 className="ms-card__subtitle de-emphasize">{ subtitle }</h3>)
       ) }
       { iconPosition == 'leading' && <i className="ms-card__icon">{ icon }</i> }
       { children }
@@ -57,7 +56,7 @@ export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, ico
 export const MSCardContent: React.FC<MSCardContentProps> = ({ children }) => {
   return (
     <div className="ms-card__content">
-      <p>{ children }</p>
+      <p className="de-emphasize">{ children }</p>
     </div>
   );
 }
@@ -71,29 +70,16 @@ export const MSCardFooter: React.FC<MSCardFooterProps> = ({ children }) => {
 }
 
 export const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, isArchived, status, children, ...props }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const cardControl = useAnimation();
-
-  useEffect(() => {
-    if (isInView) cardControl.start('final').then(r => r);
-  }, [isInView]);
+  const bounds = useRef(null);
 
   return (
-    <m.div
-      ref={ ref }
-      variants={ {
-        initial: { opacity: 0, y: 40 },
-        final: { opacity: 1, y: 0 }
-      } }
-      transition={ { duration: 0.2, ease: 'easeInOut', delay: delay ? delay : 0.2 } }
-      initial="initial"
-      animate={ cardControl }
-      className={ `ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start` }
-      { ...props }
+    <div
+      ref={bounds}
+      className={`ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start`}
+      {...props}
     >
       { children }
-    </m.div>
+    </div>
   );
 };
 

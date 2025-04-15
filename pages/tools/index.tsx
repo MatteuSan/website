@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
-import { DefaultLayout, MainContent } from '../../layouts/DefaultLayout';
-import { MSHero, MSInfoCard } from '../../components';
+import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
+import { MSHero, MSInfoCard } from '@/components';
 
-import { tools } from '../../constants/tools';
+import { tools } from '@/constants/tools';
 import { useRouter } from "next/router";
 
 const itemsWithSlug = tools.filter((item) => item?.slug != null);

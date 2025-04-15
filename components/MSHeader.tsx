@@ -8,16 +8,15 @@ interface HCHeaderProps {
 }
 
 const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
-
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () =>
-        setIsHeaderScrolled(window.pageYOffset > 400)
+        setIsHeaderScrolled(window.scrollY.valueOf() > (window.innerHeight - 100))
       );
     }
-  }, []);
+  }, [isHeaderScrolled]);
 
   return (
     <header

@@ -1,4 +1,6 @@
-export const works = [
+import { Work } from "@/lib/types";
+
+export const works: Work[] = [
   {
     'name': 'Dev Protocol',
     'desc': 'Decentralized funding for sustainable creator economy.',

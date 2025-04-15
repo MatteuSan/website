@@ -14,6 +14,11 @@ const nextConfig = {
       },
     }
   },
+  sassOptions: {
+    importers: [new NodePackageImporter()],
+    verbose: true,
+    loadPaths: ['node_modules'],
+  },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   i18n: {
     locales: ['en', 'jp'],

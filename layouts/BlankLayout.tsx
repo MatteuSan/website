@@ -31,10 +31,6 @@ const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewIm
         <meta property="description"
               content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` } />
 
-        <link
-          href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-          rel="stylesheet" />
-
         <link rel="apple-touch-icon" sizes="180x180" href={ `/img/favicon.webp` } />
         <link rel="icon" type="img/png" sizes="32x32" href={ `/img/favicon.webp` } />
         <link rel="icon" type="img/png" sizes="16x16" href={ `/img/favicon.webp` } />
