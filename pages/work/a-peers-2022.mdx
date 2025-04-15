@@ -1,4 +1,4 @@
-import { MSAnimatedSection, MSButton, MSTitleBar } from "../../components";
+import { MSButton, MSTitleBar } from "../../components";
 import {
   PhotoIcon,
   QuestionMarkCircleIcon
@@ -16,22 +16,22 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 A website for the A-PEER! 2022 program in the Regional Lead School for the Arts in Angono. It has a gallery of the participating students' works.
 
-<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <MSAnimatedSection>
+<section className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <section>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <Info data={ WorkInfo }>
       <MSButton link={ WorkInfo['link'] } type="small filled">Website</MSButton>
     </Info>
-  </MSAnimatedSection>
-  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+  </section>
+  <section  className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
       <div className="w-full h-full grid pi-center">
         <p className="subtitle">No images to show.</p>
       </div>
     </div>
-  </MSAnimatedSection>
-</MSAnimatedSection>
+  </section>
+</section>
 
 export default function WorkPage({ children }) {
   return (
