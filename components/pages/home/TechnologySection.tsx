@@ -180,7 +180,7 @@ const TechnologySection: React.FC = () => {
   return (
     <section
       id="skills-and-technologies"
-      className="w-full h-screen flex flow-column jc-start pt-4xl pb-4xl fill-surface-600"
+      className="w-full h-screen flex flow-column jc-start pt-4xl pb-3xl fill-surface-600"
       ref={technologySectionRef}
     >
       <div className="constrained flex flow-column jc-center">
@@ -213,8 +213,8 @@ const TechnologySection: React.FC = () => {
         <TechnologyChip icon={ <SiGithub/> } label="GitHub" color="#fff"/>
         <TechnologyChip icon={ <SiGit/> } label="Git" color="#F05032"/>
       </div>
-      <div className="constrained flex flow-column jc-center my-2xl">
-        <p className="content family-subtitle mb-2xl size-md weight-light">
+      <div className="constrained flex flow-column jc-center mt-2xl">
+        <p className="content family-subtitle size-md weight-light">
           <span className="content-5 block my-sm">Delivering you the <span className="highlight">best</span> results.</span>
           <span className="content-6 block">And giving your users the <span className="highlight">premium</span> experience they deserve.</span>
         </p>
