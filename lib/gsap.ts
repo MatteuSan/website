@@ -29,7 +29,6 @@ export const useCardAnimation = (cardClass: string, scope?: string|ReactRef|Elem
           start: 'top 90%',
           end: 'bottom 77%',
           once: true,
-          markers: true,
         }
       });
 
