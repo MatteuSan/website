@@ -6,6 +6,7 @@ import { MSHero, MSInfoCard
 
 import { works } from '@/constants/works';
 import { useRouter } from "next/router";
+import { useCardAnimation } from "@/lib/gsap";
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
 const itemsWithoutSlug = works.filter((item) => item?.slug == null);
@@ -15,9 +16,12 @@ let cleanedItems = itemsWithSlug.concat(itemsWithoutSlug);
 const validWorkTags = ['Design', 'Development', 'Open Source', 'Website', 'Web App'];
 
 const WorkPage: NextPage = () => {
+  const workSectionRef = React.useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
+
+  useCardAnimation('.ms-card', workSectionRef);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
@@ -41,8 +45,8 @@ const WorkPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="content-section mb-4xl">
-          <section className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg"
+        <section className="content-section mb-4xl" ref={workSectionRef}>
+          <section className="grid cols-1 @medium:cols-2 {/*@large:cols-3*/} gap-lg"
                              id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: any, key: number) => {
                 return (

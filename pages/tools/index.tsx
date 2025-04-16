@@ -5,6 +5,7 @@ import { MSHero, MSInfoCard } from '@/components';
 
 import { tools } from '@/constants/tools';
 import { useRouter } from "next/router";
+import { useCardAnimation } from "@/lib/gsap";
 
 const itemsWithSlug = tools.filter((item) => item?.slug != null);
 const itemsWithoutSlug = tools.filter((item) => item?.slug == null);
@@ -14,11 +15,12 @@ const cleanedItems = itemsWithSlug.concat(itemsWithoutSlug);
 const validToolTags = ['Design System', 'Library', 'Open Source'];
 
 const ToolsPage: NextPage = () => {
+  const toolsSectionRef = React.useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
 
-  console.log(router.query.filter);
+  useCardAnimation('.ms-card', toolsSectionRef);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
@@ -27,7 +29,7 @@ const ToolsPage: NextPage = () => {
   return (
     <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better user experiences." hasHero>
       <MSHero title="Tools" subtitle="Empowering teams (and you!) to build better user experiences." />
-      <MainContent>
+      <MainContent className="h-half-screen">
         <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle">
             { filteredItems.length != 0 ? `Found ${ filteredItems.length } ${ filteredItems.length >= 2 ? 'items' : 'item' }.` : (
@@ -42,8 +44,8 @@ const ToolsPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="content-section mb-4xl">
-          <div className="grid cols-1 @medium:cols-2 @large:cols-3 gap-lg" id="projects">
+        <section className="mb-4xl" ref={toolsSectionRef}>
+          <div className="grid cols-1 @medium:cols-2 {/*@large:cols-3*/} gap-lg" id="projects">
             <>
               { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
                 return (
