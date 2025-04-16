@@ -48,10 +48,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
     parallaxTl.to('.family-subtitle', parallaxExit(2), '<');
     parallaxTl.to('.italic', parallaxExit(2, 10), '<');
     parallaxTl.to('.ms-hero__actions', parallaxExit(3), '<');
-    // parallaxTl.to(heroRef.current, {
-    //   y: -300,
-    //   ease: 'power3'
-    // }, '<');
     parallaxTl.to(heroRef.current, {
       opacity: 0,
       ease: 'power2',

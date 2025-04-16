@@ -5,11 +5,10 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { TextPlugin } from "gsap/dist/TextPlugin";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, TextPlugin);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 interface CTASectionProps {}
 
@@ -23,7 +22,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
         start: 'top 90%',
         end: 'bottom 60%',
         scrub: true,
-        markers: true,
         toggleActions: 'play pause resume reset',
       }
     });
