@@ -1,8 +1,9 @@
-import { DefaultLayout, MainContent } from "../../layouts/DefaultLayout";
-import { MSButton } from "../../components";
+import { MSButton } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import PreviewImage from "../../components/markdown/PreviewImage";
-import { MarkDownHeader } from "../../layouts/MarkdownLayout";
+import PreviewImage from "@/components/markdown/PreviewImage";
+import { DefaultLayout, MainContent } from "@/layouts/DefaultLayout";
+import { MarkDownHeader } from "@/layouts/MarkdownLayout";
+
 export const metadata = {
   title: 'Creating Sentro',
   description: 'Creating a tool to build and manage design systems that scale with your company\'s vision.'
@@ -44,7 +45,7 @@ export default function BlogPage({ children }) {
             <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>
               <PreviewImage src={ `/img/blog/creating-sentro/headliner.webp` } alt="The Sentro website homepage." />
             </div>
-          </MSAnimatedSection>
+          </section>
           <section className="ms-markdown">
             { children }
           </section>
