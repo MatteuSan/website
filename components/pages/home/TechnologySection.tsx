@@ -186,7 +186,7 @@ const TechnologySection: React.FC = () => {
       <div className="constrained flex flow-column jc-center">
         <h2 className="lead-text family-supertitle size-3xl @medium:size-4xl">Stuff I use</h2>
         <p className="content mt-sm mb-2xl size-md weight-light">
-          <span className="content-1 block">I like working with tools that conform to my philosophies of building software.</span>
+          <span className="content-1 block">I like working with tools that conform to my philosophies of building <span className="highlight">great</span> software.</span>
           <span className="content-2 block my-sm"><span className="highlight">Constantly</span> expanding my repertoire.</span>
           <span className="content-3 block">While improving on what I'm <span className="highlight">really good</span> at.</span>
         </p>
@@ -215,9 +215,8 @@ const TechnologySection: React.FC = () => {
       </div>
       <div className="constrained flex flow-column jc-center my-2xl">
         <p className="content family-subtitle mb-2xl size-md weight-light">
-          <span className="content-4 block">Combining it with my passion for building <span className="highlight">great</span> apps.</span>
-          <span className="content-5 block my-sm">Delivering the <span className="highlight">best</span> results for clients I work with.</span>
-          <span className="content-6 block">And giving your users a great time using <span className="highlight">amazing</span> software.</span>
+          <span className="content-5 block my-sm">Delivering you the <span className="highlight">best</span> results.</span>
+          <span className="content-6 block">And giving your users the <span className="highlight">premium</span> experience they deserve.</span>
         </p>
       </div>
     </section>
