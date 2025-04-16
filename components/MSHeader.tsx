@@ -13,7 +13,7 @@ const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () =>
-        setIsHeaderScrolled(window.scrollY.valueOf() > (window.innerHeight - 100))
+        setIsHeaderScrolled(window.scrollY.valueOf() > (window.innerHeight - 230))
       );
     }
   }, [isHeaderScrolled]);

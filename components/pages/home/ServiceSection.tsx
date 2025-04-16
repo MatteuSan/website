@@ -20,10 +20,9 @@ const ServiceSection: React.FC = ( ) => {
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,
-        start: 'top 85%',
+        start: 'top 80%',
         end: 'top 66%',
         scrub: true,
-        markers: true,
         toggleActions: 'play pause resume reset',
       }
     });

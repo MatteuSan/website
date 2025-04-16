@@ -95,7 +95,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       contentTl.to('.content', {
         opacity: 1,
         y: 0,
-        duration: 3,
+        duration: 100,
       });
 
       contentTl.to('.profession', {
@@ -109,7 +109,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       }).to('.profession', {
         delay: 100,
         text: {
-          value: 'a Experience Artisan',
+          value: 'an Experience Artisan',
           speed: 0,
           type: 'diff'
         },

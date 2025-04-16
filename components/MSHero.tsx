@@ -6,7 +6,7 @@ import { parallaxExit } from "@/lib/gsap";
 
 interface MSHeroProps {
   title: string;
-  subtitle: string;
+  subtitle: string|React.ReactNode;
   action?: any;
 }
 
@@ -46,6 +46,7 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
 
     parallaxTl.to('.family-supertitle', parallaxExit(1));
     parallaxTl.to('.family-subtitle', parallaxExit(2), '<');
+    parallaxTl.to('.italic', parallaxExit(2, 10), '<');
     parallaxTl.to('.ms-hero__actions', parallaxExit(3), '<');
     // parallaxTl.to(heroRef.current, {
     //   y: -300,
