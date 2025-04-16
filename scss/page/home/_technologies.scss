@@ -22,6 +22,7 @@
       justify-content: center;
       padding: 1rem 1.2rem;
       border-radius: 0.5rem;
+      background: himig.token-get('surface-600');
       border: 1px solid var(--ink, #{himig.token-get('surface-400')});
       color: var(--ink, #{himig.token-get('surface-300')});
       transition: all var(--ms-transition-time) ease;
