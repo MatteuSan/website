@@ -1,4 +1,4 @@
-import { MSAnimatedSection, MSTitleBar } from "../../components";
+import { MSTitleBar } from "../../components";
 import {
   PhotoIcon,
   QuestionMarkCircleIcon
@@ -16,22 +16,22 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 The platform to order Growtopia-related services.
 
-<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <MSAnimatedSection>
+<section className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <section>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <Info data={ WorkInfo }>
       There are no links for this project.
     </Info>
-  </MSAnimatedSection>
-  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+  </section>
+  <section  className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
       <div className="w-full h-full grid pi-center">
         <p className="subtitle">No images to show.</p>
       </div>
     </div>
-  </MSAnimatedSection>
-</MSAnimatedSection>
+  </section>
+</section>
 
 export default function WorkPage({ children }) {
   return (

@@ -1,4 +1,4 @@
-import { MSAnimatedSection, MSButton, MSTitleBar } from "../../components";
+import { MSButton, MSTitleBar } from "../../components";
 import {
   PhotoIcon,
   QuestionMarkCircleIcon
@@ -19,22 +19,22 @@ INM Audio is one of the Philippine's leading brands when it comes in custom in-e
 
 They've tasked me to make a webapp that would help them streamline the first half of the ordering process (choosing the model, and designing the IEM) and make it more engaging and personal to the end-user. The webapp was built using React, Three, and SCSS.
 
-<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <MSAnimatedSection>
+<section className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <section>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <Info data={ WorkInfo }>
       <MSButton link={ WorkInfo['link'] } type="small filled">Website</MSButton>
     </Info>
-  </MSAnimatedSection>
-  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+  </section>
+  <section className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
       <PreviewImage src="/img/inm-audio/inm-audio-iem-designer.webp" alt="A screen capture of the INM Audio IEM designer." />
       <PreviewImage src="/img/inm-audio/inm-audio-models-page.webp" alt="A screen capture of the models page." />
       <PreviewImage src="/img/inm-audio/inm-audio-model-view.webp" alt="A screen capture of the model page." />
     </div>
-  </MSAnimatedSection>
-</MSAnimatedSection>
+  </section>
+</section>
 
 export default function WorkPage({ children }) {
   return (

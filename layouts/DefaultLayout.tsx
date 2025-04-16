@@ -9,7 +9,7 @@ import {
   MSFooter,
 } from '../components';
 
-import { site } from '../constants/site';
+import { site } from '@/constants/site';
 
 interface DefaultLayoutProps {
   title: string;
@@ -19,15 +19,21 @@ interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
+interface MainContentProps extends React.ComponentPropsWithRef<any> {
+  className?: string;
+  children: React.ReactNode;
+  constrained?: boolean;
+}
+
 const ogImageMap = {
   'home': '/img/og-image-home.webp',
   'work': '/img/og-image-work.webp',
   'tools': '/img/og-image-tools.webp',
 };
 
-export const MainContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const MainContent: React.FC<MainContentProps> = ({ className, children, constrained = true, ...props }) => {
   return (
-    <main className="content-wrap">
+    <main className={`${ constrained ? 'content-wrap' : '' }${ className ? ' ' + className : '' }`} {...props}>
       { children }
     </main>
   );

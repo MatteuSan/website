@@ -1,11 +1,16 @@
+@use 'pkg:@matteusan/himig';
 @use 'technologies';
 @use 'stuff-i-do';
 @use 'cta';
 
 @mixin render() {
+  .is-fullscreen {
+    min-height: 100svh;
+  }
+
   .picture-frame {
     width: clamp(200px, 30vw, 300px);
-    height: 100%;
+    height: clamp(200px, 30vw, 300px);
     margin: 0 auto;
     display: grid;
     place-items: center;
@@ -16,11 +21,8 @@
     user-select: none;
     animation-delay: 1s;
     animation: load-in 0.8s ease;
-    transition: all var(--ms-transition-time) ease;
-
-    &:hover {
-      box-shadow: 0 5px 40px rgba(#fff, 0.1);
-    }
+    transition: box-shadow var(--ms-transition-time) ease;
+    box-shadow: -5px 10px 0 var(--ms-theme-surface-300);
 
     img {
       width: 100%;

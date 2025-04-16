@@ -1,14 +1,21 @@
-import { MSCard, MSCardContent, MSCardFooter, MSCardHeader, MSCardMedia } from "../MSCard";
-import { stagger } from "@/lib/helpers";
+import React, { useRef } from 'react';
+import { MSCard, MSCardFooter, MSCardHeader, MSCardMedia } from "../MSCard";
 import { MSButton } from "@/components";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { BookOpenIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
-import React from "react";
+
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function MSInfoCard(props: { reference: any, item: any, linkBase: string }) {
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+
   return <MSCard
-    delay={ 0.1 + stagger(props.reference, 0.1) }
     status={ props.item.status }
+    ref={cardContainerRef}
   >
     { props.item.media ? (
       <MSCardMedia media={`/img/${props.item.media}`} alt={ `${props.item.name} media.` } />
@@ -16,11 +23,10 @@ export function MSInfoCard(props: { reference: any, item: any, linkBase: string 
     <div className="ms-card__details">
       <MSCardHeader
         title={ props.item.name }
+        subtitle={ props.item.desc }
         link={ props.item.slug && `/${props.linkBase}/${ props.item.slug }` }
+        style={{ marginBlockEnd: '1rem' }}
       />
-      <MSCardContent>
-        { props.item.desc }
-      </MSCardContent>
       <MSCardFooter>
         { props.item.slug ?
           <MSButton link={ `/${props.linkBase}/${ props.item.slug }` } type="outlined">View project details</MSButton> : null }

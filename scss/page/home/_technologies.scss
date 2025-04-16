@@ -5,12 +5,12 @@
     $children: 12;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(auto-fit, clamp(100px, 10vw, 200px));
     justify-content: center;
     animation: load-in 0.5s ease;
 
     @include himig.breakpoint-create('medium') {
-      grid-template-columns: repeat(4, 100px);
+      grid-template-columns: repeat(auto-fit, clamp(100px, 10vw, 200px));
     }
 
     .technology {
@@ -22,23 +22,53 @@
       justify-content: center;
       padding: 1rem 1.2rem;
       border-radius: 0.5rem;
-      border: 1px solid var(--ink, rgba(255 255 255 / 25%));
-      color: var(--ink, rgba(255 255 255 / 50%));
+      border: 1px solid var(--ink, #{himig.token-get('surface-400')});
+      color: var(--ink, #{himig.token-get('surface-300')});
       transition: all var(--ms-transition-time) ease;
       animation: load-in 0.2s ease;
       user-select: none;
 
       @include himig.breakpoint-create('large') {
-        &:hover {
-          transform: translateY(-10px);
+        &:not(.is-active):not(.is-inactive):hover {
+          transform: translateY(-10px) !important;
         }
       }
 
-      &:hover,
-      &:focus {
+      &:not(.is-inactive):not(.is-active):hover,
+      &:not(.is-inactive):not(.is-active):focus,
+      &:not(.is-inactive):not(.is-active) {
+        // background-color: var(--tech-color, #fff);
+        color: var(--tech-color, #fff);
+        border-color: var(--tech-color, #fff);
+
+        &#sqlite {
+          color: #fff;
+        }
+
+        &#github,
+        &#next\.js,
+        &#three\.js {
+          color: #fff;
+          border-color: #fff;
+
+          .technology__label {
+            color: inherit;
+          }
+        }
+      }
+
+      &.is-active {
         background-color: var(--tech-color, #fff);
         color: #fff;
         border-color: var(--tech-color, #fff);
+        transform: scale(1.05) !important;
+
+        &#react,
+        &#php,
+        &#vue\.js,
+        &#nuxt {
+          color: #211f1f !important;
+        }
 
         &#github {
           background-color: #fff;
@@ -59,6 +89,16 @@
         }
       }
 
+      &.is-inactive {
+        --ink: #{himig.token-get('surface-400')};
+        opacity: 0.1;
+        transform: scale(0.9) !important;
+
+        &:hover {
+          --ink: #{himig.token-get('surface-400')};
+        }
+      }
+
       .technology__img {
         width: clamp(24px, 100%, 40px);
         height: clamp(24px, 100%, 40px);
@@ -68,7 +108,7 @@
         margin-top: 0.7rem;
         font-size: 0.8rem;
         text-align: center;
-        color: #fff;
+        color: inherit;
       }
     }
   }

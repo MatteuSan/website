@@ -1,4 +1,4 @@
-import { MSAnimatedSection, MSButton, MSTitleBar } from "../../components";
+import { MSButton, MSTitleBar } from "../../components";
 import {
   PhotoIcon,
   QuestionMarkCircleIcon
@@ -22,20 +22,20 @@ I designed and implemented the conversion pages. The experience was carefully cr
 
 I've also made improvements to the onboarding flows, modal UIs, and overall platform experience.
 
-<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <MSAnimatedSection>
+<section className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <section>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <Info data={ WorkInfo }>
       <MSButton link="https://www.wearecoral.org/" type="small filled">Website</MSButton>
     </Info>
-  </MSAnimatedSection>
-  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+  </section>
+  <section  className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
       <PreviewImage src="/img/wearecoral/wearecoral-conversion.webp" alt="The wearecoral conversion page." />
     </div>
-  </MSAnimatedSection>
-</MSAnimatedSection>
+  </section>
+</section>
 
 export default function WorkPage({ children }) {
   return (

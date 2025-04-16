@@ -1,18 +1,12 @@
 import createMDX from '@next/mdx';
-import remarkGfm from 'remark-gfm';
-import rehypeShiki from '@shikijs/rehype';
 import { NodePackageImporter } from 'sass';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    turbo: {
-      sassOptions: {
-        importers: [new NodePackageImporter()],
-        verbose: true,
-        loadPaths: ['node_modules'],
-      },
-    }
+  sassOptions: {
+    importers: [new NodePackageImporter()],
+    verbose: true,
+    loadPaths: ['node_modules'],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   i18n: {
@@ -43,8 +37,8 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypeShiki, {
+    remarkPlugins: [['remark-gfm']],
+    rehypePlugins: [['@shikijs/rehype', {
       theme: 'vitesse-dark'
     }]],
   },

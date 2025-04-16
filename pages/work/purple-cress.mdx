@@ -1,4 +1,4 @@
-import { MSAnimatedSection, MSTitleBar } from "../../components";
+import { MSTitleBar } from "../../components";
 import {
   PhotoIcon,
   QuestionMarkCircleIcon
@@ -17,21 +17,21 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 Purple Cress was a Japanese manga scanlation group. Their scanlation work is diverse. From one-shots, to short form series, to the larger serialized series. It boasts an in-house built manga reader with basic accessibility features, a beautiful UI to navigate the scanlation's portfolio, and an admin panel to manage the content published.
 
-<MSAnimatedSection className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <MSAnimatedSection>
+<section className="grid cols-1 @large:cols-3 gap-md mt-4xl">
+  <section>
     <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
     <Info data={ WorkInfo }>
       There are no links for this project.
     </Info>
-  </MSAnimatedSection>
-  <MSAnimatedSection delay={0.3} className="start-1 end-1 @large:start-2 @large:end-4">
+  </section>
+  <section  className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
       <PreviewImage src="/img/purplecress/purplecress-chapter-view.webp" alt="A screen capture of the series preview page." />
       <PreviewImage src="/img/purplecress/purplecress-reader.webp" alt="A screen capture of the chapter reader." />
     </div>
-  </MSAnimatedSection>
-</MSAnimatedSection>
+  </section>
+</section>
 
 export default function WorkPage({ children }) {
   return (

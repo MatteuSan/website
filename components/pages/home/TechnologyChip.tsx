@@ -7,7 +7,7 @@ interface TechnologyProps {
   children?: React.ReactNode | string;
 }
 
-const Technology: React.FC<TechnologyProps> = ({ icon, label, color }) => {
+const TechnologyChip: React.FC<TechnologyProps> = ({ icon, label, color }) => {
   return (
     // @ts-ignore
     <div className="technology" id={label.toLowerCase()} style={{ '--tech-color': color }}>
@@ -20,4 +20,4 @@ const Technology: React.FC<TechnologyProps> = ({ icon, label, color }) => {
   );
 };
 
-export default Technology;
+export default TechnologyChip;
