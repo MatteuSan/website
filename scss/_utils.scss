@@ -12,18 +12,25 @@
     text-decoration: underline;
     text-decoration-color: himig.token-get('accent-400');
 
+    &:hover {
+      &::after {
+        transform: scale(1.05);
+      }
+    }
+
     &::after {
       content: '';
-      display: block;
       width: 100%;
       height: calc(100% - 10px);
+      display: block;
       position: absolute;
       bottom: 3px;
       right: -3px;
-      transform: rotate(-1deg);
-      z-index: -1;
       border-radius: himig.token-get('radius-small');
       background: himig.token-get('accent-alpha-800');
+      transition: all var(--ms-transition-time) ease;
+      transform: rotate(-1deg);
+      z-index: -1;
     }
 
     &::-moz-selection,
@@ -31,6 +38,10 @@
       color: himig.token-get('ms-orange-inverted-ink') !important;
       background: himig.token-get('ms-orange-inverted-400') !important;
     }
+  }
+
+  .italic {
+    font-style: italic;
   }
 
   .h-screen {
