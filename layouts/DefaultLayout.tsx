@@ -19,15 +19,21 @@ interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
+interface MainContentProps extends React.ComponentPropsWithRef<any> {
+  className?: string;
+  children: React.ReactNode;
+  constrained?: boolean;
+}
+
 const ogImageMap = {
   'home': '/img/og-image-home.webp',
   'work': '/img/og-image-work.webp',
   'tools': '/img/og-image-tools.webp',
 };
 
-export const MainContent: React.FC<{ className?: string, children: React.ReactNode, constrained?: boolean }> = ({ className, children, constrained = true}) => {
+export const MainContent: React.FC<MainContentProps> = ({ className, children, constrained = true, ...props }) => {
   return (
-    <main className={ `${ constrained ? 'content-wrap' : '' }${ className ? ' ' + className : '' }` }>
+    <main className={`${ constrained ? 'content-wrap' : '' }${ className ? ' ' + className : '' }`} {...props}>
       { children }
     </main>
   );
