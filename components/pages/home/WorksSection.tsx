@@ -15,7 +15,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
 
   return (
     <section id="stuff-i-did" ref={worksSectionRef}>
-      <section className="w-full h-screen mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm mb-lg py-3xl">
+      <section className="constrained w-full h-screen mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm mb-lg py-3xl">
         <div>
           <h1 className="lead-text family-supertitle size-3xl @medium:size-4xl">Stuff I did</h1>
           <p className="de-emphasize size-md weight-light">Here some of the previous works I'm most proud of.</p>
