@@ -120,6 +120,12 @@
     }
   }
 
+  @include ms-button.extend('large') {
+    @include ms-button.struct((
+      gap: 'sm'
+    ));
+  }
+
   @include ms-button.extend('filled') {
     box-shadow: 0 3px 0 himig.token-get('accent-800');
 
