@@ -25,9 +25,9 @@ const ogImageMap = {
   'tools': '/img/og-image-tools.webp',
 };
 
-export const MainContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const MainContent: React.FC<{ className?: string, children: React.ReactNode }> = ({ className, children }) => {
   return (
-    <main className="content-wrap">
+    <main className={ `content-wrap${ className ? ' ' + className : '' }` }>
       { children }
     </main>
   );
