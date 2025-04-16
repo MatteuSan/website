@@ -12,22 +12,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function MSInfoCard(props: { reference: any, item: any, linkBase: string }) {
   const cardContainerRef = useRef<HTMLDivElement>(null);
-  const effect = useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-
-      }
-    });
-    tl.set(cardContainerRef.current, { y: 10, opacity: 0, scale: 0.7 });
-    tl.to(cardContainerRef.current, {
-      y: 0,
-      duration: 0.6,
-      ease: 'power1.inOut',
-      stagger: {
-        amount: 0.05,
-      }
-    });
-  }, { scope: cardContainerRef });
 
   return <MSCard
     status={ props.item.status }
