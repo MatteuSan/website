@@ -56,7 +56,7 @@ export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, ico
 export const MSCardContent: React.FC<MSCardContentProps> = ({ children }) => {
   return (
     <div className="ms-card__content">
-      <p className="de-emphasize">{ children }</p>
+      { children }
     </div>
   );
 }

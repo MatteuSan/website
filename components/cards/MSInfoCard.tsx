@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { MSCard, MSCardFooter, MSCardHeader, MSCardMedia } from "../MSCard";
-import { MSButton } from "@/components";
+import { MSCard, MSCardContent, MSCardFooter, MSCardHeader, MSCardMedia } from "../MSCard";
+import { MSButton, MSTag } from "@/components";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { BookOpenIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 
@@ -27,6 +27,14 @@ export function MSInfoCard(props: { reference: any, item: any, linkBase: string 
         link={ props.item.slug && `/${props.linkBase}/${ props.item.slug }` }
         style={{ marginBlockEnd: '1rem' }}
       />
+      <MSCardContent>
+        <div className="flex flow-row wrap-none gap-xs" style={{ overflow: 'hidden hidden' }}>
+          { props.item.tech.slice(0, 4).map((tech: string, key: number) => {
+            return <MSTag key={key}>{ tech }</MSTag>;
+          }) }
+          { props.item.tech.length > 4 ? (<MSTag>+{props.item.tech.length - 4}</MSTag>) : null }
+        </div>
+      </MSCardContent>
       <MSCardFooter>
         { props.item.slug ?
           <MSButton link={ `/${props.linkBase}/${ props.item.slug }` } type="outlined">View project details</MSButton> : null }
