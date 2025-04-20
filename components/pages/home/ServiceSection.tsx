@@ -8,6 +8,7 @@ import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -17,6 +18,7 @@ const ServiceSection: React.FC = ( ) => {
 
   useGSAP(() => {
     const SERVICE_TILES = gsap.utils.toArray('.ms-carousel__item');
+
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,
@@ -27,11 +29,13 @@ const ServiceSection: React.FC = ( ) => {
       }
     });
 
+    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+
     const initialState = () => {
       SERVICE_TILES.forEach((tile: any, key: number) => {
         gsap.set(tile, {
           opacity: 0,
-          xPercent: key % 2 === 0 ? -33 : 33,
+          xPercent: !isMotionReduced ? key % 2 === 0 ? -33 : 33 : undefined,
         });
       });
     };
@@ -39,7 +43,7 @@ const ServiceSection: React.FC = ( ) => {
     const enterAnimation = () => {
       contentTl.from(servicesSectionRef.current, {
         opacity: 0,
-        y: 30,
+        y: !isMotionReduced ? 30 : undefined,
         duration: 1
       });
 
@@ -51,15 +55,13 @@ const ServiceSection: React.FC = ( ) => {
             end: 'bottom 77%',
             scrub: true,
             toggleActions: 'play pause resume reset',
-            // markers: true
           }
         });
 
         tl.to(tile, {
           opacity: 1,
-          xPercent: 0,
-          duration: 1,
-          ease: 'power2',
+          xPercent: !isMotionReduced ? 0 : undefined,
+          duration: 1.5,
           stagger: {
             amount: 0.05
           }
