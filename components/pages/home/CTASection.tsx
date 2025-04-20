@@ -27,15 +27,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
     });
 
     const initialState = () => {
-      gsap.set(ctaSectionRef.current, {
-        opacity: 0,
-        y: 30
-      });
-
-      gsap.set('.content', {
-        opacity: 0,
-      });
-
       gsap.set('.cta__actions .ms-button', {
         opacity: 0,
         y: 30,
@@ -43,14 +34,14 @@ const CTASection: React.FC<CTASectionProps> = () => {
     }
 
     const enterAnimation = () => {
-      contentTl.to(ctaSectionRef.current, {
-        opacity: 1,
-        y: 0,
+      contentTl.from(ctaSectionRef.current, {
+        opacity: 0,
+        y: 30,
         duration: 1,
       });
 
-      contentTl.to('.content', {
-        opacity: 1,
+      contentTl.from('.content', {
+        opacity: 0,
         duration: 3,
       });
 

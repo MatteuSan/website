@@ -26,11 +26,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
     });
 
     const initialState = () => {
-      gsap.set(aboutMeSectionRef.current, {
-        opacity: 0,
-        y: 40
-      });
-
       gsap.set('.profession', {
         text: 'a Web Developer',
       });
@@ -48,10 +43,10 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
     }
 
     const enterAnimation = () => {
-      gsap.to(aboutMeSectionRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 5,
+      gsap.from(aboutMeSectionRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 1,
         scrollTrigger: {
           trigger: '.lead-text',
           start: 'top 90%',

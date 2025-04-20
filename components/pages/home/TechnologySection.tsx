@@ -35,11 +35,6 @@ const TechnologySection: React.FC = () => {
     });
 
     const initialState = () => {
-      gsap.set(technologySectionRef.current, {
-        opacity: 0,
-        y: 30
-      });
-
       const CONTENT_CLASSES = [
         '.content-1',
         '.content-2',
@@ -60,9 +55,9 @@ const TechnologySection: React.FC = () => {
     }
 
     const enterAnimation = () => {
-      gsap.to(technologySectionRef.current, {
-        opacity: 1,
-        y: 0,
+      gsap.from(technologySectionRef.current, {
+        opacity: 0,
+        y: 30,
         duration: 1,
         scrollTrigger: {
           trigger: '.lead-text',

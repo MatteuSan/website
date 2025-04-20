@@ -115,8 +115,8 @@
     box-shadow: 0 3px 0 himig.token-get('accent-800');
 
     &:active {
-      transform: translateY(3px);
-      box-shadow: 0 0 0 himig.token-get('accent-800');
+      transform: translateY(3px) !important;
+      box-shadow: 0 0 0 himig.token-get('accent-800') !important;
     }
   }
 
@@ -130,8 +130,8 @@
     box-shadow: 0 3px 0 himig.token-get('accent-800');
 
     &:active {
-      transform: translateY(3px);
-      box-shadow: 0 0 0 himig.token-get('accent-800');
+      transform: translateY(3px) !important;
+      box-shadow: 0 0 0 himig.token-get('accent-800') !important;
     }
   }
 
@@ -179,8 +179,8 @@
         ink: 'ms-orange-inverted-ink',
         border: 'ms-orange-inverted-200',
       ));
-      transform: translateY(3px);
-      box-shadow: 0 0 0 himig.token-get('ms-orange-inverted-200');
+      transform: translateY(3px) !important;
+      box-shadow: 0 0 0 himig.token-get('ms-orange-inverted-200') !important;
     }
   }
 

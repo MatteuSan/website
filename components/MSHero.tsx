@@ -36,10 +36,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
     contentTl.from('.family-subtitle', { y: 10, opacity: 0, duration: 0.5 });
     contentTl.from('.ms-hero__actions', { y: 10, opacity: 0, duration: 0.7 });
 
-    // contentTl.to('.family-supertitle', { y: 0, opacity: 1, duration: 0.5 });
-    // contentTl.to('.family-subtitle', { y: 0, opacity: 1, duration: 0.5 });
-    // contentTl.to('.ms-hero__actions', { y: 0, opacity: 1, duration: 0.5 });
-
     contentTl.call(() => {
       contentTl.revert();
     });

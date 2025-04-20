@@ -28,28 +28,19 @@ const ServiceSection: React.FC = ( ) => {
     });
 
     const initialState = () => {
-      gsap.set(servicesSectionRef.current, {
-        opacity: 0,
-        y: 30
-      });
-
       SERVICE_TILES.forEach((tile: any, key: number) => {
         gsap.set(tile, {
           opacity: 0,
           xPercent: key % 2 === 0 ? -33 : 33,
         });
-
-        // gsap.set(`#${tile.id} .ms-carousel__media`, {
-        //   x: 0,
-        // });
       });
     };
 
     const enterAnimation = () => {
-      contentTl.to(servicesSectionRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
+      contentTl.from(servicesSectionRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 1
       });
 
       SERVICE_TILES.forEach((tile: any, key: number) => {
@@ -73,13 +64,6 @@ const ServiceSection: React.FC = ( ) => {
             amount: 0.05
           }
         }, '-=2');
-        // tl.to(`#${tile.id} .ms-carousel__media`, {
-        //   x: key % 2 === 0 ? 30 : -30,
-        // }, '<10%');
-        // tl.to(tile, {
-        //   opacity: 0,
-        //   duration: 1,
-        // });
       });
     };
 
@@ -89,7 +73,7 @@ const ServiceSection: React.FC = ( ) => {
 
     initialState();
     enterAnimation();
-    exitAnimation();
+    // exitAnimation();
   }, { scope: servicesCarouselRef });
 
   return (
