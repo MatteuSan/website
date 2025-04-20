@@ -25,37 +25,17 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       }
     });
 
-    const HIGHLIGHTS = gsap.utils.toArray('.highlight');
-
     const initialState = () => {
       gsap.set(aboutMeSectionRef.current, {
         opacity: 0,
         y: 40
       });
 
-      HIGHLIGHTS.forEach((highlight: any) => {
-        gsap.set(highlight, {
-          opacity: 0,
-          y: 10
-        });
-      });
-
       gsap.set('.profession', {
         text: 'a Web Developer',
-        duration: 100
       });
 
-      gsap.set('.content', {
-        opacity: 0,
-        y: 30,
-      });
-
-      gsap.set('.content-2', {
-        opacity: 0,
-        y: 30,
-      });
-
-      gsap.set('.content-3', {
+      gsap.set(['.content', '.content-2', '.content-3'], {
         opacity: 0,
         y: 30,
       });
@@ -71,7 +51,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       gsap.to(aboutMeSectionRef.current, {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 5,
         scrollTrigger: {
           trigger: '.lead-text',
           start: 'top 90%',
@@ -80,59 +60,49 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         }
       });
 
-      HIGHLIGHTS.forEach((highlight: any) => {
-        gsap.to(highlight, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: {
-            amount: 0.05
-          }
-        });
-      });
-
       contentTl.to('.content', {
         opacity: 1,
         y: 0,
-        duration: 100,
+        duration: 5,
       });
 
       contentTl.to('.profession', {
-        delay: 100,
+        duration: 1,
         text: {
           value: 'a Web Designer',
           speed: 0,
           type: 'diff'
         },
-        duration: 100,
+        delay: 5,
       }).to('.profession', {
-        delay: 100,
+        duration: 1,
         text: {
           value: 'an Experience Artisan',
           speed: 0,
           type: 'diff'
         },
-        duration: 100,
+        delay: 5,
       }).to('.profession', {
-        delay: 100,
+        duration: 1,
         text: {
           value: 'a UX Engineer',
           speed: 0,
           type: 'diff'
         },
-        duration: 100,
+        delay: 5,
       });
 
       contentTl.to('.content-2', {
         opacity: 1,
         y: 0,
-        duration: 50,
+        duration: 5,
       });
 
       contentTl.to('.content-3', {
+        delay: 2.5,
         opacity: 1,
         y: 0,
-        duration: 50,
+        duration: 5,
       });
 
       contentTl.to('.picture-frame', {
@@ -141,7 +111,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         rotationX: 0,
         rotationY: 0,
         rotationZ: 0,
-        duration: 50
+        duration: 5,
       }, '<30%');
     }
 
