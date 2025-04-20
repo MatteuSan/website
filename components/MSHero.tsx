@@ -2,7 +2,7 @@ import React from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { parallaxExit } from "@/lib/gsap";
+import { MOTION_PREFERENCES, parallaxExit, useGSAPMediaQuery } from "@/lib/gsap";
 
 interface MSHeroProps {
   title: string;
@@ -24,7 +24,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
         scrub: true,
       }
     });
-
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: heroWrapRef.current,
@@ -32,9 +31,11 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
       }
     });
 
-    contentTl.from('.family-supertitle', { y: 10, opacity: 0, duration: 0.5 });
-    contentTl.from('.family-subtitle', { y: 10, opacity: 0, duration: 0.5 });
-    contentTl.from('.ms-hero__actions', { y: 10, opacity: 0, duration: 0.7 });
+    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+
+    contentTl.from('.family-supertitle', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.5 });
+    contentTl.from('.family-subtitle', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.5 });
+    contentTl.from('.ms-hero__actions', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.7 });
 
     contentTl.call(() => {
       contentTl.revert();
