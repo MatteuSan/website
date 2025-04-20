@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import { MSButton } from "@/components";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { MSCarouselItem } from "@/components/MSCarousel";
 
