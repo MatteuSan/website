@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
 
 interface AboutMeSectionProps {}
 
@@ -25,6 +26,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       }
     });
 
+    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+
     const initialState = () => {
       gsap.set('.profession', {
         text: 'a Web Developer',
@@ -32,20 +35,20 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
       gsap.set(['.content', '.content-2', '.content-3'], {
         opacity: 0,
-        y: 30,
+        y: !isMotionReduced ? 30 : 0,
       });
 
       gsap.set('.picture-frame', {
         opacity: 0,
-        y: 30,
-        rotation: 45
+        y: !isMotionReduced ? 30 : 0,
+        rotation: !isMotionReduced ? 45 : 0,
       });
     }
 
     const enterAnimation = () => {
       gsap.from(aboutMeSectionRef.current, {
         opacity: 0,
-        y: 30,
+        y: !isMotionReduced ? 30 : 0,
         duration: 1,
         scrollTrigger: {
           trigger: '.lead-text',
@@ -57,7 +60,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
       contentTl.to('.content', {
         opacity: 1,
-        y: 0,
+        y: !isMotionReduced ? 0 : undefined,
         duration: 5,
       });
 
@@ -116,7 +119,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
     initialState();
     enterAnimation();
-    exitAnimation();
+    // exitAnimation();
   }, { scope: aboutMeSectionRef });
 
   return (

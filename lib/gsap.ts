@@ -66,12 +66,12 @@ export const useCardAnimation = (cardClass: string, scope?: string|ReactRef|Elem
         }
       });
 
-      gsap.set(card, { y: !isMotionReduced ? 20 : 0, opacity: 0, scale: 0.9 });
+      gsap.set(card, { y: !isMotionReduced ? 20 : 0, opacity: 0, scale: !isMotionReduced ? 0.9 : 1 });
 
       tl.to(card, {
         y: !isMotionReduced ? 0 : undefined,
         opacity: 1,
-        scale: 1,
+        scale: !isMotionReduced ? 1 : undefined,
         duration: 0.2,
         ease: 'power2',
         stagger: {

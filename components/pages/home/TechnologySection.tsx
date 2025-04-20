@@ -15,6 +15,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
+import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, TextPlugin);
 
@@ -34,6 +35,8 @@ const TechnologySection: React.FC = () => {
       }
     });
 
+    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+
     const initialState = () => {
       const CONTENT_CLASSES = [
         '.content-1',
@@ -47,17 +50,17 @@ const TechnologySection: React.FC = () => {
       CONTENT_CLASSES.forEach((content: string) => {
         gsap.set(content, {
           opacity: 0,
-          y: 30,
+          y: !isMotionReduced ? 30 : 0,
         });
       });
 
-      gsap.set('#technologies .technology', { y: -50, opacity: 0 });
+      gsap.set('#technologies .technology', { y: !isMotionReduced ? -50 : 0, opacity: 0 });
     }
 
     const enterAnimation = () => {
       gsap.from(technologySectionRef.current, {
         opacity: 0,
-        y: 30,
+        y: !isMotionReduced ? 30 : 0,
         duration: 1,
         scrollTrigger: {
           trigger: '.lead-text',
