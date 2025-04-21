@@ -94,6 +94,7 @@ const TechnologySection: React.FC = () => {
         opacity: 1,
         y: 0,
         duration: 3,
+        delay: 1,
       });
 
       const ACTIVE_CLASS = {
@@ -136,6 +137,7 @@ const TechnologySection: React.FC = () => {
         opacity: 1,
         y: 0,
         duration: 3,
+        delay: 1,
       });
 
       filteredMasteredTechnologyTiles.forEach((tile: any, key: number) => {
@@ -150,6 +152,7 @@ const TechnologySection: React.FC = () => {
         opacity: 1,
         y: 0,
         duration: 3,
+        delay: 1
       });
 
       contentTl.to('.content-5', {
