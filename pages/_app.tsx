@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { appWithTranslation } from 'next-i18next';
 import { ReactLenis } from 'lenis/react';
 import { gsap } from 'gsap';
 
 import type { AppProps } from 'next/app';
 import '../scss/main.scss';
-import { useRouter } from "next/router";
+import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { MotionProvider } from '@/stores/accessibility';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const lenisRef = useRef<any>();
-  const currentRoute = `${useRouter().pathname}`;
+  const currentRoute = `${router.pathname}`;
 
   const ALLOWED_ROUTES = ['/', '/about', '/work', '/tools'];
 
@@ -28,9 +30,15 @@ function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-      <Component { ...pageProps } />
-    </ReactLenis>
+    <MotionProvider value={{ prefersReducedMotion, setPrefersReducedMotion }}>
+      <MotionConfig>
+        <AnimatePresence mode="wait">
+          <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+            <Component key={router.route} { ...pageProps } />
+          </ReactLenis>
+        </AnimatePresence>
+      </MotionConfig>
+    </MotionProvider>
   );
 }
 

@@ -15,7 +15,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
-import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, TextPlugin);
 
@@ -35,7 +35,7 @@ const TechnologySection: React.FC = () => {
       }
     });
 
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const initialState = () => {
       const CONTENT_CLASSES = [

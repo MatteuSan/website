@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ReactRef, useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -24,15 +25,19 @@ export const SCREEN_SIZES = {
 
 /**
  * Returns a boolean value based on the condition provided.
- * @param {string} condition
+ * @param {string} query
  */
-export const useGSAPMediaQuery = (condition: string) => {
-  return gsap.matchMedia().add({
-    mq: condition
+export const useMediaQuery = (query: string) => {
+  const mm = gsap.matchMedia();
+  const debug = mm.add({
+    mq: query
   }, (ctx) => {
     // @ts-ignore
     return ctx.conditions.mq;
   });
+
+  // @ts-ignore
+  return debug.contexts[0].conditions.mq;
 }
 
 /**
@@ -41,10 +46,8 @@ export const useGSAPMediaQuery = (condition: string) => {
  * @param {number} duration
  */
 export const parallaxExit = (instance: number = 1, duration: number = 3) => {
-  const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
-
   return {
-    y: !isMotionReduced ? -150 + ((20 * (instance - 1)) * -1) : 0,
+    y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? -150 + ((20 * (instance - 1)) * -1) : 0,
     opacity: 0,
     duration: duration,
     ease: 'power1'
@@ -54,8 +57,6 @@ export const parallaxExit = (instance: number = 1, duration: number = 3) => {
 export const useCardAnimation = (cardClass: string, scope?: string|ReactRef|Element) => {
   useGSAP(() => {
     const CARDS = gsap.utils.toArray(cardClass);
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
-
     CARDS.forEach((card: any) => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -66,12 +67,12 @@ export const useCardAnimation = (cardClass: string, scope?: string|ReactRef|Elem
         }
       });
 
-      gsap.set(card, { y: !isMotionReduced ? 20 : 0, opacity: 0, scale: !isMotionReduced ? 0.9 : 1 });
+      gsap.set(card, { y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 20 : 0, opacity: 0, scale: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 0.9 : 1 });
 
       tl.to(card, {
-        y: !isMotionReduced ? 0 : undefined,
+        y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 0 : undefined,
         opacity: 1,
-        scale: !isMotionReduced ? 1 : undefined,
+        scale: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 1 : undefined,
         duration: 0.2,
         ease: 'power2',
         stagger: {

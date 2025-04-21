@@ -2,7 +2,7 @@ import React from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { MOTION_PREFERENCES, parallaxExit, useGSAPMediaQuery } from "@/lib/gsap";
+import { MOTION_PREFERENCES, parallaxExit, useMediaQuery } from "@/lib/gsap";
 
 interface MSHeroProps {
   title: string;
@@ -31,11 +31,9 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
       }
     });
 
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
-
-    contentTl.from('.family-supertitle', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.5 });
-    contentTl.from('.family-subtitle', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.5 });
-    contentTl.from('.ms-hero__actions', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.7 });
+    contentTl.from('.family-supertitle', { y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 10 : 0, opacity: 0, duration: 0.5 });
+    contentTl.from('.family-subtitle', { y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 10 : 0, opacity: 0, duration: 0.5 });
+    contentTl.from('.ms-hero__actions', { y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 10 : 0, opacity: 0, duration: 0.7 });
 
     contentTl.call(() => {
       contentTl.revert();

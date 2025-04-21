@@ -8,7 +8,7 @@ import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -29,7 +29,7 @@ const ServiceSection: React.FC = ( ) => {
       }
     });
 
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const initialState = () => {
       SERVICE_TILES.forEach((tile: any, key: number) => {

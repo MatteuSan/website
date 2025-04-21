@@ -26,3 +26,9 @@ export type Tool = {
   tags: string[],
   duration: [number, number|'present'|'Present']|[number]
 }
+
+export type AnimationSpecification = {
+  from?: object,
+  to?: object,
+  exit?: object
+}

@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -27,7 +27,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
       }
     });
 
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const initialState = () => {
       gsap.set('.cta__actions .ms-button', {

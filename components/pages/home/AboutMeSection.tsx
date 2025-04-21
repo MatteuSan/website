@@ -4,7 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { MOTION_PREFERENCES, useGSAPMediaQuery } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface AboutMeSectionProps {}
 
@@ -26,7 +26,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       }
     });
 
-    const isMotionReduced = useGSAPMediaQuery(MOTION_PREFERENCES.isReduced);
+    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const initialState = () => {
       gsap.set('.profession', {
