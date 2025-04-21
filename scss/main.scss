@@ -209,13 +209,14 @@
     position: relative;
     border-radius: 0.5rem;
     overflow: hidden;
-    transition: all var(--ms-transition-time) ease;
+    transition: all 0.8s ease;
 
     &:hover {
       box-shadow: 0 5px 40px rgba(#fff, 0.1);
 
       .ms-card__media img {
         -webkit-filter: grayscale(0);
+        filter: grayscale(0);
       }
 
       @include himig.breakpoint-create('large') {
@@ -231,6 +232,7 @@
     .ms-card__media {
       height: auto;
       max-height: 100%;
+      transition: all 0.8s ease;
 
       img {
         width: 100%;
@@ -257,6 +259,7 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
+        transition: all 0.8s ease;
 
         @include himig.breakpoint-create('large') {
           position: absolute;
