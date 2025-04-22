@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
+import type { AppProps } from 'next/app';
+import { Analytics } from "@vercel/analytics/react"
 import { appWithTranslation } from 'next-i18next';
 import { ReactLenis } from 'lenis/react';
 import { gsap } from 'gsap';
-
-import type { AppProps } from 'next/app';
-import '../scss/main.scss';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
+
 import { MotionProvider } from '@/stores/accessibility';
+import '../scss/main.scss';
+
 
 function App({ Component, pageProps, router }: AppProps) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -35,6 +37,7 @@ function App({ Component, pageProps, router }: AppProps) {
         <AnimatePresence mode="wait">
           <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
             <Component key={router.route} { ...pageProps } />
+            <Analytics />
           </ReactLenis>
         </AnimatePresence>
       </MotionConfig>
