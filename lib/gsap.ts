@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ReactRef, useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { hashString } from '@/lib/string';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -47,38 +48,93 @@ export const useMediaQuery = (query: string) => {
  */
 export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   return {
-    y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? -150 + ((20 * (instance - 1)) * -1) : 0,
+    y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? -150 + ((10 * (instance - 1)) * -1) : 0,
     opacity: 0,
     duration: duration,
-    ease: 'power1'
   };
 }
 
-export const useCardAnimation = (cardClass: string, scope?: string|ReactRef|Element) => {
-  useGSAP(() => {
-    const CARDS = gsap.utils.toArray(cardClass);
-    CARDS.forEach((card: any) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 90%',
-          end: 'bottom 77%',
-          once: true,
-        }
-      });
+/**
+ * Splits text into manageable parts for animation.
+ * @param element
+ * @param options
+ * @returns {string} Generated class selector. (i.e. `.class-name`)
+ */
+export const splitText = (
+  element: HTMLElement | null,
+  options: {
+    style?: 'word' | 'char' | 'line',
+    className?: string
+  } = { style: 'char' }
+): string => {
+  if (!element) return '.';
 
-      gsap.set(card, { y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 20 : 0, opacity: 0, scale: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 0.9 : 1 });
+  const elementUUID = hashString(`${options.style} ${element.textContent}`, true);
+  const className = options.className || `splitText__${options.style}--${elementUUID}`;
+  const generatedSelector = `.${className}`;
 
-      tl.to(card, {
-        y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 0 : undefined,
-        opacity: 1,
-        scale: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? 1 : undefined,
-        duration: 0.2,
-        ease: 'power2',
-        stagger: {
-          amount: 0.1,
-        }
-      });
+  const cleanupSplitSpans = (el: HTMLElement, classPrefix: string) => {
+    const spans = el.querySelectorAll(`span[class^="${classPrefix}"]`);
+    const brs = el.querySelectorAll(`br[class$="__break"]`);
+
+    spans.forEach(span => {
+      const parent = span.parentNode;
+      if (!parent) return;
+
+      const textNode = document.createTextNode(span.textContent || '');
+      parent.replaceChild(textNode, span);
     });
-  }, { scope });
-}
+
+    brs.forEach(br => {
+      const parent = br.parentNode;
+      if (!parent) return;
+
+      const brNode = document.createElement('br');
+      parent.replaceChild(brNode, br);
+    });
+  };
+
+  cleanupSplitSpans(element, 'splitText__');
+
+  const splitTextNode = (node: Node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent || '';
+      if (!text.trim()) return;
+
+      const fragment = document.createDocumentFragment();
+      let split: string[] = [];
+
+      if (options.style === 'char') {
+        split = text.split('');
+      } else if (options.style === 'word') {
+        split = text.split(/(\s+)/);
+      } else if (options.style === 'line') {
+        split = text.split('.');
+      }
+
+      split.forEach((part) => {
+        if (options.style !== 'line' && /^\s+$/.test(part)) {
+          fragment.appendChild(document.createTextNode(part));
+        } else {
+          const span = document.createElement('span');
+          span.textContent = part;
+          span.className = className;
+          fragment.appendChild(span);
+
+          if (options.style === 'line') {
+            const br = document.createElement('br');
+            br.className = `${className}__break`;
+            fragment.appendChild(br);
+          }
+        }
+      });
+
+      (node as ChildNode).replaceWith(fragment);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      Array.from(node.childNodes).forEach(splitTextNode);
+    }
+  };
+
+  splitTextNode(element);
+  return generatedSelector;
+};
