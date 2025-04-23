@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { ReactRef, useGSAP } from '@gsap/react';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { hashString } from '@/lib/string';
 
