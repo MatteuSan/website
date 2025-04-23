@@ -53,11 +53,15 @@ export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   };
 }
 
+type SplitTextResult = {
+  splits: HTMLElement[],
+  identifier: string
+};
+
 /**
  * Splits text into manageable parts for animation.
  * @param element
  * @param options
- * @returns {string} Generated class selector. (i.e. `.class-name`)
  */
 export const splitText = (
   element: HTMLElement | null,
@@ -65,8 +69,13 @@ export const splitText = (
     style?: 'word' | 'char' | 'line',
     className?: string
   } = { style: 'char' }
-): string => {
-  if (!element) return '.';
+): SplitTextResult => {
+  if (!element) return {
+    splits: [],
+    identifier: '.'
+  };
+
+  const finalSplits: HTMLElement[] = [];
 
   const elementUUID = hashString(`${options.style} ${element.textContent}`, true);
   const className = options.className || `splitText__${options.style}--${elementUUID}`;
@@ -119,6 +128,7 @@ export const splitText = (
           span.textContent = part;
           span.className = className;
           fragment.appendChild(span);
+          finalSplits.push(span);
 
           if (options.style === 'line') {
             const br = document.createElement('br');
@@ -135,5 +145,9 @@ export const splitText = (
   };
 
   splitTextNode(element);
-  return generatedSelector;
+
+  return {
+    splits: finalSplits,
+    identifier: generatedSelector
+  };
 };
