@@ -53,10 +53,23 @@ export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   };
 }
 
-type SplitTextResult = {
-  splits: HTMLElement[],
-  identifier: string
-};
+class SplitTextResult {
+  constructor(
+    public splits: HTMLElement[],
+    public identifier: string,
+  ) {}
+
+  public revert(): void {
+    this.splits.forEach(split => {
+      split.removeAttribute('style');
+      const parent = split.parentNode;
+      const textContent = document.createTextNode(split.textContent || '');
+
+      if (!parent) return;
+      parent.replaceChild(textContent, split);
+    });
+  }
+}
 
 /**
  * Splits text into manageable parts for animation.
@@ -70,11 +83,7 @@ export const splitText = (
     className?: string
   } = { style: 'char' }
 ): SplitTextResult => {
-  if (!element) return {
-    splits: [],
-    identifier: '.'
-  };
-
+  if (!element) return new SplitTextResult([], '.');
   const finalSplits: HTMLElement[] = [];
 
   const elementUUID = hashString(`${options.style} ${element.textContent}`, true);
@@ -127,6 +136,8 @@ export const splitText = (
           const span = document.createElement('span');
           span.textContent = part;
           span.className = className;
+          span.style.display = 'inline-block';
+          span.style.willChange = 'transform';
           fragment.appendChild(span);
           finalSplits.push(span);
 
@@ -145,9 +156,5 @@ export const splitText = (
   };
 
   splitTextNode(element);
-
-  return {
-    splits: finalSplits,
-    identifier: generatedSelector
-  };
+  return new SplitTextResult(finalSplits, generatedSelector);
 };
