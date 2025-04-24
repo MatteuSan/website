@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, useRef } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import Image from 'next/image';
 

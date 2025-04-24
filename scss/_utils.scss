@@ -96,6 +96,12 @@
     margin-inline: auto;
   }
 
+  .constrained-layout {
+    width: calc(100% - 50px);
+    max-width: himig.token-get('viewport-layout-limit');
+    margin-inline: auto;
+  }
+
   .letter-spacing-condensed {
     letter-spacing: himig.to-rem(-2px);
     font-stretch: condensed;

@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { site } from '../constants/site';
+import { site } from '@/constants/site';
+import { animateVariants } from '@/lib/framer';
+import { motion } from 'framer-motion';
 
 interface BlankLayoutProps {
   title: string;
@@ -20,6 +22,21 @@ const ogImageMap = {
 const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewImage, children }) => {
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
+
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+      transition: {
+        duration: 1
+      }
+    },
+    exit: {
+      opacity: 0
+    }
+  };
 
   return (
     <>
@@ -51,7 +68,9 @@ const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewIm
 
         <meta name="theme-color" content={ site.themeColor } />
       </Head>
-      { children }
+      <motion.section {...animateVariants(variants)}>
+        { children }
+      </motion.section>
     </>
   );
 };
