@@ -81,6 +81,7 @@ $header-style: 'default' !default;
         border-radius: himig.primitive-token-get('radius.sm');
         display: var(--ms-header-brand-visibility, none);
         user-select: none;
+        letter-spacing: himig.to-rem(-3px);
         @include himig.struct-shadow('header-title', 'high');
 
         @include himig.breakpoint-create('large') {

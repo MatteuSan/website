@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { hashString } from '@/lib/string';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -17,10 +17,10 @@ export const MOTION_PREFERENCES = {
  * Screen sizes
  */
 export const SCREEN_SIZES = {
-  isSmall: 320,
-  isMedium: 640,
-  isLarge: 890,
-  isXLarge: 1077,
+  isSmall: 'screen and (min-width: 320px)',
+  isMedium: 'screen and (min-width: 640px)',
+  isLarge: 'screen and (min-width: 890px)',
+  isXLarge: 'screen and (min-width: 1077px)',
 };
 
 /**
@@ -53,6 +53,21 @@ export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   };
 }
 
+export const animateInView = (trigger: gsap.DOMTarget) => {
+  if (typeof ScrollTrigger === 'undefined') {
+    console.warn('ScrollTrigger is not defined. Please register it before using `isInView()`.');
+    return gsap.timeline();
+  }
+
+  return gsap.timeline({
+    scrollTrigger: {
+      trigger,
+      start: 'top 80%',
+      toggleActions: 'play resume resume reverse',
+    }
+  });
+}
+
 class SplitTextResult {
   constructor(
     public splits: HTMLElement[],
@@ -61,9 +76,10 @@ class SplitTextResult {
 
   public revert(): void {
     this.splits.forEach(split => {
-      split.removeAttribute('style');
       const parent = split.parentNode;
       const textContent = document.createTextNode(split.textContent || '');
+
+      split.removeAttribute('style');
 
       if (!parent) return;
       parent.replaceChild(textContent, split);
@@ -77,16 +93,26 @@ class SplitTextResult {
  * @param options
  */
 export const splitText = (
-  element: HTMLElement | null,
+  element: HTMLElement | string | null,
   options: {
     style?: 'word' | 'char' | 'line',
     className?: string
   } = { style: 'char' }
 ): SplitTextResult => {
-  if (!element) return new SplitTextResult([], '.');
+  const elementProxy = typeof element === 'string' ? (document.querySelector(element) as HTMLElement) : element;
+  if (!elementProxy) return new SplitTextResult([], '.');
+
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+  if (isMotionReduced) {
+    const ret = new SplitTextResult([], `.${elementProxy.className.split(' ').join('.')}`);
+    console.log(ret);
+    return ret;
+  };
+
+  elementProxy.style.overflow = 'hidden';
   const finalSplits: HTMLElement[] = [];
 
-  const elementUUID = hashString(`${options.style} ${element.textContent}`, true);
+  const elementUUID = hashString(`${options.style} ${elementProxy.textContent}`, true);
   const className = options.className || `splitText__${options.style}--${elementUUID}`;
   const generatedSelector = `.${className}`;
 
@@ -111,7 +137,7 @@ export const splitText = (
     });
   };
 
-  cleanupSplitSpans(element, 'splitText__');
+  cleanupSplitSpans(elementProxy, 'splitText__');
 
   const splitTextNode = (node: Node) => {
     if (node.nodeType === Node.TEXT_NODE) {
@@ -155,6 +181,6 @@ export const splitText = (
     }
   };
 
-  splitTextNode(element);
+  splitTextNode(elementProxy);
   return new SplitTextResult(finalSplits, generatedSelector);
 };

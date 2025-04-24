@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 import {
   MSHeader,
@@ -7,9 +8,10 @@ import {
   HCNavbarTrigger,
   HCNavbarItem,
   MSFooter,
-} from '../components';
+} from '@/components';
 
 import { site } from '@/constants/site';
+import { useTransition } from '@/lib/framer';
 
 interface DefaultLayoutProps {
   title: string;
@@ -40,11 +42,25 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 }
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
-
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
+
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+      transition: {
+        duration: 1
+      }
+    },
+    exit: {
+      opacity: 0
+    }
+  };
 
   return (
     <>
@@ -93,7 +109,9 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
           </MSNavbar>
         </>
       } isScrollable={hasHero} />
-      { children }
+      <motion.section {...useTransition(variants)}>
+        { children }
+      </motion.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />
     </>
   );

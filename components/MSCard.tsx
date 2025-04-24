@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, ComponentPropsWithRef, useRef } from 'react';
-
+import React, { ComponentPropsWithoutRef, forwardRef, useRef } from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import Image from 'next/image';
 
 interface MSCardHeaderProps extends ComponentPropsWithoutRef<any> {
@@ -24,12 +24,11 @@ interface MSCardFooterProps extends ComponentPropsWithoutRef<any> {
   children: string|React.ReactNode;
 }
 
-interface MSCardProps extends ComponentPropsWithRef<any> {
+type MSCardProps = {
   delay?: number;
   children?: React.ReactNode;
-  isArchived?: boolean;
-  status?: string;
-}
+  status?: 'archived'|'hiatus';
+} & Omit<HTMLMotionProps<"div">, "ref">;
 
 export const MSCardMedia: React.FC<MSCardMediaProps> = ({ media, alt }) => {
   return (
@@ -69,18 +68,18 @@ export const MSCardFooter: React.FC<MSCardFooterProps> = ({ children }) => {
   );
 }
 
-export const MSCard: React.FC<MSCardProps> = ({ title, description, media, tags, delay, isArchived, status, children, ...props }) => {
-  const bounds = useRef(null);
+export const MSCard = forwardRef<HTMLDivElement, MSCardProps>((props, ref) => {
+  const { title, status, children, ...motionProps } = props;
 
   return (
-    <div
-      ref={bounds}
+    <motion.div
+      ref={ref}
       className={`ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start`}
-      {...props}
+      {...motionProps}
     >
       { children }
-    </div>
+    </motion.div>
   );
-};
+});
 
 export default { MSCard, MSCardHeader, MSCardContent, MSCardFooter, MSCardMedia };

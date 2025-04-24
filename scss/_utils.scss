@@ -40,6 +40,23 @@
     }
   }
 
+  .profession,
+  .adjective {
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      font-weight var(--ms-transition-time) ease,
+      letter-spacing var(--ms-transition-time) ease
+    ;
+    transform-origin: bottom;
+
+    &:hover {
+      font-weight: himig.primitive-token-get('weight.normal');
+      letter-spacing: himig.to-rem(-1px);
+    }
+  }
+
   .italic {
     font-style: italic;
   }
@@ -82,5 +99,22 @@
     @container (min-width: 67.3125rem) {
       width: 100%;
     }
+  }
+
+  .letter-spacing-condensed {
+    letter-spacing: himig.to-rem(-2px);
+    font-stretch: condensed;
+  }
+
+  .letter-spacing-normal {
+    letter-spacing: normal;
+  }
+
+  .letter-spacing-wide {
+    letter-spacing: himig.to-rem(3px);
+  }
+
+  .overflow-y-hidden {
+    overflow-y: hidden;
   }
 }

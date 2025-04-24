@@ -6,7 +6,6 @@ import { MSHero, MSInfoCard
 
 import { works } from '@/constants/works';
 import { useRouter } from "next/router";
-import { useCardAnimation } from "@/lib/gsap";
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
 const itemsWithoutSlug = works.filter((item) => item?.slug == null);
@@ -20,8 +19,6 @@ const WorkPage: NextPage = () => {
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
-
-  useCardAnimation('.ms-card', workSectionRef);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
@@ -50,7 +47,7 @@ const WorkPage: NextPage = () => {
                              id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: any, key: number) => {
                 return (
-                  <MSInfoCard key={ key } reference={ key } item={ item } linkBase="work"/>
+                  <MSInfoCard key={ key } index={ key } item={ item } linkBase="work"/>
                 );
               }) :
               (

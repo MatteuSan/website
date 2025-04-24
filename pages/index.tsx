@@ -24,7 +24,7 @@ const new_works = workCleanedItems.slice(0, 5);
 const HomePage: NextPage = () => {
   return (
     <DefaultLayout title="HOME" hasHero>
-      <MSHero title="MatteuSan" subtitle={<span>Creating bridges from <span className="italic family-supertitle">software</span> to <span className="italic family-supertitle">user</span>.</span>} action={ <MSButton type="filled large inverted" link="#about-me">Get to know me</MSButton> } />
+      <MSHero title="MatteuSan" subtitle={<>Creating bridges from <span className="italic family-supertitle">software</span> to <span className="italic family-supertitle">user</span>.</>} action={ <MSButton type="filled large inverted" link="#about-me">Get to know me</MSButton> } />
       <MainContent constrained={false}>
         <AboutMeSection />
         <ServiceSection />

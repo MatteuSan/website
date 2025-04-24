@@ -83,7 +83,11 @@ const TechnologySection: React.FC = () => {
       const technologyTiles = gsap.utils.toArray('#technologies .technology');
 
       technologyTiles.forEach((tile: any) => {
-        contentTl.to(tile, { y: 0, opacity: 1, duration: 0.2, ease: 'elastic',
+        contentTl.to(tile, {
+          y: 0,
+          opacity: 1,
+          duration: 0.2,
+          ease: 'power2',
           stagger: {
             amount: 0.05,
           }
@@ -185,7 +189,7 @@ const TechnologySection: React.FC = () => {
       ref={technologySectionRef}
     >
       <div className="constrained flex flow-column jc-center">
-        <h2 className="lead-text family-supertitle size-3xl @medium:size-4xl">Stuff I use</h2>
+        <h2 className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I use</h2>
         <p className="content mt-sm mb-2xl size-md weight-light">
           <span className="content-1 block">I like working with tools that conform to my philosophies of building <span className="highlight">great</span> software.</span>
           <span className="content-2 block my-sm"><span className="highlight">Constantly</span> expanding my repertoire.</span>

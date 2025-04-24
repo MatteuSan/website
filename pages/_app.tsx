@@ -12,15 +12,17 @@ import '../scss/main.scss';
 function App({ Component, pageProps, router }: AppProps) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  const VALID_BASE_ROUTES = [
+    '/', '/work', '/tools', '/blog'
+  ];
+
   return (
-    <MotionProvider value={{ prefersReducedMotion, setPrefersReducedMotion }}>
+    <ReactLenis root options={{ autoResize: true }}>
       <AnimatePresence mode="wait">
-        <ReactLenis root options={{ autoResize: true }}>
-          <Component key={router.route} { ...pageProps } />
-          <Analytics />
-        </ReactLenis>
+        <Component key={router.route} {...pageProps} />
+        <Analytics/>
       </AnimatePresence>
-    </MotionProvider>
+    </ReactLenis>
   );
 }
 

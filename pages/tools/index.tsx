@@ -5,7 +5,6 @@ import { MSHero, MSInfoCard } from '@/components';
 
 import { tools } from '@/constants/tools';
 import { useRouter } from "next/router";
-import { useCardAnimation } from "@/lib/gsap";
 
 const itemsWithSlug = tools.filter((item) => item?.slug != null);
 const itemsWithoutSlug = tools.filter((item) => item?.slug == null);
@@ -19,8 +18,6 @@ const ToolsPage: NextPage = () => {
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
-
-  useCardAnimation('.ms-card', toolsSectionRef);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
@@ -49,7 +46,7 @@ const ToolsPage: NextPage = () => {
             <>
               { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
                 return (
-                  <MSInfoCard key={ key } reference={ key } item={ item } linkBase="tools"/>
+                  <MSInfoCard key={ key } index={ key } item={ item } linkBase="tools"/>
                 );
               }) : (
                 <div className="grid pi-center p-2xl border-xs start-1 end-3">

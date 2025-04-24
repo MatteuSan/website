@@ -54,7 +54,7 @@ const ServiceSection: React.FC = ( ) => {
             start: 'top 95%',
             end: 'bottom 77%',
             scrub: true,
-            toggleActions: 'play pause resume reset',
+            toggleActions: 'play pause resume reset'
           }
         });
 
@@ -82,7 +82,7 @@ const ServiceSection: React.FC = ( ) => {
     <section id="stuff-i-do" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
       <section className="constrained mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
         <div>
-          <h1 className="lead-text family-supertitle size-3xl @medium:size-4xl">Stuff I do</h1>
+          <h1 className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h1>
           <p className="content de-emphasize size-md weight-light">Here are some of the services I offer.</p>
         </div>
       </section>
