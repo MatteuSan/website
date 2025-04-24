@@ -1,6 +1,6 @@
 import { Variants } from 'framer-motion';
 
-export const useTransition = (variants: Variants) => {
+export const animateVariants = (variants: Variants) => {
   return {
     initial: 'initial',
     animate: 'enter',

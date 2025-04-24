@@ -1,16 +1,23 @@
 @use 'pkg:@matteusan/himig';
 
 @mixin render() {
+  #skills-and-technologies__wrapper {
+    width: calc(100% - 50px);
+    height: 100%;
+    max-width: himig.token-get('viewport-layout-limit');
+    border-radius: himig.primitive-token-get('radius.xl');
+  }
+
   #technologies {
     $children: 12;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, clamp(100px, 10vw, 200px));
+    grid-template-columns: repeat(auto-fit, clamp(80px, 10vw, 200px));
     justify-content: center;
     animation: load-in 0.5s ease;
 
     @include himig.breakpoint-create('medium') {
-      grid-template-columns: repeat(auto-fit, clamp(100px, 10vw, 200px));
+      grid-template-columns: repeat(auto-fit, clamp(80px, 10vw, 200px));
     }
 
     .technology {
@@ -28,6 +35,11 @@
       transition: all var(--ms-transition-time) ease;
       animation: load-in 0.2s ease;
       user-select: none;
+
+      .technology__img {
+        width: clamp(32px, 100%, 48px);
+        height: clamp(32px, 100%, 48px);
+      }
 
       @include himig.breakpoint-create('large') {
         &:not(.is-active):not(.is-inactive):hover {
@@ -98,11 +110,6 @@
         &:hover {
           --ink: #{himig.token-get('surface-400')};
         }
-      }
-
-      .technology__img {
-        width: clamp(24px, 100%, 40px);
-        height: clamp(24px, 100%, 40px);
       }
 
       .technology__label {

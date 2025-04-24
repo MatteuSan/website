@@ -4,9 +4,10 @@ import { MSButton, MSTag } from "@/components";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { BookOpenIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Variants } from 'framer-motion';
+import { SCREEN_SIZES, useMediaQuery } from '@/lib/gsap';
 
 interface MSInfoCardProps {
-  index?: number,
+  index: number,
   item: any,
   linkBase: any
 }
@@ -17,15 +18,17 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
   const variants: Variants = {
     initial: {
       opacity: 0,
-      y: 30,
-      scale: 0.9
+      x: index % 2 === 0 ? -30 : 30,
+      y: 50,
+      // rotateZ: index % 2 === 0 ? 5 : -5,
     },
     whileInView: (index: number) => ({
       opacity: 1,
+      x: 0,
       y: 0,
-      scale: 1,
+      rotateZ: !useMediaQuery(SCREEN_SIZES.isLarge) ? (index % 2 === 0 ? -1 : 1) : (index % 2 === 0 ? 0 : 0),
       transition: {
-        delay: 0.05 * index,
+        delay: 0.1 * index,
         duration: 0.4,
         easings: [0.83, 0, 0.17, 1]
       }

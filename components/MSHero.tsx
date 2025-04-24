@@ -35,21 +35,14 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
 
     const titleSplit = splitText(heroTitleRef.current);
 
-    contentTl.from(heroRef.current, {
-      // y: !isMotionReduced ? '-50%' : 0,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power2'
-    });
-
     contentTl.from(
       titleSplit.identifier,
       {
         y: !isMotionReduced ? '100%' : 0,
         opacity: isMotionReduced ? 0 : 1,
         rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 20 : 0,
-        duration: 0.7,
+        rotateZ: !isMotionReduced ? 10 : 0,
+        duration: 0.5,
         stagger: 0.05
       }
     );
@@ -61,17 +54,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
     });
 
     parallaxTl.to('.family-supertitle', parallaxExit(1),);
-    parallaxTl.to(
-      titleSplit.identifier,
-      {
-        y: !isMotionReduced ? '-100%' : 0,
-        opacity: isMotionReduced ? 0 : 1,
-        rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 20 : 0,
-        duration: 0.7,
-        stagger: 0.05
-      }
-    , '<');
     parallaxTl.to('.family-subtitle', parallaxExit(2), '<');
     parallaxTl.to('.ms-hero__actions', parallaxExit(3), '<');
     parallaxTl.to(heroRef.current, {

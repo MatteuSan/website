@@ -53,7 +53,11 @@ export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   };
 }
 
-export const animateInView = (trigger: gsap.DOMTarget) => {
+interface AnimateInViewOptions {
+  once?: boolean
+}
+
+export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOptions) => {
   if (typeof ScrollTrigger === 'undefined') {
     console.warn('ScrollTrigger is not defined. Please register it before using `isInView()`.');
     return gsap.timeline();
@@ -62,8 +66,9 @@ export const animateInView = (trigger: gsap.DOMTarget) => {
   return gsap.timeline({
     scrollTrigger: {
       trigger,
-      start: 'top 80%',
-      toggleActions: 'play resume resume reverse',
+      start: 'top 95%',
+      toggleActions: options?.once ? 'play pause resume complete' : 'play resume resume complete',
+      once: options?.once ?? false
     }
   });
 }

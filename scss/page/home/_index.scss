@@ -9,20 +9,19 @@
   }
 
   .picture-frame {
-    width: clamp(200px, 30vw, 300px);
-    height: clamp(200px, 30vw, 300px);
+    width: clamp(250px, 100%, 300px);
+    height: clamp(250px, 100%, 300px);
     margin: 0 auto;
     display: grid;
     place-items: center;
-    border: 1px solid #e5e5e5;
-    border-radius: 50%;
+    border: 2px solid himig.token-get('primary-300');
+    border-radius: himig.primitive-token-get('radius.2xl');
     overflow: hidden;
     transform: rotateZ(2deg);
     user-select: none;
     animation-delay: 1s;
     animation: load-in 0.8s ease;
     transition: box-shadow var(--ms-transition-time) ease;
-    box-shadow: -5px 10px 0 var(--ms-theme-surface-300);
 
     img {
       width: 100%;

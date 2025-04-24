@@ -74,7 +74,7 @@ export const MSCard = forwardRef<HTMLDivElement, MSCardProps>((props, ref) => {
   return (
     <motion.div
       ref={ref}
-      className={`ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start`}
+      className={`ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start overflow-y-hidden`}
       {...motionProps}
     >
       { children }

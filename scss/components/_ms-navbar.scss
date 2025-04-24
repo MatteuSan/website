@@ -8,19 +8,17 @@
     place-items: center;
     @include himig.color-apply('navbar-trigger', (
       fill: rgba(0 0 0 / 0),
-      ink: inherit
+      ink: 'primary-200',
+      border: 'primary-400'
     ));
     @include himig.struct-apply('navbar-trigger', (
       radius: 'small',
-      padding: 'sm'
+      padding: 'sm',
+      border-width: 'xs',
+      border-style: 'solid'
     ));
-    border: none;
     cursor: pointer;
     transition: all var(--ms-transition-time) ease;
-
-    &:hover {
-      @include himig.color-fill('navbar-trigger', rgba(255 255 255 / 20%));
-    }
 
     @include himig.breakpoint-create('large') {
       display: none;
@@ -28,22 +26,38 @@
   }
 
   .ms-navbar {
-    display: none;
-    position: fixed;
-    top: himig.key-create('navbar-bottom', calc(40px + 1.2rem));
-    right: himig.key-create('navbar-right', calc(1.5rem));
-    transition: all var(--ms-transition-time) ease;
+    position: absolute;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: all 0.3s ease;
+    right: 2rem;
     z-index: 90;
+
+    .ms-list {
+      flex-flow: row nowrap;
+    }
 
     .ms-list__item {
       display: flex;
       justify-content: center;
-      padding: 0 !important;
-      text-align: left;
       user-select: none;
+
+      @include himig.struct-bind('list-item', (
+        width: (
+          default: 100%,
+          min: none,
+          max: max-content
+        ),
+        padding: 0 !important,
+      ));
+      @include himig.typography-bind('list-item', (
+        weight: 200
+      ));
 
       a {
         width: 100%;
+        max-width: max-content !important;
         display: inline-block;
         text-align: inherit;
         padding: 0.5rem 0.7rem;
@@ -56,8 +70,9 @@
           border: 'surface-200'
         ));
         @include himig.typography-bind('list-item', (
-          weight: 700
+          weight: 400
         ));
+        letter-spacing: himig.to-rem(-1px);
       }
 
       &.is-external {
@@ -67,21 +82,23 @@
 
         a::after {
           display: inline-block;
-          width: 16px;
-          height: 16px;
-          font-size: 16px;
+          width: 14px;
+          height: 14px;
+          font-size: 14px;
           color: #fff;
           content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25' /%3E%3C/svg%3E%0A");
-          margin-left: 0.5rem;
-          align-self: center;
+          margin-block-start: 0.1rem;
+          margin-inline-start: 0.5rem;
         }
       }
     }
 
     @include himig.breakpoint-create('large') {
       display: block;
-      @include himig.key-bind('navbar-bottom', calc(0.5rem));
-      @include himig.key-bind('navbar-right', calc(1.2rem));
+      position: static;
+      transform-origin: revert;
+      opacity: 1;
+      transform: revert;
 
       .ms-list {
         flex-flow: row nowrap;
@@ -95,7 +112,9 @@
     }
 
     &.is-open {
-      display: block;
+      right: 5rem;
+      opacity: 1;
+      transform: scaleX(1);
     }
   }
 }

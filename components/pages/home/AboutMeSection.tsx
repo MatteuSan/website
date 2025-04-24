@@ -14,6 +14,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const [professionIndex, setProfessionIndex] = useState<number>(0);
   const [adjectiveIndex, setAdjectiveIndex] = useState<number>(0);
 
+  const leadTextRef = useRef<HTMLHeadingElement>(null);
   const aboutMeSectionRef = useRef<HTMLDivElement>(null);
   const professionRef = useRef<HTMLSpanElement>(null);
   const adjectiveRef = useRef<HTMLSpanElement>(null);
@@ -92,14 +93,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: aboutMeSectionRef.current,
-        start: () => !useMediaQuery(SCREEN_SIZES.isLarge) ? 'top 5%' : 'top 15%',
-        toggleActions: 'play resume resume reverse',
-        pin: true,
-        markers: true,
-        pinType: 'fixed',
+        start: () => !useMediaQuery(SCREEN_SIZES.isLarge) ? 'top 10%' : 'top 15%',
+        end: () => !useMediaQuery(SCREEN_SIZES.isLarge) ? 'bottom 10%' : 'bottom 15%',
+        toggleActions: 'play resume resume complete',
+        once: true,
       }
     });
-    const leadTextSplit = splitText('.lead-text');
+    const leadTextSplit = splitText(leadTextRef.current);
 
     const initialState = () => {
       if (professionRef.current) gsap.set(professionRef.current, { opacity: 1, y: 0 });
@@ -116,7 +116,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       animateInView('.lead-text').from(leadTextSplit.identifier, {
         y: !isMotionReduced ? '100%' : 0,
         rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 20 : 0,
+        rotateZ: !isMotionReduced ? 10 : 0,
         stagger: 0.05
       });
 
@@ -142,6 +142,12 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       }, '<10%');
+
+      contentTl.from('.picture-frame', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+        duration: 1,
+      }, '<10%');
     }
 
     const exitAnimation = () => {
@@ -154,16 +160,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }, { scope: aboutMeSectionRef });
 
   return (
-    <section id="about-me" className="constrained w-full h-half-screen flex flow-column @large:flow-row jc-start pt-4xl pb-6xl" ref={aboutMeSectionRef}>
+    <section id="about-me" className="constrained w-full h-screen flex flow-column @large:flow-row jc-start ai-center pt-4xl pb-6xl" ref={aboutMeSectionRef}>
       <div className="content-wrapper">
-        <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">About me.</h2>
+        <h2 ref={leadTextRef} className="lead-text family-supertitle size-4xl letter-spacing-condensed">About me.</h2>
         <p className="content mt-sm size-lg weight-light">
           I'm <span ref={professionRef} className="profession highlight" onClick={() => handleSetProfession()}
                     title="Click me ;>">{ PROFESSIONS[professionIndex] || 'a UX Engineer' }</span> <span
-          className="content-2">based in the Philippines.</span>
-        </p>
-        <p className="content-3 mb-lg size-lg weight-light">
-          I create <span ref={adjectiveRef} className="adjective highlight" onClick={() => handleSetAdjective()}>{ ADJECTIVES[adjectiveIndex] || 'beautiful, accessible, and unforgettable' }</span> experiences for users on the web.
+          className="content-2">based in the Philippines.</span> I create <span ref={adjectiveRef} className="adjective highlight" onClick={() => handleSetAdjective()}>{ ADJECTIVES[adjectiveIndex] || 'beautiful, accessible, and unforgettable' }</span> experiences for users on the web.
         </p>
         <p className="content-4 mt-sm mb-2xl size-md weight-light">
           I've worked with numerous companies in <span className="highlight">designing</span> and <span className="highlight">developing</span> the experiences their users know and love.

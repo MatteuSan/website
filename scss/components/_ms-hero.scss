@@ -9,22 +9,10 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
 @mixin render() {
   .ms-hero {
-    height: 90svh;
+    width: 100%;
+    height: 100svh;
 
-    display: grid;
-    place-items: center;
-
-    margin-block-end: himig.primitive-token-get('margin.xl');
-    // padding-block-start: himig.primitive-token-get('margin.md');
-
-    clip-path: #{$hero-clip};
-
-    background-image: media-variables.$hero-image;
-    // background-position: left bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: calc(100% - 50%);
-    color: himig.key-create('hero-ink', himig.token-switch($hero-ink));
+    padding-block: 80px 70px;
 
     ::-moz-selection {
       color: himig.token-get('accent-400');
@@ -38,13 +26,31 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
     .ms-hero__wrap {
       width: calc(100% - 50px);
-      max-width: 67.3125rem;
+      max-width: himig.token-get('viewport-layout-limit');
+      height: 100%;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: start;
+
+      margin-inline: auto;
+      padding-inline: himig.primitive-token-get('padding.xl');
+      border-radius: himig.primitive-token-get('radius.xl');
+
+      background-image: media-variables.$hero-image;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      color: himig.key-create('hero-ink', himig.token-switch($hero-ink));
 
       h1,
       h2,
       h3,
       p {
-        max-width: max-content;
+        width: 100%;
+        max-width: 67.3125rem;
+        margin-inline: auto;
       }
 
       .ms-hero__actions {

@@ -11,7 +11,7 @@ import {
 } from '@/components';
 
 import { site } from '@/constants/site';
-import { useTransition } from '@/lib/framer';
+import { animateVariants } from '@/lib/framer';
 
 interface DefaultLayoutProps {
   title: string;
@@ -109,7 +109,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
           </MSNavbar>
         </>
       } isScrollable={hasHero} />
-      <motion.section {...useTransition(variants)}>
+      <motion.section {...animateVariants(variants)}>
         { children }
       </motion.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />

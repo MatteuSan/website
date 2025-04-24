@@ -5,9 +5,100 @@
     animation: load-in 0.5s ease;
     container-type: inline-size;
 
-    .ms-title-bar {
-      margin: 0;
-      padding: 0;
+    .service-container {
+      width: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+      @media (min-width: 540px) {
+        .service-card {
+          position: relative;
+
+          &:nth-child(odd) {
+            left: -10%;
+          }
+
+          &:nth-child(even) {
+            right: -10%;
+          }
+
+          &:not(:first-child) {
+            @for $i from 1 through 3 {
+              &:nth-child(#{$i + 1}) {
+                top: #{-100 * $i}px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .service-card {
+      --easing: cubic-bezier(0.83, 0, 0.17, 1);
+      width: calc(100% - 50px);
+      max-width: 670px;
+      position: relative;
+      aspect-ratio: 16/10;
+      border-radius: himig.primitive-token-get('radius.md');
+      overflow: hidden;
+      transition: z-index 0.5s ease,
+                  transform 0.5s var(--easing);
+
+      .service-card__media {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      @include himig.breakpoint-create('large') {
+        &:hover {
+          z-index: 1;
+          transform: scale(1.05) translateY(-20px) rotateZ(var(--rotate-z, 0)) !important;
+
+          &:nth-child(odd) {
+            --rotate-z: -2deg;
+          }
+
+          &:nth-child(even) {
+            --rotate-z: 2deg;
+          }
+
+          .service-card__content {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+        }
+
+        &:not(:hover) {
+          animation: fix-z-index 0.5s ease;
+        }
+      }
+
+      .service-card__content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        padding: himig.primitive-token-get('padding.xl');
+        border-radius: himig.primitive-token-get('radius.md');
+        border: 1px solid himig.token-get('primary-400');
+        background: #{rgba(#090400, 70%)};
+        backdrop-filter: blur(8px);
+        transition: opacity 0.5s ease,
+                    transform 0.3s var(--easing);
+        // -webkit-backdrop-filter: blur(8px);
+      }
     }
   }
 }

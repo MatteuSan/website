@@ -91,14 +91,9 @@
   }
 
   .constrained {
-    --ms-viewport-content-limit: 67.3125rem;
     width: calc(100% - 50px);
-    max-width: var(--ms-viewport-content-limit);
+    max-width: himig.token-get('viewport-content-limit');
     margin-inline: auto;
-
-    @container (min-width: 67.3125rem) {
-      width: 100%;
-    }
   }
 
   .letter-spacing-condensed {
@@ -116,5 +111,9 @@
 
   .overflow-y-hidden {
     overflow-y: hidden;
+  }
+
+  .aspect-ratio-16\/9 {
+    aspect-ratio: 16 / 9;
   }
 }

@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -21,27 +21,34 @@ const CTASection: React.FC<CTASectionProps> = () => {
       scrollTrigger: {
         trigger: '.lead-text',
         start: 'top 80%',
-        // toggleActions: 'play pause resume reset',
-        once: true
+        toggleActions: 'play resume resume reverse',
       }
     });
 
     const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const enterAnimation = () => {
-      contentTl.from(ctaSectionRef.current, {
+      animateInView('.lead-text').from(ctaSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
       });
 
-      contentTl.from('.content', {
+      animateInView('.lead-text').from('.lead-text', {
         opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
+        // delay: 0.075,
+      });
+
+      animateInView('.content').from('.content', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+        duration: 0.5,
+        // delay: 0.5,
       });
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');
-
       CTA_ACTIONS.forEach((button: any) => {
         const tl = gsap.timeline();
 
@@ -58,10 +65,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
         });
 
         contentTl.add(tl);
-      });
-
-      contentTl.call(() => {
-        contentTl.revert();
       });
     }
 

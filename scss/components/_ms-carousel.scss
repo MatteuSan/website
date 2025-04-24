@@ -2,24 +2,23 @@
 
 @mixin render() {
   .ms-carousel {
-    --ms-viewport-content-limit: 67.3125rem;
     width: 100%;
     margin: 0 auto;
     gap: himig.primitive-token-get('gap.md');
     list-style: none;
-    padding-inline-start: calc(50% - var(--ms-viewport-content-limit) / 2);
-    padding-inline-end: calc(50% - var(--ms-viewport-content-limit) / 2);
+    padding-inline-start: calc(50% - #{himig.token-get('viewport-content-limit')} / 2);
+    padding-inline-end: calc(50% - #{himig.token-get('viewport-content-limit')} / 2);
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     overflow: auto hidden;
-    scrollbar-width: var(--ms-viewport-content-limit);
+    scrollbar-width: var(--ms-theme-viewport-content-limit);
 
     > * {
       scroll-snap-align: center;
     }
 
     &::-webkit-scrollbar-track {
-      width: var(--ms-viewport-content-limit);
+      width: himig.token-get('viewport-layout-limit');
       background: rgba(0 0 0 / 0) !important;
     }
   }
