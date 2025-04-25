@@ -23,6 +23,8 @@ const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
   const ACTIVE_CLASS = {
     css: {
       className: 'technology is-active'
@@ -53,7 +55,6 @@ const TechnologySection: React.FC = () => {
     const filteredUnmasteredTechnologyTiles = technologyTiles.filter((tile: any) => !MASTERED_TECHNOLOGIES.includes(tile.id));
     const filteredMasteredTechnologyTiles = technologyTiles.filter((tile: any) => MASTERED_TECHNOLOGIES.includes(tile.id));
 
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: technologySectionRef.current,

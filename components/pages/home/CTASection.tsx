@@ -16,6 +16,8 @@ interface CTASectionProps {}
 const CTASection: React.FC<CTASectionProps> = () => {
   const ctaSectionRef = React.useRef<HTMLDivElement>(null);
 
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
   useGSAP(() => {
     const contentTl = gsap.timeline({
       scrollTrigger: {
@@ -24,8 +26,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
         toggleActions: 'play resume resume reverse',
       }
     });
-
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const enterAnimation = () => {
       animateInView('.lead-text').from(ctaSectionRef.current, {

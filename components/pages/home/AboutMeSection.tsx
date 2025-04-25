@@ -19,6 +19,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const professionRef = useRef<HTMLSpanElement>(null);
   const adjectiveRef = useRef<HTMLSpanElement>(null);
 
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
   const PROFESSIONS = [
     'a UX Engineer',
     'a Web Developer',
@@ -89,7 +91,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }
 
   useGSAP(() => {
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: aboutMeSectionRef.current,

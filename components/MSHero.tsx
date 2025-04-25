@@ -20,10 +20,9 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
 
   const heroTitleRef = React.useRef<HTMLHeadingElement>(null);
   const heroDescriptionRef = React.useRef<HTMLParagraphElement>(null);
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
-
     const contentTl = gsap.timeline();
     const parallaxTl = gsap.timeline({
       scrollTrigger: {

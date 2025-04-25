@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { hashString } from '@/lib/string';
+import { useEffect, useState } from 'react';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -28,16 +29,29 @@ export const SCREEN_SIZES = {
  * @param {string} query
  */
 export const useMediaQuery = (query: string) => {
-  const mm = gsap.matchMedia();
-  const debug = mm.add({
-    mq: query
-  }, (ctx) => {
-    // @ts-ignore
-    return ctx.conditions.mq;
-  });
+  const [matches, setMatches] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  // @ts-ignore
-  return debug.contexts[0].conditions.mq;
+  useEffect(() => {
+    setMounted(true);
+
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setMatches(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, [query]);
+
+  return mounted ? matches : false;
 }
 
 /**
@@ -47,7 +61,7 @@ export const useMediaQuery = (query: string) => {
  */
 export const parallaxExit = (instance: number = 1, duration: number = 3) => {
   return {
-    y: !useMediaQuery(MOTION_PREFERENCES.isReduced) ? -150 + ((10 * (instance - 1)) * -1) : 0,
+    y: -150 + ((10 * (instance - 1)) * -1),
     opacity: 0,
     duration: duration,
   };
@@ -106,13 +120,6 @@ export const splitText = (
 ): SplitTextResult => {
   const elementProxy = typeof element === 'string' ? (document.querySelector(element) as HTMLElement) : element;
   if (!elementProxy) return new SplitTextResult([], '.');
-
-  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
-  if (isMotionReduced) {
-    const ret = new SplitTextResult([], `.${elementProxy.className.split(' ').join('.')}`);
-    console.log(ret);
-    return ret;
-  };
 
   elementProxy.style.overflow = 'hidden';
   const finalSplits: HTMLElement[] = [];

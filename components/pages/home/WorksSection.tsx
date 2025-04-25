@@ -18,8 +18,9 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const workSectionRef = useRef<HTMLDivElement>(null);
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
   useGSAP(() => {
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
     const leadTextSplit = splitText(leadTextRef.current);
 
     const enterAnimation = () => {

@@ -16,6 +16,8 @@ const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
   useGSAP(() => {
     const leadTextSplit = splitText(leadTextRef.current);
 
@@ -28,8 +30,6 @@ const ServiceSection: React.FC = ( ) => {
         once: true,
       }
     });
-
-    const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
     const enterAnimation = () => {
       animateInView('.lead-text').from(servicesSectionRef.current, {
