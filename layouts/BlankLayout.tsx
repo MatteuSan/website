@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { site } from '@/constants/site';
-import { animateVariants } from '@/lib/framer';
+import { site } from '../constants/site';
+import { animateVariants } from '../lib/framer';
 import { m } from 'framer-motion';
 
 interface BlankLayoutProps {

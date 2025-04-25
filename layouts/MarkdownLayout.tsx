@@ -3,8 +3,8 @@ import { DefaultLayout, MainContent } from "./DefaultLayout";
 import { MSButton } from "../components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import PreviewImage from "../components/markdown/PreviewImage";
-import { works } from "@/constants/works";
-import { tools } from "@/constants/tools";
+import { works } from "../constants/works";
+import { tools } from "../constants/tools";
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };

@@ -8,10 +8,10 @@ import {
   HCNavbarTrigger,
   HCNavbarItem,
   MSFooter,
-} from '@/components';
+} from '../components';
 
-import { site } from '@/constants/site';
-import { animateVariants } from '@/lib/framer';
+import { site } from '../constants/site';
+import { animateVariants } from '../lib/framer';
 
 interface DefaultLayoutProps {
   title: string;
