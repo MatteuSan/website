@@ -1,10 +1,7 @@
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { hashString } from '@/lib/string';
 import { useEffect, useState } from 'react';
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
  * Motion preferences

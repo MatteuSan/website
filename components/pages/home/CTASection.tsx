@@ -9,8 +9,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 interface CTASectionProps {}
 
 const CTASection: React.FC<CTASectionProps> = () => {
@@ -19,6 +17,8 @@ const CTASection: React.FC<CTASectionProps> = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: '.lead-text',

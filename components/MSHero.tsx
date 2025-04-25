@@ -12,8 +12,6 @@ interface MSHeroProps {
   action?: any;
 }
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
   const heroRef = React.useRef<HTMLDivElement>(null);
   const heroWrapRef = React.useRef<HTMLDivElement>(null);
@@ -23,6 +21,8 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
     const contentTl = gsap.timeline();
     const parallaxTl = gsap.timeline({
       scrollTrigger: {

@@ -12,8 +12,6 @@ interface WorksSectionProps {
   works: Work[];
 }
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const workSectionRef = useRef<HTMLDivElement>(null);
   const leadTextRef = useRef<HTMLHeadingElement>(null);
@@ -22,6 +20,8 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
     const leadTextSplit = splitText(leadTextRef.current);
 
     const enterAnimation = () => {

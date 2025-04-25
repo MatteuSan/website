@@ -8,8 +8,6 @@ import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, splitText, useMediaQue
 
 interface AboutMeSectionProps {}
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const [professionIndex, setProfessionIndex] = useState<number>(0);
   const [adjectiveIndex, setAdjectiveIndex] = useState<number>(0);
@@ -92,6 +90,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }
 
   useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: aboutMeSectionRef.current,

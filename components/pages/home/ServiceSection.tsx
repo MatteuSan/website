@@ -10,8 +10,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
   const leadTextRef = useRef<HTMLHeadingElement>(null);
@@ -19,6 +17,8 @@ const ServiceSection: React.FC = ( ) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+
     const leadTextSplit = splitText(leadTextRef.current);
 
     const contentTl = gsap.timeline({
