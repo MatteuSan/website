@@ -14,7 +14,7 @@ const ERRORS: { [key: number]: string } = {
 // @ts-ignore
 const Error: NextPage = ({ statusCode, message }) => {
   return (
-    <BlankLayout title="404 Page Not Found" description="404 - Page Not Found">
+    <BlankLayout title={`Error - ${ statusCode }`} description={message}>
       <section className="constrained h-screen grid pi-center">
         <div className="w-full" style={{ maxWidth: 570 }}>
           <MSCard>

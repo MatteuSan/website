@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { AppProps } from 'next/app';
 import { Analytics } from "@vercel/analytics/react"
 import { appWithTranslation } from 'next-i18next';
 import { AnimatePresence } from 'framer-motion';
 import ReactLenis from 'lenis/react';
 
-import { MotionProvider } from '@/stores/accessibility';
 import '../scss/main.scss';
 
 
 function App({ Component, pageProps, router }: AppProps) {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  const VALID_BASE_ROUTES = [
-    '/', '/work', '/tools', '/blog'
-  ];
+  const BANNED_ROUTES = ['/404', '/_error', '/500'];
 
   return (
     <ReactLenis root options={{ autoResize: true }}>
       <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />
-        <Analytics/>
+        { !BANNED_ROUTES.includes(router.route) ? <Analytics/> : null }
       </AnimatePresence>
     </ReactLenis>
   );
