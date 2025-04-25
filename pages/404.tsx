@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { MSButton, MSCard } from '../components';
+import { MSButton, MSCard } from '@/components';
 import Link from 'next/link';
 import Head from 'next/head';
 

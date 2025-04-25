@@ -1,12 +1,16 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { BlankLayout } from '../layouts/BlankLayout';
-import { MSButton, MSCard } from '../components';
+import { MSButton, MSCard } from '@/components';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const ServerError: NextPage = () => {
   return (
-    <BlankLayout title="Error - 404" description="Page not found.">
+    <>
+      <Head>
+        <title>Error - 500</title>
+        <meta name="description" content="Internal server error." />
+      </Head>
       <section className="constrained h-screen grid pi-center">
         <div className="w-full" style={{ maxWidth: 570 }}>
           <MSCard>
@@ -23,7 +27,7 @@ const ServerError: NextPage = () => {
           </MSCard>
         </div>
       </section>
-    </BlankLayout>
+    </>
   );
 };
 
