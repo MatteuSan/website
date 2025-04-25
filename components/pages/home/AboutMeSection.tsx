@@ -20,6 +20,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const adjectiveRef = useRef<HTMLSpanElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+  const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   const PROFESSIONS = [
     'a UX Engineer',
@@ -94,8 +95,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: aboutMeSectionRef.current,
-        start: () => !useMediaQuery(SCREEN_SIZES.isLarge) ? 'top 10%' : 'top 15%',
-        end: () => !useMediaQuery(SCREEN_SIZES.isLarge) ? 'bottom 10%' : 'bottom 15%',
+        start: () => !isSizeLarge ? 'top 10%' : 'top 15%',
+        end: () => !isSizeLarge ? 'bottom 10%' : 'bottom 15%',
         toggleActions: 'play resume resume complete',
         once: true,
       }

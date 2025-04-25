@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { m, HTMLMotionProps } from 'framer-motion';
 import Image from 'next/image';
 
 interface MSCardHeaderProps extends ComponentPropsWithoutRef<any> {
@@ -72,13 +72,13 @@ export const MSCard = forwardRef<HTMLDivElement, MSCardProps>((props, ref) => {
   const { title, status, children, ...motionProps } = props;
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={`ms-card${status ? ` is-${status.toLowerCase()}` : ''} flex flow-column jc-start overflow-y-hidden`}
       {...motionProps}
     >
       { children }
-    </motion.div>
+    </m.div>
   );
 });
 

@@ -19,6 +19,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+  const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
     const leadTextSplit = splitText(leadTextRef.current);
@@ -37,7 +38,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
         duration: 1,
       });
 
-      if (useMediaQuery(SCREEN_SIZES.isLarge)) {
+      if (isSizeLarge) {
         animateInView('.ms-button.is-full-width', { once: true }).fromTo('.ms-button.is-full-width', {
           opacity: 0,
           y: !isMotionReduced ? 30 : 0,

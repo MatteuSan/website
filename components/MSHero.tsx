@@ -46,7 +46,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
       }
     );
     contentTl.from('.family-subtitle', { y: !isMotionReduced ? 30 : 0, opacity: 0, duration: 0.5 });
-    contentTl.from('.ms-hero__actions', { y: !isMotionReduced ? 10 : 0, opacity: 0, duration: 0.5, ease: 'power2' });
 
     contentTl.call(() => {
       contentTl.revert();
@@ -54,7 +53,6 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
 
     parallaxTl.to('.family-supertitle', parallaxExit(1),);
     parallaxTl.to('.family-subtitle', parallaxExit(2), '<');
-    parallaxTl.to('.ms-hero__actions', parallaxExit(3), '<');
     parallaxTl.to(heroRef.current, {
       opacity: 0,
       ease: 'power2',

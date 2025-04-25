@@ -14,6 +14,7 @@ interface MSInfoCardProps {
 
 export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase }) => {
   const infoCardRef = useRef(null);
+  const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   const variants: Variants = {
     initial: {
@@ -26,7 +27,7 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
       opacity: 1,
       x: 0,
       y: 0,
-      rotateZ: !useMediaQuery(SCREEN_SIZES.isLarge) ? (index % 2 === 0 ? -1 : 1) : (index % 2 === 0 ? 0 : 0),
+      rotateZ: !isSizeLarge ? (index % 2 === 0 ? -1 : 1) : (index % 2 === 0 ? 0 : 0),
       transition: {
         delay: 0.1 * index,
         duration: 0.4,
