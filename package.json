@@ -7,7 +7,7 @@
     "dev": "next dev --turbopack",
     "dev:inspect": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start --turbopack",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
