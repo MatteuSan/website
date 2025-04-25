@@ -151,11 +151,6 @@ const TechnologySection: React.FC = () => {
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       });
-      contentTl.from('.content-6', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-      });
     }
 
     const exitAnimation = () => {
@@ -207,8 +202,8 @@ const TechnologySection: React.FC = () => {
         </div>
         <div className="constrained flex flow-column jc-center mt-2xl">
           <p className="content family-subtitle size-md weight-light">
-            <span className="content-5 block my-sm">Delivering you the <span className="highlight">best</span> results.</span>
-            <span className="content-6 block">And giving your users the <span className="highlight">experience they deserve</span>.</span>
+            <span className="content-4 block my-sm">Delivering you the <span className="highlight">best</span> results.</span>
+            <span className="content-5 block">And giving your users the <span className="highlight">experience they deserve</span>.</span>
           </p>
         </div>
       </div>

@@ -133,12 +133,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         duration: 1,
       }, '<10%');
 
-      contentTl.from('.content-3', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-      }, '<');
-
       contentTl.from('.content-4', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
