@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface BlankLayoutProps {
   title: string;
@@ -68,9 +68,9 @@ export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, pr
 
         <meta name="theme-color" content={ site.themeColor } />
       </Head>
-      <m.section {...animateVariants(variants)}>
+      <motion.section {...animateVariants(variants)}>
         { children }
-      </m.section>
+      </motion.section>
     </>
   );
 };

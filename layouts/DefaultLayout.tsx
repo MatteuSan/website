@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import {
   MSHeader,
@@ -109,9 +109,9 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
           </MSNavbar>
         </>
       } isScrollable={hasHero} />
-      <m.section {...animateVariants(variants)}>
+      <motion.section {...animateVariants(variants)}>
         { children }
-      </m.section>
+      </motion.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />
     </>
   );
