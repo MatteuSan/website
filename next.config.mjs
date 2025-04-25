@@ -9,11 +9,6 @@ const nextConfig = {
     loadPaths: ['node_modules'],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  i18n: {
-    locales: ['en', 'jp'],
-    defaultLocale: 'en',
-    localeDetection: false,
-  },
   async redirects() {
     return [
       {
