@@ -15,7 +15,7 @@ function App({ Component, pageProps, router }: AppProps) {
     <ReactLenis root options={{ autoResize: true }}>
       <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />
-        { !BANNED_ROUTES.includes(router.route) ? <Analytics/> : null }
+        <Analytics mode="production" />
       </AnimatePresence>
     </ReactLenis>
   );
