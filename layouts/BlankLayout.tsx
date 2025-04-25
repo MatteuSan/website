@@ -19,7 +19,7 @@ const ogImageMap = {
   'blog': '/img/og-image-home.webp',
 };
 
-const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewImage, children }) => {
+export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewImage, children }) => {
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
 
@@ -74,5 +74,3 @@ const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewIm
     </>
   );
 };
-
-export default BlankLayout;
