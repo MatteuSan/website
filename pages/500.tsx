@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { BlankLayout } from '@/layouts/BlankLayout';
-import { MSButton, MSCard } from '@/components';
+import { BlankLayout } from '../layouts/BlankLayout';
+import { MSButton, MSCard } from '../components';
 import Link from 'next/link';
 
 const ServerError: NextPage = () => {
