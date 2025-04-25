@@ -22,15 +22,12 @@
     "lenis": "^1.2.3",
     "motion": "^12.7.4",
     "next": "15.3.0",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-preset-env": "^10.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-gfm": "4.0.0",
     "shiki": "^3.2.2"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@matteusan/himig": "^1.7.2",
     "@matteusan/sentro": "^1.2.2",
     "@nonsugarless/webp-converter": "^1.0.4",
