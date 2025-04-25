@@ -30,6 +30,12 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
         stagger: 0.05
       });
 
+      animateInView('.content').from('.content', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+        duration: 1,
+      });
+
       if (useMediaQuery(SCREEN_SIZES.isLarge)) {
         animateInView('.ms-button.is-full-width', { once: true }).fromTo('.ms-button.is-full-width', {
           opacity: 0,
@@ -51,7 +57,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
       <section className="constrained w-full h-screen mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm mb-lg py-3xl">
         <div>
           <h1 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I did</h1>
-          <p className="de-emphasize size-md weight-light">Here some of the previous works I'm most proud of.</p>
+          <p className="content de-emphasize size-md weight-light">Here some of the previous works I'm most proud of.</p>
           <ul className="list-style-none grid cols-1 @medium:cols-2 gap-md mt-lg" id="projects">
             { works.map((item, key) =>  (
               <MSInfoCard index={key} key={ key } item={item} linkBase="work"/>
