@@ -19,7 +19,6 @@
     "@shikijs/rehype": "^3.2.2",
     "@vercel/analytics": "^1.5.0",
     "gsap": "^3.12.7",
-    "i18next": "^23.11.2",
     "lenis": "^1.2.3",
     "motion": "^12.7.4",
     "next": "15.3.0",
