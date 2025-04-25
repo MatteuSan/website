@@ -1,5 +1,6 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
+import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence, domAnimation, LazyMotion, MotionConfig } from 'framer-motion';
 import ReactLenis from 'lenis/react';
 
@@ -12,6 +13,7 @@ function App({ Component, pageProps, router }: AppProps) {
         <LazyMotion features={domAnimation}>
           <AnimatePresence mode="wait">
             <Component key={router.route} {...pageProps} />
+            <Analytics key="analytics" mode="production" />
           </AnimatePresence>
         </LazyMotion>
       </MotionConfig>
