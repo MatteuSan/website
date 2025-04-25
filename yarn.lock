@@ -2834,7 +2834,6 @@ __metadata:
     remark-gfm: 4.0.0
     sass: 1.86.1
     shiki: ^3.2.2
-    split-type: ^0.3.4
     typescript: 5.3.3
   languageName: unknown
   linkType: soft
@@ -4866,13 +4865,6 @@ __metadata:
   version: 2.0.2
   resolution: "space-separated-tokens@npm:2.0.2"
   checksum: 202e97d7ca1ba0758a0aa4fe226ff98142073bcceeff2da3aad037968878552c3bbce3b3231970025375bbba5aee00c5b8206eda408da837ab2dc9c0f26be990
-  languageName: node
-  linkType: hard
-
-"split-type@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "split-type@npm:0.3.4"
-  checksum: 5d73541e44a8d3c3ae2f15fe804c583d1c612cda3a53f7f4dbe45f9a7b9cb8300459a6bfa248934b0dd2690382c23e6b859a0c0977c4a0c159d1a8d00931d2b6
   languageName: node
   linkType: hard
 

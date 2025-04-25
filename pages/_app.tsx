@@ -7,7 +7,6 @@ import ReactLenis from 'lenis/react';
 
 import '../scss/main.scss';
 
-
 function App({ Component, pageProps, router }: AppProps) {
   const BANNED_ROUTES = ['/404', '/_error', '/500'];
 
