@@ -2,7 +2,7 @@ import React from 'react';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { MOTION_PREFERENCES, parallaxExit, splitText, useMediaQuery } from "@/lib/gsap";
 

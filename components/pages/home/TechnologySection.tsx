@@ -13,7 +13,7 @@ import {
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
 

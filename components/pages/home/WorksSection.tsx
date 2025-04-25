@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, splitText, useMediaQuery } from '@/lib/gsap';
 
 interface WorksSectionProps {

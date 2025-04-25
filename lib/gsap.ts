@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { hashString } from '@/lib/string';
 import { useEffect, useState } from 'react';
 
