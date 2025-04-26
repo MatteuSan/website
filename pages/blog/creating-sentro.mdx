@@ -2,7 +2,7 @@ import { MSButton } from "../../components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { DefaultLayout, MainContent } from "../../layouts/DefaultLayout";
-import { MarkDownHeader } from "../../layouts/MarkdownLayout";
+import { MarkdownHeader } from "../../layouts/MarkdownLayout";
 
 export const metadata = {
   title: 'Creating Sentro',
@@ -40,7 +40,7 @@ export default function BlogPage({ children }) {
         <section className="py-4xl">
           <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/blog"
                     type="small" icon={ ['left', <ArrowLeftIcon/>] }>Back to all posts</MSButton>
-          <MarkDownHeader title={ metadata.title } description={ metadata.description } small="Published 4/23/24" />
+          <MarkdownHeader title={ metadata.title } description={ metadata.description } small="Published 4/23/24" />
           <section>
             <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>
               <PreviewImage src={ `/img/blog/creating-sentro/headliner.webp` } alt="The Sentro website homepage." />

@@ -9,7 +9,7 @@ interface PreviewImageProps {
 
 const PreviewImage: React.FC<PreviewImageProps> = ({ src,alt }) => {
   const enterAnimation = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 50 },
     enter: { opacity: 1, y: 0, transition: { duration: 0.7 } },
   }
 

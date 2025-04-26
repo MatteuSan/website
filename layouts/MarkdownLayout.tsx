@@ -1,10 +1,14 @@
 import React from 'react';
 import { DefaultLayout, MainContent } from "./DefaultLayout";
-import { MSButton } from "../components";
+import { MSButton } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import PreviewImage from "../components/markdown/PreviewImage";
-import { works } from "../constants/works";
-import { tools } from "../constants/tools";
+import PreviewImage from "@/components/markdown/PreviewImage";
+import { works } from "@/constants/works";
+import { tools } from "@/constants/tools";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
@@ -15,7 +19,7 @@ interface MarkdownLayoutProps {
   children?: React.ReactNode | string;
 }
 
-export const MarkDownHeader: React.FC<{ title: string, description: string, small?: string }> = ({ title, description, small }) => {
+export const MarkdownHeader: React.FC<{ title: string, description: string, small?: string }> = ({ title, description, small }) => {
   return (
     <>
       <h1 className="supertitle">{ title } { small ? <small
@@ -26,6 +30,44 @@ export const MarkDownHeader: React.FC<{ title: string, description: string, smal
 }
 
 const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, previewImage, previewImageAlt, children }) => {
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const contentTl = gsap.timeline();
+
+    contentTl.from('.supertitle', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.7,
+    });
+    contentTl.from('.small', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.7,
+    }, '<10%');
+    contentTl.from('.subtitle', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.7,
+    }, '<20%');
+    contentTl.from('.ms-markdown', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.7,
+    });
+    contentTl.from('#other-content', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.7,
+    }, '<10%');
+
+    contentTl.call(() => {
+      contentTl.revert()
+    });
+  });
+
   return (
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/${previewImage}` }>
       <MainContent>

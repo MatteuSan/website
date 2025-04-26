@@ -2,16 +2,12 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
 
-import {
-  MSButton,
-  MSHero,
-} from '@/components';
-
+import { MSHero } from '@/components';
 import { works } from '@/constants/works';
 
+import AboutMeSection from "@/components/pages/home/AboutMeSection";
 import ServiceSection from "@/components/pages/home/ServiceSection";
 import TechnologySection from "@/components/pages/home/TechnologySection";
-import AboutMeSection from "@/components/pages/home/AboutMeSection";
 import WorksSection from "@/components/pages/home/WorksSection";
 import CTASection from "@/components/pages/home/CTASection";
 
