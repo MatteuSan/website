@@ -156,7 +156,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }, { scope: aboutMeSectionRef });
 
   return (
-    <section id="about-me" className="constrained w-full h-screen flex flow-column @large:flow-row jc-start ai-center pt-4xl pb-6xl" ref={aboutMeSectionRef}>
+    <section id="about-me" className="constrained w-full h-screen flex flow-column @large:flow-row @large:gap-xl jc-start ai-center pt-4xl pb-6xl" ref={aboutMeSectionRef}>
       <div className="content-wrapper">
         <h2 ref={leadTextRef} className="lead-text family-supertitle size-4xl letter-spacing-condensed">About me.</h2>
         <p className="content mt-sm size-lg weight-light">
@@ -164,8 +164,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
                     title="Click me ;>">{ PROFESSIONS[professionIndex] || 'a UX Engineer' }</span> <span
           className="content-2">based in the Philippines.</span> I create <span ref={adjectiveRef} className="adjective highlight" onClick={() => handleSetAdjective()}>{ ADJECTIVES[adjectiveIndex] || 'beautiful, accessible, and unforgettable' }</span> experiences for users on the web.
         </p>
-        <p className="content-4 mt-sm mb-2xl size-md weight-light">
-          I've worked with numerous companies in <span className="highlight">designing</span> and <span className="highlight">developing</span> the experiences their users know and love.
+        <p className="content-4 mt-md mb-2xl size-sm de-emphasize">
+          I've worked with numerous companies in designing and developing the experiences their users know and love.
         </p>
       </div>
       <div className="picture-frame" style={{ flexShrink: 0 }}>

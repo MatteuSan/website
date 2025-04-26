@@ -60,7 +60,7 @@ const ServiceSection: React.FC = ( ) => {
       <section className="constrained mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
         <div>
           <h1 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h1>
-          <p className="content de-emphasize size-md weight-light">Here are some of the services I offer.</p>
+          <p className="content de-emphasize size-md weight-light">Here's how I can help you.</p>
         </div>
       </section>
       <ul className="service-container constrained flex flow-column gap-lg @medium:gap-xl list-style-none">

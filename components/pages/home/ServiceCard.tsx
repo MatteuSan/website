@@ -44,9 +44,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       </div>
       <div className="service-card__content">
         <h2 className="family-supertitle size-xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
-          <span className="highlight">{ title }</span>
+          { title }
         </h2>
-        <p className="size-sm weight-light family-subtitle">
+        <p className="size-sm family-subtitle de-emphasize">
           { description }
         </p>
       </div>
