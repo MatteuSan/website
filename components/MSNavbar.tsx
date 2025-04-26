@@ -2,6 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { m, AnimatePresence } from 'framer-motion';
+import { animateVariants } from '@/lib/framer';
 
 interface HCNavBarProps {
   trigger: boolean;
@@ -43,9 +45,20 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
 };
 
 const HCNavbarTrigger: React.FC<HCNavBarTriggerProps> = ({ onClick, trigger }) => {
+  const MXMarkIcon = m(XMarkIcon);
+  const MBars2Icon = m(Bars2Icon);
+
+  const opacity = {
+    initial: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 }
+  }
+
   return (
     <button className="ms-navbar__trigger" onClick={ onClick } type="button" aria-label={ trigger ? 'Close' : 'Open' }>
-      { trigger ? <XMarkIcon /> : <Bars2Icon /> }
+      <AnimatePresence mode="wait">
+        { trigger ? <MXMarkIcon transition={{ duration: 0.05 }} key="xmark" {...animateVariants(opacity)} /> : <MBars2Icon transition={{ duration: 0.05 }} key="bars2" {...animateVariants(opacity)} /> }
+      </AnimatePresence>
     </button>
   );
 };

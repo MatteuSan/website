@@ -9,14 +9,15 @@
     @include himig.color-apply('navbar-trigger', (
       fill: rgba(0 0 0 / 0),
       ink: 'primary-200',
-      border: 'primary-400'
+      // border: 'primary-400'
     ));
     @include himig.struct-apply('navbar-trigger', (
       radius: 'small',
       padding: 'sm',
-      border-width: 'xs',
-      border-style: 'solid'
+      // border-width: 'xs',
+      // border-style: 'solid'
     ));
+    border: none;
     cursor: pointer;
     transition: all var(--ms-transition-time) ease;
 
@@ -29,10 +30,10 @@
     position: absolute;
     opacity: 0;
     transform-origin: right;
-    transition: all 0.3s ease;
-    top: 66px;
+    top: himig.key-create('navbar-inset-top', 62px);
     right: 0;
     z-index: 90;
+    transition: all 0.5s ease;
 
     .ms-list {
       flex-flow: row nowrap;
@@ -112,7 +113,7 @@
     }
 
     &.is-open {
-      right: 1em;
+      right: himig.key-create('navbar-inset-right', 1em);
       opacity: 1;
     }
   }
