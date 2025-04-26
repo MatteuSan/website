@@ -14,8 +14,12 @@ $header-style: 'default' !default;
 
 @mixin render() {
   .ms-header {
-    width: calc((100% - 50px) + 2em);
-    max-width: calc(#{himig.token-get('viewport-layout-limit')} + 2em);
+    @include himig.struct-apply('header', (
+      width: (
+        default: calc((100% - 50px) + 2em),
+        max: calc(#{himig.token-get('viewport-layout-limit')} + 2em)
+      )
+    ));
     min-height: 56px;
     display: flex;
     justify-content: space-between;
@@ -66,6 +70,12 @@ $header-style: 'default' !default;
           ink: $header-ink,
           border: $header-border
         ));
+        @include himig.struct-bind('header', (
+          width: (
+            default: calc(100% - 50px),
+            max: #{himig.token-get('viewport-layout-limit')}
+          )
+        ));
 
         backdrop-filter: blur(8px);
         --ms-header-brand-visibility: block;
@@ -77,6 +87,12 @@ $header-style: 'default' !default;
         fill: $header-fill,
         ink: $header-ink,
         border: $header-border
+      ));
+      @include himig.struct-bind('header', (
+        width: (
+          default: calc(100% - 50px),
+          max: #{himig.token-get('viewport-layout-limit')}
+        )
       ));
       backdrop-filter: blur(8px);
       --ms-header-brand-visibility: block;
