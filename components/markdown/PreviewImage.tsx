@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { m } from 'framer-motion';
 
 interface PreviewImageProps {
   src: string;
@@ -7,8 +8,20 @@ interface PreviewImageProps {
 }
 
 const PreviewImage: React.FC<PreviewImageProps> = ({ src,alt }) => {
+  const enterAnimation = {
+    initial: { opacity: 0, y: 30 },
+    enter: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  }
+
   return (
-    <div className="preview-image" data-alt={alt}>
+    <m.div
+      className="preview-image"
+      data-alt={alt}
+      variants={enterAnimation}
+      initial="initial"
+      whileInView="enter"
+      viewport={{ once: true, margin: '-20%' }}
+    >
       <Image
         width={ 1920 }
         height={ 1080 }
@@ -17,7 +30,7 @@ const PreviewImage: React.FC<PreviewImageProps> = ({ src,alt }) => {
         alt={alt}
         src={src}
       />
-    </div>
+    </m.div>
   );
 };
 
