@@ -49,7 +49,7 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
       h3,
       p {
         width: 100%;
-        max-width: 67.3125rem;
+        max-width: himig.token-get('viewport-content-limit');
         margin-inline: auto;
       }
 
