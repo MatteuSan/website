@@ -12,6 +12,7 @@ import {
 
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
+import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
   title: string;
@@ -54,7 +55,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
     enter: {
       opacity: 1,
       transition: {
-        duration: 1
+        duration: 1,
+        easings: [0.83, 0, 0.17, 1]
       }
     },
     exit: {
