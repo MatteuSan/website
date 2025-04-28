@@ -42,33 +42,34 @@ export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, pr
     <>
       <Head>
         <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 
         <title>{ title } - { site.name }</title>
         <meta property="description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` } />
+              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
 
-        <link rel="apple-touch-icon" sizes="180x180" href={ `/img/favicon.webp` } />
-        <link rel="icon" type="img/png" sizes="32x32" href={ `/img/favicon.webp` } />
-        <link rel="icon" type="img/png" sizes="16x16" href={ `/img/favicon.webp` } />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png"/>
+        <link rel="icon" type="img/png" sizes="32x32" href="/favicons/favicon-32x32.png"/>
+        <link rel="icon" type="img/png" sizes="16x16" href="/favicons/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
 
-        <meta property="og:title" content={ `${ title } - ${ site.name }` } />
+        <meta property="og:title" content={ `${ title } - ${ site.name }` }/>
         <meta property="og:description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` } />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={ previewImage ? previewImage : ogImage } />
-        <meta property="og:url" content={ site.url } />
+              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content={ previewImage ? previewImage : ogImage }/>
+        <meta property="og:url" content={ site.url }/>
 
-        <meta name="twitter:title" content={ `${ title } - ${ site.name }` } />
+        <meta name="twitter:title" content={ `${ title } - ${ site.name }` }/>
         <meta name="twitter:description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` } />
-        <meta name="twitter:image" content={ previewImage ? previewImage : ogImage } />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={ site.twitter } />
+              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
+        <meta name="twitter:image" content={ previewImage ? previewImage : ogImage }/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:site" content={ site.twitter }/>
 
-        <meta name="theme-color" content={ site.themeColor } />
+        <meta name="theme-color" content={ site.themeColor }/>
       </Head>
-      <m.section {...animateVariants(variants)}>
+      <m.section { ...animateVariants(variants)}>
         { children }
       </m.section>
     </>
