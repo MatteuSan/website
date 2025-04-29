@@ -73,7 +73,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         <meta property="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta name="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
 
-        <link rel="preload" fetchPriority="high" as="image" href="/hero.svg" type="image/svg+xml"/>
+        {/* @ts-expect-error */}
+        <link rel="preload" fetchpriority="high" as="image" href="/hero.svg" type="image/svg+xml"/>
 
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png"/>
         <link rel="icon" type="img/png" sizes="32x32" href="/favicons/favicon-32x32.png"/>

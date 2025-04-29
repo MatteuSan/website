@@ -75,7 +75,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
     <section className="constrained h-half-screen grid pi-center my-4xl @large:my-6xl" ref={ctaSectionRef}>
       <section>
         <div className="mb-lg">
-          <h2 className="lead-text family-supertitle size-2xl @medium:size-4xl @large:size-5xl line-height-condensed letter-spacing-condensed mb-sm">
+          <h2 className="lead-text family-supertitle size-3xl @medium:size-4xl @large:size-5xl line-height-condensed letter-spacing-condensed mb-sm">
             Build the experience your users <span className="highlight">deserve</span>.
           </h2>
           <p className="content size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first sketch to final push—I'll help you ship something <span className="highlight">amazing</span>.</p>

@@ -24,7 +24,7 @@ interface HCNavBarTriggerProps {
 const MSNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
   return (
     <nav className={ `ms-navbar${ trigger ? ' is-open' : '' }` }>
-      <ul className="ms-list is-selectable is-raised">
+      <ul className="ms-navbar__wrapper">
         { children }
       </ul>
     </nav>
@@ -36,7 +36,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <li className={ `ms-list__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
+    <li className={ `ms-navbar__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
       <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
         { label || children }
       </Link>

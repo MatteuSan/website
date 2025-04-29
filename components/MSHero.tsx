@@ -24,7 +24,7 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
     gsap.registerPlugin(useGSAP, ScrollTrigger);
 
     const contentTl = gsap.timeline();
-    const parallaxTl = gsap.timeline({
+    const exitTl = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
         start: '0% top',
@@ -51,9 +51,9 @@ const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
       contentTl.revert();
     });
 
-    parallaxTl.to('.family-supertitle', parallaxExit(1),);
-    parallaxTl.to('.family-subtitle', parallaxExit(2), '<');
-    parallaxTl.to(heroRef.current, {
+    exitTl.to('.family-supertitle', parallaxExit(1),);
+    exitTl.to('.family-subtitle', parallaxExit(2), '<');
+    exitTl.to(heroRef.current, {
       opacity: 0,
       ease: 'power2',
       duration: 3

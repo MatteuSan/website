@@ -1,4 +1,4 @@
-@use '@matteusan/himig';
+@use 'pkg:@matteusan/himig';
 
 @mixin render() {
   .ms-navbar__trigger {
@@ -9,13 +9,10 @@
     @include himig.color-apply('navbar-trigger', (
       fill: rgba(0 0 0 / 0),
       ink: 'primary-200',
-      // border: 'primary-400'
     ));
     @include himig.struct-apply('navbar-trigger', (
       radius: 'small',
       padding: 'sm',
-      // border-width: 'xs',
-      // border-style: 'solid'
     ));
     border: none;
     cursor: pointer;
@@ -31,46 +28,114 @@
     opacity: 0;
     transform-origin: right;
     top: himig.key-create('navbar-inset-top', 62px);
+    left: 0;
     right: 0;
     z-index: 90;
     transition: all 0.5s ease;
+    transform: translateY(-10);
 
-    .ms-list {
-      flex-flow: row nowrap;
+    .ms-navbar__wrapper {
+      @include himig.struct-apply('navbar-wrapper', (
+        width: (
+          default: 100%,
+          max: auto
+        )
+      ));
+      margin-inline: auto;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      @include himig.color-apply('navbar-wrapper', (
+        fill: 'primary-alpha-800',
+        border: 'primary-alpha-800'
+      ));
+      @include himig.struct-apply('navbar-wrapper', (
+        padding: 'lg',
+        radius: 'lg',
+        border-width: 'xs',
+        border-style: 'solid'
+      ));
+      backdrop-filter: blur(8px);
+
+      @include himig.breakpoint-create('large') {
+        @include himig.color-bind('navbar-wrapper', (
+          fill: none,
+          border: none
+        ));
+        @include himig.struct-bind('navbar-wrapper', (
+          padding: none,
+          radius: none,
+          border-width: 'none',
+          border-style: none
+        ));
+        flex-flow: row nowrap;
+      }
     }
 
-    .ms-list__item {
+    .ms-navbar__item {
       display: flex;
       justify-content: center;
       user-select: none;
-
-      @include himig.struct-bind('list-item', (
-        width: (
-          default: 100%,
-          min: none,
-          max: max-content
-        ),
-        padding: 0 !important,
+      text-align: center;
+      transition: all var(--ms-theme-transition-time) ease;
+      @include himig.color-apply('navbar-item', (
+        fill: rgba(0 0 0 / 0),
+        ink: 'surface-ink',
+        border: rgba(0 0 0 / 0)
       ));
-      @include himig.typography-bind('list-item', (
+      @include himig.struct-apply('navbar-item', (
+        width: (max: 100%),
+        radius: 'md',
+        border-width: 'xs',
+        border-style: 'solid'
+      ));
+      @include himig.typography-apply('navbar-item', (
+        family: 'title',
+        size: 'lg',
         weight: 200
       ));
 
+      @include himig.breakpoint-create('large') {
+        @include himig.color-bind('navbar-item', (
+          fill: rgba(0 0 0 / 0),
+          ink: 'surface-200',
+          border: 'surface-400'
+        ));
+        @include himig.struct-bind('navbar-item', (
+          width: (
+            width: auto,
+            max: max-content
+          ),
+          radius: 'lg',
+        ));
+        @include himig.typography-bind('navbar-item', (
+          family: 'body',
+          size: 'sm',
+          weight: 200
+        ));
+      }
+
       a {
         width: 100%;
-        max-width: max-content !important;
         display: inline-block;
         text-align: inherit;
         padding: 0.5rem 0.7rem;
+        transition: all var(--ms-theme-transition-time) ease;
+
+        @include himig.breakpoint-create('large') {
+          max-width: max-content !important;
+          padding: 0.5rem 1.2rem;
+        }
       }
 
       &.is-active {
-        @include himig.color-bind('list-item', (
-          fill: 'surface-200',
+        @include himig.color-bind('navbar-item', (
+          fill: 'surface-400',
           ink: 'surface-ink',
-          border: 'surface-200'
+          border: 'surface-400'
         ));
-        @include himig.typography-bind('list-item', (
+        @include himig.typography-bind('navbar-item', (
           weight: 400
         ));
         letter-spacing: himig.to-rem(-1px);
@@ -101,10 +166,10 @@
       opacity: 1;
       transform: revert;
 
-      .ms-list {
+      .ms-navbar__wrapper {
         flex-flow: row nowrap;
 
-        .ms-list__item {
+        .ms-navbar__item {
           display: flex;
           justify-content: center;
           text-align: center;
@@ -113,7 +178,7 @@
     }
 
     &.is-open {
-      right: himig.key-create('navbar-inset-right', 1em);
+      transform: translateY(0);
       opacity: 1;
     }
   }

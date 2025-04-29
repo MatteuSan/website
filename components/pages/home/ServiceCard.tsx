@@ -1,8 +1,7 @@
 import React from 'react';
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from 'next/image';
-
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface ServiceCardProps {
   title: string;
@@ -33,7 +32,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
   }
 
   return (
-    <motion.li className="service-card" variants={variants} initial="initial" whileInView="visible" viewport={{ once: true, margin: '-20%' }}>
+    <m.li className="service-card" variants={variants} initial="initial" whileInView="visible" viewport={{ once: true, margin: '-20%' }}>
       <div className="service-card__media">
         <Image
           src={media}
@@ -50,7 +49,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
           { description }
         </p>
       </div>
-    </motion.li>
+    </m.li>
   );
 };
 

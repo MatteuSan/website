@@ -4,7 +4,7 @@ $header-fill: linear-gradient(var(--ms-theme-surface-alpha-400) 0%, rgba(255 255
 $header-ink: 'surface-ink' !default;
 $header-border: 'surface-alpha-800' !default;
 
-$header-un-scrolled-fill: transparent !default;
+$header-un-scrolled-fill: rgba(0 0 0 / 0) !default;
 $header-un-scrolled-ink: 'accent-ink' !default;
 $header-un-scrolled-border: $header-un-scrolled-fill !default;
 
@@ -25,6 +25,7 @@ $header-style: 'default' !default;
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    gap: himig.primitive-token-get('gap.md');
     top: 0;
     left: 0;
     right: 0;
@@ -35,7 +36,7 @@ $header-style: 'default' !default;
     @include himig.prefix(transition, all 0.5s ease);
 
     @include himig.color-apply('header', (
-      fill: $header-un-scrolled-fill,
+      fill: $header-fill,
       ink: $header-ink,
       border: $header-un-scrolled-border
     ));
@@ -49,16 +50,13 @@ $header-style: 'default' !default;
       &:not(.is-scrolled) {
         @include himig.key-bind('navbar-inset-top', 56px);
 
-        .ms-list__item {
-          @include himig.color-bind('list-item', (
-            fill: 'surface-alpha-400',
-            border: rgba(0 0 0 / 0) !important
-          ));
-          backdrop-filter: blur(8px) !important;
-
-          &.is-active {
-            @include himig.color-bind('list-item', (
-              fill: 'surface-alpha-800'
+        .ms-navbar__wrapper {
+          @include himig.breakpoint-create('medium', 'max') {
+            @include himig.struct-bind('navbar-wrapper', (
+              width: (
+                default: calc((100% - 50px) + 2em),
+                max: #{himig.token-get('viewport-layout-limit')}
+              )
             ));
           }
         }
@@ -77,9 +75,14 @@ $header-style: 'default' !default;
           )
         ));
         @include himig.key-bind('navbar-inset-right', 0);
-
         --ms-header-brand-visibility: block;
         backdrop-filter: blur(8px);
+
+        .ms-navbar__wrapper {
+          @include himig.struct-bind('navbar-wrapper', (
+            width: 100%
+          ));
+        }
       }
     }
 
@@ -111,10 +114,14 @@ $header-style: 'default' !default;
         top: 0;
         left: 0;
         border-radius: himig.primitive-token-get('radius.sm');
-        display: var(--ms-header-brand-visibility, none);
+        display: var(--ms-header-brand-visibility, block);
         user-select: none;
         letter-spacing: himig.to-rem(-3px);
         @include himig.struct-shadow('header-title', 'high');
+
+        @include himig.breakpoint-create('large') {
+          display: var(--ms-header-brand-visibility, none);
+        }
       }
     }
 
