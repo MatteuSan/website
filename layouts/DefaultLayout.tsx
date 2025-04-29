@@ -12,7 +12,6 @@ import {
 
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
-import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
   title: string;
