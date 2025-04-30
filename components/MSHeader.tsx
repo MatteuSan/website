@@ -23,7 +23,7 @@ const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
       className={ `ms-header${ isScrollable ? ' is-scrollable' : '' }${ isHeaderScrolled ? ' is-scrolled' : '' }` }>
       <div className="ms-header__brand">
         <Link href="/" passHref>
-          <h2 className="title">{ title }</h2>
+          <h1 className="title">{ title }</h1>
         </Link>
       </div>
       { actionSection &&

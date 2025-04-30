@@ -15,6 +15,7 @@ interface MSHeroProps extends ComponentPropsWithRef<any> {
 const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
   const { customLayout, children, ...rest } = props;
   const heroRef = React.useRef<HTMLDivElement>(null);
+
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
@@ -23,7 +24,7 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
-        start: 'top 7%',
+        start: '7% top',
         scrub: true,
       }
     });
