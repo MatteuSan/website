@@ -9,53 +9,8 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
 @mixin render() {
   .ms-hero {
-    width: 100%;
-    height: 100svh;
-
-    padding-block: 80px 70px;
-
-    ::-moz-selection {
-      color: himig.token-get('accent-400');
-      background: himig.token-get('accent-ink');
-    }
-
-    ::selection {
-      color: himig.token-get('accent-400');
-      background: himig.token-get('accent-ink');
-    }
-
-    .ms-hero__wrap {
-      width: calc(100% - 50px);
-      max-width: himig.token-get('viewport-layout-limit');
-      height: 100%;
-
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: start;
-
-      margin-inline: auto;
-      padding-inline: himig.primitive-token-get('padding.xl');
-      border-radius: himig.primitive-token-get('radius.xl');
-
-      background-image: media-variables.$hero-image;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      color: himig.key-create('hero-ink', himig.token-switch($hero-ink));
-
-      h1,
-      h2,
-      h3,
-      p {
-        width: 100%;
-        max-width: himig.token-get('viewport-content-limit');
-        margin-inline: auto;
-      }
-
-      .ms-hero__actions {
-        margin-block-start: himig.primitive-token-get('margin.lg');
-      }
-    }
+    --ms-theme-accent-alpha-200: rgba(218, 146, 97, 0.05);
+    background: radial-gradient(circle at 50% 50%, var(--ms-theme-accent-alpha-300) 0%, var(--ms-theme-accent-alpha-200) 100%);
+    border: 1px solid var(--ms-theme-accent-alpha-300);
   }
 }

@@ -36,11 +36,6 @@
       animation: load-in 0.2s ease;
       user-select: none;
 
-      .technology__img {
-        width: clamp(32px, 100%, 48px);
-        height: clamp(32px, 100%, 48px);
-      }
-
       @include himig.breakpoint-create('large') {
         &:not(.is-active):not(.is-inactive):hover {
           transform: translateY(-10px) !important;
@@ -50,31 +45,9 @@
       &:not(.is-inactive):not(.is-active):hover,
       &:not(.is-inactive):not(.is-active):focus,
       &:not(.is-inactive):not(.is-active) {
-        // background-color: var(--tech-color, #fff);
-        color: var(--tech-color, #fff);
-        border-color: var(--tech-color, #fff);
-
-        &#sqlite {
-          color: #fff;
-        }
-
-        &#github,
-        &#next\.js,
-        &#three\.js {
-          color: #fff;
-          border-color: #fff;
-
-          .technology__label {
-            color: inherit;
-          }
-        }
-      }
-
-      &.is-active {
         background-color: var(--tech-color, #fff);
         color: #fff;
         border-color: var(--tech-color, #fff);
-        transform: scale(1.05) !important;
 
         &#react,
         &#php,
@@ -110,6 +83,11 @@
         &:hover {
           --ink: #{himig.token-get('surface-400')};
         }
+      }
+
+      .technology__img {
+        width: clamp(32px, 100%, 48px);
+        height: clamp(32px, 100%, 48px);
       }
 
       .technology__label {

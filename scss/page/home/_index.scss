@@ -9,19 +9,25 @@
   }
 
   .picture-frame {
-    width: clamp(250px, 100%, 300px);
-    height: clamp(250px, 100%, 300px);
+    --easing: cubic-bezier(0.83, 0, 0.17, 1);
+    width: min(calc(100% - 100px), 275px);
+    min-width: 100px;
+    height: min(calc(100% - 100px), 275px);
+    min-height: 100px;
     margin: 0 auto;
     display: grid;
     place-items: center;
-    border: 2px solid himig.token-get('primary-300');
-    border-radius: himig.primitive-token-get('radius.2xl');
+    // border: 2px solid himig.token-get('primary-300');
+    border-radius: himig.primitive-token-get('radius.lg');
     overflow: hidden;
-    transform: rotateZ(2deg);
     user-select: none;
-    animation-delay: 1s;
-    animation: load-in 0.8s ease;
-    transition: box-shadow var(--ms-transition-time) ease;
+    transition: transform 0.4s var(--easing);
+
+    @include himig.breakpoint-create('large') {
+      &:hover {
+        transform: rotateZ(-2deg) scale(1.05) !important;
+      }
+    }
 
     img {
       width: 100%;

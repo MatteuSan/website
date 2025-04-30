@@ -78,7 +78,7 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
     scrollTrigger: {
       trigger,
       start: 'top 95%',
-      toggleActions: options?.once ? 'play pause resume complete' : 'play resume resume complete',
+      toggleActions: options?.once ? 'play complete resume complete' : 'play complete resume complete',
       once: options?.once ?? false
     }
   });
@@ -110,19 +110,20 @@ class SplitTextResult {
  */
 export const splitText = (
   element: HTMLElement | string | null,
-  options: {
+  options?: {
     style?: 'word' | 'char' | 'line',
     className?: string
-  } = { style: 'char' }
+  }
 ): SplitTextResult => {
   const elementProxy = typeof element === 'string' ? (document.querySelector(element) as HTMLElement) : element;
+  const optionsProxy = options || { style: 'char' };
   if (!elementProxy) return new SplitTextResult([], '.');
 
   elementProxy.style.overflow = 'hidden';
   const finalSplits: HTMLElement[] = [];
 
-  const elementUUID = hashString(`${options.style} ${elementProxy.textContent}`, true);
-  const className = options.className || `splitText__${options.style}--${elementUUID}`;
+  const elementUUID = hashString(`${optionsProxy.style} ${elementProxy.textContent}`, true);
+  const className = optionsProxy.className || `splitText__${optionsProxy.style}--${elementUUID}`;
   const generatedSelector = `.${className}`;
 
   const cleanupSplitSpans = (el: HTMLElement, classPrefix: string) => {
@@ -156,16 +157,16 @@ export const splitText = (
       const fragment = document.createDocumentFragment();
       let split: string[] = [];
 
-      if (options.style === 'char') {
+      if (optionsProxy.style === 'char') {
         split = text.split('');
-      } else if (options.style === 'word') {
-        split = text.split(/(\s+)/);
-      } else if (options.style === 'line') {
+      } else if (optionsProxy.style === 'word') {
+        split = text.split(' ');
+      } else if (optionsProxy.style === 'line') {
         split = text.split('.');
       }
 
       split.forEach((part) => {
-        if (options.style !== 'line' && /^\s+$/.test(part)) {
+        if (optionsProxy.style !== 'line' && /^\s+$/.test(part)) {
           fragment.appendChild(document.createTextNode(part));
         } else {
           const span = document.createElement('span');
@@ -175,12 +176,6 @@ export const splitText = (
           span.style.willChange = 'transform';
           fragment.appendChild(span);
           finalSplits.push(span);
-
-          if (options.style === 'line') {
-            const br = document.createElement('br');
-            br.className = `${className}__break`;
-            fragment.appendChild(br);
-          }
         }
       });
 

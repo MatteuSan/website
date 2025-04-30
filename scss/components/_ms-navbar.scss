@@ -17,6 +17,7 @@
     border: none;
     cursor: pointer;
     transition: all var(--ms-transition-time) ease;
+    z-index: 2;
 
     @include himig.breakpoint-create('large') {
       display: none;
@@ -30,9 +31,9 @@
     top: himig.key-create('navbar-inset-top', 62px);
     left: 0;
     right: 0;
-    z-index: 90;
+    z-index: 1;
     transition: all 0.5s ease;
-    transform: translateY(-10);
+    transform: translateY(-500);
 
     .ms-navbar__wrapper {
       @include himig.struct-apply('navbar-wrapper', (
@@ -47,7 +48,7 @@
       gap: 0.5rem;
       justify-content: flex-end;
       @include himig.color-apply('navbar-wrapper', (
-        fill: 'primary-alpha-800',
+        fill: 'primary-600',
         border: 'primary-alpha-800'
       ));
       @include himig.struct-apply('navbar-wrapper', (
@@ -56,7 +57,7 @@
         border-width: 'xs',
         border-style: 'solid'
       ));
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
 
       @include himig.breakpoint-create('large') {
         @include himig.color-bind('navbar-wrapper', (
@@ -86,14 +87,15 @@
       ));
       @include himig.struct-apply('navbar-item', (
         width: (max: 100%),
-        radius: 'md',
+        radius: 'sm',
         border-width: 'xs',
         border-style: 'solid'
       ));
       @include himig.typography-apply('navbar-item', (
         family: 'title',
         size: 'lg',
-        weight: 200
+        weight: 200,
+        line-height: 'condensed'
       ));
 
       @include himig.breakpoint-create('large') {
@@ -107,7 +109,6 @@
             width: auto,
             max: max-content
           ),
-          radius: 'lg',
         ));
         @include himig.typography-bind('navbar-item', (
           family: 'body',
@@ -131,9 +132,9 @@
 
       &.is-active {
         @include himig.color-bind('navbar-item', (
-          fill: 'surface-400',
+          fill: 'surface-alpha-800',
           ink: 'surface-ink',
-          border: 'surface-400'
+          border: 'surface-alpha-400'
         ));
         @include himig.typography-bind('navbar-item', (
           weight: 400

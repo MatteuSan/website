@@ -4,73 +4,43 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { MOTION_PREFERENCES, parallaxExit, splitText, useMediaQuery } from "@/lib/gsap";
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
 
 interface MSHeroProps {
-  title: string;
-  subtitle: string|React.ReactNode;
-  action?: any;
+  children?: React.ReactNode|string;
 }
 
-const MSHero: React.FC<MSHeroProps> = ({ title, subtitle, action }) => {
+const MSHero: React.FC<MSHeroProps> = ({ children }) => {
   const heroRef = React.useRef<HTMLDivElement>(null);
-  const heroWrapRef = React.useRef<HTMLDivElement>(null);
-
-  const heroTitleRef = React.useRef<HTMLHeadingElement>(null);
-  const heroDescriptionRef = React.useRef<HTMLParagraphElement>(null);
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
     gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-    const contentTl = gsap.timeline();
-    const exitTl = gsap.timeline({
+    const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
-        start: '0% top',
+        start: 'top 7%',
         scrub: true,
       }
     });
 
-    const titleSplit = splitText(heroTitleRef.current);
-
-    contentTl.from(
-      titleSplit.identifier,
-      {
-        y: !isMotionReduced ? '100%' : 0,
-        opacity: isMotionReduced ? 0 : 1,
-        rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 10 : 0,
-        duration: 0.5,
-        stagger: 0.05
-      }
-    );
-    contentTl.from('.family-subtitle', { y: !isMotionReduced ? 30 : 0, opacity: 0, duration: 0.5 });
-
-    contentTl.call(() => {
-      contentTl.revert();
+    animateInView(heroRef.current).from(heroRef.current, {
+      opacity: 0,
+      y: !isMotionReduced ? 70 : 0,
+      duration: 1
     });
 
-    exitTl.to('.family-supertitle', parallaxExit(1),);
-    exitTl.to('.family-subtitle', parallaxExit(2), '<');
-    exitTl.to(heroRef.current, {
+    exit.to(heroRef.current, {
       opacity: 0,
+      y: -100,
       ease: 'power2',
-      duration: 3
-    }, '<90%');
+    });
   }, { scope: heroRef });
 
   return (
-    <section className="ms-hero relative" ref={heroRef}>
-      <div className="ms-hero__wrap" ref={heroWrapRef}>
-        <h1 className="family-supertitle size-6xl letter-spacing-condensed relative" ref={heroTitleRef}>{ title }</h1>
-        <p className="family-subtitle size-lg @medium:size-xl weight-light relative" ref={heroDescriptionRef}>{ subtitle }</p>
-        { action &&
-          <div className="ms-hero__actions">
-            { action }
-          </div>
-        }
-      </div>
+    <section className="ms-hero constrained-layout my-5xl @large:my-6xl r-xl py-4xl @large:py-5xl" ref={heroRef}>
+      { children }
     </section>
   );
 };
