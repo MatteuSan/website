@@ -137,26 +137,24 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }, { scope: aboutMeSectionRef });
 
   return (
-    <MSHero>
-      <div className="constrained w-full flex flow-column gap-lg @large:gap-xl jc-center ai-center" ref={aboutMeSectionRef}>
-        <div className="picture-frame" style={{ flexShrink: 0 }}>
-          <Image src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
-        </div>
-        <div>
-          <h2 ref={leadTextRef} className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Hi, I'm Matt.</h2>
-          <p className="content mt-sm size-md @large:size-lg weight-light align-center" ref={subtitleRef}>
+    <MSHero ref={aboutMeSectionRef}>
+      <div className="picture-frame" style={{ flexShrink: 0 }}>
+        <Image src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
+      </div>
+      <div>
+        <h2 ref={leadTextRef} className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Hi, I'm Matt.</h2>
+        <p className="content mt-sm size-md @large:size-lg weight-light align-center" ref={subtitleRef}>
           <span ref={professionRef} className="profession highlight mr-sm" onClick={() => handleSetProfession()} title="Click me ;>">
             { PROFESSIONS[professionIndex] || 'a UX Engineer' }
           </span>based in the Philippines, <br/>
-            and I create bridges from software to user
-          </p>
-          <p className="content-2 mt-md size-sm de-emphasize align-center">
-            I've worked with numerous companies in designing and developing their brand <br /> and the amazing experiences their users know and love.
-          </p>
-        </div>
-        <div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
-          <MSButton data-cal-link="matteu" data-cal-config='{"theme":"dark"}' type="filled large">Book a call</MSButton>
-        </div>
+          and I create bridges from software to user
+        </p>
+        <p className="content-2 mt-md size-sm de-emphasize align-center">
+          I've worked with numerous companies in designing and developing their brand <br /> and the amazing experiences their users know and love.
+        </p>
+      </div>
+      <div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
+        <MSButton data-cal-link="matteu" data-cal-config='{"theme":"dark"}' type="filled large">Book a call</MSButton>
       </div>
     </MSHero>
   );

@@ -2,7 +2,6 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
 
-import { MSHero } from '@/components';
 import { works } from '@/constants/works';
 
 import AboutMeSection from "@/components/pages/home/AboutMeSection";

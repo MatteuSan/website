@@ -9,8 +9,37 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
 
 @mixin render() {
   .ms-hero {
+    width: calc(100% - 50px);
+    max-width: himig.token-get('viewport-layout-limit');
+    min-height: calc(100svh - 126px);
+    display: grid;
+    place-items: center;
+    margin-inline: auto;
+    margin-block-start: 76px;
+    margin-block-end: himig.primitive-token-get('margin.5xl');
+    border-radius: himig.primitive-token-get('radius.xl');
+    padding-block: himig.primitive-token-get('padding.4xl');
     --ms-theme-accent-alpha-200: rgba(218, 146, 97, 0.05);
     background: radial-gradient(circle at 50% 50%, var(--ms-theme-accent-alpha-300) 0%, var(--ms-theme-accent-alpha-200) 100%);
     border: 1px solid var(--ms-theme-accent-alpha-300);
+
+    @include himig.breakpoint-create('large') {
+      padding-block: himig.primitive-token-get('padding.5xl');
+    }
+
+    .ms-hero__wrapper {
+      width: calc(100% - 50px);
+      max-width: himig.token-get('viewport-content-limit');
+      margin-inline: auto;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: himig.primitive-token-get('gap.lg');
+
+      @include himig.breakpoint-create('large') {
+        gap: himig.primitive-token-get('gap.xl');
+      }
+    }
   }
 }

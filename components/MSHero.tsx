@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentPropsWithRef, forwardRef } from 'react';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -6,11 +6,14 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
 
-interface MSHeroProps {
+interface MSHeroProps extends ComponentPropsWithRef<any> {
+  ref?: React.Ref<any> // for animations
+  customLayout?: boolean;
   children?: React.ReactNode|string;
 }
 
-const MSHero: React.FC<MSHeroProps> = ({ children }) => {
+const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
+  const { customLayout, children, ...rest } = props;
   const heroRef = React.useRef<HTMLDivElement>(null);
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
@@ -39,10 +42,16 @@ const MSHero: React.FC<MSHeroProps> = ({ children }) => {
   }, { scope: heroRef });
 
   return (
-    <section className="ms-hero constrained-layout my-5xl @large:my-6xl r-xl py-4xl @large:py-5xl" ref={heroRef}>
-      { children }
+    <section className="ms-hero" ref={heroRef}>
+      { customLayout ? (
+        <>{ children }</>
+      ) : (
+        <div className="ms-hero__wrapper" ref={ref} {...rest}>
+          { children }
+        </div>
+      ) }
     </section>
   );
-};
+});
 
 export default MSHero;

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
-import { MSHero, MSInfoCard
+import {
+  MSButton, MSHero, MSInfoCard
 } from '@/components';
 
 import { works } from '@/constants/works';
 import { useRouter } from "next/router";
+import Image from 'next/image';
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
 const itemsWithoutSlug = works.filter((item) => item?.slug == null);
@@ -26,7 +28,17 @@ const WorkPage: NextPage = () => {
 
   return (
     <DefaultLayout title="WORK" description="Projects made for clients, and for myself :)" hasHero>
-      <MSHero title="Works" subtitle="Projects made for clients, and for myself :)" />
+      <MSHero customLayout>
+        <div className="constrained w-full flex flow-column gap-lg @large:gap-xl jc-center ai-center">
+          <div>
+            <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Works</h2>
+            <p className="content mt-sm size-md @large:size-lg weight-light align-center">Projects that aided companies to their success.</p>
+          </div>
+          {/*<div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
+            <MSButton data-cal-link="matteu" data-cal-config='{"theme":"dark"}' type="filled large">Book a call</MSButton>
+          </div>*/}
+        </div>
+      </MSHero>
       <MainContent>
         <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle">
