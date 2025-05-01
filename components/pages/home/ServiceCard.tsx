@@ -31,58 +31,50 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       }
     });
 
-    const initialState = () => {}
+    enter.fromTo(serviceCardRef.current, {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 1,
+      stagger: 0.05
+    }, {
+      opacity: 1,
+      y: 0,
+    });
 
-    const enterAnimation = () => {
-      enter.fromTo(serviceCardRef.current, {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-        stagger: 0.05
-      }, {
-        opacity: 1,
-        y: 0,
-      });
+    enter.fromTo('.service-card__media', {
+      opacity: 0,
+      y: !isMotionReduced ? 50 : 0,
+      duration: 1,
+    }, {
+      opacity: 1,
+      y: 0,
+    }, '<20%');
 
-      enter.fromTo('.service-card__media', {
-        opacity: 0,
-        y: !isMotionReduced ? 50 : 0,
-        duration: 1,
-      }, {
-        opacity: 1,
-        y: 0,
-      }, '<20%');
+    enter.from('.content-1', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 1,
+      delay: 0.5
+    }, '<10%');
 
-      enter.from('.content-1', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-        delay: 0.5
-      }, '<10%');
+    enter.from('.content-2', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 1,
+    }, '<10%');
 
-      enter.from('.content-2', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-      }, '<10%');
+    enter.fromTo('.ms-button', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 1,
+    }, {
+      opacity: 1,
+      y: 0,
+    }, '<20%');
 
-      enter.fromTo('.ms-button', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
-      }, {
-        opacity: 1,
-        y: 0,
-      }, '<20%');
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
-
-    const exitAnimation = () => {
-      //
-    }
-
-    initialState();
-    enterAnimation();
-    exitAnimation();
   }, { scope: serviceCardRef });
 
   return (
