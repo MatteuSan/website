@@ -28,6 +28,7 @@ import MSHeader from './MSHeader';
 import MSHero from './MSHero';
 import { MSNavbar, HCNavbarItem, HCNavbarTrigger } from './MSNavbar';
 import MSTag from './MSTag';
+import MSTitleBar from './MSTitleBar';
 
 export {
   MSButton,
@@ -43,5 +44,6 @@ export {
   HCNavbarItem,
   HCNavbarTrigger,
   MSTag,
+  MSTitleBar
 };
 export { MSInfoCard } from "./cards/MSInfoCard";
