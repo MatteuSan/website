@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { UrlObject } from 'node:url';
+import { parseLinkTarget, parseTypes } from '@/lib/helpers';
 
 type NativeButtonTypes = 'button' | 'submit' | 'reset' | undefined;
 
@@ -18,14 +19,6 @@ interface HCButtonProps extends ComponentPropsWithoutRef<any> {
 }
 
 const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled, onClick, children, nativeType = 'button', ...props }) => {
-  const parseTypes = (type: string): string => {
-    const finalTypes: string[] = [];
-    type.split(' ').forEach((type: string) => {
-      finalTypes.push('is-' + type);
-    });
-    return finalTypes.join(' ');
-  };
-
   const ButtonBase = (
     <>
       { icon && icon[0] == 'left' && <i className="ms-button__icon" aria-hidden="true">{ icon[1] }</i> }
@@ -49,10 +42,8 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
     );
   }
 
-  const isLinkExternal: boolean = (typeof link == 'string' ? link.startsWith('http://') || link.startsWith('https://') : false);
-
   return (
-    <Link {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={isLinkExternal ? '_blank' : '_self'}>
+    <Link {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={parseLinkTarget(link)}>
       { ButtonBase }
     </Link>
   );
