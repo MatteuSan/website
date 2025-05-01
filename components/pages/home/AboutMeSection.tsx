@@ -14,7 +14,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const aboutMeSectionRef = useRef<HTMLDivElement>(null);
-  const professionRef = useRef<HTMLSpanElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
@@ -31,39 +30,34 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       }
     });
 
-    const initialState = () => {
-      if (professionRef.current) gsap.set(professionRef.current, { opacity: 1, y: 0 });
-    }
-
     const enterAnimation = () => {
-      animateInView(aboutMeSectionRef.current).from(aboutMeSectionRef.current, {
+      const aboutMe = animateInView(aboutMeSectionRef.current);
+
+      aboutMe.from(aboutMeSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 70 : 0,
         duration: 1
       });
 
-      animateInView('.lead-text').from(titleSplit.chars, {
+      aboutMe.from(titleSplit.chars, {
         y: !isMotionReduced ? '100%' : 0,
-        // rotateX: !isMotionReduced ? -90 : 0,
-        // rotateZ: !isMotionReduced ? 10 : 0,
         duration: 0.6,
         stagger: 0.05,
         ease: 'expo.out',
         onComplete: () => {
           titleSplit.revert();
         }
-      });
+      }, '-=0.5');
 
-      animateInView(aboutMeSectionRef.current).fromTo('.picture-frame', {
+      aboutMe.fromTo('.picture-frame', {
         opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
       }, {
         opacity: 1,
         y: 0,
-      }, '<10%');
+      }, '<');
 
-      animateInView(aboutMeSectionRef.current).from(subtitleSplit.lines, {
+      aboutMe.from(subtitleSplit.lines, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.6,
@@ -72,28 +66,31 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         onComplete: () => {
           subtitleSplit.revert();
         }
-      }, '+=0.5');
+      }, '-=0.5');
 
-      animateInView(aboutMeSectionRef.current).from('.content-2', {
+      aboutMe.from('.content-2', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-      }, '+=1');
+      }, '-=0.5');
 
-      animateInView(aboutMeSectionRef.current).from('.content-3', {
+      aboutMe.from('.content-3', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-      }, '+=1.5');
+      }, '-=0.5');
     }
 
     const exitAnimation = () => {
       //
     }
 
-    initialState();
     enterAnimation();
     exitAnimation();
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, { scope: aboutMeSectionRef });
 
   return (
