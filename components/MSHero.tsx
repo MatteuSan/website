@@ -24,7 +24,7 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
-        start: '7% top',
+        start: 'bottom 27%',
         scrub: true,
       }
     });
