@@ -28,7 +28,7 @@ const ServiceSection: React.FC = ( ) => {
 
     const exitPage = gsap.timeline({
       scrollTrigger: {
-        trigger: servicesSectionRef.current,
+        trigger: '.service-container',
         start: 'bottom 25%',
         scrub: true,
       }
