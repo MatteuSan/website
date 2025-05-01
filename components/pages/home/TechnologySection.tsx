@@ -25,12 +25,6 @@ const TechnologySection: React.FC = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  const { scrollYProgress } = useScroll({
-    target: technologySectionRef,
-    offset: ['start end', 'end start']
-  });
-  const scrollTiming = useTransform(scrollYProgress, [0, 1], [1, 70]);
-
   useGSAP(() => {
     gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
