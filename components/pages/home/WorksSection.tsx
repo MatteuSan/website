@@ -34,18 +34,20 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
     });
 
     const enterAnimation = () => {
-      animateInView(workSectionRef.current).from(workSectionRef.current, {
+      const work = animateInView(workSectionRef.current);
+
+      work.from(workSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
       });
 
-      animateInView(workSectionRef.current).from(subtitleSplit.words, {
+      work.from(subtitleSplit.words, {
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05
       });
 
       if (isSizeLarge) {
-        animateInView('.ms-button.is-full-width', { once: true }).fromTo('.ms-button.is-full-width', {
+        animateInView('.ms-button.is-outlined.is-full-width', { once: true }).fromTo('.ms-button.is-outlined.is-full-width', {
           opacity: 0,
           y: !isMotionReduced ? 30 : 0,
         }, {
@@ -66,6 +68,10 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
 
     enterAnimation();
     exitAnimation();
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, { scope: workSectionRef });
 
   return (

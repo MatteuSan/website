@@ -16,33 +16,25 @@ const CTASection: React.FC<CTASectionProps> = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const contentTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.lead-text',
-        start: 'top 80%',
-        toggleActions: 'play resume resume reverse',
-      }
-    });
-
     const enterAnimation = () => {
-      animateInView('.lead-text').from(ctaSectionRef.current, {
+      const cta = animateInView(ctaSectionRef.current);
+
+      cta.from(ctaSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
       });
 
-      animateInView('.lead-text').from('.lead-text', {
+      cta.from('.lead-text', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-        // delay: 0.075,
       });
 
-      animateInView('.content').from('.content', {
+      cta.from('.content', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-        // delay: 0.5,
       });
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');
@@ -61,11 +53,15 @@ const CTASection: React.FC<CTASectionProps> = () => {
           },
         });
 
-        contentTl.add(tl);
+        cta.add(tl);
       });
     }
 
     enterAnimation();
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, { scope: ctaSectionRef });
 
   return (
