@@ -48,9 +48,8 @@
         transition: z-index 0.5s ease,
                     transform 0.5s var(--easing),
                     box-shadow 0.5s var(--easing);
-        flex: 1;
-        aspect-ratio: himig.key-create('service-card-aspect-ratio', string.unquote('16 / 10'));
         // transform-origin: bottom right;
+        aspect-ratio: himig.key-create('service-card-aspect-ratio', string.unquote('16 / 10'));
 
         img {
           width: 100%;
@@ -60,7 +59,7 @@
         }
 
         @include himig.breakpoint-create('large') {
-          transform: scale(1.5) translateX(50px) translateY(1.5em) rotateZ(var(--rotate-z, 2deg)) !important;
+          transform: scale(1.65) translateX(7em) translateY(5em) rotateZ(var(--rotate-z, 2deg)) !important;
           box-shadow: 0 10px 20px #{rgba(#000, 0.2)};
 
           &:hover {

@@ -40,21 +40,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       enter.fromTo(serviceCardRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
+        duration: 1,
         stagger: 0.05
       }, {
         opacity: 1,
-        duration: 1,
         y: 0,
       });
 
-      enter.fromTo('.content-3', {
+      enter.fromTo('.service-card__media', {
         opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 0.5,
+        y: !isMotionReduced ? 50 : 0,
+        duration: 1,
       }, {
         opacity: 1,
         y: 0,
-      }, '<');
+      }, '<20%');
 
       enter.from('.content-1', {
         opacity: 0,
@@ -106,15 +106,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
           <MSButton link={link} type="outlined">View examples</MSButton>
         ) : null }
       </div>
-      <div className="content-3 @medium:p-2xl">
-        <div className="service-card__media">
-          <Image
-            src={media}
-            alt={alt || `${title} services media.`}
-            width={1920}
-            height={1080}
-          />
-        </div>
+      <div className="service-card__media">
+        <Image
+          src={media}
+          alt={alt || `${title} services media.`}
+          width={1920}
+          height={1080}
+        />
       </div>
     </li>
   );
