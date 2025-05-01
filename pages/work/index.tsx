@@ -34,7 +34,7 @@ const WorkPage: NextPage = () => {
             <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Works</h2>
             <p className="content mt-sm size-md @large:size-lg weight-light align-center">Projects that ushered companies to their success.</p>
             <p className="content-2 mt-md size-sm de-emphasize align-center">
-              Browse the works that companies invested in to expand their presence online and drive business growth.
+              Browse the works that companies invested in to expand their online presence and drive business growth.
             </p>
           </div>
           {/*<div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
