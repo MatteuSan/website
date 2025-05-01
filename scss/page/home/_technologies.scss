@@ -34,9 +34,8 @@
     }
 
     .technology {
-      width: 100%;
-      min-width: clamp(100px, 10vw, 200px);
-      height: 100%;
+      width: 100px;
+      height: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
