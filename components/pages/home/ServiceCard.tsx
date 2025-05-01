@@ -5,8 +5,6 @@ import { MSButton } from '@/components';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { SplitText } from 'gsap/dist/SplitText';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
@@ -25,7 +23,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
     const enter = gsap.timeline({
       scrollTrigger: {
         trigger: serviceCardRef.current,

@@ -2,7 +2,6 @@ import React, { ComponentPropsWithRef, forwardRef } from 'react';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
 
@@ -19,8 +18,6 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
-
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,

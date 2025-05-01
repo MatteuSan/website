@@ -13,11 +13,9 @@ import {
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 import { SplitText } from 'gsap/dist/SplitText';
-import { useScroll, useTransform } from 'framer-motion';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -26,8 +24,6 @@ const TechnologySection: React.FC = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: technologySectionRef.current,

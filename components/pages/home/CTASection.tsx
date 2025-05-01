@@ -4,7 +4,6 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
@@ -17,8 +16,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
-
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: '.lead-text',

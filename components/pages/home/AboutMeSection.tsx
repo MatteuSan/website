@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
@@ -20,8 +19,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-
     const titleSplit = SplitText.create(titleRef.current, {
       type: 'chars',
       mask: 'chars',

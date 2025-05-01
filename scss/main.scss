@@ -92,13 +92,20 @@
     background: himig.token-get('accent-400');
   }
 
-  @include ms-badge.render();
+  @include ms-badge.render(
+    $struct: (
+      padding: ('sm' 'md')
+    )
+  );
   @include ms-badge.extend('archived') {
     @include ms-badge.color((
       fill: 'ms-yellow.400',
       ink: 'accent-ink',
       border: 'ms-yellow.400'
     ));
+  }
+  .ms-badge__label {
+    white-space: nowrap;
   }
 
   @include ms-button.render(

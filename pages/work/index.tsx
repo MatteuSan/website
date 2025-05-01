@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
-import {
-  MSButton, MSHero, MSInfoCard
+import { MSHero, MSInfoCard
 } from '@/components';
 
 import { works } from '@/constants/works';
 import { useRouter } from "next/router";
-import Image from 'next/image';
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
 const itemsWithoutSlug = works.filter((item) => item?.slug == null);

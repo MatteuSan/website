@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 /**
  * Generates a StyleX-like hash from a string using a modified FNV-1a algorithm
  * @param input The string to hash
@@ -7,10 +9,8 @@
 export function hashString(input: string, shortOutput: boolean = true): string {
   // FNV-1a parameters - these are standard values for 32-bit FNV-1a
   const FNV_PRIME = 16777619;
-  const OFFSET_BASIS = 2166136261;
-
   // Calculate the FNV-1a hash
-  let hash = OFFSET_BASIS;
+  let hash = 2166136261;
   for (let i = 0; i < input.length; i++) {
     hash ^= input.charCodeAt(i);
     hash = Math.imul(hash, FNV_PRIME);

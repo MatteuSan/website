@@ -7,7 +7,6 @@ import { works } from "@/constants/works";
 import { tools } from "@/constants/tools";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface MarkdownLayoutProps {
@@ -33,8 +32,6 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const contentTl = gsap.timeline();
 
     contentTl.from('.supertitle', {

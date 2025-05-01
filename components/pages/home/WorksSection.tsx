@@ -5,7 +5,6 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, useMediaQuery } from '@/lib/gsap';
 
@@ -21,8 +20,6 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-
     const subtitleSplit = SplitText.create('.content', {
       type: 'words',
       mask: 'words',

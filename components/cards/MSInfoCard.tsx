@@ -54,11 +54,11 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         style={{ marginBlockEnd: '1rem' }}
       />
       <MSCardContent>
-        <div className="flex flow-row wrap-none gap-xs" style={{ overflow: 'hidden hidden' }}>
-          { item.tech.slice(0, 4).map((tech: string, key: number) => {
-            return <MSTag key={key}>{ tech }</MSTag>;
+        <div className="flex flow-row wrap-none gap-sm" style={{ overflow: 'auto hidden' }}>
+          { item.tags.slice(0, 4).map((tag: string, key: number) => {
+            return <MSTag key={key}>{ tag }</MSTag>;
           }) }
-          { item.tech.length > 4 ? (<MSTag>+{item.tech.length - 4}</MSTag>) : null }
+          { item.tags.length > 4 ? (<MSTag>+{item.tags.length - 4}</MSTag>) : null }
         </div>
       </MSCardContent>
       <MSCardFooter>

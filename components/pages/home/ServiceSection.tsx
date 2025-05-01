@@ -7,17 +7,14 @@ import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,

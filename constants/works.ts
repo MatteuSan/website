@@ -9,7 +9,7 @@ export const works: Work[] = [
     'slug': 'dev-protocol',
     'status': 'Active',
     'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
-    'tags': ['Development', 'Website', 'Open Source'],
+    'tags': ['Design', 'Development', 'Design System', 'Documentation'],
     'duration': [2021, 2024],
   },
   {
@@ -20,7 +20,7 @@ export const works: Work[] = [
     'slug': 'inm-audio',
     'status': 'Active',
     'tech': ['SCSS', 'TS', 'React', 'Three', 'R3F'],
-    'tags': ['Design', 'Development', 'Web App'],
+    'tags': ['Design', 'Development', '3D Interactivity', 'SEO'],
     'duration': [2024, 'present'],
   },
   {
@@ -31,7 +31,7 @@ export const works: Work[] = [
     'link': 'https://www.wearecoral.org',
     'status': 'Active',
     'tech': ['Figma', 'React', 'Tailwind'],
-    'tags': ['Design', 'Development', 'Web App'],
+    'tags': ['Design', 'Development', 'Marketing', 'SEO'],
     'duration': [2024]
   },
   {
@@ -41,7 +41,7 @@ export const works: Work[] = [
     'status': 'Archived',
     'slug': 'growstocks',
     'tech': ['SCSS', 'TS', 'React', 'PHP', 'Laravel'],
-    'tags': ['Design', 'Development', 'Web App'],
+    'tags': ['Design', 'Development', 'Design System'],
     'duration': [2018, 2023]
   },
   {
@@ -52,7 +52,7 @@ export const works: Work[] = [
     'link': 'https://github.com/PurpleCress/website',
     'status': 'Archived',
     'tech': ['SCSS', 'TS', 'Vue', 'Firebase'],
-    'tags': ['Design', 'Development', 'Web App'],
+    'tags': ['Design', 'Development'],
     'duration': [2021, 2022]
   },
   {
