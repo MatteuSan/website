@@ -15,30 +15,23 @@ const ServiceSection: React.FC = ( ) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const contentTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: servicesSectionRef.current,
-        start: 'top bottom',
-        toggleActions: 'play complete resume reset',
-      }
-    });
-
     const exitPage = gsap.timeline({
       scrollTrigger: {
-        trigger: '.service-container',
+        trigger: servicesSectionRef.current,
         start: 'bottom 25%',
         scrub: true,
       }
     });
 
     const enterAnimation = () => {
-      animateInView(servicesSectionRef.current).from(servicesSectionRef.current, {
+      const services = animateInView(servicesSectionRef.current);
+      services.from(servicesSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       });
 
-      contentTl.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
+      services.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05
@@ -54,6 +47,10 @@ const ServiceSection: React.FC = ( ) => {
 
     enterAnimation();
     exitAnimation();
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, { scope: servicesSectionRef });
 
   return (
