@@ -45,25 +45,27 @@ const TechnologySection: React.FC = () => {
     }
 
     const enterAnimation = () => {
-      animateInView(technologySectionRef.current).from(technologySectionRef.current, {
+      const tech = animateInView(technologySectionRef.current);
+
+      tech.from(technologySectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 50 : 0,
         transformOrigin: 'bottom',
         duration: 1,
       });
 
-      contentTl.from(SplitText.create('.content-1', { type: 'words', mask: 'words' }).words, {
+      tech.from(SplitText.create('.content-1', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05
       });
 
-      contentTl.from('.content-2', {
+      tech.from('.content-2', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
       }, '<50%');
 
-      contentTl.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
+      tech.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05
@@ -80,6 +82,10 @@ const TechnologySection: React.FC = () => {
     initialState();
     enterAnimation();
     exitAnimation();
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, { scope: technologySectionRef });
 
   const TechnologiesMarkup = (
