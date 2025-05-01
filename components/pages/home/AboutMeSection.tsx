@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Image from "next/image";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, splitText, useMediaQuery } from '@/lib/gsap';
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 
