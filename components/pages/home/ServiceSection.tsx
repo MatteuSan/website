@@ -26,6 +26,14 @@ const ServiceSection: React.FC = ( ) => {
       }
     });
 
+    const exitPage = gsap.timeline({
+      scrollTrigger: {
+        trigger: servicesSectionRef.current,
+        start: 'bottom 25%',
+        scrub: true,
+      }
+    });
+
     const enterAnimation = () => {
       animateInView(servicesSectionRef.current).from(servicesSectionRef.current, {
         opacity: 0,
@@ -40,7 +48,15 @@ const ServiceSection: React.FC = ( ) => {
       });
     };
 
+    const exitAnimation = () => {
+      exitPage.to(servicesSectionRef.current, {
+        opacity: 0,
+        y: !isMotionReduced ? -30 : 0,
+      });
+    }
+
     enterAnimation();
+    exitAnimation();
   }, { scope: servicesSectionRef });
 
   return (

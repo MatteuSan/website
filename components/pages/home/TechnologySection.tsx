@@ -15,9 +15,9 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { SplitText } from 'gsap/dist/SplitText';
+import { useScroll, useTransform } from 'framer-motion';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -25,73 +25,98 @@ const TechnologySection: React.FC = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  const ACTIVE_CLASS = {
-    css: {
-      className: 'technology is-active'
-    }
-  };
-
-  const INACTIVE_CLASS = {
-    css: {
-      className: 'technology is-inactive'
-    }
-  };
-
-  const MASTERED_TECHNOLOGIES = [
-    'html',
-    'css',
-    'typescript',
-    'php',
-    'laravel',
-    'react',
-    'scss',
-    'postgresql',
-    'github',
-    'git'
-  ];
+  const { scrollYProgress } = useScroll({
+    target: technologySectionRef,
+    offset: ['start end', 'end start']
+  });
+  const scrollTiming = useTransform(scrollYProgress, [0, 1], [1, 70]);
 
   useGSAP(() => {
-    const technologyTiles = gsap.utils.toArray('#technologies .technology');
+    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: technologySectionRef.current,
-        start: 'top 0%',
-        end: 'bottom 0%',
-        toggleActions: 'play pause resume reset',
+        start: 'top 90%',
+        toggleActions: 'play complete resume reset',
       }
     });
-    const leadTextSplit = splitText(leadTextRef.current);
+
+    const exitPage = gsap.timeline({
+      scrollTrigger: {
+        trigger: technologySectionRef.current,
+        start: 'bottom 25%',
+        scrub: true,
+      }
+    });
 
     const initialState = () => {
       //
     }
 
     const enterAnimation = () => {
-      animateInView('.lead-text').from(technologySectionRef.current, {
+      animateInView(technologySectionRef.current).from(technologySectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 50 : 0,
-        scale: 0.9,
         transformOrigin: 'bottom',
         duration: 1,
       });
 
-      animateInView('.lead-text').from(leadTextSplit.identifier, {
+      contentTl.from(SplitText.create('.content-1', { type: 'words', mask: 'words' }).words, {
+        opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
-        rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 10 : 0,
         stagger: 0.05
       });
+
+      contentTl.from('.content-2', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+      }, '<10%');
+
+      contentTl.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
+        opacity: 0,
+        y: !isMotionReduced ? '100%' : 0,
+        stagger: 0.05
+      }, '<10%');
     }
 
     const exitAnimation = () => {
-      // Exit animations
+      exitPage.to('#skills-and-technologies__wrapper', {
+        opacity: 0,
+        y: !isMotionReduced ? -50 : 0,
+      });
     }
 
     initialState();
     enterAnimation();
     exitAnimation();
   }, { scope: technologySectionRef });
+
+  const TechnologiesMarkup = (
+    <>
+      <TechnologyChip icon={ <SiHtml5/> } label="HTML" color="#E44D26"/>
+      <TechnologyChip icon={ <SiCss3/> } label="CSS" color="#2965F1"/>
+      <TechnologyChip icon={ <SiJavascript/> } label="JavaScript" color="#F7DF1E"/>
+      <TechnologyChip icon={ <SiTypescript/> } label="TypeScript" color="#3178C6"/>
+      <TechnologyChip icon={ <SiPhp/> } label="PHP" color="#8892BF"/>
+      <TechnologyChip icon={ <SiNodedotjs/> } label="Node.js" color="#5FA04E"/>
+      <TechnologyChip icon={ <SiSass/> } label="SCSS" color="#CD6799"/>
+      <TechnologyChip icon={ <SiLaravel/> } label="Laravel" color="#FF2D20"/>
+      <TechnologyChip icon={ <SiTailwindcss/> } label="TailwindCSS" color="#38B2AC"/>
+      <TechnologyChip icon={ <SiReact/> } label="React" color="#61DAFB"/>
+      <TechnologyChip icon={ <SiVuedotjs/> } label="Vue.js" color="#4FC08D"/>
+      <TechnologyChip icon={ <SiSvelte/> } label="Svelte" color="#FF3E00"/>
+      <TechnologyChip icon={ <SiThreedotjs/> } label="Three.js" color="#000"/>
+      <TechnologyChip icon={ <SiNextdotjs/> } label="Next.js" color="#000"/>
+      <TechnologyChip icon={ <SiNuxt/> } label="Nuxt" color="#00DC82"/>
+      <TechnologyChip icon={ <SiPostgresql/> } label="PostgreSQL" color="#4169E1"/>
+      <TechnologyChip icon={ <SiMysql/> } label="MySQL" color="#4479A1"/>
+      <TechnologyChip icon={ <SiSqlite/> } label="SQLite" color="#003B57"/>
+      <TechnologyChip icon={ <SiFigma/> } label="Figma" color="#F24E1E"/>
+      <TechnologyChip icon={ <SiGithub/> } label="GitHub" color="#fff"/>
+      <TechnologyChip icon={ <SiGit/> } label="Git" color="#F05032"/>
+    </>
+  );
 
 
   return (
@@ -100,42 +125,24 @@ const TechnologySection: React.FC = () => {
       className="w-full h-screen py-4xl flex flow-column jc-center ai-center"
       ref={technologySectionRef}
     >
-      <div id="skills-and-technologies__wrapper" className="flex flow-column jc-start py-2xl @medium:py-4xl fill-surface-600">
+      <div id="skills-and-technologies__wrapper" className="flex flow-column jc-start py-2xl @medium:py-4xl">
         <div className="constrained flex flow-column jc-center">
           <h2 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I use</h2>
-          <p className="content mt-sm mb-2xl size-md weight-light">
-            <span className="content-1 block">I like working with tools that conform to my philosophies of building <span className="highlight">great</span> software.</span>
-            <span className="content-2 block my-sm"><span className="highlight">Constantly</span> expanding my repertoire.</span>
-            <span className="content-3 block">While improving on what I'm <span className="highlight">really good</span> at.</span>
+          <p className="content-1 my-sm size-md weight-light">
+            I like working with tools that conform to my philosophies of building great software.
+          </p>
+          <p className="content-2 de-emphasize mb-2xl">
+            Tools that encourage clean and scalable code, thoughtful design, and accessibility by default. I believe great software is fast, flexible, and considerate—both to the people who use it and the people who build it. That’s why I gravitate toward technologies that help me stay efficient without sacrificing quality, and stay creative without losing control...
           </p>
         </div>
-        <div id="technologies" className="constrained" aria-hidden="true">
-          <TechnologyChip icon={ <SiHtml5/> } label="HTML" color="#E44D26"/>
-          <TechnologyChip icon={ <SiCss3/> } label="CSS" color="#2965F1"/>
-          <TechnologyChip icon={ <SiJavascript/> } label="JavaScript" color="#F7DF1E"/>
-          <TechnologyChip icon={ <SiTypescript/> } label="TypeScript" color="#3178C6"/>
-          <TechnologyChip icon={ <SiPhp/> } label="PHP" color="#8892BF"/>
-          <TechnologyChip icon={ <SiLaravel/> } label="Laravel" color="#FF2D20"/>
-          <TechnologyChip icon={ <SiNodedotjs/> } label="Node.js" color="#5FA04E"/>
-          <TechnologyChip icon={ <SiReact/> } label="React" color="#61DAFB"/>
-          <TechnologyChip icon={ <SiVuedotjs/> } label="Vue.js" color="#4FC08D"/>
-          <TechnologyChip icon={ <SiSvelte/> } label="Svelte" color="#FF3E00"/>
-          <TechnologyChip icon={ <SiThreedotjs/> } label="Three.js" color="#000"/>
-          <TechnologyChip icon={ <SiNextdotjs/> } label="Next.js" color="#000"/>
-          <TechnologyChip icon={ <SiNuxt/> } label="Nuxt" color="#00DC82"/>
-          <TechnologyChip icon={ <SiSass/> } label="SCSS" color="#CD6799"/>
-          <TechnologyChip icon={ <SiFigma/> } label="Figma" color="#F24E1E"/>
-          <TechnologyChip icon={ <SiTailwindcss/> } label="Tailwind CSS" color="#38B2AC"/>
-          <TechnologyChip icon={ <SiPostgresql/> } label="PostgreSQL" color="#4169E1"/>
-          <TechnologyChip icon={ <SiMysql/> } label="MySQL" color="#4479A1"/>
-          <TechnologyChip icon={ <SiSqlite/> } label="SQLite" color="#003B57"/>
-          <TechnologyChip icon={ <SiGithub/> } label="GitHub" color="#fff"/>
-          <TechnologyChip icon={ <SiGit/> } label="Git" color="#F05032"/>
+        <div className="technologies" aria-hidden="true">
+          { TechnologiesMarkup }
+          { TechnologiesMarkup }
         </div>
         <div className="constrained flex flow-column jc-center mt-2xl">
-          <p className="content family-subtitle size-md weight-light">
-            <span className="content-4 block my-sm">Delivering you the <span className="highlight">best</span> results.</span>
-            <span className="content-5 block">And giving your users the <span className="highlight">experience they deserve</span>.</span>
+          <p className="content-3 family-subtitle size-md weight-light">
+            All in the name of delivering you the best results. <br/>
+            And giving your users the experience they deserve.
           </p>
         </div>
       </div>

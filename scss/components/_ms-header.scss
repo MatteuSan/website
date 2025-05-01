@@ -1,6 +1,6 @@
 @use '@matteusan/himig';
 
-$header-fill: linear-gradient(var(--ms-theme-surface-alpha-800) 20%, rgba(255 255 255 / 0) 100%) !default;
+$header-fill: radial-gradient(circle at 0% 50%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%) !default;
 $header-ink: 'surface-ink' !default;
 $header-border: 'surface-alpha-800' !default;
 
@@ -35,8 +35,8 @@ $header-style: 'default' !default;
     z-index: 100;
     @include himig.prefix(transition, all 0.5s ease);
 
+    background: himig.key-create('header-fill', $header-un-scrolled-fill);
     @include himig.color-apply('header', (
-      fill: $header-fill,
       ink: $header-ink,
       border: $header-un-scrolled-border
     ));
@@ -63,8 +63,8 @@ $header-style: 'default' !default;
       }
 
       &.is-scrolled {
+        @include himig.key-bind('header-fill', $header-fill);
         @include himig.color-bind('header', (
-          fill: $header-fill,
           ink: $header-ink,
           border: $header-border
         ));
@@ -87,8 +87,8 @@ $header-style: 'default' !default;
     }
 
     &:not(.is-scrollable) {
+      @include himig.key-bind('header-fill', $header-fill);
       @include himig.color-bind('header', (
-        fill: $header-fill,
         ink: $header-ink,
         border: $header-border
       ));

@@ -1,17 +1,23 @@
-@use '@matteusan/himig';
+@use 'pkg:@matteusan/himig';
 
 @mixin render() {
   .ms-footer {
-    width: 100%;
+    width: calc(100% - 50px);
+    max-width: himig.token-get('viewport-layout-limit');
+    margin-inline: auto;
+    margin-block-end: himig.primitive-token-get('margin.lg');
     text-align: center;
+    border-radius: himig.primitive-token-get('radius.xl');
 
+    background: himig.key-create('footer-fill', #{radial-gradient(circle at 50% 100%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%)});
     @include himig.color-apply('footer', (
-      fill: 'surface-alpha-400',
       ink: 'surface-ink',
       border: 'surface-alpha-400'
     ));
     @include himig.struct-apply('footer', (
-      padding: ('xl' 'lg'),
+      padding: ('xl' 'sm'),
+      border-width: 'xs',
+      border-style: 'solid'
     ));
 
     .ms-footer__title {

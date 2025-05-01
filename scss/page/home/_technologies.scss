@@ -6,15 +6,32 @@
     height: 100%;
     max-width: himig.token-get('viewport-layout-limit');
     border-radius: himig.primitive-token-get('radius.xl');
+    overflow: hidden;
+    background: radial-gradient(circle at -10% 50%, var(--ms-theme-accent-alpha-400) 0%, transparent 100%);
+    border: 1px solid var(--ms-theme-accent-alpha-400);
   }
 
   .technologies {
-    $children: 12;
+    width: max-content;
     display: flex;
     flex-flow: row nowrap;
     gap: 1rem;
-    justify-content: center;
-    animation: load-in 0.5s ease;
+    justify-content: var(--justify, center);
+    animation: loop var(--loop-time, 50s) linear infinite;
+    margin-block-end: 1.5rem; // margin.lg
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes loop {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
     .technology {
       width: 100%;
@@ -26,11 +43,10 @@
       justify-content: center;
       padding: 1rem 1.2rem;
       border-radius: 0.5rem;
-      background: himig.token-get('surface-600');
+      // background: himig.token-get('surface-600');
       border: 1px solid var(--ink, #{himig.token-get('surface-400')});
       color: var(--ink, #{himig.token-get('surface-300')});
       transition: all var(--ms-transition-time) ease;
-      animation: load-in 0.2s ease;
       user-select: none;
 
       @include himig.breakpoint-create('large') {
@@ -42,20 +58,13 @@
       &:not(.is-inactive):not(.is-active):hover,
       &:not(.is-inactive):not(.is-active):focus,
       &:not(.is-inactive):not(.is-active) {
-        background-color: var(--tech-color, #fff);
-        color: #fff;
+        color: var(--tech-color, #fff);
         border-color: var(--tech-color, #fff);
 
-        &#react,
-        &#php,
-        &#vue\.js,
-        &#nuxt {
-          color: #211f1f !important;
-        }
-
-        &#github {
-          background-color: #fff;
-          color: #211f1f !important;
+        &#github,
+        &#next\.js,
+        &#three\.js {
+          color: #fff;
           border-color: #fff;
 
           .technology__label {
@@ -63,12 +72,8 @@
           }
         }
 
-        &#javascript {
-          color: #211f1f !important;
-
-          .technology__label {
-            color: inherit;
-          }
+        &#sqlite {
+          color: #fff;
         }
       }
 

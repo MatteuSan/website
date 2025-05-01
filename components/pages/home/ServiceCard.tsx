@@ -26,9 +26,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
 
   useGSAP(() => {
     gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-
-    const titleSplit = SplitText.create(serviceCardTitleRef.current, { type: 'chars', mask: 'chars' });
-
     const enter = gsap.timeline({
       scrollTrigger: {
         trigger: serviceCardRef.current,
@@ -41,14 +38,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       scrollTrigger: {
         trigger: serviceCardRef.current,
         start: 'top 5%',
-        scrub: true,
+        scrub: true
       }
     });
 
     const initialState = () => {}
 
     const enterAnimation = () => {
-      animateInView(serviceCardRef.current).fromTo(serviceCardRef.current, {
+      enter.fromTo(serviceCardRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         stagger: 0.05
@@ -63,7 +60,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
         delay: 0.5
-      });
+      }, '<10%');
 
       enter.from('.content-2', {
         opacity: 0,
@@ -91,10 +88,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
     }
 
     const exitAnimation = () => {
-      exit.to(serviceCardRef.current, {
-        opacity: 0,
-        y: !isMotionReduced ? -30 : 0,
-      });
+      //
     }
 
     initialState();
