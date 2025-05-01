@@ -19,7 +19,7 @@ class MyDocument extends Document {
             rel="stylesheet"/>
         </Head>
         <body>
-        <div className="grain">
+        <div className="grain" aria-hidden="true">
           <div className="grain-image"></div>
         </div>
         <Main/>
