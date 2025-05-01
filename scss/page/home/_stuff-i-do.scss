@@ -45,9 +45,6 @@
         height: 100%;
         border-radius: himig.primitive-token-get('radius.md');
         overflow: hidden;
-        transition: z-index 0.5s ease,
-                    transform 0.5s var(--easing),
-                    box-shadow 0.5s var(--easing);
         // transform-origin: bottom right;
         aspect-ratio: himig.key-create('service-card-aspect-ratio', string.unquote('16 / 10'));
 
