@@ -2111,9 +2111,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"matteu-san@workspace:.":
+"matteusan-website@workspace:.":
   version: 0.0.0-use.local
-  resolution: "matteu-san@workspace:."
+  resolution: "matteusan-website@workspace:."
   dependencies:
     "@calcom/embed-react": ^1.5.3
     "@gsap/react": ^2.1.2
