@@ -34,14 +34,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       }
     });
 
-    const exit = gsap.timeline({
-      scrollTrigger: {
-        trigger: serviceCardRef.current,
-        start: 'top 5%',
-        scrub: true
-      }
-    });
-
     const initialState = () => {}
 
     const enterAnimation = () => {
@@ -54,6 +46,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
         duration: 1,
         y: 0,
       });
+
+      enter.fromTo('.content-3', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+        duration: 0.5,
+      }, {
+        opacity: 1,
+        y: 0,
+      }, '<');
 
       enter.from('.content-1', {
         opacity: 0,
@@ -76,15 +77,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
         opacity: 1,
         y: 0,
       }, '<20%');
-
-      enter.fromTo('.content-3', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 0.5,
-      }, {
-        opacity: 1,
-        y: 0,
-      }, '<');
     }
 
     const exitAnimation = () => {
