@@ -6,7 +6,8 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, splitText, useMediaQuery } from '@/lib/gsap';
+import { SplitText } from 'gsap/dist/SplitText';
+import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, useMediaQuery } from '@/lib/gsap';
 
 interface WorksSectionProps {
   works: Work[];
@@ -20,22 +21,30 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-    const leadTextSplit = splitText(leadTextRef.current);
+    const subtitleSplit = SplitText.create('.content', {
+      type: 'words',
+      mask: 'words',
+    });
+
+    const exitPage = gsap.timeline({
+      scrollTrigger: {
+        trigger: workSectionRef.current,
+        start: 'bottom 25%',
+        scrub: true,
+      }
+    });
 
     const enterAnimation = () => {
-      animateInView(leadTextRef.current).from(leadTextSplit.identifier, {
-        y: !isMotionReduced ? '100%' : 0,
-        rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 10 : 0,
-        stagger: 0.05
-      });
-
-      animateInView('.content').from('.content', {
+      animateInView(workSectionRef.current).from(workSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
-        duration: 1,
+      });
+
+      animateInView(workSectionRef.current).from(subtitleSplit.words, {
+        y: !isMotionReduced ? '100%' : 0,
+        stagger: 0.05
       });
 
       if (isSizeLarge) {
@@ -51,7 +60,15 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
       }
     }
 
+    const exitAnimation = () => {
+      exitPage.to(workSectionRef.current, {
+        opacity: 0,
+        y: !isMotionReduced ? -30 : 0,
+      });
+    }
+
     enterAnimation();
+    exitAnimation();
   }, { scope: workSectionRef });
 
   return (
