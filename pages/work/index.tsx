@@ -27,7 +27,7 @@ const WorkPage: NextPage = () => {
   }
 
   return (
-    <DefaultLayout title="WORK" description="Projects made for clients, and for myself :)" hasHero>
+    <DefaultLayout title="WORK" description="Projects that ushered companies to their success." hasHero>
       <MSHero customLayout>
         <div className="constrained w-full flex flow-column gap-lg @large:gap-xl jc-center ai-center">
           <div>
