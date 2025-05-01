@@ -65,13 +65,13 @@ const TechnologySection: React.FC = () => {
       contentTl.from('.content-2', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
-      }, '<10%');
+      }, '<50%');
 
       contentTl.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05
-      }, '<10%');
+      }, '<50%');
     }
 
     const exitAnimation = () => {
