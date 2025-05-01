@@ -38,7 +38,7 @@ const TechnologySection: React.FC = () => {
 
     const exitPage = gsap.timeline({
       scrollTrigger: {
-        trigger: technologySectionRef.current,
+        trigger: '#skills-and-technologies__wrapper',
         start: 'bottom 25%',
         scrub: true,
       }
@@ -75,7 +75,7 @@ const TechnologySection: React.FC = () => {
     }
 
     const exitAnimation = () => {
-      exitPage.to('#skills-and-technologies__wrapper', {
+      exitPage.to(technologySectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? -50 : 0,
       });
