@@ -21,13 +21,11 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
       opacity: 0,
       x: index % 2 === 0 ? -30 : 30,
       y: 50,
-      // rotateZ: index % 2 === 0 ? 5 : -5,
     },
     whileInView: (index: number) => ({
       opacity: 1,
       x: 0,
       y: 0,
-      rotateZ: !isSizeLarge ? (index % 2 === 0 ? -1 : 1) : (index % 2 === 0 ? 0 : 0),
       transition: {
         delay: 0.1 * index,
         duration: 0.4,
