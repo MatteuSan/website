@@ -1,13 +1,13 @@
 import React from 'react';
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from 'next/image';
-import { m } from 'framer-motion';
 import { MSButton } from '@/components';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
+import { SplitText } from 'gsap/dist/SplitText';
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
   title: string;
@@ -24,36 +24,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  const variants = {
-    initial: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        delay: 0.1 * index,
-        easings: [0.83, 0, 0.17, 1]
-      }
-    }),
-    exit: {
-      opacity: 0,
-      y: -50,
-    }
-  }
-
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-    const titleSplit = splitText(serviceCardTitleRef.current);
+    const titleSplit = SplitText.create(serviceCardTitleRef.current, { type: 'chars', mask: 'chars' });
 
     const enter = gsap.timeline({
       scrollTrigger: {
         trigger: serviceCardRef.current,
-        start: 'top 90%',
-        toggleActions: 'play complete resume complete',
+        start: 'top 85%',
+        toggleActions: 'play complete resume reverse',
       }
     });
 
@@ -68,16 +48,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
     const initialState = () => {}
 
     const enterAnimation = () => {
-      animateInView(serviceCardRef.current).from(titleSplit.identifier, {
+      animateInView(serviceCardRef.current).fromTo(serviceCardRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         stagger: 0.05
+      }, {
+        opacity: 1,
+        duration: 1,
+        y: 0,
       });
 
       enter.from('.content-1', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
-        duration: 0.5,
+        duration: 1,
+        delay: 0.5
       });
 
       enter.from('.content-2', {
@@ -93,12 +78,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       }, {
         opacity: 1,
         y: 0,
-      }, '<10%');
+      }, '<20%');
 
       enter.fromTo('.content-3', {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
-        duration: 1,
+        duration: 0.5,
       }, {
         opacity: 1,
         y: 0,
@@ -118,9 +103,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
   }, { scope: serviceCardRef });
 
   return (
-    <m.li ref={serviceCardRef} className="service-card" variants={variants} initial="initial" whileInView="visible" viewport={{ once: true, margin: '-20%' }}>
+    <li ref={serviceCardRef} className="service-card" id={title.toLowerCase().replace(/\s/g, '-')}>
       <div className="service-card__content">
-        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
+        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
           { title }
         </h3>
         <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
@@ -145,7 +130,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
           />
         </div>
       </div>
-    </m.li>
+    </li>
   );
 };
 

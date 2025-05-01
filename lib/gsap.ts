@@ -78,8 +78,8 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
     scrollTrigger: {
       trigger,
       start: 'top 95%',
-      toggleActions: options?.once ? 'play complete resume complete' : 'play complete resume complete',
-      once: options?.once ?? false
+      toggleActions: options?.once ? 'play complete resume complete' : 'play complete resume reverse',
+      once: options?.once
     }
   });
 }

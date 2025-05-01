@@ -19,9 +19,9 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
     margin-block-end: himig.primitive-token-get('margin.5xl');
     border-radius: himig.primitive-token-get('radius.xl');
     padding-block: himig.primitive-token-get('padding.4xl');
-    --ms-theme-accent-alpha-200: rgba(218, 146, 97, 0.05);
-    background: radial-gradient(circle at 50% 50%, var(--ms-theme-accent-alpha-300) 0%, var(--ms-theme-accent-alpha-200) 100%);
-    border: 1px solid var(--ms-theme-accent-alpha-300);
+    --ms-theme-accent-alpha-200: rgba(218, 146, 97, 0);
+    background: radial-gradient(circle at 50% 30%, var(--ms-theme-accent-alpha-400) 0%, var(--ms-theme-accent-alpha-200) 100%);
+    border: 1px solid var(--ms-theme-accent-alpha-400);
 
     @include himig.breakpoint-create('large') {
       padding-block: himig.primitive-token-get('padding.5xl');

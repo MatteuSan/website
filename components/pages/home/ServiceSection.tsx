@@ -8,47 +8,35 @@ import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, MOTION_PREFERENCES, splitText, useMediaQuery } from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
-  const leadTextRef = useRef<HTMLHeadingElement>(null);
-
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-    const leadTextSplit = splitText(leadTextRef.current);
+    gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,
-        start: 'top 80%',
-        end: 'top 66%',
-        toggleActions: 'play resume resume complete',
-        once: true,
+        start: 'top bottom',
+        toggleActions: 'play complete resume reset',
       }
     });
 
     const enterAnimation = () => {
-      animateInView('.lead-text').from(servicesSectionRef.current, {
+      animateInView(servicesSectionRef.current).from(servicesSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       });
 
-      animateInView('.lead-text').from(leadTextSplit.identifier, {
+      contentTl.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
+        opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
-        rotateX: !isMotionReduced ? -90 : 0,
-        rotateZ: !isMotionReduced ? 10 : 0,
         stagger: 0.05
-      });
-
-      contentTl.from('.content', {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 1,
       });
     };
 
@@ -59,14 +47,14 @@ const ServiceSection: React.FC = ( ) => {
     <section id="stuff-i-do" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
       <section className="constrained mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
         <div>
-          <h2 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h2>
+          <h2 className="family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h2>
           <p className="content de-emphasize size-md weight-light">Here's how I can help you.</p>
         </div>
       </section>
       <ul className="service-container constrained">
         <ServiceCard
-          title="Design"
-          description="I design interfaces that feel as good as they look—clean, accessible, and always user-centered. Every screen is crafted with care and intention, delivering the kind of experience your users expect and love."
+          title="Web Design"
+          description="I design interfaces that feel as good as they look—clean, accessible, and always user-centered. Every screen is crafted with care and intention, delivering the kind of experience your users will remember and love."
           media={DesignHero}
           alt="Design services image."
           link="/work?filter=Design"
@@ -78,8 +66,8 @@ const ServiceSection: React.FC = ( ) => {
           </ol>
         </ServiceCard>
         <ServiceCard
-          title="Development"
-          description="I develop websites and web applications that are pleasing to look at, delightful to use, and accessible to all using the most up-to-date and reliable technologies to meet your business' demanding needs."
+          title="Web Development"
+          description="I develop websites and web apps that are beautiful, fast, and accessible—crafted with modern, reliable technologies that scale according to your needs and exceed your users’ expectations."
           media={DevelopmentHero}
           alt="Development services image."
           link="/work?filter=Development"
