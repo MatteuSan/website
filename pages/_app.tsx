@@ -10,6 +10,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
@@ -26,6 +27,7 @@ function App({ Component, pageProps, router }: AppProps) {
         </MotionConfig>
       </ReactLenis>
       <Analytics key="analytics" mode="auto" />
+      <SpeedInsights />
     </>
   );
 }
