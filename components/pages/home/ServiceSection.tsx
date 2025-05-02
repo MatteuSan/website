@@ -47,7 +47,7 @@ const ServiceSection: React.FC = ( ) => {
         onComplete: () => {
           contentSplit.revert();
         }
-      });
+      }, '-=0.5');
     };
 
     const exitAnimation = () => {
