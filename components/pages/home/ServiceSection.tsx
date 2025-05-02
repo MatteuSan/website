@@ -1,15 +1,21 @@
 import React, { useRef } from 'react';
-import ServiceCard from "@/components/pages/home/ServiceCard";
+import ServiceCard from '@/components/pages/home/ServiceCard';
 
-import DesignHero from "@/assets/static/design--hero.png";
-import DevelopmentHero from "@/assets/static/development--hero.png";
-import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
+import DesignHero from '@/assets/static/design--hero.png';
+import DevelopmentHero from '@/assets/static/development--hero.png';
+import DesignSystemsHero from '@/assets/static/design-systems--hero.png';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
+import {
+  animateInView,
+  BY_WORD,
+  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
+  TEXT_MASK_ANIMATION,
+  useMediaQuery
+} from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
@@ -35,16 +41,12 @@ const ServiceSection: React.FC = ( ) => {
         duration: 1,
       });
 
-      usePreparedFonts(() => {
-        const contentSplit = SplitText.create('.content', BY_WORD);
-        services.from(contentSplit.words, {
-          opacity: 0,
-          y: !isMotionReduced ? '100%' : 0,
-          stagger: 0.05,
-          onComplete: () => {
-            contentSplit.revert();
-          }
-        });
+      const contentSplit = SplitText.create('.content', BY_WORD);
+      services.from(contentSplit.words, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        onComplete: () => {
+          contentSplit.revert();
+        }
       });
     };
 

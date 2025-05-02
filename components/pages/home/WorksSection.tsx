@@ -10,10 +10,9 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES,
-  SCREEN_SIZES,
-  useMediaQuery,
-  usePreparedFonts
+  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
+  SCREEN_SIZES, TEXT_MASK_ANIMATION,
+  useMediaQuery
 } from '@/lib/gsap';
 
 interface WorksSectionProps {
@@ -46,15 +45,12 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
         y: !isMotionReduced ? 30 : 0,
       });
 
-      usePreparedFonts(() => {
-        const subtitleSplit = SplitText.create('.content', BY_WORD);
-        work.from(subtitleSplit.words, {
-          y: !isMotionReduced ? '100%' : 0,
-          stagger: 0.05,
-          onComplete: () => {
-            subtitleSplit.revert();
-          }
-        });
+      const subtitleSplit = SplitText.create('.content', BY_WORD);
+      work.from(subtitleSplit.words, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        onComplete: () => {
+          subtitleSplit.revert();
+        }
       });
 
       if (isSizeLarge) {

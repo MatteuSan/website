@@ -8,7 +8,6 @@ import {
   BY_CHAR,
   BY_LINE,
   MOTION_PREFERENCES,
-  usePreparedFonts,
   useMediaQuery,
   TEXT_MASK_ANIMATION, REDUCED_TEXT_MASK_ANIMATION
 } from '@/lib/gsap';

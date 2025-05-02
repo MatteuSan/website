@@ -8,7 +8,14 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
+import {
+  animateInView,
+  BY_LINE,
+  BY_WORD,
+  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
+  TEXT_MASK_ANIMATION,
+  useMediaQuery
+} from '@/lib/gsap';
 
 interface CTASectionProps {}
 
@@ -30,31 +37,22 @@ const CTASection: React.FC<CTASectionProps> = () => {
         duration: 0.5,
       });
 
-      usePreparedFonts(() => {
-        const leadTextSplit = SplitText.create('.lead-text', BY_WORD);
-        cta.from(leadTextSplit.words, {
-          opacity: 0,
-          y: !isMotionReduced ? 30 : 0,
-          duration: 0.5,
-          stagger: 0.1,
-          onComplete: () => {
-            leadTextSplit.revert();
-          }
-        });
+      const leadTextSplit = SplitText.create('.lead-text', BY_WORD);
+      cta.from(leadTextSplit.words, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        stagger: 0.1,
+        onComplete: () => {
+          leadTextSplit.revert();
+        }
       });
 
-      usePreparedFonts(() => {
-        const contentSplit = SplitText.create('.content', BY_LINE);
-        cta.from(contentSplit.lines, {
-          opacity: 0,
-          y: !isMotionReduced ? 30 : 0,
-          duration: 0.5,
-          stagger: 0.05,
-          // onComplete: () => {
-          //   contentSplit.revert();
-          // }
-        }, '-=0.5');
-      });
+      const contentSplit = SplitText.create('.content', BY_LINE);
+      cta.from(contentSplit.lines, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION)
+        // onComplete: () => {
+        //   contentSplit.revert();
+        // }
+      }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.actions .ms-button');
       CTA_ACTIONS.forEach((button: any) => {
