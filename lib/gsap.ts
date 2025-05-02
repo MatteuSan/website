@@ -47,10 +47,8 @@ export const BY_LINE: SplitText.Vars = {
   autoSplit: true,
 };
 
-export const usePreparedAnimation = (callback: () => void, dependencies?: useGSAPConfig) => {
-  useGSAP(() => {
-    document.fonts.ready.then(() => callback());
-  }, dependencies);
+export const usePreparedFonts = (callback: () => void) => {
+  document.fonts.ready.then(() => callback());
 }
 
 /**

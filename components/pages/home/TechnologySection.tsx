@@ -16,7 +16,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
-import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from '@/lib/gsap';
+import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ const TechnologySection: React.FC = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  usePreparedAnimation(() => {
+  useGSAP(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: '#skills-and-technologies__wrapper',
@@ -42,9 +42,6 @@ const TechnologySection: React.FC = () => {
         once: true,
       });
 
-      const content1Split = SplitText.create('.content-1', BY_WORD);
-      const content3Split = SplitText.create('.content-3', BY_LINE);
-
       tech.from(technologySectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 50 : 0,
@@ -52,13 +49,16 @@ const TechnologySection: React.FC = () => {
         duration: 1,
       });
 
-      tech.from(content1Split.words, {
-        opacity: 0,
-        y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05,
-        onComplete: () => {
-          content1Split.revert();
-        }
+      usePreparedFonts(() => {
+        const content1Split = SplitText.create('.content-1', BY_WORD);
+        tech.from(content1Split.words, {
+          opacity: 0,
+          y: !isMotionReduced ? '100%' : 0,
+          stagger: 0.05,
+          onComplete: () => {
+            content1Split.revert();
+          }
+        });
       });
 
       tech.from('.content-2', {
@@ -66,14 +66,17 @@ const TechnologySection: React.FC = () => {
         y: !isMotionReduced ? 30 : 0,
       }, '<50%');
 
-      tech.from(content3Split.lines, {
-        opacity: 0,
-        y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05,
-        onComplete: () => {
-          content3Split.revert();
-        }
-      }, '<50%');
+      usePreparedFonts(() => {
+        const content3Split = SplitText.create('.content-3', BY_LINE);
+        tech.from(content3Split.lines, {
+          opacity: 0,
+          y: !isMotionReduced ? '100%' : 0,
+          stagger: 0.05,
+          onComplete: () => {
+            content3Split.revert();
+          }
+        }, '<50%');
+      });
     }
 
     const exitAnimation = () => {

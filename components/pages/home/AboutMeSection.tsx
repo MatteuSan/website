@@ -3,9 +3,10 @@ import Image from "next/image";
 
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, BY_CHAR, BY_LINE, MOTION_PREFERENCES, usePreparedAnimation, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_CHAR, BY_LINE, MOTION_PREFERENCES, usePreparedFonts, useMediaQuery } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import { useGSAP } from '@gsap/react';
 
 interface AboutMeSectionProps {}
 
@@ -16,12 +17,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  usePreparedAnimation(() => {
-    const titleSplit = SplitText.create(titleRef.current, BY_CHAR);
-    const subtitleSplit = SplitText.create(subtitleRef.current, {
-      ...BY_LINE
-    });
-
+  useGSAP(() => {
     const enterAnimation = () => {
       const aboutMe = animateInView(aboutMeSectionRef.current, {
         once: true,
@@ -33,15 +29,18 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         duration: 1
       });
 
-      aboutMe.from(titleSplit.chars, {
-        y: !isMotionReduced ? '100%' : 0,
-        duration: 0.6,
-        stagger: 0.05,
-        ease: 'expo.out',
-        onComplete: () => {
-          titleSplit.revert();
-        }
-      }, '-=0.5');
+      usePreparedFonts(() => {
+        const titleSplit = SplitText.create(titleRef.current, BY_CHAR);
+        aboutMe.from(titleSplit.chars, {
+          y: !isMotionReduced ? '100%' : 0,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: 'expo.out',
+          onComplete: () => {
+            titleSplit.revert();
+          }
+        }, '-=0.5');
+      });
 
       aboutMe.fromTo('.picture-frame', {
         opacity: 0,
@@ -51,16 +50,19 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         y: 0,
       }, '<');
 
-      aboutMe.from(subtitleSplit.lines, {
-        opacity: 0,
-        y: !isMotionReduced ? 30 : 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'expo.out',
-        onComplete: () => {
-          subtitleSplit.revert();
-        }
-      }, '-=0.5');
+      usePreparedFonts(() => {
+        const subtitleSplit = SplitText.create(subtitleRef.current, { ...BY_LINE });
+        aboutMe.from(subtitleSplit.lines, {
+          opacity: 0,
+          y: !isMotionReduced ? 30 : 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'expo.out',
+          onComplete: () => {
+            subtitleSplit.revert();
+          }
+        }, '-=0.5');
+      });
 
       aboutMe.from('.content-2', {
         opacity: 0,

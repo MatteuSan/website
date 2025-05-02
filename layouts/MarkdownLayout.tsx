@@ -7,7 +7,7 @@ import { works } from "@/constants/works";
 import { tools } from "@/constants/tools";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
@@ -31,7 +31,7 @@ export const MarkdownHeader: React.FC<{ title: string, description: string, smal
 const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, previewImage, previewImageAlt, children }) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  usePreparedAnimation(() => {
+  useGSAP(() => {
     const contentTl = gsap.timeline();
 
     contentTl.from('.supertitle', {

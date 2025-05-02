@@ -13,7 +13,7 @@ import {
   MOTION_PREFERENCES,
   SCREEN_SIZES,
   useMediaQuery,
-  usePreparedAnimation
+  usePreparedFonts
 } from '@/lib/gsap';
 
 interface WorksSectionProps {
@@ -27,9 +27,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
   const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
-  usePreparedAnimation(() => {
-    const subtitleSplit = SplitText.create('.content', BY_WORD);
-
+  useGSAP(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: workSectionRef.current,
@@ -48,12 +46,15 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
         y: !isMotionReduced ? 30 : 0,
       });
 
-      work.from(subtitleSplit.words, {
-        y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05,
-        onComplete: () => {
-          subtitleSplit.revert();
-        }
+      usePreparedFonts(() => {
+        const subtitleSplit = SplitText.create('.content', BY_WORD);
+        work.from(subtitleSplit.words, {
+          y: !isMotionReduced ? '100%' : 0,
+          stagger: 0.05,
+          onComplete: () => {
+            subtitleSplit.revert();
+          }
+        });
       });
 
       if (isSizeLarge) {

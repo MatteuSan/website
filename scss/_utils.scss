@@ -123,9 +123,7 @@
     aspect-ratio: 16 / 9;
   }
 
-  .split-mask-char-mask,
-  .split-mask-word-mask,
-  .split-mask-line-mask {
+  %split-text-base {
     font-kerning: none;
     text-rendering: optimizeSpeed;
 
@@ -133,5 +131,16 @@
       font-kerning: inherit;
       text-rendering: inherit;
     }
+  }
+
+  .split-mask-char-mask,
+  .split-mask-word-mask {
+    display: inline;
+    @extend %split-text-base;
+  }
+
+  .split-mask-line-mask {
+    display: block;
+    @extend %split-text-base;
   }
 }
