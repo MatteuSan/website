@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_CHAR, BY_LINE, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 
@@ -18,16 +18,10 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const titleSplit = SplitText.create(titleRef.current, {
-      type: 'chars',
-      mask: 'chars',
-    });
+    const titleSplit = SplitText.create(titleRef.current, BY_CHAR);
     const subtitleSplit = SplitText.create(subtitleRef.current, {
-      type: 'lines',
-      mask: 'lines',
-      onComplete: () => {
-        subtitleSplit.revert();
-      }
+      ...BY_LINE,
+      onComplete: () => subtitleSplit.revert()
     });
 
     const enterAnimation = () => {
@@ -46,9 +40,9 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         duration: 0.6,
         stagger: 0.05,
         ease: 'expo.out',
-        onComplete: () => {
-          titleSplit.revert();
-        }
+        // onComplete: () => {
+        //   titleSplit.revert();
+        // }
       }, '-=0.5');
 
       aboutMe.fromTo('.picture-frame', {
@@ -65,9 +59,9 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         duration: 0.6,
         stagger: 0.1,
         ease: 'expo.out',
-        onComplete: () => {
-          subtitleSplit.revert();
-        }
+        // onComplete: () => {
+        //   subtitleSplit.revert();
+        // }
       }, '-=0.5');
 
       aboutMe.from('.content-2', {
@@ -80,7 +74,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-      }, '-=0.5');
+      }, '<50%');
     }
 
     const exitAnimation = () => {

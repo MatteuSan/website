@@ -2,13 +2,13 @@ import React from 'react';
 import { MSButton } from "@/components";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface CTASectionProps {}
 
@@ -25,24 +25,33 @@ const CTASection: React.FC<CTASectionProps> = () => {
         timing: { start: 'top 80%' }
       });
 
+      const leadTextSplit = SplitText.create('.lead-text', BY_WORD);
+      const contentSplit = SplitText.create('.content', BY_LINE);
+
       cta.from(ctaSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
       });
 
-      cta.from(SplitText.create('.lead-text', { type: 'words', mask: 'words' }).words, {
+      cta.from(leadTextSplit.words, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
         stagger: 0.1,
+        onComplete: () => {
+          leadTextSplit.revert();
+        }
       });
 
-      cta.from(SplitText.create('.content', { type: 'lines', mask: 'lines' }).lines, {
+      cta.from(contentSplit.lines, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
         stagger: 0.05,
+        // onComplete: () => {
+        //   contentSplit.revert();
+        // }
       }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');

@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { SplitText } from 'gsap/dist/SplitText';
 import { useEffect, useState } from 'react';
 
 /**
@@ -18,6 +19,31 @@ export const SCREEN_SIZES = {
   isMedium: 'screen and (min-width: 640px)',
   isLarge: 'screen and (min-width: 890px)',
   isXLarge: 'screen and (min-width: 1077px)',
+};
+
+/**
+ * SplitText configurations
+ */
+export const BY_CHAR: SplitText.Vars = {
+  type: 'chars',
+  mask: 'chars',
+  charsClass: 'split-char inline-block',
+  tag: 'span'
+};
+
+export const BY_WORD: SplitText.Vars = {
+  type: 'words',
+  mask: 'words',
+  wordsClass: 'split-word inline-block',
+  tag: 'span'
+};
+
+export const BY_LINE: SplitText.Vars = {
+  type: 'lines',
+  mask: 'lines',
+  linesClass: 'split-line block',
+  tag: 'span',
+  autoSplit: true,
 };
 
 /**

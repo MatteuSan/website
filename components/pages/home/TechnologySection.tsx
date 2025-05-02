@@ -16,7 +16,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -42,6 +42,9 @@ const TechnologySection: React.FC = () => {
         once: true,
       });
 
+      const content1Split = SplitText.create('.content-1', BY_WORD);
+      const content3Split = SplitText.create('.content-3', BY_LINE);
+
       tech.from(technologySectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 50 : 0,
@@ -49,10 +52,13 @@ const TechnologySection: React.FC = () => {
         duration: 1,
       });
 
-      tech.from(SplitText.create('.content-1', { type: 'words', mask: 'words' }).words, {
+      tech.from(content1Split.words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05,
+        onComplete: () => {
+          content1Split.revert();
+        }
       });
 
       tech.from('.content-2', {
@@ -60,10 +66,13 @@ const TechnologySection: React.FC = () => {
         y: !isMotionReduced ? 30 : 0,
       }, '<50%');
 
-      tech.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
+      tech.from(content3Split.lines, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05,
+        onComplete: () => {
+          content3Split.revert();
+        }
       }, '<50%');
     }
 
@@ -133,8 +142,7 @@ const TechnologySection: React.FC = () => {
         </div>
         <div className="constrained flex flow-column jc-center mt-2xl">
           <p className="content-3 family-subtitle size-md weight-light">
-            All in the name of delivering you the best results. <br/>
-            And giving your users the experience they deserve.
+            All in the name of delivering you the best results, and giving your users the experience they deserve.
           </p>
         </div>
       </div>

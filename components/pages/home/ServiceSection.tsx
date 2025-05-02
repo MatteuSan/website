@@ -9,7 +9,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
@@ -29,16 +29,21 @@ const ServiceSection: React.FC = ( ) => {
         once: true,
       });
 
+      const contentSplit = SplitText.create('.content', BY_WORD);
+
       services.from(servicesSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       });
 
-      services.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
+      services.from(contentSplit.words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
         stagger: 0.05,
+        onComplete: () => {
+          contentSplit.revert();
+        }
       });
     };
 
