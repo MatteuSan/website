@@ -34,7 +34,13 @@ const TechnologySection: React.FC = () => {
     });
 
     const initialState = () => {
-      //
+      // to conserve resources
+      ScrollTrigger.create({
+        trigger: '.technologies',
+        start: 'top bottom',
+        end: 'bottom top',
+        toggleClass: 'is-playing',
+      });
     }
 
     const enterAnimation = () => {
