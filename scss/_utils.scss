@@ -130,10 +130,14 @@
   }
 
   .char-mask,
-  .word-mask,
+  .word-mask {
+    vertical-align: top;
+  }
+
   .line-mask {
     vertical-align: top;
-    text-align: match-parent !important;
+    text-align: inherit !important;
+    transform-origin: top center;
   }
 
   .will-split {
