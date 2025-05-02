@@ -18,7 +18,12 @@
     gap: 1rem;
     justify-content: var(--justify, center);
     animation: loop var(--loop-time, 50s) linear infinite;
+    animation-play-state: paused;
     margin-block-end: 1.5rem; // margin.lg
+
+    &.is-playing {
+      animation-play-state: running;
+    }
 
     &:hover {
       animation-play-state: paused;
