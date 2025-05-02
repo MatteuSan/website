@@ -1,8 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { SplitText } from 'gsap/dist/SplitText';
+// import { SplitText } from 'gsap/dist/SplitText';
 import { useEffect, useState } from 'react';
-import { useGSAP, useGSAPConfig } from '@gsap/react';
 
 /**
  * Motion preferences
@@ -29,21 +28,18 @@ export const BY_CHAR: SplitText.Vars = {
   type: 'chars',
   mask: 'chars',
   charsClass: 'split-char',
-  tag: 'div'
 };
 
 export const BY_WORD: SplitText.Vars = {
   type: 'words',
   mask: 'words',
   wordsClass: 'split-word',
-  tag: 'div'
 };
 
 export const BY_LINE: SplitText.Vars = {
   type: 'lines',
   mask: 'lines',
   linesClass: 'split-line',
-  tag: 'div',
   autoSplit: true,
 };
 
