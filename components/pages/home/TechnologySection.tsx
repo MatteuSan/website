@@ -52,7 +52,7 @@ const TechnologySection: React.FC = () => {
       tech.from(SplitText.create('.content-1', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05
+        stagger: 0.05,
       });
 
       tech.from('.content-2', {
@@ -63,7 +63,7 @@ const TechnologySection: React.FC = () => {
       tech.from(SplitText.create('.content-3', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05
+        stagger: 0.05,
       }, '<50%');
     }
 
@@ -77,6 +77,7 @@ const TechnologySection: React.FC = () => {
     initialState();
     enterAnimation();
     exitAnimation();
+    setTimeout(() => ScrollTrigger.refresh(), 100);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());

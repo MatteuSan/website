@@ -89,6 +89,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
     enterAnimation();
     exitAnimation();
+    setTimeout(() => ScrollTrigger.refresh(), 100);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());

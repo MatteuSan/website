@@ -35,14 +35,14 @@ const CTASection: React.FC<CTASectionProps> = () => {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-        stagger: 0.1
+        stagger: 0.1,
       });
 
       cta.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-        stagger: 0.05
+        stagger: 0.05,
       }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');
@@ -62,6 +62,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
     }
 
     enterAnimation();
+    setTimeout(() => ScrollTrigger.refresh(), 100);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());

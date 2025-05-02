@@ -55,7 +55,8 @@ interface AnimateInViewOptions {
   timing?: {
     start?: string,
     end?: string
-  }
+  },
+  invalidateOnRefresh?: boolean
 }
 
 export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOptions) => {
@@ -69,8 +70,9 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
       trigger,
       start: options?.timing?.start || 'top 95%',
       end: options?.timing?.end || undefined,
-      toggleActions: options?.once ? 'play complete resume complete' : 'play complete resume reverse',
-      once: options?.once
+      toggleActions: 'play complete reset reverse',
+      once: options?.once ?? false,
+      invalidateOnRefresh: options?.invalidateOnRefresh || undefined,
     }
   });
 }

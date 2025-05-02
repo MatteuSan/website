@@ -38,7 +38,7 @@ const ServiceSection: React.FC = ( ) => {
       services.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? '100%' : 0,
-        stagger: 0.05
+        stagger: 0.05,
       });
     };
 
@@ -51,6 +51,7 @@ const ServiceSection: React.FC = ( ) => {
 
     enterAnimation();
     exitAnimation();
+    setTimeout(() => ScrollTrigger.refresh(), 100);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());

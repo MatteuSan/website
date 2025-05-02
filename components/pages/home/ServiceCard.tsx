@@ -5,6 +5,7 @@ import { MSButton } from '@/components';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
@@ -27,7 +28,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       scrollTrigger: {
         trigger: serviceCardRef.current,
         start: 'top 85%',
-        toggleActions: 'play complete resume reverse',
+        toggleActions: 'play none none reverse',
+        invalidateOnRefresh: true,
       }
     });
 
@@ -35,7 +37,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 1,
-      stagger: 0.05
+      stagger: 0.05,
     }, {
       opacity: 1,
       y: 0,
@@ -54,7 +56,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 1,
-      delay: 0.5
+      delay: 0.5,
     }, '<10%');
 
     enter.from('.content-2', {
@@ -71,6 +73,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       opacity: 1,
       y: 0,
     }, '<20%');
+
+    setTimeout(() => ScrollTrigger.refresh(), 100);
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
