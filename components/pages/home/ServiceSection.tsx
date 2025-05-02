@@ -43,9 +43,7 @@ const ServiceSection: React.FC = ( ) => {
       const contentSplit = SplitText.create('.content', BY_WORD);
       services.from(contentSplit.words, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => {
-          contentSplit.revert();
-        }
+        onComplete: () => contentSplit.revert()
       }, '-=0.5');
     };
 

@@ -64,9 +64,7 @@ const TechnologySection: React.FC = () => {
       const content1Split = SplitText.create('.content-1', BY_WORD);
       tech.from(content1Split.words, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => {
-          content1Split.revert();
-        }
+        onComplete: () => content1Split.revert()
       });
 
       tech.from('.content-2', {
@@ -77,9 +75,7 @@ const TechnologySection: React.FC = () => {
       const content3Split = SplitText.create('.content-3', BY_WORD);
       tech.from(content3Split.words, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => {
-          content3Split.revert();
-        }
+        onComplete: () => content3Split.revert()
       }, '<50%');
     }
 

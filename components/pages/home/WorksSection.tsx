@@ -47,9 +47,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
       const subtitleSplit = SplitText.create('.content', BY_WORD);
       work.from(subtitleSplit.words, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => {
-          subtitleSplit.revert();
-        }
+        onComplete: () => subtitleSplit.revert()
       });
 
       if (isSizeLarge) {

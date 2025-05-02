@@ -40,17 +40,13 @@ const CTASection: React.FC<CTASectionProps> = () => {
       cta.from(leadTextSplit.words, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
         stagger: 0.1,
-        onComplete: () => {
-          leadTextSplit.revert();
-        }
+        onComplete: () => leadTextSplit.revert()
       });
 
       const contentSplit = SplitText.create('.content', BY_LINE);
       cta.from(contentSplit.lines, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION)
-        // onComplete: () => {
-        //   contentSplit.revert();
-        // }
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        // onComplete: () => contentSplit.revert()
       }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.actions .ms-button');

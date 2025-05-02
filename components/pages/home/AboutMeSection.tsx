@@ -38,9 +38,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
       aboutMe.from(titleSplit.chars, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => {
-          titleSplit.revert();
-        }
+        onComplete: () => titleSplit.revert()
       }, '-=0.5');
 
       aboutMe.fromTo('.picture-frame', {
@@ -54,9 +52,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       aboutMe.from(subtitleSplit.lines, {
         ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
         stagger: 0.1,
-        onComplete: () => {
-          subtitleSplit.revert();
-        }
+        onComplete: () => subtitleSplit.revert()
       }, '-=0.5');
 
       aboutMe.from('.content-2', {
