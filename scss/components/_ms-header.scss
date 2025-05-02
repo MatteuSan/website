@@ -1,6 +1,7 @@
 @use '@matteusan/himig';
 
 $header-fill: radial-gradient(circle at 0% 50%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%) !default;
+// $header-fill: 'surface-alpha-200' !default;
 $header-ink: 'surface-ink' !default;
 $header-border: 'surface-alpha-800' !default;
 
@@ -33,6 +34,7 @@ $header-style: 'default' !default;
     padding: 0.5em 1em;
     border-radius: himig.primitive-token-get('radius.md');
     z-index: 100;
+    backdrop-filter: blur(8px);
     @include himig.prefix(transition, all 0.5s ease);
 
     background: himig.key-create('header-fill', $header-un-scrolled-fill);
@@ -76,7 +78,6 @@ $header-style: 'default' !default;
         ));
         @include himig.key-bind('navbar-inset-right', 0);
         --ms-header-brand-visibility: block;
-        backdrop-filter: blur(8px);
 
         .ms-navbar__wrapper {
           @include himig.struct-bind('navbar-wrapper', (
