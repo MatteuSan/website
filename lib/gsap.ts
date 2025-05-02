@@ -27,24 +27,50 @@ export const SCREEN_SIZES = {
 export const BY_CHAR: SplitText.Vars = {
   type: 'chars',
   mask: 'chars',
-  charsClass: 'split-char',
+  charsClass: 'char'
 };
 
 export const BY_WORD: SplitText.Vars = {
   type: 'words',
   mask: 'words',
-  wordsClass: 'split-word',
+  wordsClass: 'word'
 };
 
 export const BY_LINE: SplitText.Vars = {
   type: 'lines',
   mask: 'lines',
-  linesClass: 'split-line',
-  autoSplit: true,
+  linesClass: 'line',
+  autoSplit: true
+};
+
+/**
+ * Animation constants
+ */
+export const TEXT_MASK_INITIAL = {
+  opacity: 1,
+  yPercent: 0
+};
+export const TEXT_MASK_ANIMATION = {
+  opacity: 0,
+  yPercent: 100,
+  duration: 0.6,
+  stagger: 0.05,
+  ease: 'expo.out',
+};
+
+export const REDUCED_TEXT_MASK_INITIAL = {
+  opacity: 1,
+};
+export const REDUCED_TEXT_MASK_ANIMATION = {
+  opacity: 0,
+  duration: 0.6,
+  stagger: 0.05,
+  ease: 'expo.out',
 };
 
 export const usePreparedFonts = (callback: () => void) => {
-  document.fonts.ready.then(() => callback());
+  // document.fonts.ready.then(() => callback());
+  callback();
 }
 
 /**

@@ -54,7 +54,7 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         style={{ marginBlockEnd: '1rem' }}
       />
       <MSCardContent>
-        <div className="flex flow-row wrap-none gap-sm" style={{ overflow: 'auto hidden' }}>
+        <div className="ms-card__tags flex flow-row wrap-none gap-sm" style={{ overflow: 'auto hidden' }}>
           { item.tags.slice(0, 4).map((tag: string, key: number) => {
             return <MSTag key={key}>{ tag }</MSTag>;
           }) }

@@ -123,24 +123,23 @@
     aspect-ratio: 16 / 9;
   }
 
-  %split-text-base {
+  .char,
+  .word {
     font-kerning: none;
     text-rendering: optimizeSpeed;
+  }
 
-    & > * {
-      font-kerning: inherit;
-      text-rendering: inherit;
+  .char-mask,
+  .word-mask,
+  .line-mask {
+    vertical-align: top;
+  }
+
+  .will-split {
+    will-change: transform;
+
+    * {
+      will-change: transform;
     }
-  }
-
-  .split-mask-char-mask,
-  .split-mask-word-mask {
-    display: inline;
-    @extend %split-text-base;
-  }
-
-  .split-mask-line-mask {
-    display: block;
-    @extend %split-text-base;
   }
 }

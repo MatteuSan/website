@@ -2,22 +2,30 @@ import React, { useRef } from 'react';
 import Image from "next/image";
 
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, BY_CHAR, BY_LINE, MOTION_PREFERENCES, usePreparedFonts, useMediaQuery } from '@/lib/gsap';
+import {
+  animateInView,
+  BY_CHAR,
+  BY_LINE,
+  MOTION_PREFERENCES,
+  usePreparedFonts,
+  useMediaQuery,
+  TEXT_MASK_ANIMATION, REDUCED_TEXT_MASK_ANIMATION
+} from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 
 interface AboutMeSectionProps {}
 
 const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const aboutMeSectionRef = useRef<HTMLDivElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
+    const titleSplit = SplitText.create('.lead-text', BY_CHAR);
+    const subtitleSplit = SplitText.create('.content', { ...BY_LINE });
+
     const enterAnimation = () => {
       const aboutMe = animateInView(aboutMeSectionRef.current, {
         once: true,
@@ -29,19 +37,12 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         duration: 1
       });
 
-      usePreparedFonts(() => {
-        const titleSplit = SplitText.create(titleRef.current, BY_CHAR);
-        aboutMe.from(titleSplit.chars, {
-          opacity: 0,
-          y: !isMotionReduced ? '100%' : 0,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: 'expo.out',
-          onComplete: () => {
-            titleSplit.revert();
-          }
-        }, '-=0.5');
-      });
+      aboutMe.from(titleSplit.chars, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        onComplete: () => {
+          titleSplit.revert();
+        }
+      }, '-=0.5');
 
       aboutMe.fromTo('.picture-frame', {
         opacity: 0,
@@ -51,19 +52,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         y: 0,
       }, '<');
 
-      usePreparedFonts(() => {
-        const subtitleSplit = SplitText.create(subtitleRef.current, { ...BY_LINE });
-        aboutMe.from(subtitleSplit.lines, {
-          opacity: 0,
-          y: !isMotionReduced ? 30 : 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'expo.out',
-          onComplete: () => {
-            subtitleSplit.revert();
-          }
-        }, '-=0.5');
-      });
+      aboutMe.from(subtitleSplit.lines, {
+        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        stagger: 0.1,
+        onComplete: () => {
+          subtitleSplit.revert();
+        }
+      }, '-=0.5');
 
       aboutMe.from('.content-2', {
         opacity: 0,
@@ -84,11 +79,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
 
     enterAnimation();
     exitAnimation();
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    }
   }, { scope: aboutMeSectionRef });
 
   return (
@@ -97,8 +87,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         <Image src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
       </div>
       <div>
-        <h2 ref={titleRef} className="family-supertitle size-4xl letter-spacing-condensed align-center">Hi, I'm Matt.</h2>
-        <p className="content mt-sm size-md @large:size-lg weight-light align-center" ref={subtitleRef}>
+        <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center will-split">Hi, I'm Matt.</h2>
+        <p className="content mt-sm size-md @large:size-lg weight-light align-center will-split">
           <span className="highlight">a UX Engineer</span> based in the Philippines, <br/>
           and I create bridges from software to user.
         </p>

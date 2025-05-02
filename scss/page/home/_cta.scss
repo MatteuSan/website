@@ -1,27 +1,5 @@
 @use 'pkg:@matteusan/himig';
 
 @mixin render() {
-  #ready-to-collaborate,
-  #need-more-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 1rem;
-    background: #3d3838;
-    box-shadow: 0 7px #211f1f;
-    transition: all var(--ms-transition-time) ease;
-
-    @include himig.breakpoint-create('large') {
-      &:hover {
-        transform: translateY(-10px);
-      }
-    }
-
-    .ms-title-bar {
-      margin: 0;
-      padding: 0;
-    }
-  }
+  // CTA
 }

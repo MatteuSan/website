@@ -36,6 +36,15 @@
       }
     }
 
+    .ms-footer__copyright {
+      @include himig.typography-apply('footer-copyright', (
+        family: 'small',
+        size: 'small',
+        weight: 'small',
+        line-height: 'small'
+      ));
+    }
+
     .ms-footer__version {
       margin-left: 0.2rem;
 

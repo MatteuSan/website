@@ -281,11 +281,11 @@
           transform: translateY(100%);
           transition: all 0.3s var(--easing);
           background: linear-gradient(180deg,
-            rgba(#090400, 0%) 0%,
-            rgba(#090400, 50%) 15%,
-            rgba(#090400, 70%) 30%,
-            rgba(#090400, 90%) 70%,
-            rgba(#090400, 100%) 100%
+            rgba(himig.token-get-raw('surface-800'), 0%) 0%,
+            rgba(himig.token-get-raw('surface-800'), 50%) 15%,
+            rgba(himig.token-get-raw('surface-800'), 70%) 30%,
+            rgba(himig.token-get-raw('surface-800'), 90%) 70%,
+            rgba(himig.token-get-raw('surface-800'), 100%) 100%
           );
 
           .ms-card__header {
@@ -302,6 +302,20 @@
       justify-content: space-between;
       transition: all 0.8s var(--easing);
       will-change: transform;
+    }
+
+    .ms-card__tags {
+      scrollbar-width: none;
+
+      /**
+       * fallback for older chrome and safari versions
+       */
+      &::-webkit-scrollbar-thumb,
+      &::-webkit-scrollbar-track {
+        width: 0;
+        height: 0;
+        background: none;
+      }
     }
 
     .ms-card__footer {
