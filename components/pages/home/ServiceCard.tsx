@@ -29,7 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
         trigger: serviceCardRef.current,
         start: 'top 85%',
         toggleActions: 'play none none reverse',
-        invalidateOnRefresh: true,
+        once: true,
       }
     });
 
