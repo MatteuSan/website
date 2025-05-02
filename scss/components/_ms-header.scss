@@ -35,6 +35,7 @@ $header-style: 'default' !default;
     border-radius: himig.primitive-token-get('radius.md');
     z-index: 100;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     @include himig.prefix(transition, all 0.5s ease);
 
     background: himig.key-create('header-fill', $header-un-scrolled-fill);

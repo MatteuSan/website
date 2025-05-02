@@ -56,6 +56,7 @@
       gap: 0.5rem;
       justify-content: flex-end;
       backdrop-filter: var(--backdrop-filter, blur(10px));
+      -webkit-backdrop-filter: var(--backdrop-filter, blur(10px));
       @include himig.color-apply('navbar-wrapper', (
         fill: 'primary-600',
         border: 'primary-alpha-800'
