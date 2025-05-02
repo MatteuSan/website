@@ -9,13 +9,13 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  useGSAP(() => {
+  usePreparedAnimation(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,

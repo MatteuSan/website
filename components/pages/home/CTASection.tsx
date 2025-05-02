@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from '@/lib/gsap';
 
 interface CTASectionProps {}
 
@@ -18,7 +18,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  useGSAP(() => {
+  usePreparedAnimation(() => {
     const enterAnimation = () => {
       const cta = animateInView(leadTextRef.current, {
         once: true,
@@ -49,9 +49,9 @@ const CTASection: React.FC<CTASectionProps> = () => {
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
         stagger: 0.05,
-        // onComplete: () => {
-        //   contentSplit.revert();
-        // }
+        onComplete: () => {
+          contentSplit.revert();
+        }
       }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');

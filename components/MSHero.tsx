@@ -3,7 +3,7 @@ import React, { ComponentPropsWithRef, forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
+import { animateInView, MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from "@/lib/gsap";
 
 interface MSHeroProps extends ComponentPropsWithRef<any> {
   ref?: React.Ref<any> // for animations
@@ -17,7 +17,7 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  useGSAP(() => {
+  usePreparedAnimation(() => {
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,

@@ -122,4 +122,16 @@
   .aspect-ratio-16\/9 {
     aspect-ratio: 16 / 9;
   }
+
+  .split-mask-char-mask,
+  .split-mask-word-mask,
+  .split-mask-line-mask {
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
+
+    & > * {
+      font-kerning: inherit;
+      text-rendering: inherit;
+    }
+  }
 }

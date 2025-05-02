@@ -7,7 +7,14 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import { animateInView, BY_WORD, MOTION_PREFERENCES, SCREEN_SIZES, useMediaQuery } from '@/lib/gsap';
+import {
+  animateInView,
+  BY_WORD,
+  MOTION_PREFERENCES,
+  SCREEN_SIZES,
+  useMediaQuery,
+  usePreparedAnimation
+} from '@/lib/gsap';
 
 interface WorksSectionProps {
   works: Work[];
@@ -20,7 +27,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
   const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
-  useGSAP(() => {
+  usePreparedAnimation(() => {
     const subtitleSplit = SplitText.create('.content', BY_WORD);
 
     const exitPage = gsap.timeline({

@@ -16,7 +16,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
-import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { animateInView, BY_LINE, BY_WORD, MOTION_PREFERENCES, useMediaQuery, usePreparedAnimation } from '@/lib/gsap';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ const TechnologySection: React.FC = () => {
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
-  useGSAP(() => {
+  usePreparedAnimation(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: '#skills-and-technologies__wrapper',
