@@ -6,7 +6,7 @@ import { MSButton } from '@/components';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
   title: string;
