@@ -93,11 +93,6 @@ const TechnologySection: React.FC = () => {
     initialState();
     enterAnimation();
     exitAnimation();
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    }
   }, { scope: technologySectionRef });
 
   const TechnologiesMarkup = (

@@ -3,7 +3,7 @@ import React, { ComponentPropsWithRef, forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { animateInView, MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from "@/lib/gsap";
+import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
 
 interface MSHeroProps extends ComponentPropsWithRef<any> {
   ref?: React.Ref<any> // for animations

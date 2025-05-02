@@ -123,7 +123,7 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
       trigger,
       start: options?.timing?.start || 'top 95%',
       end: options?.timing?.end || undefined,
-      toggleActions: 'play complete reset reverse',
+      toggleActions: 'play complete play reverse',
       once: options?.once ?? false,
       invalidateOnRefresh: options?.invalidateOnRefresh || undefined,
     }

@@ -4,7 +4,6 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
@@ -71,11 +70,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
     }
 
     enterAnimation();
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    }
   }, { scope: ctaSectionRef });
 
   return (

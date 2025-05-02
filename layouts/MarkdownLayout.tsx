@@ -7,7 +7,7 @@ import { works } from "@/constants/works";
 import { tools } from "@/constants/tools";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { MOTION_PREFERENCES, useMediaQuery, usePreparedFonts } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
