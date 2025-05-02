@@ -38,7 +38,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
         stagger: 0.1,
       });
 
-      cta.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
+      cta.from(SplitText.create('.content', { type: 'lines', mask: 'lines' }).lines, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
