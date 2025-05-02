@@ -5,8 +5,9 @@ import DesignHero from "@/assets/static/design--hero.png";
 import DevelopmentHero from "@/assets/static/development--hero.png";
 import DesignSystemsHero from "@/assets/static/design-systems--hero.png";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
@@ -24,7 +25,10 @@ const ServiceSection: React.FC = ( ) => {
     });
 
     const enterAnimation = () => {
-      const services = animateInView(servicesSectionRef.current);
+      const services = animateInView(servicesSectionRef.current, {
+        once: true,
+      });
+
       services.from(servicesSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,

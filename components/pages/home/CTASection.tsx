@@ -4,6 +4,8 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { SplitText } from 'gsap/dist/SplitText';
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
@@ -12,12 +14,16 @@ interface CTASectionProps {}
 
 const CTASection: React.FC<CTASectionProps> = () => {
   const ctaSectionRef = React.useRef<HTMLDivElement>(null);
+  const leadTextRef = React.useRef<HTMLHeadingElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
     const enterAnimation = () => {
-      const cta = animateInView(ctaSectionRef.current);
+      const cta = animateInView(leadTextRef.current, {
+        once: true,
+        timing: { start: 'top 80%' }
+      });
 
       cta.from(ctaSectionRef.current, {
         opacity: 0,
@@ -25,23 +31,23 @@ const CTASection: React.FC<CTASectionProps> = () => {
         duration: 0.5,
       });
 
-      cta.from('.lead-text', {
+      cta.from(SplitText.create('.lead-text', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
+        stagger: 0.1
       });
 
-      cta.from('.content', {
+      cta.from(SplitText.create('.content', { type: 'words', mask: 'words' }).words, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 0.5,
-      });
+        stagger: 0.05
+      }, '-=0.5');
 
       const CTA_ACTIONS = gsap.utils.toArray('.cta__actions .ms-button');
       CTA_ACTIONS.forEach((button: any) => {
-        const tl = gsap.timeline();
-
-        tl.fromTo(button, {
+        cta.fromTo(button, {
           opacity: 0,
           y: !isMotionReduced ? 30 : 0,
         }, {
@@ -52,8 +58,6 @@ const CTASection: React.FC<CTASectionProps> = () => {
             amount: 0.025
           },
         });
-
-        cta.add(tl);
       });
     }
 
@@ -68,7 +72,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
     <section className="constrained h-half-screen grid pi-center my-4xl @large:my-6xl" ref={ctaSectionRef}>
       <section>
         <div className="mb-lg">
-          <h2 className="lead-text family-supertitle size-3xl @medium:size-4xl @large:size-5xl line-height-condensed letter-spacing-condensed mb-sm">
+          <h2 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl @large:size-5xl line-height-condensed letter-spacing-condensed mb-sm">
             Build the experience your users <span className="highlight">deserve</span>.
           </h2>
           <p className="content size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first sketch to final push—I'll help you ship something <span className="highlight">amazing</span>.</p>

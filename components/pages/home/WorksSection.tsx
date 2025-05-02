@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, MOTION_PREFERENCES, SCREEN_SIZES, useMediaQuery } from '@/lib/gsap';
 
@@ -34,7 +35,9 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
     });
 
     const enterAnimation = () => {
-      const work = animateInView(workSectionRef.current);
+      const work = animateInView(workSectionRef.current, {
+        once: true,
+      });
 
       work.from(workSectionRef.current, {
         opacity: 0,

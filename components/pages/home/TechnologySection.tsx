@@ -13,9 +13,10 @@ import {
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { SplitText } from 'gsap/dist/SplitText';
 
 import { animateInView, MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
-import { SplitText } from 'gsap/dist/SplitText';
 
 const TechnologySection: React.FC = () => {
   const technologySectionRef = useRef<HTMLDivElement>(null);
@@ -24,14 +25,6 @@ const TechnologySection: React.FC = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const contentTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: technologySectionRef.current,
-        start: 'top 90%',
-        toggleActions: 'play complete resume reset',
-      }
-    });
-
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: '#skills-and-technologies__wrapper',
@@ -45,7 +38,9 @@ const TechnologySection: React.FC = () => {
     }
 
     const enterAnimation = () => {
-      const tech = animateInView(technologySectionRef.current);
+      const tech = animateInView(technologySectionRef.current, {
+        once: true,
+      });
 
       tech.from(technologySectionRef.current, {
         opacity: 0,
