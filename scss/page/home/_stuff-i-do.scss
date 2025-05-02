@@ -3,7 +3,6 @@
 
 @mixin render() {
   #stuff-i-do {
-    animation: load-in 0.5s ease;
     container-type: inline-size;
 
     .service-container {
