@@ -28,21 +28,21 @@ export const BY_CHAR: SplitText.Vars = {
   type: 'chars',
   mask: 'chars',
   charsClass: 'split-char inline-block',
-  tag: 'span'
+  tag: 'div'
 };
 
 export const BY_WORD: SplitText.Vars = {
   type: 'words',
   mask: 'words',
   wordsClass: 'split-word inline-block',
-  tag: 'span'
+  tag: 'div'
 };
 
 export const BY_LINE: SplitText.Vars = {
   type: 'lines',
   mask: 'lines',
   linesClass: 'split-line block',
-  tag: 'span',
+  tag: 'div',
   autoSplit: true,
 };
 
