@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import Image from "next/image";
 
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
 import { animateInView, BY_CHAR, BY_LINE, MOTION_PREFERENCES, usePreparedFonts, useMediaQuery } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { useGSAP } from '@gsap/react';
 
 interface AboutMeSectionProps {}
 
@@ -32,6 +32,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       usePreparedFonts(() => {
         const titleSplit = SplitText.create(titleRef.current, BY_CHAR);
         aboutMe.from(titleSplit.chars, {
+          opacity: 0,
           y: !isMotionReduced ? '100%' : 0,
           duration: 0.6,
           stagger: 0.05,
