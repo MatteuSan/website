@@ -54,7 +54,7 @@ export const TEXT_MASK_INITIAL = {
 export const TEXT_MASK_ANIMATION = {
   opacity: 0,
   yPercent: 100,
-  duration: 0.5,
+  duration: 0.6,
   stagger: 0.05,
   ease: 'expo.out',
 };
