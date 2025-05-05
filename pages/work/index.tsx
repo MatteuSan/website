@@ -39,22 +39,22 @@ const WorkPage: NextPage = () => {
     const titleSplit = SplitText.create('.lead-text', BY_CHAR);
     const subtitleSplit = SplitText.create('.content', BY_LINE);
 
-    const aboutMe = animateInView(workSectionRef.current, {
+    const work = animateInView(workSectionRef.current, {
       once: true,
     });
 
-    aboutMe.from(workSectionRef.current, {
+    work.from(workSectionRef.current, {
       opacity: 0,
       y: !isMotionReduced ? 70 : 0,
       duration: 1
     });
 
-    aboutMe.from(titleSplit.chars, {
+    work.from(titleSplit.chars, {
       ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
       onComplete: () => titleSplit.revert()
     }, '-=0.5');
 
-    aboutMe.fromTo('.picture-frame', {
+    work.fromTo('.picture-frame', {
       opacity: 0,
       duration: 0.5,
     }, {
@@ -62,19 +62,19 @@ const WorkPage: NextPage = () => {
       y: 0,
     }, '<');
 
-    aboutMe.from(subtitleSplit.lines, {
+    work.from(subtitleSplit.lines, {
       ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
       stagger: 0.1,
       onComplete: () => subtitleSplit.revert()
     }, '-=0.5');
 
-    aboutMe.from('.content-2', {
+    work.from('.content-2', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
     }, '-=0.5');
 
-    aboutMe.from('.content-3', {
+    work.from('.content-3', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
