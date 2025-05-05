@@ -15,7 +15,7 @@
       border: 'surface-alpha-400'
     ));
     @include himig.struct-apply('footer', (
-      padding: ('xl' 'sm'),
+      padding: ('lg' 'sm'),
       border-width: 'xs',
       border-style: 'solid'
     ));
