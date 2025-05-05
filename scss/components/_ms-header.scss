@@ -34,8 +34,7 @@ $header-style: 'default' !default;
     padding: 0.5em 1em;
     border-radius: himig.primitive-token-get('radius.md');
     z-index: 100;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--blur, 8px));
     @include himig.prefix(transition, all 0.5s ease);
 
     background: himig.key-create('header-fill', $header-un-scrolled-fill);
@@ -51,6 +50,7 @@ $header-style: 'default' !default;
 
     &.is-scrollable {
       &:not(.is-scrolled) {
+        --blur: 0;
         @include himig.key-bind('navbar-inset-top', 56px);
 
         .ms-navbar__wrapper {
