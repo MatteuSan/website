@@ -5,6 +5,16 @@ import { MSHero, MSInfoCard } from '@/components';
 
 import { tools } from '@/constants/tools';
 import { useRouter } from "next/router";
+import { useGSAP } from '@gsap/react';
+import { SplitText } from 'gsap/dist/SplitText';
+import {
+  animateInView,
+  BY_CHAR,
+  BY_LINE, MOTION_PREFERENCES,
+  REDUCED_TEXT_MASK_ANIMATION,
+  TEXT_MASK_ANIMATION,
+  useMediaQuery
+} from '@/lib/gsap';
 
 const itemsWithSlug = tools.filter((item) => item?.slug != null);
 const itemsWithoutSlug = tools.filter((item) => item?.slug == null);
@@ -18,25 +28,67 @@ const ToolsPage: NextPage = () => {
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
   }
 
+  useGSAP(() => {
+    const titleSplit = SplitText.create('.lead-text', BY_CHAR);
+    const subtitleSplit = SplitText.create('.content', BY_LINE);
+
+    const tools = animateInView(toolsSectionRef.current, {
+      once: true,
+    });
+
+    tools.from(toolsSectionRef.current, {
+      opacity: 0,
+      y: !isMotionReduced ? 70 : 0,
+      duration: 1
+    });
+
+    tools.from(titleSplit.chars, {
+      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      onComplete: () => titleSplit.revert()
+    }, '-=0.5');
+
+    tools.fromTo('.picture-frame', {
+      opacity: 0,
+      duration: 0.5,
+    }, {
+      opacity: 1,
+      y: 0,
+    }, '<');
+
+    tools.from(subtitleSplit.lines, {
+      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      stagger: 0.1,
+      onComplete: () => subtitleSplit.revert()
+    }, '-=0.5');
+
+    tools.from('.content-2', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
+
+    tools.from('.content-3', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '<50%');
+  });
+
   return (
     <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences." hasHero>
-      <MSHero customLayout>
-        <div className="constrained w-full flex flow-column gap-lg @large:gap-xl jc-center ai-center">
-          <div>
-            <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Tools</h2>
-            <p className="content mt-sm size-md @large:size-lg weight-light align-center">Empowering teams (and you!) to build better experiences.</p>
-            <p className="content-2 mt-md size-sm de-emphasize align-center">
-              I created these tools to help me build better software. From internal component libraries to custom workflows and documentation systems, each one reflects my philosophy of building with care, clarity, and long-term scalability in mind.
-            </p>
-          </div>
-          {/*<div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
-            <MSButton data-cal-link="matteu" data-cal-config='{"theme":"dark"}' type="filled large">Book a call</MSButton>
-          </div>*/}
+      <MSHero ref={toolsSectionRef}>
+        <div>
+          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Tools</h2>
+          <p className="content size-md @large:size-lg weight-light align-center">Empowering teams (and you!) to build better experiences.</p>
+          <p className="content-2 mt-md size-sm de-emphasize align-center">
+            I created these tools to help me build better software. From internal component libraries to custom workflows and documentation systems, each one reflects my philosophy of building with care, clarity, and long-term scalability in mind.
+          </p>
         </div>
       </MSHero>
       <MainContent className="h-half-screen">
@@ -54,7 +106,7 @@ const ToolsPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="mb-4xl" ref={toolsSectionRef}>
+        <section className="mb-4xl">
           <div className="grid cols-1 @medium:cols-2 {/*@large:cols-3*/} gap-lg" id="projects">
             <>
               { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
