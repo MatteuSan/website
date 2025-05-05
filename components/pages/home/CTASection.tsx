@@ -57,11 +57,11 @@ const CTASection: React.FC<CTASectionProps> = () => {
         }, {
           opacity: 1,
           y: 0,
-          duration: 0.2,
+          duration: 0.4,
           stagger: {
             amount: 0.025
           },
-        });
+        }, '-=0.5');
       });
     }
 
