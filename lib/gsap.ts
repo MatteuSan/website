@@ -41,7 +41,6 @@ export const BY_LINE: SplitText.Vars = {
   mask: 'lines',
   linesClass: 'line',
   autoSplit: true,
-  reduceWhiteSpace: true,
   smartWrap: true
 };
 

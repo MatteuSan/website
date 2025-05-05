@@ -6,6 +6,16 @@ import { MSHero, MSInfoCard
 
 import { works } from '@/constants/works';
 import { useRouter } from "next/router";
+import { useGSAP } from '@gsap/react';
+import { SplitText } from 'gsap/dist/SplitText';
+import {
+  animateInView,
+  BY_CHAR,
+  BY_LINE, MOTION_PREFERENCES,
+  REDUCED_TEXT_MASK_ANIMATION,
+  TEXT_MASK_ANIMATION,
+  useMediaQuery
+} from '@/lib/gsap';
 
 const itemsWithSlug = works.filter((item) => item?.slug != null);
 const itemsWithoutSlug = works.filter((item) => item?.slug == null);
@@ -19,25 +29,67 @@ const WorkPage: NextPage = () => {
   const router = useRouter();
   const [filter, setFilter] = useState<string>(router.query?.filter ? router.query?.filter.toString() : 'all');
   const filteredItems = filter !== 'all' ? cleanedItems.filter((item) => item?.tags.includes(filter ?? '')) : cleanedItems;
+  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   const handleFilter = (event: any, targetFilter?: string) => {
     setFilter(event.target.value ?? targetFilter);
   }
 
+  useGSAP(() => {
+    const titleSplit = SplitText.create('.lead-text', BY_CHAR);
+    const subtitleSplit = SplitText.create('.content', BY_LINE);
+
+    const aboutMe = animateInView(workSectionRef.current, {
+      once: true,
+    });
+
+    aboutMe.from(workSectionRef.current, {
+      opacity: 0,
+      y: !isMotionReduced ? 70 : 0,
+      duration: 1
+    });
+
+    aboutMe.from(titleSplit.chars, {
+      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      onComplete: () => titleSplit.revert()
+    }, '-=0.5');
+
+    aboutMe.fromTo('.picture-frame', {
+      opacity: 0,
+      duration: 0.5,
+    }, {
+      opacity: 1,
+      y: 0,
+    }, '<');
+
+    aboutMe.from(subtitleSplit.lines, {
+      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      stagger: 0.1,
+      onComplete: () => subtitleSplit.revert()
+    }, '-=0.5');
+
+    aboutMe.from('.content-2', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
+
+    aboutMe.from('.content-3', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '<50%');
+  });
+
   return (
     <DefaultLayout title="WORK" description="Projects that ushered companies to their success." hasHero>
-      <MSHero customLayout>
-        <div className="constrained w-full flex flow-column gap-lg @large:gap-xl jc-center ai-center">
-          <div>
-            <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Works</h2>
-            <p className="content mt-sm size-md @large:size-lg weight-light align-center">Projects that ushered companies to their success.</p>
-            <p className="content-2 mt-md size-sm de-emphasize align-center">
-              Browse the works that companies invested in to expand their online presence and drive business growth.
-            </p>
-          </div>
-          {/*<div id="cta" className="content-3 flex flow-row wrap-none jc-center ai-center gap-md @medium:gap-lg">
-            <MSButton data-cal-link="matteu" data-cal-config='{"theme":"dark"}' type="filled large">Book a call</MSButton>
-          </div>*/}
+      <MSHero ref={workSectionRef}>
+        <div>
+          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Works</h2>
+          <p className="content mt-sm size-md @large:size-lg weight-light align-center">Projects that ushered companies to their success.</p>
+          <p className="content-2 mt-md size-sm de-emphasize align-center">
+            Browse the works that companies invested in to expand their online presence and drive business growth.
+          </p>
         </div>
       </MSHero>
       <MainContent>
@@ -55,7 +107,7 @@ const WorkPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="content-section mb-4xl" ref={workSectionRef}>
+        <section className="content-section mb-4xl">
           <section className="grid cols-1 @medium:cols-2 {/*@large:cols-3*/} gap-lg"
                              id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: any, key: number) => {
