@@ -295,13 +295,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/himig@npm:^1.7.3":
-  version: 1.7.3
-  resolution: "@matteusan/himig@npm:1.7.3"
+"@matteusan/himig@npm:^1.7.4":
+  version: 1.7.4
+  resolution: "@matteusan/himig@npm:1.7.4"
   dependencies:
     "@matteusan/pintig": ^1.8
     "@matteusan/sentro": ^1.2.2
-  checksum: b0942e4a7b3b1a92df3343f28784d55a12896a08188f0f1f177f45f463efcf86bbb927e00a13073882f62af63d53f421a9c2e8a9d8180383fa0083763a134342
+  checksum: 584883da6d5ada3cc1d72992fc42a8d99faa0fb8f008a61d7c7ad6ca75058938627f71a2f8a59832f4b8af0f66dba4b9bc6158b8d8b5853a8554de48f5e38ccb
   languageName: node
   linkType: hard
 
@@ -320,6 +320,15 @@ __metadata:
   peerDependencies:
     sass: ^1.74.1
   checksum: 2ea3525011859fc32e34d9285a391068e9a36b2b13764868af1ed5dcb31a0c11dd404c201312b5dac75d08152c35a8c5cb39ca73336d76a5f33f2bea8881a8a3
+  languageName: node
+  linkType: hard
+
+"@matteusan/sentro@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@matteusan/sentro@npm:1.2.3"
+  peerDependencies:
+    sass: ^1.74.1
+  checksum: 80460e4b1195f464a63ab96c7542fe9ec9ca920b2c18ade7f0960c1d1f6b3896e6466af4dffdc812f9a95c39dad463565a8056000d21accc7cf040b413b203f6
   languageName: node
   linkType: hard
 
@@ -2146,8 +2155,8 @@ __metadata:
     "@gsap/react": ^2.1.2
     "@heroicons/react": ^2.1.1
     "@icons-pack/react-simple-icons": ^12.6.0
-    "@matteusan/himig": ^1.7.3
-    "@matteusan/sentro": ^1.2.2
+    "@matteusan/himig": ^1.7.4
+    "@matteusan/sentro": ^1.2.3
     "@mdx-js/loader": 3.1.0
     "@mdx-js/react": 3.1.0
     "@next/mdx": 15.3.0
