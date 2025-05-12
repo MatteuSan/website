@@ -210,6 +210,9 @@
         title: 'title',
       ),
       weight: (
+        title: 'normal'
+      ),
+      line-height: (
         title: 'supertitle'
       )
     )
@@ -262,6 +265,10 @@
 
     .ms-card__header {
       padding-bottom: 0 !important;
+
+      .ms-card__title {
+        letter-spacing: himig.to-rem(-1px);
+      }
     }
 
     &:has(.ms-card__media img) {

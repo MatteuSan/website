@@ -71,7 +71,7 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
         <section className="py-4xl">
           <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/work"
                     type="small" icon={ ['left', <ArrowLeftIcon/>] }>Back to all work</MSButton>
-          <h1 className="supertitle">{ metadata.title } <small
+          <h1 className="ms-markdown__title supertitle">{ metadata.title } <small
             className="small">({ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' })</small></h1>
           <h2 className="subtitle">{ metadata.description }</h2>
           <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>

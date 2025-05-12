@@ -1,6 +1,20 @@
 @use 'pkg:@matteusan/himig';
 
 @mixin render() {
+  .ms-markdown__title {
+    @include himig.typography-apply('markdown-title', (
+      family: 'supertitle',
+      size: '4xl',
+      weight: 'normal',
+      line-height: 'normal'
+    ));
+    letter-spacing: himig.to-rem(-1px);
+
+    small {
+      letter-spacing: initial;
+    }
+  }
+
   .ms-markdown {
     .preview-image {
       aspect-ratio: auto;

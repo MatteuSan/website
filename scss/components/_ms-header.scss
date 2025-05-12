@@ -118,7 +118,7 @@ $header-style: 'default' !default;
         border-radius: himig.primitive-token-get('radius.sm');
         display: var(--ms-header-brand-visibility, block);
         user-select: none;
-        letter-spacing: himig.to-rem(-3px);
+        letter-spacing: himig.to-rem(-2px);
         @include himig.struct-shadow('header-title', 'high');
         z-index: 2;
 
