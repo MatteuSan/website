@@ -7,8 +7,8 @@
     max-width: himig.token-get('viewport-layout-limit');
     border-radius: himig.primitive-token-get('radius.xl');
     overflow: hidden;
-    background: radial-gradient(circle at -10% 50%, var(--ms-theme-accent-alpha-400) 0%, transparent 100%);
-    border: 1px solid var(--ms-theme-accent-alpha-400);
+    background: radial-gradient(circle at -10% 50%, rgb(from himig.token-get('accent-400') r g b / 33%) 0%, transparent 100%);
+    border: 1px solid rgb(from himig.token-get('accent-400') r g b / 33%);
   }
 
   .technologies {

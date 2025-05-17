@@ -145,9 +145,9 @@
 
       &.is-active {
         @include himig.color-bind('navbar-item', (
-          fill: 'surface-alpha-800',
+          fill: rgb(from himig.token-get('surface-400') r g b / 50%),
           ink: 'surface-ink',
-          border: 'surface-alpha-400'
+          border: rgb(from himig.token-get('surface-400') r g b / 33%)
         ));
         @include himig.typography-bind('navbar-item', (
           weight: 400

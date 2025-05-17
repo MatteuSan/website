@@ -295,31 +295,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/himig@npm:^1.7.4":
-  version: 1.7.4
-  resolution: "@matteusan/himig@npm:1.7.4"
-  dependencies:
-    "@matteusan/pintig": ^1.8
-    "@matteusan/sentro": ^1.2.2
-  checksum: 584883da6d5ada3cc1d72992fc42a8d99faa0fb8f008a61d7c7ad6ca75058938627f71a2f8a59832f4b8af0f66dba4b9bc6158b8d8b5853a8554de48f5e38ccb
-  languageName: node
-  linkType: hard
-
-"@matteusan/pintig@npm:^1.8":
+"@matteusan/himig@npm:^1.8.0":
   version: 1.8.0
-  resolution: "@matteusan/pintig@npm:1.8.0"
+  resolution: "@matteusan/himig@npm:1.8.0"
   dependencies:
-    "@matteusan/sentro": ^1.2.2
-  checksum: f83672ea90c7f8863eafc1fb2230a4094944280a556a451eb11ec3b03f8a6bbe4692b5cf9af400411f30574e09cb3b5cc94eb5c0c7522c6230b18d69b2db0d52
+    "@matteusan/pintig": ^1.9
+    "@matteusan/sentro": ^1.2.3
+  checksum: 6fdfd066f40071fb5a48261192bc6ce1693644714a3f804c3249094f8ad945a32a57427df53a06c24df542d9c9f6f7f957928d4c2053729fec3d9cb5ca7fb979
   languageName: node
   linkType: hard
 
-"@matteusan/sentro@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@matteusan/sentro@npm:1.2.2"
-  peerDependencies:
-    sass: ^1.74.1
-  checksum: 2ea3525011859fc32e34d9285a391068e9a36b2b13764868af1ed5dcb31a0c11dd404c201312b5dac75d08152c35a8c5cb39ca73336d76a5f33f2bea8881a8a3
+"@matteusan/pintig@npm:^1.9":
+  version: 1.9.0
+  resolution: "@matteusan/pintig@npm:1.9.0"
+  dependencies:
+    "@matteusan/sentro": ^1.2.3
+  checksum: 9c9493bbb599cb870fa77d8097f78e20df924e51618f013e867c55787294efd91c653bd3a8dbd27d1b7ca3bcece3fa34104687cab93d1a962532320684bc2d46
   languageName: node
   linkType: hard
 
@@ -2055,24 +2046,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lenis@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "lenis@npm:1.3.1"
-  peerDependencies:
-    "@nuxt/kit": ">=3.0.0"
-    react: ">=17.0.0"
-    vue: ">=3.0.0"
-  peerDependenciesMeta:
-    "@nuxt/kit":
-      optional: true
-    react:
-      optional: true
-    vue:
-      optional: true
-  checksum: 74b64768d1c52e4b011d48f3f037f440fa3c559cef722a4409f4e06acf56cbccc508bd0b554be1a922ce219944c80128f25b18a9e3b3f5560ffe6df30baf4151
-  languageName: node
-  linkType: hard
-
 "lines-and-columns@npm:^1.1.6":
   version: 1.2.4
   resolution: "lines-and-columns@npm:1.2.4"
@@ -2155,7 +2128,7 @@ __metadata:
     "@gsap/react": ^2.1.2
     "@heroicons/react": ^2.1.1
     "@icons-pack/react-simple-icons": ^12.6.0
-    "@matteusan/himig": ^1.7.4
+    "@matteusan/himig": ^1.8.0
     "@matteusan/sentro": ^1.2.3
     "@mdx-js/loader": 3.1.0
     "@mdx-js/react": 3.1.0
@@ -2168,7 +2141,6 @@ __metadata:
     "@vercel/analytics": ^1.5.0
     "@vercel/speed-insights": ^1.2.0
     gsap: ^3.13.0
-    lenis: ^1.3.1
     motion: ^12.7.4
     next: 15.3.0
     react: 18.2.0

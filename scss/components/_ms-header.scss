@@ -1,9 +1,9 @@
 @use '@matteusan/himig';
 
-$header-fill: radial-gradient(circle at 0% 50%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%) !default;
+$header-fill: radial-gradient(circle at 0% 50%, rgb(from var(--ms-theme-primary-400) r g b / 50%) 0%, transparent 100%) !default;
 // $header-fill: 'surface-alpha-200' !default;
 $header-ink: 'surface-ink' !default;
-$header-border: 'surface-alpha-800' !default;
+$header-border: rgb(from var(--ms-theme-primary-400) r g b / 50%) !default;
 
 $header-un-scrolled-fill: rgba(0 0 0 / 0) !default;
 $header-un-scrolled-ink: 'accent-ink' !default;

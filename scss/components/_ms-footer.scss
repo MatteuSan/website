@@ -9,10 +9,10 @@
     text-align: center;
     border-radius: himig.primitive-token-get('radius.xl');
 
-    background: himig.key-create('footer-fill', #{radial-gradient(circle at 50% 100%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%)});
+    background: himig.key-create('footer-fill', #{radial-gradient(circle at 50% 100%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
     @include himig.color-apply('footer', (
       ink: 'surface-ink',
-      border: 'surface-alpha-400'
+      border: rgb(from himig.token-get('surface-400') r g b / 50%)
     ));
     @include himig.struct-apply('footer', (
       padding: ('lg' 'sm'),

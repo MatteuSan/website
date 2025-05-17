@@ -19,8 +19,8 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
     margin-block-end: himig.primitive-token-get('margin.5xl');
     border-radius: himig.primitive-token-get('radius.xl');
     padding-block: himig.primitive-token-get('padding.4xl');
-    background: radial-gradient(circle at 50% 30%, var(--ms-theme-accent-alpha-400) 0%, transparent 100%);
-    border: 1px solid var(--ms-theme-accent-alpha-400);
+    background: radial-gradient(circle at 50% 30%, rgb(from himig.token-get('accent-400') r g b / 33%) 0%, transparent 100%);
+    border: 1px solid rgb(from himig.token-get('accent-400') r g b / 33%);
 
     @include himig.breakpoint-create('large') {
       padding-block: himig.primitive-token-get('padding.5xl');

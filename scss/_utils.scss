@@ -27,7 +27,7 @@
       bottom: 3px;
       right: -3px;
       border-radius: himig.token-get('radius-small');
-      background: himig.token-get('accent-alpha-800');
+      background: rgb(from himig.token-get('accent-400') r g b / 33%);
       transition: all var(--ms-transition-time) ease;
       transform: rotate(-1deg);
       z-index: -1;

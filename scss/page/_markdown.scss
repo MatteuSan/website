@@ -29,7 +29,7 @@
         display: inline-block;
         padding: 0.2rem 0.5rem;
         border-radius: himig.token-get('radius-small');
-        background: himig.token-get('surface-alpha-400');
+        background: rgb(from himig.token-get('surface-400') r g b / 33%);
         color: himig.token-get('accent-400');
         font-size: himig.to-rem(12px);
       }
@@ -38,7 +38,7 @@
     blockquote {
       padding: himig.primitive-token-get('padding.lg');
       border-left: 4px solid himig.token-get('accent-400');
-      background: himig.token-get('surface-alpha-400');
+      background: rgb(from himig.token-get('surface-400') r g b / 33%);
       border-radius: himig.token-get('radius-small');
       margin-block: 1rem;
     }

@@ -24,10 +24,10 @@
 
       @include himig.breakpoint-create('large') {
         --flow: row;
-        background: himig.key-create('service-card-fill', #{radial-gradient(circle at 100% 50%, var(--ms-theme-surface-alpha-800) 0%, transparent 100%)});
+        background: himig.key-create('service-card-fill', #{radial-gradient(circle at 100% 50%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
         @include himig.color-apply('service-card', (
           ink: 'surface-ink',
-          border: 'surface-alpha-800'
+          border: rgb(from himig.token-get('surface-400') r g b / 50%)
         ));
         @include himig.struct-apply('service-card', (
           padding: ('xl' '2xl'),
