@@ -35,7 +35,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 1,
-      stagger: 0.05,
     }, {
       opacity: 1,
       y: 0,
@@ -47,14 +46,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
     }, {
       opacity: 1,
       y: 0,
-    }, '<50%');
+    }, '-=0.5');
 
     enter.from(['.content-1', '.content-2'], {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
-      duration: 1,
-      delay: 0.5,
-    }, '<10%');
+      duration: 0.8,
+    }, '-=0.5');
+
+    enter.fromTo('.ms-button', {
+      opacity: 0,
+    }, {
+      opacity: 1,
+      duration: 0.2,
+    }, '-=0.5');
   }, { scope: serviceCardRef });
 
   return (
