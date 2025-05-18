@@ -138,6 +138,7 @@
 
   @include ms-button.extend('large') {
     @include ms-button.struct((
+      padding: ('md' 'lg'),
       gap: 'sm'
     ));
   }
