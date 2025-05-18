@@ -2,7 +2,6 @@ import React from 'react';
 import { MSButton } from "@/components";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
 
@@ -49,20 +48,14 @@ const CTASection: React.FC<CTASectionProps> = () => {
         // onComplete: () => contentSplit.revert()
       }, '-=0.5');
 
-      const CTA_ACTIONS = gsap.utils.toArray('.actions .ms-button');
-      CTA_ACTIONS.forEach((button: any) => {
-        cta.fromTo(button, {
-          opacity: 0,
-          y: !isMotionReduced ? 30 : 0,
-        }, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          stagger: {
-            amount: 0.025
-          },
-        }, '-=0.5');
-      });
+      cta.fromTo('.actions', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+      }, '-=0.5');
     }
 
     enterAnimation();

@@ -51,7 +51,6 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         title={ item.name }
         subtitle={ item.desc }
         link={ item.slug && `/${linkBase}/${ item.slug }` }
-        style={{ marginBlockEnd: '1rem' }}
       />
       <MSCardContent>
         <div className="ms-card__tags flex flow-row wrap-none gap-sm" style={{ overflow: 'auto hidden' }}>

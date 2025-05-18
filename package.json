@@ -30,7 +30,7 @@
     "shiki": "^3.2.2"
   },
   "devDependencies": {
-    "@matteusan/himig": "^1.8.0",
+    "@matteusan/himig": "^1.8.1",
     "@matteusan/sentro": "^1.2.3",
     "@nonsugarless/webp-converter": "^1.0.4",
     "@types/mdx": "2.0.13",

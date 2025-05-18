@@ -295,13 +295,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/himig@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "@matteusan/himig@npm:1.8.0"
+"@matteusan/himig@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "@matteusan/himig@npm:1.8.1"
   dependencies:
     "@matteusan/pintig": ^1.9
     "@matteusan/sentro": ^1.2.3
-  checksum: 6fdfd066f40071fb5a48261192bc6ce1693644714a3f804c3249094f8ad945a32a57427df53a06c24df542d9c9f6f7f957928d4c2053729fec3d9cb5ca7fb979
+  checksum: 07884e5877203d625c212ff6db712ce172331caaf6c7e6527c4d8449548dcd4a3f01a4de3f0aaca1ec6053c7edeaa01d071027b299adceb2b42efd965d591f58
   languageName: node
   linkType: hard
 
@@ -2128,7 +2128,7 @@ __metadata:
     "@gsap/react": ^2.1.2
     "@heroicons/react": ^2.1.1
     "@icons-pack/react-simple-icons": ^12.6.0
-    "@matteusan/himig": ^1.8.0
+    "@matteusan/himig": ^1.8.1
     "@matteusan/sentro": ^1.2.3
     "@mdx-js/loader": 3.1.0
     "@mdx-js/react": 3.1.0
