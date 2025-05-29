@@ -8,6 +8,7 @@ import { tools } from "@/constants/tools";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { useRouter } from 'next/router';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
@@ -21,7 +22,7 @@ interface MarkdownLayoutProps {
 export const MarkdownHeader: React.FC<{ title: string, description: string, small?: string }> = ({ title, description, small }) => {
   return (
     <>
-      <h1 className="supertitle">{ title } { small ? <small
+      <h1 className="ms-markdown__title supertitle">{ title } { small ? <small
         className="small">{ small }</small> : 'null' }</h1>
       <h2 className="subtitle">{ description }</h2>
     </>
@@ -29,6 +30,8 @@ export const MarkdownHeader: React.FC<{ title: string, description: string, smal
 }
 
 const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, previewImage, previewImageAlt, children }) => {
+  const router = useRouter();
+  const basePath = router.pathname.split('/')[1];
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
@@ -69,8 +72,8 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/${previewImage}` }>
       <MainContent>
         <section className="py-4xl">
-          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/work"
-                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Back to all work</MSButton>
+          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link={`/${basePath}`}
+                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
           <h1 className="ms-markdown__title supertitle">{ metadata.title } <small
             className="small">({ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' })</small></h1>
           <h2 className="subtitle">{ metadata.description }</h2>
