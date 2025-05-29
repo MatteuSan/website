@@ -1,12 +1,12 @@
-@use 'node_modules/@matteusan/himig';
+@use '@matteusan/himig';
 
-@use 'node_modules/@matteusan/himig/ms-badge';
-@use 'node_modules/@matteusan/himig/ms-button';
-@use 'node_modules/@matteusan/himig/ms-card';
-@use 'node_modules/@matteusan/himig/ms-list';
-@use 'node_modules/@matteusan/himig/ms-link';
-@use 'node_modules/@matteusan/himig/ms-select-field';
-@use 'node_modules/@matteusan/himig/ms-utils';
+@use '@matteusan/himig/ms-badge';
+@use '@matteusan/himig/ms-button';
+@use '@matteusan/himig/ms-card';
+@use '@matteusan/himig/ms-list';
+@use '@matteusan/himig/ms-link';
+@use '@matteusan/himig/ms-select-field';
+@use '@matteusan/himig/ms-utils';
 
 @use 'components/ms-carousel';
 @use 'components/ms-footer';
@@ -203,11 +203,11 @@
 
   @include ms-card.render(
     $color: (
-      fill: 'surface-800',
       border: rgba(0 0 0 / 0)
     ),
     $struct: (
-      padding: 'lg'
+      padding: 'lg',
+      radius: 'lg'
     ),
     $typography: (
       family: (
@@ -224,7 +224,7 @@
 
   .ms-card {
     &:hover {
-      box-shadow: 0 5px 40px rgba(#fff, 0.1);
+      // box-shadow: 0 5px 40px rgba(#fff, 0.1);
     }
 
     .ms-card__content {
@@ -295,12 +295,14 @@
     )
   );
 
-  @include ms-carousel.render();
-  @include ms-footer.render();
-  @include ms-header.render();
-  @include ms-hero.render();
-  @include ms-navbar.render();
-  @include ms-title-bar.render();
+  @layer components {
+    @include ms-carousel.render();
+    @include ms-footer.render();
+    @include ms-header.render();
+    @include ms-hero.render();
+    @include ms-navbar.render();
+    @include ms-title-bar.render();
+  }
 
   .ms-title-bar {
     align-items: center;

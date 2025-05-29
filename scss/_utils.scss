@@ -69,6 +69,10 @@
     min-height: 66svh;
   }
 
+  .h-quarter-screen {
+    min-height: 32svh;
+  }
+
   .mask-to-top {
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
     mask-image: linear-gradient(to top, transparent 0%, black 100%);

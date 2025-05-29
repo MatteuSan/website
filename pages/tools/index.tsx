@@ -81,16 +81,16 @@ const ToolsPage: NextPage = () => {
   });
 
   return (
-    <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences." hasHero>
-      <MSHero ref={toolsSectionRef}>
-        <div>
-          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Tools</h2>
-          <p className="content size-md @large:size-lg weight-light align-center">Empowering teams (and you!) to build better experiences.</p>
-          <p className="content-2 mt-md size-sm de-emphasize align-center">
+    <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences.">
+      <section className="mb-xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
+        <div className="w-full constrained">
+          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Tools</h2>
+          <p className="content size-md @large:size-lg weight-light">Empowering teams (and you!) to build better experiences.</p>
+          <p className="content-2 mt-md size-sm de-emphasize">
             I created these tools to help me build better software. From internal component libraries to custom workflows and documentation systems, each one reflects my philosophy of building with care, clarity, and long-term scalability in mind.
           </p>
         </div>
-      </MSHero>
+      </section>
       <MainContent className="h-half-screen">
         <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle">

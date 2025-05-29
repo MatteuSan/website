@@ -1,4 +1,4 @@
-@use 'pkg:@matteusan/himig';
+@use '@matteusan/himig';
 
 @mixin render() {
   .ms-navbar__trigger {
@@ -141,6 +141,12 @@
           max-width: max-content !important;
           padding: 0.5rem 1.2rem;
         }
+      }
+
+      &:hover {
+        @include himig.color-bind('navbar-item', (
+          fill: rgb(from himig.token-get('surface-400') r g b / 33%),
+        ));
       }
 
       &.is-active {

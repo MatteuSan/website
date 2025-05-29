@@ -82,16 +82,16 @@ const WorkPage: NextPage = () => {
   });
 
   return (
-    <DefaultLayout title="WORK" description="Projects that ushered companies to their success." hasHero>
-      <MSHero ref={workSectionRef}>
-        <div>
-          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center">Works</h2>
-          <p className="content size-md @large:size-lg weight-light align-center">Projects that ushered companies to their success.</p>
-          <p className="content-2 mt-md size-sm de-emphasize align-center">
+    <DefaultLayout title="WORK" description="Projects that ushered companies to their success.">
+      <section className="mb-xl w-full h-quarter-screen flex flow-column jc-end" ref={workSectionRef}>
+        <div className="w-full constrained">
+          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Works</h2>
+          <p className="content size-md @large:size-lg weight-light">Projects that ushered companies to their success.</p>
+          <p className="content-2 size-sm de-emphasize">
             Browse the works that companies invested in to expand their online presence and drive business growth.
           </p>
         </div>
-      </MSHero>
+      </section>
       <MainContent>
         <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle">
