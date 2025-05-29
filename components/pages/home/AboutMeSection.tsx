@@ -79,7 +79,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   return (
     <MSHero ref={aboutMeSectionRef}>
       <div className="picture-frame" style={{ flexShrink: 0 }}>
-        <Image src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
+        <Image decoding="async" loading="eager" src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
       </div>
       <div>
         <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed align-center will-split">Hi, I'm Matt.</h2>

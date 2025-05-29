@@ -43,7 +43,7 @@ const MSButton: React.FC<HCButtonProps> = ({ label, icon, type, link, isDisabled
   }
 
   return (
-    <Link {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={parseLinkTarget(link)}>
+    <Link prefetch {...props} href={ link } className={ `ms-button${ type ? ' ' + parseTypes(type) : '' }` } role="link" target={parseLinkTarget(link)}>
       { ButtonBase }
     </Link>
   );

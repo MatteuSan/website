@@ -82,10 +82,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
       </div>
       <div className="service-card__media">
         <Image
+          decoding="async"
           src={media}
           alt={alt || `${title} services media.`}
           width={1920}
           height={1080}
+          loading="lazy"
         />
       </div>
     </li>

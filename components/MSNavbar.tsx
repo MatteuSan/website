@@ -37,7 +37,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
 
   return (
     <li className={ `ms-navbar__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
-      <Link role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
+      <Link prefetch role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
         { label || children }
       </Link>
     </li>

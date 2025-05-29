@@ -33,7 +33,7 @@ type MSCardProps = {
 export const MSCardMedia: React.FC<MSCardMediaProps> = ({ media, alt }) => {
   return (
     <div className="ms-card__media">
-      <Image width={ 1920 } height={ 1080 } src={ media } alt={ alt + ` media` } loading="lazy"/>
+      <Image decoding="async" width={ 1920 } height={ 1080 } src={ media } alt={ alt + ` media` } loading="lazy"/>
     </div>
   );
 }
@@ -42,7 +42,7 @@ export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, ico
   return (
     <div className="ms-card__header" {...props}>
       { iconPosition == 'trailing' && <i className="ms-card__icon">{ icon }</i> }
-      { React.createElement((link ? 'a' : 'div'), { className: 'ms-card__mast', href: link ?? null },
+      { React.createElement((link ? 'a' : 'div'), { className: 'ms-card__mast', href: link ?? null, prefetch: !!link },
         (<h2 className="ms-card__title">{ title }</h2>),
         (<h3 className="ms-card__subtitle de-emphasize">{ subtitle }</h3>)
       ) }
