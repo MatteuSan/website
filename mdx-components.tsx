@@ -10,16 +10,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
   return {
     h1: ({ children }) => {
-      return <h1 className="supertitle mb-md" id={handleId(children?.toString())}>{ children }</h1>;
+      return <h1 className="supertitle mb-sm stretch-condensed" id={handleId(children?.toString())}>{ children }</h1>;
     },
     h2: ({ children }) => {
-      return <h2 className="title mt-lg mb-md" id={handleId(children?.toString())}>{ children }</h2>;
+      return <h2 className="title mt-xl mb-sm stretch-condensed" id={handleId(children?.toString())}>{ children }</h2>;
     },
     h3: ({ children }) => {
-      return <h3 className="subtitle mt-lg mb-md" id={handleId(children?.toString())}>{ children }</h3>;
+      return <h3 className="subtitle mt-md mb-sm" id={handleId(children?.toString())}>{ children }</h3>;
     },
     h4: ({ children }) => <h4 className="subtitle mt-md mb-sm size-sm" id={handleId(children?.toString())}>{children}</h4>,
-    p: ({ children }) => <p className="size-body mb-md" style={{ lineHeight: '1.6' }}>{children}</p>,
+    p: ({ children }) => <p className="size-body mb-sm" style={{ lineHeight: '1.6' }}>{children}</p>,
     a: ({ children, href }) => {
       const isLinkExternal: boolean|undefined = href?.startsWith('http') || href?.startsWith('mailto') || href?.startsWith('tel') || href?.startsWith('sms') || href?.startsWith('tg');
 
@@ -46,6 +46,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
+    li: ({ children }) => (<li className="mb-sm pl-sm" style={{ lineHeight: '1.6' }}>{ children }</li>),
     ...components,
   }
 }

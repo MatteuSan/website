@@ -19,11 +19,13 @@ interface MarkdownLayoutProps {
   children?: React.ReactNode | string;
 }
 
-export const MarkdownHeader: React.FC<{ title: string, description: string, small?: string }> = ({ title, description, small }) => {
+export const MarkdownHeader: React.FC<{ title: string, description: string, small?: string|React.ReactNode }> = ({ title, description, small }) => {
   return (
     <>
-      <h1 className="ms-markdown__title supertitle">{ title } { small ? <small
-        className="small">{ small }</small> : 'null' }</h1>
+      <div className="flex flow-column wrap-none gap-xs">
+        <h1 className="ms-markdown__title supertitle stretch-condensed">{ title }</h1>
+        { small ? <p className="small mb-sm">{ small }</p> : 'null' }
+      </div>
       <h2 className="subtitle">{ description }</h2>
     </>
   );
@@ -74,7 +76,7 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
         <section className="py-4xl">
           <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link={`/${basePath}`}
                     type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
-          <h1 className="ms-markdown__title supertitle">{ metadata.title } <small
+          <h1 className="ms-markdown__title supertitle stretch-condensed">{ metadata.title } <small
             className="small">({ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' })</small></h1>
           <h2 className="subtitle">{ metadata.description }</h2>
           <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>

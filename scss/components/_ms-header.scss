@@ -119,6 +119,7 @@ $header-style: 'default' !default;
         display: var(--ms-header-brand-visibility, block);
         user-select: none;
         letter-spacing: himig.to-rem(-2px);
+        font-stretch: condensed;
         @include himig.struct-shadow('header-title', 'high');
         z-index: 2;
 

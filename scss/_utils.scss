@@ -119,6 +119,18 @@
     letter-spacing: himig.to-rem(3px);
   }
 
+  .stretch-condensed {
+    font-stretch: condensed;
+  }
+
+  .stretch-normal {
+    font-stretch: normal;
+  }
+
+  .stretch-expanded {
+    font-stretch: expanded;
+  }
+
   .overflow-y-hidden {
     overflow-y: hidden;
   }

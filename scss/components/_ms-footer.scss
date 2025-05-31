@@ -26,9 +26,11 @@
         family: 'supertitle',
         size: 'subtitle',
         weight: 'body',
-        line-height: 'condensed'
+        line-height: 'condensed',
+        squeeze: 'tight'
       ));
       transition: all var(--ms-transition-time) ease;
+      font-stretch: condensed;
       cursor: default;
 
       &:hover {
@@ -52,7 +54,8 @@
         family: 'small',
         size: 'small',
         weight: 'small',
-        line-height: 'small'
+        line-height: 'small',
+        squeeze: 'normal'
       ));
     }
   }

@@ -43,7 +43,7 @@ export const MSCardHeader: React.FC<MSCardHeaderProps> = ({ title, subtitle, ico
     <div className="ms-card__header" {...props}>
       { iconPosition == 'trailing' && <i className="ms-card__icon">{ icon }</i> }
       { React.createElement((link ? 'a' : 'div'), { className: 'ms-card__mast', href: link ?? null, prefetch: !!link },
-        (<h2 className="ms-card__title">{ title }</h2>),
+        (<h2 className="ms-card__title stretch-condensed">{ title }</h2>),
         (<h3 className="ms-card__subtitle de-emphasize">{ subtitle }</h3>)
       ) }
       { iconPosition == 'leading' && <i className="ms-card__icon">{ icon }</i> }
