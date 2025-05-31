@@ -9,14 +9,14 @@ import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
   title: string;
-  description: string;
-  media: StaticImport | string;
+  description?: string;
+  media?: StaticImport | string;
   alt?: string;
   link?: string;
   children?: React.ReactNode;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, alt, link, children }) => {
+const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, alt, link, children }) => {
   const serviceCardRef = React.useRef<HTMLLIElement>(null);
   const serviceCardTitleRef = React.useRef<HTMLHeadingElement>(null);
 
@@ -68,9 +68,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
         <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
           { title }
         </h3>
-        <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
-          { description }
-        </p>
+        { description ? (
+          <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
+            { description }
+          </p>
+        ) : null }
         { children ? (
           <div className="content-2 mb-xl">
             { children }
@@ -80,18 +82,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, al
           <MSButton link={link} type="outlined">View examples</MSButton>
         ) : null }
       </div>
-      <div className="service-card__media">
-        <Image
-          decoding="async"
-          src={media}
-          alt={alt || `${title} services media.`}
-          width={1920}
-          height={1080}
-          loading="lazy"
-        />
-      </div>
+      { media ? (
+        <div className="service-card__media">
+          <Image
+            decoding="async"
+            src={media}
+            alt={alt || `${title} services media.`}
+            width={1920}
+            height={1080}
+            loading="lazy"
+          />
+        </div>
+      ) : null }
     </li>
   );
 };
 
-export default ServiceCard;
+export default MSServiceCard;

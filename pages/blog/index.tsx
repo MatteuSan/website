@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { DefaultLayout, MainContent } from "@/layouts/DefaultLayout";
-import { MSHero } from '@/components';
-import { useRouter } from 'next/router';
+
 import {
   animateInView,
   BY_CHAR,
@@ -12,33 +11,41 @@ import {
   TEXT_MASK_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
+import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
+import Link from 'next/link';
+import { blogs } from '@/constants/blogs';
+import { MSButton } from '@/components';
 
 const BlogMainPage: NextPage = () => {
   const blogSectionRef = React.useRef<HTMLDivElement>(null);
+  const postsSectionRef = React.useRef<HTMLDivElement>(null);
+
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
     const titleSplit = SplitText.create('.lead-text', BY_CHAR);
     const subtitleSplit = SplitText.create('.content', BY_LINE);
 
-    const tools = animateInView(blogSectionRef.current, {
+    const blog = animateInView(blogSectionRef.current, {
       once: true,
     });
 
-    tools.from(blogSectionRef.current, {
+    const posts = gsap.utils.toArray('.blog-post');
+
+    blog.from(blogSectionRef.current, {
       opacity: 0,
       y: !isMotionReduced ? 70 : 0,
       duration: 1
     });
 
-    tools.from(titleSplit.chars, {
+    blog.from(titleSplit.chars, {
       ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
       onComplete: () => titleSplit.revert()
     }, '-=0.5');
 
-    tools.fromTo('.picture-frame', {
+    blog.fromTo('.picture-frame', {
       opacity: 0,
       duration: 0.5,
     }, {
@@ -46,19 +53,19 @@ const BlogMainPage: NextPage = () => {
       y: 0,
     }, '<');
 
-    tools.from(subtitleSplit.lines, {
+    blog.from(subtitleSplit.lines, {
       ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
       stagger: 0.1,
       onComplete: () => subtitleSplit.revert()
     }, '-=0.5');
 
-    tools.from('.content-2', {
+    blog.from('.content-2', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
     }, '-=0.5');
 
-    tools.from('.content-3', {
+    blog.from('.content-3', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
@@ -77,9 +84,17 @@ const BlogMainPage: NextPage = () => {
         </div>
       </section>
       <MainContent>
-        <div className="h-half-screen grid pi-center border-surface-600 border-xs border-solid r-xl mb-xl">
-          <h3 className="subtitle">No posts to show... yet.</h3>
-        </div>
+        <section className="flex flow-column gap-md" ref={postsSectionRef}>
+          { blogs.map((blog, index) => (
+            <Link href={`/blog/${blog.slug}`} className="blog-post flex flow-column gap-lg p-xl r-lg fill-surface-600 border-xs border-solid border-surface-400">
+              <div className="flex flow-column">
+                <h3 className="title stretch-condensed">{ blog.title }</h3>
+                <p className="body de-emphasize mt-xs">{ blog.description }</p>
+              </div>
+              <MSButton link={`/blog/${blog.slug}`} type="outlined">Read more</MSButton>
+            </Link>
+          )) }
+        </section>
       </MainContent>
     </DefaultLayout>
   );

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import ServiceCard from '@/components/pages/home/ServiceCard';
+import MSServiceCard from '@/components/cards/MSServiceCard';
 
 import DesignHero from '@/assets/static/design--hero.png';
 import DevelopmentHero from '@/assets/static/development--hero.png';
@@ -67,7 +67,7 @@ const ServiceSection: React.FC = ( ) => {
         </div>
       </section>
       <ul className="service-container constrained">
-        <ServiceCard
+        <MSServiceCard
           title="Web Design"
           description="I design interfaces that feel as good as they look—clean, accessible, and always user-centered. Every screen is crafted with care and intention, delivering the kind of experience your users will remember and love."
           media={DesignHero}
@@ -79,8 +79,8 @@ const ServiceSection: React.FC = ( ) => {
             <li data-service-number="02">Wireframing and Prototyping</li>
             <li data-service-number="03">Design Audit and Consulting</li>
           </ol>
-        </ServiceCard>
-        <ServiceCard
+        </MSServiceCard>
+        <MSServiceCard
           title="Web Development"
           description="I develop websites and web apps that are beautiful, fast, and accessible—crafted with modern, reliable technologies that scale according to your needs and exceed your users’ expectations."
           media={DevelopmentHero}
@@ -92,8 +92,8 @@ const ServiceSection: React.FC = ( ) => {
             <li data-service-number="02">SEO and Accessibility</li>
             <li data-service-number="03">Delightful Interactions</li>
           </ol>
-        </ServiceCard>
-        <ServiceCard
+        </MSServiceCard>
+        <MSServiceCard
           title="Design Systems"
           description="I specialize in building custom tools that bring consistency across design and development—unifying product experiences and boosting team productivity. From foundation to adoption, I'll help you create and maintain design systems that scale with your business needs."
           media={DesignSystemsHero}
@@ -106,7 +106,7 @@ const ServiceSection: React.FC = ( ) => {
             <li data-service-number="03">Documentation and Guidelines</li>
             <li data-service-number="04">Adoption and Onboarding</li>
           </ol>
-        </ServiceCard>
+        </MSServiceCard>
       </ul>
     </section>
   );
