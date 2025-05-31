@@ -83,7 +83,7 @@ const WorkPage: NextPage = () => {
 
   return (
     <DefaultLayout title="WORK" description="Projects that ushered companies to their success.">
-      <section className="mb-xl w-full h-quarter-screen flex flow-column jc-end" ref={workSectionRef}>
+      <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={workSectionRef}>
         <div className="w-full constrained">
           <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Works</h2>
           <p className="content size-md @large:size-lg weight-light">Projects that ushered companies to their success.</p>

@@ -82,16 +82,16 @@ const ToolsPage: NextPage = () => {
 
   return (
     <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences.">
-      <section className="mb-xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
+      <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
         <div className="w-full constrained">
           <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Tools</h2>
           <p className="content size-md @large:size-lg weight-light">Empowering teams (and you!) to build better experiences.</p>
           <p className="content-2 mt-md size-sm de-emphasize">
-            I created these tools to help me build better software. From internal component libraries to custom workflows and documentation systems, each one reflects my philosophy of building with care, clarity, and long-term scalability in mind.
+            I created these tools to help me build better software. Each one reflects my philosophy of building with care, clarity, and scalability in mind.
           </p>
         </div>
       </section>
-      <MainContent className="h-half-screen">
+      <MainContent>
         <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle">
             { filteredItems.length != 0 ? `Found ${ filteredItems.length } ${ filteredItems.length >= 2 ? 'items' : 'item' }.` : (

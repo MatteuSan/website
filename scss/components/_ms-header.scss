@@ -30,7 +30,7 @@ $header-style: 'default' !default;
     top: 0;
     left: 0;
     right: 0;
-    margin: 0.5em auto;
+    margin: 1em auto;
     padding: 0.5em 1em;
     border-radius: himig.primitive-token-get('radius.md');
     z-index: 100;
@@ -51,7 +51,7 @@ $header-style: 'default' !default;
     &.is-scrollable {
       &:not(.is-scrolled) {
         --blur: 0;
-        @include himig.key-bind('navbar-inset-top', 56px);
+        @include himig.key-bind('navbar-inset-top', calc(56px + 1em));
 
         .ms-navbar__wrapper {
           @include himig.breakpoint-create('large', 'max') {

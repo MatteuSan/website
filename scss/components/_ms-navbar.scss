@@ -28,7 +28,7 @@
     position: absolute;
     opacity: 0;
     transform-origin: right;
-    top: himig.key-create('navbar-inset-top', 72px);
+    top: himig.key-create('navbar-inset-top', calc(56px + 1em));
     left: 0;
     right: 0;
     z-index: 1;
@@ -59,7 +59,7 @@
       -webkit-backdrop-filter: var(--backdrop-filter, blur(10px));
       @include himig.color-apply('navbar-wrapper', (
         fill: 'primary-600',
-        border: 'primary-alpha-800'
+        border: 'primary-400'
       ));
       @include himig.struct-apply('navbar-wrapper', (
         padding: 'lg',

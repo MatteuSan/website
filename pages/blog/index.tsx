@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NextPage } from 'next';
 import { DefaultLayout, MainContent } from "@/layouts/DefaultLayout";
 
@@ -11,7 +11,6 @@ import {
   TEXT_MASK_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
 import Link from 'next/link';
@@ -78,8 +77,8 @@ const BlogMainPage: NextPage = () => {
   });
 
   return (
-    <DefaultLayout title="BLOG" description="Coming soon." hasHero>
-      <section className="mb-xl w-full h-quarter-screen flex flow-column jc-end" ref={blogSectionRef}>
+    <DefaultLayout title="BLOG" description="Coming soon.">
+      <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={blogSectionRef}>
         <div className="w-full constrained">
           <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Blog</h2>
           <p className="content size-md @large:size-lg weight-light">The place where I share my insights on things.</p>
