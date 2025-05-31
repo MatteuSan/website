@@ -6,31 +6,74 @@ import { MarkdownHeader } from "../../layouts/MarkdownLayout";
 
 export const metadata = {
   title: 'Creating Sentro',
-  description: 'Creating a tool to build and manage design systems that scale with your company\'s vision.'
+  description: 'Creating a tool to build and manage design systems at scale.'
 }
 
-Over the past few years, I've been working on design systems for myself and a few other companies and projects. Throughout my development process I've noticed key components and traits that I've found myself using time and time again to build and manage these systems. Despite companies having different visions and goals, these components and traits are always in-line with whatever vision the company has. After extracting these components and traits, it led to the creation of a tool to build and manage design systems that scale with your company's vision called Sentro.
+**Design systems** have steadily evolved from being a "nice-to-have" into a foundational part of modern software development. Once seen as an afterthought or luxury, they’re now recognized as pillars within a software company — shaping not only how a product looks, but how it communicates identity, purpose, and vision. Through consistent patterns, thoughtful practices, and shared conventions, design systems reflect who a company is (its branding), what it does (its mission), and why it exists (its vision) — whether that’s expressed through software, culture, or process.
 
-## Introducing Sentro
-Sentro is a low-level SCSS library for building and managing token-driven design systems. It provides the functionality to create and manage tokens, themes, keys, breakpoints, etc. It is designed to be framework-agnostic, to create an API right out of the box as you shape your design system, and it is based on the usage of design tokens.
+There’s no one-size-fits-all approach to building a design system. Some teams prefer simple, lightweight structures; others embrace complex, deeply integrated architectures. Each design system reflects the unique goals, values, and nuances of the people behind it.
 
-Sentro is built using [Sass](https://sass-lang.com), as I wanted it to be closer to CSS more than anything. Despite wanting a more minimal approach, avoiding the hassle of setting up build scripts and steps, this is the closest I can try to get to it: one build command, and one peer dependency.
+## What is Sentro?
+Sentro is a low-level SCSS library for building and managing token-driven design systems. It provides the core functionality for defining and organizing design tokens, themes, keys, breakpoints, and more. Designed to be framework-agnostic, Sentro helps you shape your design system with a consistent, scalable API.
 
-### Architecture
-Sentro is designed to be your design system's foundation. It provides the functionality to create and manage tokens, themes, keys, breakpoints, etc. Its conventions with how you consume and manage tokens can be used directly.
+## Why I built Sentro
+Over the past few years, I’ve been building design systems for myself and for various companies and projects. Throughout that journey, I kept running into the same set of challenges — the core pieces needed to build and manage a design system would resurface again and again, no matter the context.
+
+Even though each company had its own goals, visions, and branding, the way I built design systems — its technical implementation — often followed familiar patterns and practices. I quickly realized I needed a faster way to spin up design systems that wouldn’t fight me or the developers working with them as they scale.
+
+That realization led to **Sentro**.
+
+## Why not just use a framework or a library?
+Frameworks and libraries are a great option for building design systems. They offer convenience, established conventions, and can significantly speed up development. However, they also come with trade-offs, limitations, and complexities that may not align with your specific needs.
+
+Most frameworks are built around assumptions and patterns that did not fit the way I design or build products. They often impose a certain structure or mental model, which can be restrictive when you’re aiming for a design system that reflects your company’s unique practices and principles.
+
+Here are a few examples:
+
+- [shadcn-ui](https://ui.shadcn.com/) offers a powerful set of components and functionality out of the box. However, it’s tightly coupled to React, making it harder to use in other frameworks or in plain HTML/CSS projects. Its theming and token strategies are also opinionated, which may not align with how you want to structure your design system.
+- [Tailwind CSS](https://tailwindcss.com) is a utility-first framework that has seen massive adoption. It’s framework-agnostic and ideal for cross-platform styling. However, it enforces a utility-based composition model that can sacrifice readability and maintainability — especially for teams used to authoring styles in a more semantic or structured way.
+
+There's nothing wrong with using these frameworks or libraries — heck, you can even use Tailwind on top of Sentro. They can be incredibly powerful and effective for many projects. However, they may not always be the best fit for every design system, especially if you want to maintain a high degree of flexibility and control over your styling architecture.
+
+## Sentro's Approach
+I wanted Sentro to not enforce any specific design pattern beyond its opinionated handling of design tokens. It should avoid tightly coupling to any framework or rendering strategy. All function names, mixins, and structure are left entirely up to the developer. This allows for greater flexibility and control — enabling you to build a design system that reflects the team’s values and your product’s vision.
+
+### Why is Sentro written in SCSS?
+Sentro is built using [Sass](https://sass-lang.com), as I wanted it to be closer to CSS more than anything. With the CSS landscape evolving rapidly — new features being introduced and adopted faster than ever — I didn’t want developers like me to be stuck waiting for their framework or library to catch up to modern standards.
+
+By building on SCSS, Sentro ensures that you're working directly with a syntax that's both familiar and flexible. Once a CSS feature reaches baseline support, you can use it right away — no abstractions or delays.
+
+And because SCSS compiles down to plain CSS, Sentro integrates seamlessly into any tech stack. It plays nicely with existing codebases and doesn’t require you to fully commit to a new paradigm just to benefit from design tokens and structured styling.
+
+### Architecture & Mental Model
+Sentro is designed to serve as the foundation of a design system — not the entire structure. It provides the core functionality to define and manage design tokens, themes, keys, breakpoints, and more.
+
+At the heart of Sentro is the concept of **design tokens**. These tokens represent the raw values that define your visual language — colors, typography, spacing, and beyond. Sentro offers a structured, scalable way to define, organize, and apply these tokens consistently across your projects.
+
+Sentro doesn't enforce any particular design patterns or architectural conventions. Instead, it gives you the utilities and building blocks needed to shape your design system according to your team’s preferred practices and mental models. It’s opinionated about token management, but everything else is left up to you — giving you the flexibility to build a system that aligns with your product's goals and your team's workflows.
 
 <div className="mx-auto my-lg" style={{ maxWidth: '540px' }}>
   <PreviewImage src="/img/blog/creating-sentro/heirarchy-slim.png" alt="Sentro as your core library." />
 </div>
 
-You can also try adding another abstraction layer to extend Sentro. Common patterns to color, struct, typography, etc. can be made into functions and mixins to ease the development of the design system. This allows you to create your own conventions and patterns on top of Sentro, enabling you to create your own portable core library.
+Sentro can also act as the foundation for your own core library. Common patterns to handling color, structures, typography, etc. can be made into functions and mixins to ease the development of the design system. This approach allows you to build a stronger foundation for your design system on top of Sentro, enabling you to deeply establish your patterns, principles, and practices.
 
 <div className="mx-auto my-lg" style={{ maxWidth: '540px' }}>
   <PreviewImage src="/img/blog/creating-sentro/heirarchy.png" alt="Sentro as your foundation for the core library." />
 </div>
 
-Additionally, Sentro does not enforce any specific design pattern apart from its opinion on token management and consumption. All terminologies of functions and mixins are left to the developer to decide. This allows for a more flexible and customizable design system; more fit to the overall vision of the product and company.
+## Sentro in Action
 
+### Himig
+One of the places Sentro is used is in [Himig](https://github.com/MatteuSan/himig) — my personal design system. Himig was the first real-world implementation of Sentro, and it helped validate the ideas that led to Sentro’s creation.
+
+Himig uses Sentro called through a wrapper around it called Pintig. It governs everything from [managing design tokens](https://github.com/MatteuSan/himig/blob/main/packages/pintig/theme/_theme-setters.scss) to [authoring components and its variants](https://github.com/MatteuSan/himig/blob/main/packages/himig/ms-button/_button-styles.scss). It’s a solid showcase of how Sentro can power a real-world design system — one that’s built to scale confidently while remaining maintainable and flexible. While I cannot show it directly here (as it would make the blog post a bit too long), I encourage you to check out the [repository](https://github.com/MatteuSan/himig) to get an insight on how Sentro works in practice.
+
+### Hashi
+[Hashi](https://hashi-docs.netlify.app) is another design system that uses Sentro as its core library. Its primary usage in the ecosystem right now is to provide a consistent set of design tokens to be used across their various products. While the components themselves are not being used as of late, the design tokens and theming capabilities of Sentro are being used together with Tailwind CSS.
+
+## Conclusion
+Ultimately, I just wanted something that could help me build design systems quicker, faster, and with fewer headaches. And that desire led to Sentro. Whether you're starting from scratch or refining an existing system, I hope Sentro can be the solid foundation you can use to build design systems with clarity and confidence.
 
 
 export default function BlogPage({ children }) {
@@ -39,14 +82,14 @@ export default function BlogPage({ children }) {
       <MainContent>
         <section className="py-4xl">
           <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link="/blog"
-                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Back to all posts</MSButton>
-          <MarkdownHeader title={ metadata.title } description={ metadata.description } small="Published 4/23/24" />
-          <section>
+                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
+          <MarkdownHeader title={ metadata.title } description={ metadata.description } small={(<>Published <time dateTime="2025-05-31">May 31, 2025</time></>)} />
+          {/*<section>
             <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>
               <PreviewImage src={ `/img/blog/creating-sentro/headliner.webp` } alt="The Sentro website homepage." />
             </div>
-          </section>
-          <section className="ms-markdown">
+          </section>*/}
+          <section className="ms-markdown mt-xl">
             { children }
           </section>
         </section>
