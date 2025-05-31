@@ -88,7 +88,7 @@ const BlogMainPage: NextPage = () => {
           { blogs.map((blog, index) => (
             <Link href={`/blog/${blog.slug}`} className="blog-post flex flow-column gap-lg p-xl r-lg fill-surface-600 border-xs border-solid border-surface-400">
               <div className="flex flow-column">
-                <h3 className="title stretch-condensed">{ blog.title }</h3>
+                <h3 className="title stretch-condensed">{ blog.title } <small className="small ml-sm">Published <time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></small></h3>
                 <p className="body de-emphasize mt-xs">{ blog.description }</p>
               </div>
               <MSButton link={`/blog/${blog.slug}`} type="outlined">Read more</MSButton>
