@@ -24,7 +24,7 @@ $header-style: 'default' !default;
     min-height: 56px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     position: fixed;
     gap: himig.primitive-token-get('gap.md');
     top: 0;
@@ -49,40 +49,16 @@ $header-style: 'default' !default;
     ));
 
     &.is-scrollable {
-      &:not(.is-scrolled) {
-        --blur: 0;
-        @include himig.key-bind('navbar-inset-top', calc(56px + 1em));
+      --blur: 0;
+      @include himig.key-bind('navbar-inset-top', calc(56px + 1em));
 
-        .ms-navbar__wrapper {
-          @include himig.breakpoint-create('large', 'max') {
-            @include himig.struct-bind('navbar-wrapper', (
-              width: (
-                default: calc((100% - 50px) + 2em),
-                max: #{himig.token-get('viewport-content-limit')}
-              )
-            ));
-          }
-        }
-      }
-
-      &.is-scrolled {
-        @include himig.key-bind('header-fill', $header-fill);
-        @include himig.color-bind('header', (
-          ink: $header-ink,
-          border: $header-border
-        ));
-        @include himig.struct-bind('header', (
-          width: (
-            default: calc(100% - 50px),
-            max: #{himig.token-get('viewport-content-limit')}
-          )
-        ));
-        @include himig.key-bind('navbar-inset-right', 0);
-        --ms-header-brand-visibility: block;
-
-        .ms-navbar__wrapper {
+      .ms-navbar__wrapper {
+        @include himig.breakpoint-create('large', 'max') {
           @include himig.struct-bind('navbar-wrapper', (
-            width: 100%
+            width: (
+              default: calc((100% - 50px) + 2em),
+              max: #{himig.token-get('viewport-content-limit')}
+            )
           ));
         }
       }

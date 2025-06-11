@@ -36,7 +36,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
 
   return (
-    <li className={ `ms-navbar__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
+    <li className={ `ms-navbar__item${ isLinkExternal ? ' is-external' : '' }` }>
       <Link prefetch role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
         { label || children }
       </Link>

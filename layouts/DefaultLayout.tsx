@@ -122,18 +122,34 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
 
       </Head>
       <MSHeader title={ site.name } actionSection={
-        <>
+        <div className="flex flow-column wrap-none ai-end gap-md">
           <HCNavbarTrigger
             onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
             trigger={ isNavbarOpen }
           />
           <MSNavbar trigger={ isNavbarOpen }>
-            <HCNavbarItem link="/">Home</HCNavbarItem>
-            <HCNavbarItem link="#services">Services</HCNavbarItem>
-            <HCNavbarItem link="#works">Works</HCNavbarItem>
-            <HCNavbarItem link="/blog">Blog</HCNavbarItem>
+            <HCNavbarItem link="/">
+              <span>About Me</span>
+              <span className="de-emphasize">[01]</span>
+            </HCNavbarItem>
+            <HCNavbarItem link="#services">
+              <span>Services</span>
+              <span className="de-emphasize">[02]</span>
+            </HCNavbarItem>
+            <HCNavbarItem link="#works">
+              <span>Works</span>
+              <span className="de-emphasize">[03]</span>
+            </HCNavbarItem>
+            {/*<HCNavbarItem link="/blog">
+              <span>Blog</span>
+              <span className="de-emphasize">[04]</span>
+            </HCNavbarItem>*/}
+            <HCNavbarItem link="#contact">
+              <span>Contact</span>
+              <span className="de-emphasize">[04]</span>
+            </HCNavbarItem>
           </MSNavbar>
-        </>
+        </div>
       } isScrollable={hasHero} />
       <m.section id="content" {...animateVariants(contentVariants)}>
         { children }
