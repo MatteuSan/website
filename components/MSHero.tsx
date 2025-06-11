@@ -21,34 +21,44 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
-        start: 'bottom 27%',
+        start: 'top top',
+        end: 'bottom top',
         scrub: true,
       }
     });
 
     animateInView(heroRef.current).from(heroRef.current, {
       opacity: 0,
-      y: !isMotionReduced ? 70 : 0,
+      // y: !isMotionReduced ? 70 : 0,
       duration: 1
     });
 
     exit.to(heroRef.current, {
-      opacity: 0,
+      y: -50,
+      ease: 'power2',
+    });
+    exit.to('.ms-hero__wrapper', {
       y: -100,
       ease: 'power2',
+    }, '<');
+    exit.to(heroRef.current, {
+      opacity: 0,
     });
   }, { scope: heroRef });
 
   return (
-    <section className="ms-hero" ref={heroRef}>
-      { customLayout ? (
-        <>{ children }</>
-      ) : (
-        <div className="ms-hero__wrapper" ref={ref} {...rest}>
-          { children }
-        </div>
-      ) }
-    </section>
+    <>
+      <div className="ms-hero__background" aria-hidden></div>
+      <section className="ms-hero" ref={heroRef}>
+        { customLayout ? (
+          <>{ children }</>
+        ) : (
+          <div className="ms-hero__wrapper" ref={ref} {...rest}>
+            { children }
+          </div>
+        ) }
+      </section>
+    </>
   );
 });
 

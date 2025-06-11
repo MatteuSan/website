@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { m } from 'framer-motion';
 
@@ -12,6 +12,8 @@ import {
 
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface DefaultLayoutProps {
   title: string;
@@ -43,16 +45,19 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const isTransitioning = useRef(false);
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
 
-  const variants = {
+  const contentVariants = {
     initial: {
       opacity: 0,
+      // y: 50,
     },
     enter: {
       opacity: 1,
+      // y: 0,
       transition: {
         duration: 1,
         easings: [0.83, 0, 0.17, 1]
@@ -62,6 +67,25 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
       opacity: 0
     }
   };
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.from('.ms-header', {
+      opacity: 0,
+      top: '-100%',
+      duration: 0.7,
+      ease: 'power2.out',
+    });
+
+    tl.from('.ms-footer', {
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+    });
+
+    tl.call(() => tl.revert() as unknown as void);
+  });
 
   return (
     <>
@@ -105,14 +129,13 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
           />
           <MSNavbar trigger={ isNavbarOpen }>
             <HCNavbarItem link="/">Home</HCNavbarItem>
-            <HCNavbarItem link="/work">Work</HCNavbarItem>
-            <HCNavbarItem link="/tools">Tools</HCNavbarItem>
+            <HCNavbarItem link="#services">Services</HCNavbarItem>
+            <HCNavbarItem link="#works">Works</HCNavbarItem>
             <HCNavbarItem link="/blog">Blog</HCNavbarItem>
-            <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
           </MSNavbar>
         </>
       } isScrollable={hasHero} />
-      <m.section {...animateVariants(variants)}>
+      <m.section id="content" {...animateVariants(contentVariants)}>
         { children }
       </m.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />

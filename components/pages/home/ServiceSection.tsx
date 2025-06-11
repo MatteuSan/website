@@ -11,8 +11,8 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -42,7 +42,7 @@ const ServiceSection: React.FC = ( ) => {
 
       const contentSplit = SplitText.create('.content', BY_WORD);
       services.from(contentSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         onComplete: () => contentSplit.revert()
       }, '-=0.5');
     };

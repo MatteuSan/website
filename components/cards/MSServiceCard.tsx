@@ -27,7 +27,7 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       scrollTrigger: {
         trigger: serviceCardRef.current,
         start: 'top 85%',
-        toggleActions: 'play complete play reverse',
+        toggleActions: 'play complete play none',
       }
     });
 
@@ -65,7 +65,7 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
   return (
     <li ref={serviceCardRef} className="service-card" id={title.toLowerCase().replace(/\s/g, '-')}>
       <div className="service-card__content">
-        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
+        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed mb-sm">
           { title }
         </h3>
         { description ? (

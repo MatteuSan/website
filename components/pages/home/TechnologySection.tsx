@@ -19,8 +19,8 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -63,7 +63,7 @@ const TechnologySection: React.FC = () => {
 
       const content1Split = SplitText.create('.content-1', BY_WORD);
       tech.from(content1Split.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         onComplete: () => content1Split.revert()
       });
 
@@ -74,7 +74,7 @@ const TechnologySection: React.FC = () => {
 
       const content3Split = SplitText.create('.content-3', BY_WORD);
       tech.from(content3Split.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         onComplete: () => content3Split.revert()
       }, '<50%');
     }
@@ -121,28 +121,26 @@ const TechnologySection: React.FC = () => {
   return (
     <section
       id="skills-and-technologies"
-      className="w-full h-screen py-4xl flex flow-column jc-center ai-center"
+      className="w-full h-screen flex flow-column jc-center ai-center"
       ref={technologySectionRef}
     >
-      <div id="skills-and-technologies__wrapper" className="flex flow-column jc-start py-2xl @medium:py-4xl">
-        <div className="constrained flex flow-column jc-center">
-          <h2 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I use</h2>
-          <p className="content-1 my-sm size-md weight-light">
-            I like working with tools that conform to my philosophies of building great software.
-          </p>
-          <p className="content-2 de-emphasize mb-2xl">
-            Tools that encourage clean and scalable code, thoughtful design, and accessibility by default. I believe great software is fast, flexible, and considerate—both to the people who use it and the people who build it. That’s why I gravitate toward technologies that help me stay efficient without sacrificing quality, and stay creative without losing control...
-          </p>
-        </div>
-        <div className="technologies" aria-hidden="true">
-          { TechnologiesMarkup }
-          { TechnologiesMarkup }
-        </div>
-        <div className="constrained flex flow-column jc-center mt-2xl">
-          <p className="content-3 family-subtitle size-md weight-light">
-            All in the name of delivering you the best results, and giving your users the experience they deserve.
-          </p>
-        </div>
+      <div className="constrained flex flow-column jc-center">
+        <h2 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I use</h2>
+        <p className="content-1 my-sm size-md weight-light">
+          I like working with tools that conform to my philosophies of building great software.
+        </p>
+        <p className="content-2 de-emphasize mb-2xl">
+          Tools that encourage clean and scalable code, thoughtful design, and accessibility by default. I believe great software is fast, flexible, and considerate—both to the people who use it and the people who build it. That’s why I gravitate toward technologies that help me stay efficient without sacrificing quality, and stay creative without losing control...
+        </p>
+      </div>
+      <div className="technologies" aria-hidden="true">
+        { TechnologiesMarkup }
+        { TechnologiesMarkup }
+      </div>
+      <div className="constrained flex flow-column jc-center mt-2xl">
+        <p className="content-3 family-subtitle size-md weight-light">
+          All in the name of delivering you the best results, and giving your users the experience they deserve.
+        </p>
       </div>
     </section>
   );

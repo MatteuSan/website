@@ -57,6 +57,11 @@
     }
   }
 
+  .big-ass-text {
+    font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(157px));
+    line-height: 1.15;
+  }
+
   .italic {
     font-style: italic;
   }
@@ -117,6 +122,10 @@
 
   .letter-spacing-wide {
     letter-spacing: himig.to-rem(3px);
+  }
+
+  .stretch-xcondensed {
+    font-stretch: ultra-condensed;
   }
 
   .stretch-condensed {

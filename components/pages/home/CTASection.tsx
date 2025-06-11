@@ -10,8 +10,8 @@ import {
   animateInView,
   BY_LINE,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -37,14 +37,14 @@ const CTASection: React.FC<CTASectionProps> = () => {
 
       const leadTextSplit = SplitText.create('.lead-text', BY_WORD);
       cta.from(leadTextSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         stagger: 0.1,
         onComplete: () => leadTextSplit.revert()
       });
 
       const contentSplit = SplitText.create('.content', BY_LINE);
       cta.from(contentSplit.lines, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         // onComplete: () => contentSplit.revert()
       }, '-=0.5');
 

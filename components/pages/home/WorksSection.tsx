@@ -9,8 +9,8 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  SCREEN_SIZES, TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SCREEN_SIZES, SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -46,7 +46,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
 
       const subtitleSplit = SplitText.create('.content', BY_WORD);
       work.from(subtitleSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         onComplete: () => subtitleSplit.revert()
       });
 

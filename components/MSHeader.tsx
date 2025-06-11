@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import Link from 'next/link';
+import { m, HTMLMotionProps } from 'framer-motion';
 
-interface HCHeaderProps {
+type MSHeaderProps = {
   title: string;
   actionSection?: any;
   isScrollable?: boolean;
-}
+} & Omit<HTMLMotionProps<"div">, "ref">;
 
-const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
+const MSHeader: React.FC<MSHeaderProps> = forwardRef<HTMLDivElement, MSHeaderProps>(({ title, actionSection, isScrollable, ...motionProps }, ref) => {
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,8 +20,11 @@ const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
   }, [isHeaderScrolled]);
 
   return (
-    <header
-      className={ `ms-header${ isScrollable ? ' is-scrollable' : '' }${ isHeaderScrolled ? ' is-scrolled' : '' }` }>
+    <m.header
+      className={ `ms-header${ isScrollable ? ' is-scrollable' : '' }${ isHeaderScrolled ? ' is-scrolled' : '' }` }
+      ref={ref}
+      {...motionProps}
+    >
       <div className="ms-header__brand">
         <Link prefetch href="/">
           <h1 className="title">{ title }</h1>
@@ -31,8 +35,8 @@ const MSHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
           { actionSection }
         </div>
       }
-    </header>
+    </m.header>
   );
-};
+});
 
 export default MSHeader;

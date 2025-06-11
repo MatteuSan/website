@@ -18,7 +18,7 @@ $header-style: 'default' !default;
     @include himig.struct-apply('header', (
       width: (
         default: calc((100% - 50px) + 2em),
-        max: calc(#{himig.token-get('viewport-layout-limit')} + 2em)
+        max: calc(#{himig.token-get('viewport-content-limit')} + 2em)
       )
     ));
     min-height: 56px;
@@ -58,7 +58,7 @@ $header-style: 'default' !default;
             @include himig.struct-bind('navbar-wrapper', (
               width: (
                 default: calc((100% - 50px) + 2em),
-                max: #{himig.token-get('viewport-layout-limit')}
+                max: #{himig.token-get('viewport-content-limit')}
               )
             ));
           }
@@ -74,7 +74,7 @@ $header-style: 'default' !default;
         @include himig.struct-bind('header', (
           width: (
             default: calc(100% - 50px),
-            max: #{himig.token-get('viewport-layout-limit')}
+            max: #{himig.token-get('viewport-content-limit')}
           )
         ));
         @include himig.key-bind('navbar-inset-right', 0);
@@ -97,7 +97,7 @@ $header-style: 'default' !default;
       @include himig.struct-bind('header', (
         width: (
           default: calc(100% - 50px),
-          max: #{himig.token-get('viewport-layout-limit')}
+          max: #{himig.token-get('viewport-content-limit')}
         )
       ));
       backdrop-filter: blur(8px);

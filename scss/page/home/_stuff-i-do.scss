@@ -31,7 +31,7 @@
         border: rgb(from himig.token-get('surface-400') r g b / 50%)
       ));
       @include himig.struct-apply('service-card', (
-        padding: ('xl' '2xl'),
+        padding: ('xl'),
         radius: 'lg',
         border-width: 'xs',
         border-style: 'solid',
@@ -76,7 +76,11 @@
       flex-flow: column nowrap;
 
       @include himig.breakpoint-create('large') {
-        padding-block: himig.primitive-token-get('padding.lg');
+        // padding-block: himig.primitive-token-get('padding.lg');
+      }
+
+      h3 {
+        line-height: 1.15;
       }
 
       .service-card__list {

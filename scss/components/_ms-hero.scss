@@ -1,26 +1,34 @@
 @use '@matteusan/himig';
 
-@use 'lib/media-variables';
-
-$hero-fill: 'accent-gradient' !default;
-$hero-ink: 'accent-ink' !default;
-
-$hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
-
 @mixin render() {
+  .ms-hero__background {
+    width: calc(var(--circle-size, 500px) * 2);
+    height: calc(var(--circle-size, 500px) * 2);
+    display: block;
+    position: absolute;
+    inset: -5svw -15svh 0;
+    z-index: -1;
+    background: radial-gradient(circle var(--circle-size, 500px) at 50% 50%, rgb(from himig.token-get('accent-400') r g b / 20%) 0%, transparent 100%);
+
+    @include himig.breakpoint-create('medium') {
+      --circle-size: 600px;
+    }
+
+    @include himig.breakpoint-create('large') {
+      --circle-size: 800px;
+    }
+  }
+
   .ms-hero {
-    width: calc(100% - 50px);
-    max-width: himig.token-get('viewport-layout-limit');
-    min-height: calc(100svh - 126px);
+    width: 100%;
+    min-height: calc(100svh);
     display: grid;
-    place-items: center;
+    place-items: flex-end;
+    position: relative;
     margin-inline: auto;
-    margin-block-start: 76px;
     margin-block-end: himig.primitive-token-get('margin.5xl');
-    border-radius: himig.primitive-token-get('radius.xl');
     padding-block: himig.primitive-token-get('padding.4xl');
-    background: radial-gradient(circle at 50% 30%, rgb(from himig.token-get('accent-400') r g b / 33%) 0%, transparent 100%);
-    border: 1px solid rgb(from himig.token-get('accent-400') r g b / 33%);
+    overflow: clip;
 
     @include himig.breakpoint-create('large') {
       padding-block: himig.primitive-token-get('padding.5xl');
@@ -32,13 +40,7 @@ $hero-clip: polygon(0 0, 100% 0, 100% 93%, 0% 100%) !default;
       margin-inline: auto;
       display: flex;
       flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
       gap: himig.primitive-token-get('gap.lg');
-
-      @include himig.breakpoint-create('large') {
-        gap: himig.primitive-token-get('gap.xl');
-      }
     }
   }
 }

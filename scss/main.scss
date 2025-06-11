@@ -21,6 +21,24 @@
 
 @use 'utils';
 
+$ms-material-dark: (
+  200: #948b8b,
+  300: #6e6363,
+  400: #3d3838,
+  600: #211f1f,
+  800: #111010,
+  'ink': #fff
+);
+
+$ms-material-light: (
+  200: hsl(43, 100%, 99%),
+  300: hsl(20, 7%, 82%),
+  400: hsl(40, 4%, 72%),
+  600: hsl(60, 2%, 54%),
+  800: hsl(40, 2%, 37%),
+  'ink': #111010
+);
+
 @include himig.init(
   $primary: (
     200: #948b8b,
@@ -197,6 +215,16 @@
       transform: translateY(3px) !important;
       box-shadow: 0 0 0 himig.token-get('ms-orange-inverted-200') !important;
     }
+  }
+
+  @include ms-button.extend('icon-only.large') {
+    @include ms-button.struct((
+      height: (
+        default: 100%,
+        max: 100%,
+      ),
+      padding: 'md',
+    ));
   }
 
   @include ms-card.render(
