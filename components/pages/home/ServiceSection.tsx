@@ -59,7 +59,7 @@ const ServiceSection: React.FC = ( ) => {
   }, { scope: servicesSectionRef });
 
   return (
-    <section id="stuff-i-do" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
+    <section id="services" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
       <section className="constrained mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
         <div>
           <h2 className="family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h2>

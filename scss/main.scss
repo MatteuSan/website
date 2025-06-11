@@ -81,7 +81,7 @@ $ms-material-light: (
     ),
     'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%),
     'transition-time': 0.2s,
-    'viewport-layout-limit': 1477px,
+    'viewport-layout-limit': 1507px,
     'viewport-content-limit': 1077px
   )
 ) {
@@ -97,7 +97,7 @@ $ms-material-light: (
   html {
     overflow-x: clip;
     scroll-padding-block-start: calc(55px + 2em);
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {

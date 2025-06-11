@@ -15,8 +15,6 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
   const { customLayout, children, ...rest } = props;
   const heroRef = React.useRef<HTMLDivElement>(null);
 
-  const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
-
   useGSAP(() => {
     const exit = gsap.timeline({
       scrollTrigger: {
@@ -29,7 +27,6 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
 
     animateInView(heroRef.current).from(heroRef.current, {
       opacity: 0,
-      // y: !isMotionReduced ? 70 : 0,
       duration: 1
     });
 
@@ -39,6 +36,7 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
     });
     exit.to('.ms-hero__wrapper', {
       y: -100,
+      duration: 2,
       ease: 'power2',
     }, '<');
     exit.to(heroRef.current, {

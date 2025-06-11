@@ -1,5 +1,4 @@
 @use 'pkg:@matteusan/himig';
-@use 'technologies';
 @use 'stuff-i-do';
 @use 'cta';
 
@@ -36,7 +35,6 @@
     }
   }
 
-  @include technologies.render();
   @include stuff-i-do.render();
   @include cta.render();
 }

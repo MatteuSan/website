@@ -36,8 +36,8 @@ function App({ Component, pageProps, router }: AppProps) {
       </MotionConfig>
       <Analytics key="analytics" mode="auto" />
       <SpeedInsights />
-
-      {/*<ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />*/}
+      {/* @ts-expect-error */}
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
     </>
   );
 }

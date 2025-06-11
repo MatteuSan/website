@@ -128,7 +128,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
             trigger={ isNavbarOpen }
           />
           <MSNavbar trigger={ isNavbarOpen }>
-            <HCNavbarItem link="/">
+            <HCNavbarItem link="#about-me">
               <span>About Me</span>
               <span className="de-emphasize">[01]</span>
             </HCNavbarItem>

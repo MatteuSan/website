@@ -93,7 +93,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         <div id="cta" className="content-3 w-full flex flow-row @medium:flow-row wrap-none mt-lg gap-sm @medium:gap-md">
           <MSButton link="mailto:matt@matteusan.com" type={`filled large`} icon={['left', <EnvelopeIcon />]}>Let's talk</MSButton>
           <MSButton
-            link="#stuff-i-do"
+            link="#services"
             type={`outlined large icon-only`}
             icon={['left', <ArrowDownRightIcon />]}
           />

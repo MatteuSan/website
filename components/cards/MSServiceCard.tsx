@@ -70,7 +70,7 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
         </h3>
         { description ? (
           <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
-            { description }
+
           </p>
         ) : null }
         { children ? (

@@ -6,7 +6,6 @@ import { works } from '@/constants/works';
 
 import AboutMeSection from "@/components/pages/home/AboutMeSection";
 import ServiceSection from "@/components/pages/home/ServiceSection";
-import TechnologySection from "@/components/pages/home/TechnologySection";
 import WorksSection from "@/components/pages/home/WorksSection";
 import CTASection from "@/components/pages/home/CTASection";
 
@@ -22,7 +21,6 @@ const HomePage: NextPage = () => {
       <AboutMeSection />
       <MainContent constrained={false}>
         <ServiceSection />
-        <TechnologySection />
         <WorksSection works={ new_works } />
         <CTASection />
       </MainContent>
