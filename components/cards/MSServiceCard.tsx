@@ -5,8 +5,7 @@ import { MSButton } from '@/components';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { SplitText } from 'gsap/SplitText';
-import { BY_LINE, MOTION_PREFERENCES, REDUCED_ANIMATION, SWOOP_IN_ANIMATION, useMediaQuery } from '@/lib/gsap';
+import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
   title: string;
