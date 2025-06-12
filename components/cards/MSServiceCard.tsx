@@ -60,26 +60,27 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       opacity: 1,
       duration: 0.2,
     }, '-=0.5');
+
+    enter.call(() => {
+      enter.revert();
+    })
   }, { scope: serviceCardRef });
 
   return (
-    <li ref={serviceCardRef} className="service-card" id={title.toLowerCase().replace(/\s/g, '-')}>
+    <li ref={serviceCardRef} className="service-card swiper-slide" id={title.toLowerCase().replace(/\s/g, '-')}>
       <div className="service-card__content">
-        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed mb-sm">
+        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed">
           { title }
         </h3>
-        { description ? (
-          <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
-
-          </p>
-        ) : null }
         { children ? (
-          <div className="content-2 mb-xl">
+          <div className="content-2">
             { children }
           </div>
         ) : null }
         { link ? (
-          <MSButton link={link} type="outlined">View examples</MSButton>
+          <div className="w-full flex flow-row wrap-none jc-end ai-center gap-sm">
+            <MSButton link={link} type="outlined">View examples</MSButton>
+          </div>
         ) : null }
       </div>
       { media ? (

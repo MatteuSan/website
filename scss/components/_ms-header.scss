@@ -24,7 +24,7 @@ $header-style: 'default' !default;
     min-height: 56px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     position: fixed;
     gap: himig.primitive-token-get('gap.md');
     top: 0;
@@ -81,6 +81,9 @@ $header-style: 'default' !default;
     }
 
     .ms-header__brand {
+      height: 100%;
+      margin-block-end: auto;
+
       a {
         text-decoration: none;
       }

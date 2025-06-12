@@ -2,70 +2,57 @@
 @use 'sass:string';
 
 @mixin render() {
-  #stuff-i-do {
+  #services {
     container-type: inline-size;
 
     .service-container {
+      width: max-content;
       display: flex;
-      flex-flow: column nowrap;
-      gap: himig.primitive-token-get('gap.2xl');
+      flex-flow: row nowrap;
+      gap: himig.primitive-token-get('gap.lg');
+      padding-block-start: himig.primitive-token-get('margin.xl');
+      padding-inline: var(--page-margin, 25px);
       list-style: none;
+      overflow-x: auto;
+      overflow-y: clip;
+
+      @include himig.breakpoint-create('large') {
+        --page-margin: max(25px, calc((100% - 1077px) / 2));
+      }
     }
   }
 
   .service-card {
     --easing: cubic-bezier(0.83, 0, 0.17, 1);
     width: 100%;
-    height: 100%;
+    max-width: 400px;
+    height: auto;
     display: flex;
     flex-flow: var(--flow, column-reverse) nowrap;
-    @include himig.struct-apply('service-card', (
-      gap: 'md',
-    ));
+    transition: transform himig.token-get('time-short') himig.token-get('easing');
 
     @include himig.breakpoint-create('large') {
-      --flow: row;
-      background: himig.key-create('service-card-fill', #{radial-gradient(circle at 100% 50%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
-      @include himig.color-apply('service-card', (
-        ink: 'surface-ink',
-        border: rgb(from himig.token-get('surface-400') r g b / 50%)
-      ));
-      @include himig.struct-apply('service-card', (
-        padding: ('xl'),
-        radius: 'lg',
-        border-width: 'xs',
-        border-style: 'solid',
-      ));
-      @include himig.key-bind('service-card-gap', himig.primitive-token-get('gap.lg'));
-      overflow: hidden;
+      // --flow: row;
+      // @include himig.key-bind('service-card-gap', himig.primitive-token-get('gap.lg'));
+      // overflow: hidden;
+    }
+
+    &:hover {
+      transform: translateY(-15px);
     }
 
     .service-card__media {
       width: 100%;
       height: 100%;
-      border-radius: himig.primitive-token-get('radius.md');
+      border-radius: himig.primitive-token-get('radius.md') himig.primitive-token-get('radius.md') 0 0;
       overflow: hidden;
-      // transform-origin: bottom right;
-      aspect-ratio: himig.key-create('service-card-aspect-ratio', string.unquote('16 / 10'));
+      aspect-ratio: himig.key-create('service-card-aspect-ratio', string.unquote('16 / 9'));
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
-      }
-
-      @include himig.breakpoint-create('large') {
-        transform: scale(1.65) translateX(7em) translateY(5em) rotateZ(var(--rotate-z, 2deg)) !important;
-        box-shadow: 0 10px 20px #{rgba(#000, 0.2)};
-
-        &:hover {
-          z-index: 1;
-        }
-
-        &:not(:hover) {
-          animation: fix-z-index 0.5s ease;
-        }
       }
     }
 
@@ -74,10 +61,18 @@
       height: 100%;
       display: flex;
       flex-flow: column nowrap;
-
-      @include himig.breakpoint-create('large') {
-        // padding-block: himig.primitive-token-get('padding.lg');
-      }
+      background: himig.key-create('service-card-fill', #{radial-gradient(circle at 100% 50%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
+      @include himig.color-apply('service-card', (
+        ink: 'surface-ink',
+        border: rgb(from himig.token-get('surface-400') r g b / 50%)
+      ));
+      @include himig.struct-apply('service-card', (
+        padding: ('xl'),
+        radius: (0 0 'lg' 'lg'),
+        gap: 'lg',
+        border-width: 'xs',
+        border-style: 'solid',
+      ));
 
       h3 {
         line-height: 1.15;

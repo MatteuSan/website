@@ -19,7 +19,7 @@
     transition: all var(--ms-transition-time) ease;
     z-index: 2;
 
-    @include himig.breakpoint-create('large') {
+    @include himig.breakpoint-create('medium') {
       display: none;
     }
   }

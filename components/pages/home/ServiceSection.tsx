@@ -66,9 +66,9 @@ const ServiceSection: React.FC = ( ) => {
           <p className="content de-emphasize size-md weight-light">Here's how I can help you.</p>
         </div>
       </section>
-      <ul className="service-container constrained">
+      <ul className="service-container">
         <MSServiceCard
-          title="Web Design"
+          title="Web & Mobile Design"
           description="I design interfaces that feel as good as they look—clean, accessible, and always user-centered. Every screen is crafted with care and intention, delivering the kind of experience your users will remember and love."
           media={DesignHero}
           alt="Design services image."
@@ -76,8 +76,9 @@ const ServiceSection: React.FC = ( ) => {
         >
           <ol className="service-card__list">
             <li data-service-number="01">Responsive Design</li>
-            <li data-service-number="02">Wireframing and Prototyping</li>
-            <li data-service-number="03">Design Audit and Consulting</li>
+            <li data-service-number="02">Wireframing</li>
+            <li data-service-number="03">Content Writing</li>
+            <li data-service-number="04">Interactive Design</li>
           </ol>
         </MSServiceCard>
         <MSServiceCard
@@ -88,9 +89,10 @@ const ServiceSection: React.FC = ( ) => {
           link="/work?filter=Development"
         >
           <ol className="service-card__list">
-            <li data-service-number="01">Front-end Development</li>
-            <li data-service-number="02">SEO and Accessibility</li>
-            <li data-service-number="03">Delightful Interactions</li>
+            <li data-service-number="01">Website & Web App Development</li>
+            <li data-service-number="02">SEO Optimization</li>
+            <li data-service-number="03">Accessibility</li>
+            <li data-service-number="04">Motion & Interactivity</li>
           </ol>
         </MSServiceCard>
         <MSServiceCard
@@ -101,10 +103,10 @@ const ServiceSection: React.FC = ( ) => {
           link="/tools?filter=Design%20System"
         >
           <ol className="service-card__list">
-            <li data-service-number="01">Design Tokens</li>
-            <li data-service-number="02">Component Creation</li>
-            <li data-service-number="03">Documentation and Guidelines</li>
-            <li data-service-number="04">Adoption and Onboarding</li>
+            <li data-service-number="01">Design Tokens & Components</li>
+            <li data-service-number="02">Documentation and Guidelines</li>
+            <li data-service-number="03">Adoption and Onboarding</li>
+            <li data-service-number="04">Brand & Identity Development</li>
           </ol>
         </MSServiceCard>
       </ul>

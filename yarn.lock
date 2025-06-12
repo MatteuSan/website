@@ -2176,6 +2176,7 @@ __metadata:
     remark-gfm: 4.0.0
     sass: 1.86.1
     shiki: ^3.2.2
+    swiper: ^11.2.8
     typescript: 5.3.3
   languageName: unknown
   linkType: soft
@@ -3786,6 +3787,13 @@ __metadata:
   dependencies:
     has-flag: ^3.0.0
   checksum: 95f6f4ba5afdf92f495b5a912d4abee8dcba766ae719b975c56c084f5004845f6f5a5f7769f52d53f40e21952a6d87411bafe34af4a01e65f9926002e38e1dac
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^11.2.8":
+  version: 11.2.8
+  resolution: "swiper@npm:11.2.8"
+  checksum: 221b39b6822a4da5d503bf2db418ab382056f3b48d7f01e62a37129df6c714e770207eff5856bc1df75daeb0456174109323fd54adaac409f6e6f8edc8d8d850
   languageName: node
   linkType: hard
 
