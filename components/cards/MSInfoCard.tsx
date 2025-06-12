@@ -34,7 +34,7 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
   }
 
   return (
-    <Link href={ item.slug && `/${linkBase}/${ item.slug }` }>
+    <Link href={ item.slug ? `/${linkBase}/${ item.slug }` : '/' }>
       <MSCard
         status={ item.status }
         ref={ infoCardRef }

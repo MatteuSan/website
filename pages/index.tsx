@@ -13,15 +13,13 @@ const workItemsWithSlug = works.filter((item) => item?.slug != null);
 const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
 const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
 
-const new_works = workCleanedItems.slice(0, 6);
-
 const HomePage: NextPage = () => {
   return (
     <DefaultLayout title="HOME" hasHero>
       <AboutMeSection />
       <MainContent constrained={false}>
         <ServiceSection />
-        <WorksSection works={ new_works } />
+        <WorksSection works={ workCleanedItems.slice(0, 8) } />
         <CTASection />
       </MainContent>
     </DefaultLayout>

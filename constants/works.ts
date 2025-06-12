@@ -88,16 +88,6 @@ export const works: Work[] = [
     'duration': [2020, 2022]
   },
   {
-    'name': 'SurPathHub Documentation Site',
-    'desc': 'The official documentation website for all open source SurPathHub projects.',
-    'media': 'sph-docs.webp',
-    'link': 'https://sph-docs.netlify.app/',
-    'status': 'Archived',
-    'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
-    'tags': ['Development', 'Website', 'Open Source'],
-    'duration': [2021]
-  },
-  {
     'name': 'BlockCorp',
     'desc': 'The platform to order Growtopia-related services.',
     'media': 'blockcorp.webp',
@@ -106,5 +96,15 @@ export const works: Work[] = [
     'tech': ['SCSS', 'Vue', 'Python', 'Flask'],
     'tags': ['Development', 'Web App'],
     'duration': [2020, 2021]
+  },
+  {
+    'name': 'SurPathHub Documentation Site',
+    'desc': 'The official documentation website for all open source SurPathHub projects.',
+    'media': 'sph-docs.webp',
+    'link': 'https://sph-docs.netlify.app/',
+    'status': 'Archived',
+    'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
+    'tags': ['Development', 'Website', 'Open Source'],
+    'duration': [2021]
   },
 ];

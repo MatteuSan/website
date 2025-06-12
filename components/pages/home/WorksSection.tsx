@@ -23,7 +23,6 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
-  const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
     const exitPage = gsap.timeline({
