@@ -134,7 +134,7 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
       trigger,
       start: options?.timing?.start || 'top 95%',
       end: options?.timing?.end || undefined,
-      toggleActions: 'play pause resume none',
+      toggleActions: 'play complete resume none',
       once: options?.once ?? false,
       invalidateOnRefresh: options?.invalidateOnRefresh || undefined,
     }

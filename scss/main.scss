@@ -233,7 +233,7 @@ $ms-material-light: (
     ),
     $struct: (
       padding: 'lg',
-      radius: 'lg'
+      radius: 'none'
     ),
     $typography: (
       family: (
@@ -250,29 +250,34 @@ $ms-material-light: (
 
   .ms-card {
     &:hover {
-      // box-shadow: 0 5px 40px rgba(#fff, 0.1);
-    }
+      .ms-card__media {
+        filter: none !important;
 
-    .ms-card__content {
-      --ms-card-padding: 0 #{himig.primitive-token-get('padding.lg')};
-    }
-
-    .ms-card__tags {
-      scrollbar-width: none;
-
-      /**
-       * fallback for older chrome and safari versions
-       */
-      &::-webkit-scrollbar-thumb,
-      &::-webkit-scrollbar-track {
-        width: 0;
-        height: 0;
-        background: none;
+        @include himig.breakpoint-create('large') {
+          filter:
+            saturate(15%)
+            blur(5px)
+            brightness(40%) !important;
+        }
       }
     }
 
-    .ms-card__footer {
-      margin-block-start: auto;
+    .ms-card__details {
+      --ms-card-fill: transparent !important;
+
+      @include himig.breakpoint-create('large') {
+        .ms-card__header {
+          --ms-card-header-padding: #{himig.primitive-token-get('padding.xl')} #{himig.primitive-token-get('padding.xl')} 0;
+          --ms-card-title-size: #{himig.token-get('size-supertitle')};
+          --ms-card-subtitle-size: #{himig.token-get('size-body')};
+          --ms-card-subtitle-weight: #{himig.token-get('weight-subtitle')};
+          --ms-card-subtitle-line-height: #{himig.token-get('line-height-supertitle')};
+        }
+
+        .ms-card__content {
+          --ms-card-padding: 0 #{himig.primitive-token-get('padding.xl')} #{himig.primitive-token-get('padding.xl')};
+        }
+      }
     }
   }
 
@@ -373,7 +378,7 @@ $ms-material-light: (
       height: 300%;
       position: absolute;
       inset: -150% 0% 0% -150%;
-      opacity: 0.65;
+      opacity: 0.75;
       animation: 2s steps(1) infinite noise;
     }
   }

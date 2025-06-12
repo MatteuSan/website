@@ -14,6 +14,7 @@ import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useLenis } from 'lenis/react';
 
 interface DefaultLayoutProps {
   title: string;
@@ -45,7 +46,6 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const isTransitioning = useRef(false);
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
@@ -130,15 +130,15 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
           <MSNavbar trigger={ isNavbarOpen }>
             <HCNavbarItem link="#about-me">
               <span>About Me</span>
-              <span className="de-emphasize">[01]</span>
+              <span className="family-mono de-emphasize">[01]</span>
             </HCNavbarItem>
             <HCNavbarItem link="#services">
               <span>Services</span>
-              <span className="de-emphasize">[02]</span>
+              <span className="family-mono de-emphasize">[02]</span>
             </HCNavbarItem>
             <HCNavbarItem link="#works">
               <span>Works</span>
-              <span className="de-emphasize">[03]</span>
+              <span className="family-mono de-emphasize">[03]</span>
             </HCNavbarItem>
             {/*<HCNavbarItem link="/blog">
               <span>Blog</span>
@@ -146,7 +146,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
             </HCNavbarItem>*/}
             <HCNavbarItem link="#contact">
               <span>Contact</span>
-              <span className="de-emphasize">[04]</span>
+              <span className="family-mono de-emphasize">[04]</span>
             </HCNavbarItem>
           </MSNavbar>
         </div>

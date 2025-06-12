@@ -24,7 +24,7 @@ $header-style: 'default' !default;
     min-height: 56px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: himig.key-create('header-alignment', flex-start);
     position: fixed;
     gap: himig.primitive-token-get('gap.md');
     top: 0;
@@ -34,19 +34,22 @@ $header-style: 'default' !default;
     padding: 0.5em 1em;
     border-radius: himig.primitive-token-get('radius.md');
     z-index: 100;
-    backdrop-filter: blur(var(--blur, 8px));
     @include himig.prefix(transition, all 0.5s ease);
 
-    background: himig.key-create('header-fill', $header-un-scrolled-fill);
-    @include himig.color-apply('header', (
-      ink: $header-ink,
-      border: $header-un-scrolled-border
-    ));
+    // background: himig.key-create('header-fill', $header-un-scrolled-fill);
+    // @include himig.color-apply('header', (
+    //   ink: $header-ink,
+    //   border: $header-un-scrolled-border
+    // ));
 
-    @include himig.struct-apply('header', (
-      border-width: 'xs',
-      border-style: 'solid'
-    ));
+    // @include himig.struct-apply('header', (
+    //   border-width: 'xs',
+    //   border-style: 'solid'
+    // ));
+
+    @include himig.breakpoint-create('medium') {
+      @include himig.key-bind('header-alignment', flex-start);
+    }
 
     &.is-scrollable {
       --blur: 0;
@@ -64,47 +67,29 @@ $header-style: 'default' !default;
       }
     }
 
-    &:not(.is-scrollable) {
-      @include himig.key-bind('header-fill', $header-fill);
-      @include himig.color-bind('header', (
-        ink: $header-ink,
-        border: $header-border
-      ));
-      @include himig.struct-bind('header', (
-        width: (
-          default: calc(100% - 50px),
-          max: #{himig.token-get('viewport-content-limit')}
-        )
-      ));
-      backdrop-filter: blur(8px);
-      --ms-header-brand-visibility: block;
-    }
-
     .ms-header__brand {
       height: 100%;
-      margin-block-end: auto;
+      flex: 1;
 
       a {
+        height: 100%;
         text-decoration: none;
       }
 
       h1,
       h2,
       h3 {
+        height: 100%;
         position: relative;
         top: 0;
         left: 0;
         border-radius: himig.primitive-token-get('radius.sm');
-        display: var(--ms-header-brand-visibility, block);
+        display: block;
         user-select: none;
         letter-spacing: himig.to-rem(-2px);
         font-stretch: condensed;
         @include himig.struct-shadow('header-title', 'high');
         z-index: 2;
-
-        @include himig.breakpoint-create('large') {
-          display: var(--ms-header-brand-visibility, block);
-        }
       }
     }
 
@@ -113,6 +98,12 @@ $header-style: 'default' !default;
       flex-flow: row-reverse nowrap;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    &:has(.ms-navbar.is-open) {
+      .ms-header__brand {
+        // margin-block-end: auto;
+      }
     }
   }
 }

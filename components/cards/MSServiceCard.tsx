@@ -33,7 +33,6 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
 
     enter.fromTo(serviceCardRef.current, {
       opacity: 0,
-      y: !isMotionReduced ? 30 : 0,
       duration: 1,
     }, {
       opacity: 1,
@@ -54,6 +53,12 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       duration: 0.8,
     }, '-=0.5');
 
+    enter.from('content-3', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.8,
+    }, '-=0.5');
+
     enter.fromTo('.ms-button', {
       opacity: 0,
     }, {
@@ -68,21 +73,6 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
 
   return (
     <li ref={serviceCardRef} className="service-card swiper-slide" id={title.toLowerCase().replace(/\s/g, '-')}>
-      <div className="service-card__content">
-        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed">
-          { title }
-        </h3>
-        { children ? (
-          <div className="content-2">
-            { children }
-          </div>
-        ) : null }
-        { link ? (
-          <div className="w-full flex flow-row wrap-none jc-end ai-center gap-sm">
-            <MSButton link={link} type="outlined">View examples</MSButton>
-          </div>
-        ) : null }
-      </div>
       { media ? (
         <div className="service-card__media">
           <Image
@@ -95,6 +85,28 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
           />
         </div>
       ) : null }
+      <div className="service-card__content">
+        <div>
+          <h3 ref={serviceCardTitleRef} className={`content-1 family-mono size-sm de-emphasize wrap-brackets`}>
+            { title }
+          </h3>
+          { description ? (
+            <p className="content-2 family-supertitle size-xl @medium:size-2xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
+              { description }
+            </p>
+          ) : null }
+        </div>
+        { children ? (
+          <div className="content-3">
+            { children }
+          </div>
+        ) : null }
+        { link ? (
+          <div className="w-full flex flow-row wrap-none jc-end ai-center gap-sm">
+            <MSButton link={link} type="outlined">View examples</MSButton>
+          </div>
+        ) : null }
+      </div>
     </li>
   );
 };

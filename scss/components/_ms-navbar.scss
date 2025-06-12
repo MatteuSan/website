@@ -2,17 +2,13 @@
 
 @mixin render() {
   .ms-navbar__trigger {
-    width: 40px;
-    height: 40px;
+    width: himig.token-get('size-title');
+    height: himig.token-get('size-title');
     display: grid;
     place-items: center;
     @include himig.color-apply('navbar-trigger', (
       fill: rgba(0 0 0 / 0),
       ink: 'primary-200',
-    ));
-    @include himig.struct-apply('navbar-trigger', (
-      radius: 'small',
-      padding: 'sm',
     ));
     border: none;
     cursor: pointer;

@@ -12,13 +12,14 @@ import {
   SWOOP_IN_ANIMATION, REDUCED_ANIMATION
 } from '@/lib/gsap';
 import { MSButton, MSHero } from '@/components';
-import { ArrowDownLeftIcon, ArrowDownRightIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { ArrowDownRightIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { useLenis } from 'lenis/react';
 
 interface AboutMeSectionProps {}
 
 const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   const aboutMeSectionRef = useRef<HTMLDivElement>(null);
-
+  const lenis = useLenis();
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
@@ -77,12 +78,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
   }, { scope: aboutMeSectionRef });
 
   return (
-    <MSHero ref={aboutMeSectionRef}>
+    <MSHero ref={aboutMeSectionRef} id="about-me">
       <div className="picture-frame" style={{ flexShrink: 0 }}>
         <Image decoding="async" loading="eager" src="/img/favicon.png" style={{ aspectRatio: '1', objectFit: 'cover' }} alt="Matteu Headshot" width={ 500 } height={ 500 }/>
       </div>
       <div>
-        <h2 className="lead-text family-supertitle big-ass-text letter-spacing-condensed stretch-xcondensed will-split">Hi, I'm Matt.</h2>
+        <h2 className="family-mono size-sm de-emphasize wrap-brackets">About me</h2>
+        <p className="lead-text family-supertitle big-ass-text letter-spacing-condensed stretch-xcondensed will-split">Hi, I'm Matt.</p>
         <p className="content mt-sm size-md @large:size-lg weight-light will-split">
           <span className="highlight">a UX Engineer</span> based in the Philippines, <br/>
           and I create bridges from software to user.
@@ -93,9 +95,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
         <div id="cta" className="content-3 w-full flex flow-row @medium:flow-row wrap-none mt-lg gap-sm @medium:gap-md">
           <MSButton link="mailto:matt@matteusan.com" type={`filled large`} icon={['left', <EnvelopeIcon />]}>Let's talk</MSButton>
           <MSButton
-            link="#services"
             type={`outlined large icon-only`}
             icon={['left', <ArrowDownRightIcon />]}
+            onClick={() => {
+              if (lenis) {
+                lenis.scrollTo('#services', { offset: -100 });
+              }
+            }}
           />
         </div>
       </div>

@@ -13,7 +13,7 @@ const workItemsWithSlug = works.filter((item) => item?.slug != null);
 const workItemsWithoutSlug = works.filter((item) => item?.slug == null);
 const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
 
-const new_works = workCleanedItems.slice(0, 5);
+const new_works = workCleanedItems.slice(0, 6);
 
 const HomePage: NextPage = () => {
   return (

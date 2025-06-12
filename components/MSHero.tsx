@@ -3,7 +3,7 @@ import React, { ComponentPropsWithRef, forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { animateInView, MOTION_PREFERENCES, useMediaQuery } from "@/lib/gsap";
+import { animateInView } from "@/lib/gsap";
 
 interface MSHeroProps extends ComponentPropsWithRef<any> {
   ref?: React.Ref<any> // for animations
@@ -47,11 +47,11 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
   return (
     <>
       <div className="ms-hero__background" aria-hidden></div>
-      <section className="ms-hero" ref={heroRef}>
+      <section className="ms-hero" ref={heroRef} {...rest}>
         { customLayout ? (
           <>{ children }</>
         ) : (
-          <div className="ms-hero__wrapper" ref={ref} {...rest}>
+          <div className="ms-hero__wrapper" ref={ref}>
             { children }
           </div>
         ) }
