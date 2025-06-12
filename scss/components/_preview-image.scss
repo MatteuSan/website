@@ -2,8 +2,10 @@
 
 @mixin render() {
   .preview-image {
+    border-radius: himig.key-create('preview-image-radius', himig.primitive-token-get('radius.lg'));
     aspect-ratio: 16 / 9;
     position: relative;
+    overflow: hidden;
 
     &::after {
       content: attr(data-alt);
@@ -29,5 +31,16 @@
         animation: load-in 0.3s ease;
       }
     }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  section.media {
+    @include himig.key-bind('preview-image-radius', himig.primitive-token-get('radius.none'));
   }
 }

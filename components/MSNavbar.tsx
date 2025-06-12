@@ -38,7 +38,7 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
 
   return (
     <li className={ `ms-navbar__item${ isLinkExternal ? ' is-external' : '' }` } onClick={() => {
-      if (lenis && !isLinkExternal) lenis.scrollTo(link, {
+      if (lenis && !isLinkExternal && link.indexOf('/#') === -1) lenis.scrollTo(link, {
         offset: -130,
       });
     }}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import MSTag from "../MSTag";
 import { works } from "@/constants/works";
 import { tools } from "@/constants/tools";
 
@@ -10,19 +9,9 @@ interface InfoProps {
 
 const Info: React.FC<InfoProps> = ({ data, children }) => {
   return (
-    <div className="w-full start-1 end-1 fill-surface-400 ink-surface-ink p-lg r-md raise-low mt-md"
+    <div className="w-full start-1 end-1 mt-md"
          style={ { height: 'max-content' } }>
-      <h3 className="subtitle">Tags</h3>
-      <ul className="ms-list mb-md" style={ { listStyle: 'none' } }>
-        <li className="ms-list__item flex flow-row wrap gap-sm p-none">
-          { data.tags.map((item, i) => <MSTag key={ i } label={ item }/>) }
-        </li>
-        <li className="ms-list__item flex flow-row wrap gap-sm p-none">
-          { data.tech.map((item, i) => <MSTag key={ i } label={ item }/>) }
-        </li>
-        {/*<li className="ms-list__item">Duration: { data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' }</li>*/ }
-      </ul>
-      <h3 className="subtitle">Links</h3>
+      <h4 className="subtitle">Links</h4>
       <div className="flex flow-row flow-nowrap jc-start gap-sm mt-sm">
         { children }
       </div>

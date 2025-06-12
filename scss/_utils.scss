@@ -62,6 +62,27 @@
     line-height: 1.15;
   }
 
+  .\@medium\:big-ass-text {
+    @include himig.breakpoint-create('medium') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
+  .\@large\:big-ass-text {
+    @include himig.breakpoint-create('large') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
+  .\@xlarge\:big-ass-text {
+    @include himig.breakpoint-create('xlarge') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
   .italic {
     font-style: italic;
   }

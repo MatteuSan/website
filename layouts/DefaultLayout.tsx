@@ -15,6 +15,7 @@ import { animateVariants } from '@/lib/framer';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useLenis } from 'lenis/react';
+import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
   title: string;
@@ -46,6 +47,7 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const router = useRouter();
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
@@ -128,25 +130,21 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
             trigger={ isNavbarOpen }
           />
           <MSNavbar trigger={ isNavbarOpen }>
-            <HCNavbarItem link="#about-me">
+            <HCNavbarItem link={router.pathname !== '/' ? '/#about-me' : '#about-me'}>
               <span>About Me</span>
-              <span className="family-mono de-emphasize">[01]</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">01</span>
             </HCNavbarItem>
-            <HCNavbarItem link="#services">
+            <HCNavbarItem link={router.pathname !== '/' ? '/#services' : '#services'}>
               <span>Services</span>
-              <span className="family-mono de-emphasize">[02]</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">02</span>
             </HCNavbarItem>
-            <HCNavbarItem link="#works">
+            <HCNavbarItem link={router.pathname !== '/' ? '/#works' : '#works'}>
               <span>Works</span>
-              <span className="family-mono de-emphasize">[03]</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">03</span>
             </HCNavbarItem>
-            {/*<HCNavbarItem link="/blog">
-              <span>Blog</span>
-              <span className="de-emphasize">[04]</span>
-            </HCNavbarItem>*/}
-            <HCNavbarItem link="#contact">
+            <HCNavbarItem link={router.pathname !== '/' ? '/#contact' : '#contact'}>
               <span>Contact</span>
-              <span className="family-mono de-emphasize">[04]</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">04</span>
             </HCNavbarItem>
           </MSNavbar>
         </div>
