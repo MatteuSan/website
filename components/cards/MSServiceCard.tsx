@@ -5,7 +5,8 @@ import { MSButton } from '@/components';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
+import { SplitText } from 'gsap/SplitText';
+import { BY_LINE, MOTION_PREFERENCES, REDUCED_ANIMATION, SWOOP_IN_ANIMATION, useMediaQuery } from '@/lib/gsap';
 
 interface ServiceCardProps {
   title: string;
@@ -47,13 +48,19 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       y: 0,
     }, '-=0.5');
 
-    enter.from(['.content-1', '.content-2'], {
+    enter.from('.service-card__title', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.8,
     }, '-=0.5');
 
-    enter.from('content-3', {
+    enter.from('.service-card__description', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.8,
+    }, '-=0.5');
+
+    enter.from('.service-card__children', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.8,
@@ -87,17 +94,17 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       ) : null }
       <div className="service-card__content">
         <div>
-          <h3 ref={serviceCardTitleRef} className={`content-1 family-mono size-sm de-emphasize wrap-brackets`}>
+          <h3 ref={serviceCardTitleRef} className={`service-card__title family-mono size-sm de-emphasize wrap-brackets`}>
             { title }
           </h3>
           { description ? (
-            <p className="content-2 family-supertitle size-xl @medium:size-2xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
+            <p className="service-card__description family-supertitle size-xl @medium:size-2xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
               { description }
             </p>
           ) : null }
         </div>
         { children ? (
-          <div className="content-3">
+          <div className="service-card__children">
             { children }
           </div>
         ) : null }
