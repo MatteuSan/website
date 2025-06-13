@@ -19,7 +19,7 @@ const finalWorks = [
 
 const HomePage: NextPage = () => {
   return (
-    <DefaultLayout title="HOME" hasHero>
+    <DefaultLayout hasHero>
       <AboutMeSection />
       <MainContent constrained={false}>
         <ServiceSection />
