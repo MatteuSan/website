@@ -39,8 +39,4 @@
       object-position: center;
     }
   }
-
-  section.media {
-    @include himig.key-bind('preview-image-radius', himig.primitive-token-get('radius.none'));
-  }
 }

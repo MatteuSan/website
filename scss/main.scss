@@ -250,6 +250,9 @@ $ms-material-light: (
 
   .ms-card {
     &:hover {
+      --ms-card-radius: #{himig.primitive-token-get('radius.2xl')};
+      transition: border-radius himig.token-get('time-short') himig.token-get('easing');
+
       .ms-card__media {
         filter: none !important;
 
@@ -257,7 +260,7 @@ $ms-material-light: (
           filter:
             saturate(15%)
             blur(5px)
-            brightness(40%) !important;
+            brightness(50%) !important;
         }
       }
     }

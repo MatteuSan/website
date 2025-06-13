@@ -29,7 +29,7 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         delay: (0.05 * index),
         duration: 0.4,
         easings: [0.83, 0, 0.17, 1]
-      }
+      },
     })
   }
 
@@ -41,7 +41,15 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         variants={ variants }
         initial="initial"
         whileInView="whileInView"
-        viewport={ { once: true, margin: '-10%' } }
+        viewport={{ once: true, margin: '-10%' }}
+        onAnimationComplete={() => {
+          requestAnimationFrame(() => {
+            if (infoCardRef.current) {
+              // @ts-ignore
+              infoCardRef.current.removeAttribute('style');
+            }
+          });
+        }}
         custom={ index }
       >
         { item.media ? (

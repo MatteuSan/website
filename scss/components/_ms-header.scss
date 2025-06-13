@@ -33,19 +33,10 @@ $header-style: 'default' !default;
     margin: 1em auto;
     padding: 0.5em 1em;
     border-radius: himig.primitive-token-get('radius.md');
+    color: himig.key-create('header-ink', $header-ink);
+    mix-blend-mode: difference;
     z-index: 100;
     @include himig.prefix(transition, all 0.5s ease);
-
-    // background: himig.key-create('header-fill', $header-un-scrolled-fill);
-    // @include himig.color-apply('header', (
-    //   ink: $header-ink,
-    //   border: $header-un-scrolled-border
-    // ));
-
-    // @include himig.struct-apply('header', (
-    //   border-width: 'xs',
-    //   border-style: 'solid'
-    // ));
 
     @include himig.breakpoint-create('medium') {
       @include himig.key-bind('header-alignment', flex-start);

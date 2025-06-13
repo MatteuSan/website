@@ -15,7 +15,7 @@ export const works: Work[] = [
   {
     'name': 'INM Audio',
     'desc': 'Proudly Philippine-built custom in-ear monitors.',
-    'media': 'inm-audio.webp',
+    'media': 'inm-audio.png',
     'link': 'https://inmaudio.com',
     'slug': 'inm-audio',
     'status': 'Active',

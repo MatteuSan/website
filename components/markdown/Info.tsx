@@ -3,7 +3,7 @@ import { works } from "@/constants/works";
 import { tools } from "@/constants/tools";
 
 interface InfoProps {
-  data: typeof works[0] | typeof tools[0];
+  data?: typeof works[0] | typeof tools[0];
   children?: React.ReactNode | string;
 }
 
