@@ -29,14 +29,31 @@ Pycord is a modern Discord bot framework built in Python. The goal is to make an
   <section  className="start-1 end-1 @large:start-2 @large:end-4">
     <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
     <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/pycord/pycord-guide.webp" alt="The guide's introduction page." />
+
     </div>
   </section>
 </section>
 
 export default function WorkPage({ children }) {
   return (
-    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="pycord.webp" previewImageAlt="Pycord's landing page.">
+    <MarkdownLayout
+      data={ WorkInfo }
+      metadata={ metadata }
+      previewImage="pycord.webp"
+      previewImageAlt="Pycord's landing page."
+      media={(
+        <>
+          <PreviewImage src="/img/pycord/pycord-guide.webp" alt="The guide's introduction page." />
+        </>
+      )}
+      links={(
+        <>
+          <MSButton link="https://pycord.dev" type="small outlined">Website</MSButton>
+          <MSButton link="https://guide.pycord.dev" type="small outlined">Guide</MSButton>
+          <MSButton link="https://github.com/Pycord-Development" type="small outlined">Github</MSButton>
+        </>
+      )}
+    >
       { children }
     </MarkdownLayout>
   );

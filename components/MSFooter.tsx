@@ -15,7 +15,13 @@ const MSFooter: React.FC<MSFooterProps> = ({ title, version, author }) => {
         { version && <span className="ms-footer__version">v{ version }</span> }
       </h3>
       <p className="ms-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
-      <small className="small">Prefer a printed format? Here's <Link prefetch className="ms-link" href="/resume" rel="noopener noreferrer">my resume</Link>.</small>
+      <div className="flex flow-row wrap-none jc-center ai-center gap-sm">
+        <Link className="ms-link small" href="/github">GitHub</Link>
+        <Link className="ms-link small" href="/linkedin">LinkedIn</Link>
+        <Link className="ms-link small" href="/tools">Tools</Link>
+        <Link className="ms-link small" href="/blog">Blog</Link>
+        <Link className="ms-link small" href="/resume">Resume</Link>
+      </div>
     </footer>
   );
 };

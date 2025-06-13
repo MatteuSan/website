@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { m } from 'framer-motion';
 
@@ -12,6 +12,10 @@ import {
 
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useLenis } from 'lenis/react';
+import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
   title: string;
@@ -43,16 +47,19 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const router = useRouter();
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title.toLowerCase()];
 
-  const variants = {
+  const contentVariants = {
     initial: {
       opacity: 0,
+      // y: 50,
     },
     enter: {
       opacity: 1,
+      // y: 0,
       transition: {
         duration: 1,
         easings: [0.83, 0, 0.17, 1]
@@ -62,6 +69,25 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
       opacity: 0
     }
   };
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.from('.ms-header', {
+      opacity: 0,
+      top: '-100%',
+      duration: 0.7,
+      ease: 'power2.out',
+    });
+
+    tl.from('.ms-footer', {
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+    });
+
+    tl.call(() => tl.revert() as unknown as void);
+  });
 
   return (
     <>
@@ -98,21 +124,32 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
 
       </Head>
       <MSHeader title={ site.name } actionSection={
-        <>
+        <div className="flex flow-column wrap-none ai-end gap-md">
           <HCNavbarTrigger
             onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
             trigger={ isNavbarOpen }
           />
           <MSNavbar trigger={ isNavbarOpen }>
-            <HCNavbarItem link="/">Home</HCNavbarItem>
-            <HCNavbarItem link="/work">Work</HCNavbarItem>
-            <HCNavbarItem link="/tools">Tools</HCNavbarItem>
-            <HCNavbarItem link="/blog">Blog</HCNavbarItem>
-            <HCNavbarItem link="https://github.com/MatteuSan">GitHub</HCNavbarItem>
+            <HCNavbarItem link={router.pathname !== '/' ? '/#about-me' : '#about-me'}>
+              <span>About Me</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">01</span>
+            </HCNavbarItem>
+            <HCNavbarItem link={router.pathname !== '/' ? '/#services' : '#services'}>
+              <span>Services</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">02</span>
+            </HCNavbarItem>
+            <HCNavbarItem link={router.pathname !== '/' ? '/#works' : '#works'}>
+              <span>Works</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">03</span>
+            </HCNavbarItem>
+            <HCNavbarItem link={router.pathname !== '/' ? '/#contact' : '#contact'}>
+              <span>Contact</span>
+              <span aria-hidden className="family-mono de-emphasize wrap-brackets">04</span>
+            </HCNavbarItem>
           </MSNavbar>
-        </>
+        </div>
       } isScrollable={hasHero} />
-      <m.section {...animateVariants(variants)}>
+      <m.section id="content" {...animateVariants(contentVariants)}>
         { children }
       </m.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />

@@ -9,8 +9,8 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  SCREEN_SIZES, TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SCREEN_SIZES, SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -23,13 +23,12 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   const leadTextRef = useRef<HTMLHeadingElement>(null);
 
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
-  const isSizeLarge = useMediaQuery(SCREEN_SIZES.isLarge);
 
   useGSAP(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: workSectionRef.current,
-        start: 'bottom 25%',
+        start: 'bottom 55%',
         scrub: true,
       }
     });
@@ -46,21 +45,14 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
 
       const subtitleSplit = SplitText.create('.content', BY_WORD);
       work.from(subtitleSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         onComplete: () => subtitleSplit.revert()
       });
 
-      if (isSizeLarge) {
-        animateInView('.ms-button.is-outlined.is-full-width', { once: true }).fromTo('.ms-button.is-outlined.is-full-width', {
-          opacity: 0,
-          y: !isMotionReduced ? 30 : 0,
-        }, {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          delay: 0.5,
-        });
-      }
+      work.from('.content-2', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
+      }, '-=0.5');
     }
 
     const exitAnimation = () => {
@@ -75,21 +67,24 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
   }, { scope: workSectionRef });
 
   return (
-    <section id="stuff-i-did" ref={workSectionRef}>
-      <section className="constrained w-full h-screen mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm mb-lg py-3xl">
-        <div>
-          <h1 ref={leadTextRef} className="lead-text family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I did</h1>
-          <p className="content de-emphasize size-md weight-light">Here some of the previous works I'm most proud of.</p>
-          <ul className="list-style-none grid cols-1 @medium:cols-2 gap-md mt-lg" id="projects">
-            { works.map((item, key) =>  (
-              <MSInfoCard index={key} key={ key } item={item} linkBase="work"/>
-            ))
-            }
-            <MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all
-              works</MSButton>
-          </ul>
+    <section id="works" ref={workSectionRef}>
+      <section className="constrained-layout w-full mt-6xl">
+        <div className="mb-2xl @large:mb-3xl">
+          <h2 ref={leadTextRef} className="family-mono de-emphasize size-sm wrap-brackets">Works</h2>
+          <p className="content family-supertitle big-ass-text line-height-condensed letter-spacing-condensed">Here's what I did.</p>
+          <p className="content-2 family-body de-emphasize size-sm mt-md">Take a look at the works that companies invested in that—in turn—expanded their online presence and drove business growth.</p>
         </div>
       </section>
+      <div>
+        <ul className="list-style-none grid cols-1 gap-xl @medium:gap-none @medium:cols-2 mt-lg" id="projects">
+          { works.map((item, key) =>  (
+            <MSInfoCard index={key} key={ key } item={item} linkBase="work"/>
+          ))
+          }
+          {/*<MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all
+            works</MSButton>*/}
+        </ul>
+      </div>
     </section>
   );
 };

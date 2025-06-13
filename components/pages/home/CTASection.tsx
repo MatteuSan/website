@@ -2,6 +2,7 @@ import React from 'react';
 import { MSButton } from "@/components";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
+import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
 
@@ -10,8 +11,8 @@ import {
   animateInView,
   BY_LINE,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -25,7 +26,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
   useGSAP(() => {
     const enterAnimation = () => {
       const cta = animateInView('.lead-text', {
-        // once: true,
+        once: true,
         timing: { start: 'top 80%' }
       });
 
@@ -37,14 +38,14 @@ const CTASection: React.FC<CTASectionProps> = () => {
 
       const leadTextSplit = SplitText.create('.lead-text', BY_WORD);
       cta.from(leadTextSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         stagger: 0.1,
         onComplete: () => leadTextSplit.revert()
       });
 
       const contentSplit = SplitText.create('.content', BY_LINE);
       cta.from(contentSplit.lines, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
         // onComplete: () => contentSplit.revert()
       }, '-=0.5');
 
@@ -62,11 +63,12 @@ const CTASection: React.FC<CTASectionProps> = () => {
   }, { scope: ctaSectionRef });
 
   return (
-    <section className="constrained h-half-screen grid pc-center my-4xl @large:my-6xl" ref={ctaSectionRef}>
-      <div className="mb-xl">
-        <h2 className="lead-text will-split family-supertitle size-3xl @medium:size-4xl @large:size-5xl line-height-condensed letter-spacing-condensed mb-sm">
+    <section className="constrained-layout h-half-screen grid pc-center my-4xl @large:my-6xl" ref={ctaSectionRef} id="contact">
+      <div className="copy mb-xl">
+        <h2 className="family-mono de-emphasize size-sm wrap-brackets">Contact</h2>
+        <p className="lead-text will-split family-supertitle size-3xl @medium:size-4xl @large:size-6xl line-height-condensed letter-spacing-condensed mb-sm">
           Build the experience your users <span className="highlight">deserve</span>.
-        </h2>
+        </p>
         <p className="content will-split size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first sketch to final push, I'll help you ship something amazing.</p>
       </div>
       <div className="actions flex flow-row gap-md">

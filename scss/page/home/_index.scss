@@ -1,23 +1,16 @@
 @use 'pkg:@matteusan/himig';
-@use 'technologies';
-@use 'stuff-i-do';
+@use 'services';
 @use 'cta';
 
 @mixin render() {
-  .is-fullscreen {
-    min-height: 100svh;
-  }
-
   .picture-frame {
     --easing: cubic-bezier(0.83, 0, 0.17, 1);
-    width: min(calc(100% - 100px), 275px);
+    width: min(calc(100% - 250px), 157px);
     min-width: 100px;
-    height: min(calc(100% - 100px), 275px);
+    height: min(calc(100% - 250px), 157px);
     min-height: 100px;
-    margin: 0 auto;
     display: grid;
     place-items: center;
-    // border: 2px solid himig.token-get('primary-300');
     border-radius: himig.primitive-token-get('radius.lg');
     overflow: hidden;
     user-select: none;
@@ -37,7 +30,6 @@
     }
   }
 
-  @include technologies.render();
-  @include stuff-i-do.render();
+  @include services.render();
   @include cta.render();
 }

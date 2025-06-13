@@ -1,11 +1,5 @@
-import { MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
 import { works } from "../../constants/works";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
-import Info from "../../components/markdown/Info";
 
 export const metadata = {
   title: 'Luwal Sining-Pagganap',
@@ -16,26 +10,17 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 LSP's main website and performance platform. It featured an online show catalogue, platform for online shows, artist directory, dashboard to edit information, and show scheduling.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      There are no links for this project.
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <div className="w-full h-full grid pi-center">
-        <p className="subtitle">No images to show.</p>
-      </div>
-    </div>
-  </section>
-</section>
-
 export default function WorkPage({ children }) {
   return (
-    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="luwal.webp" previewImageAlt="The Luwal Sining-Pagganap website landing page.">
+    <MarkdownLayout
+      data={ WorkInfo }
+      metadata={ metadata }
+      previewImage="luwal.webp"
+      previewImageAlt="The Luwal Sining-Pagganap website landing page."
+      links={(
+        <p className="body">There are no links for this project.</p>
+      )}
+    >
       { children }
     </MarkdownLayout>
   );

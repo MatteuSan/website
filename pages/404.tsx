@@ -11,10 +11,10 @@ const NotFound: NextPage = () => {
         <div className="w-full" style={{ maxWidth: 570 }}>
           <MSCard>
             <div className="p-xl">
-              <h1 className="family-supertitle size-4xl letter-spacing-condensed text-center text-surface-ink">
+              <h1 className="family-supertitle size-6xl letter-spacing-condensed text-center text-surface-ink">
                 Error 404
               </h1>
-              <p>The page you were looking for was not found. Maybe you've mistyped the URL?</p>
+              <p className="subtitle">The page you were looking for was not found. Maybe you've mistyped the URL?</p>
             </div>
             <div className="px-xl pb-xl">
               <MSButton link="/" type="filled large full-width">Return home</MSButton>

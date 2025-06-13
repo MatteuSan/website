@@ -9,18 +9,18 @@ export const works: Work[] = [
     'slug': 'dev-protocol',
     'status': 'Active',
     'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
-    'tags': ['Design', 'Development', 'Design System', 'Documentation'],
+    'tags': ['Design', 'Development', 'Design System'],
     'duration': [2021, 2024],
   },
   {
     'name': 'INM Audio',
     'desc': 'Proudly Philippine-built custom in-ear monitors.',
-    'media': 'inm-audio.webp',
+    'media': 'inm-audio.png',
     'link': 'https://inmaudio.com',
     'slug': 'inm-audio',
     'status': 'Active',
     'tech': ['SCSS', 'TS', 'React', 'Three', 'R3F'],
-    'tags': ['Design', 'Development', '3D Interactivity', 'SEO'],
+    'tags': ['Design', 'Development', '3D Interactivity'],
     'duration': [2024, 'present'],
   },
   {
@@ -31,7 +31,7 @@ export const works: Work[] = [
     'link': 'https://www.wearecoral.org',
     'status': 'Active',
     'tech': ['Figma', 'React', 'Tailwind'],
-    'tags': ['Design', 'Development', 'Marketing', 'SEO'],
+    'tags': ['Design', 'Development', 'Marketing'],
     'duration': [2024]
   },
   {
@@ -52,7 +52,7 @@ export const works: Work[] = [
     'link': 'https://github.com/PurpleCress/website',
     'status': 'Archived',
     'tech': ['SCSS', 'TS', 'Vue', 'Firebase'],
-    'tags': ['Design', 'Development'],
+    'tags': ['Design', 'Development', 'Web App'],
     'duration': [2021, 2022]
   },
   {
@@ -88,16 +88,6 @@ export const works: Work[] = [
     'duration': [2020, 2022]
   },
   {
-    'name': 'SurPathHub Documentation Site',
-    'desc': 'The official documentation website for all open source SurPathHub projects.',
-    'media': 'sph-docs.webp',
-    'link': 'https://sph-docs.netlify.app/',
-    'status': 'Archived',
-    'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
-    'tags': ['Development', 'Website', 'Open Source'],
-    'duration': [2021]
-  },
-  {
     'name': 'BlockCorp',
     'desc': 'The platform to order Growtopia-related services.',
     'media': 'blockcorp.webp',
@@ -106,5 +96,15 @@ export const works: Work[] = [
     'tech': ['SCSS', 'Vue', 'Python', 'Flask'],
     'tags': ['Development', 'Web App'],
     'duration': [2020, 2021]
+  },
+  {
+    'name': 'SurPathHub Documentation Site',
+    'desc': 'The official documentation website for all open source SurPathHub projects.',
+    'media': 'sph-docs.webp',
+    'link': 'https://sph-docs.netlify.app/',
+    'status': 'Archived',
+    'tech': ['SCSS', 'TS', 'React', 'Docusaurus'],
+    'tags': ['Development', 'Website', 'Open Source'],
+    'duration': [2021]
   },
 ];

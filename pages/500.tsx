@@ -11,10 +11,10 @@ const ServerError: NextPage = () => {
         <div className="w-full" style={{ maxWidth: 570 }}>
           <MSCard>
             <div className="p-xl">
-              <h1 className="family-supertitle size-4xl letter-spacing-condensed text-center text-surface-ink">
+              <h1 className="family-supertitle size-6xl letter-spacing-condensed text-center text-surface-ink">
                 Error 500
               </h1>
-              <p>Something went wrong on server. Please try again later.</p>
+              <p className="subtitle">Something went wrong on server. Please try again later.</p>
             </div>
             <div className="px-xl pb-xl">
               <MSButton link="/" type="filled large full-width">Return home</MSButton>

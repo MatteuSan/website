@@ -57,6 +57,32 @@
     }
   }
 
+  .big-ass-text {
+    font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+    line-height: 1.15;
+  }
+
+  .\@medium\:big-ass-text {
+    @include himig.breakpoint-create('medium') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
+  .\@large\:big-ass-text {
+    @include himig.breakpoint-create('large') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
+  .\@xlarge\:big-ass-text {
+    @include himig.breakpoint-create('xlarge') {
+      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
+      line-height: 1.15;
+    }
+  }
+
   .italic {
     font-style: italic;
   }
@@ -107,7 +133,7 @@
   }
 
   .letter-spacing-condensed {
-    letter-spacing: himig.to-rem(-2px);
+    letter-spacing: himig.to-rem(-1px);
     font-stretch: condensed;
   }
 
@@ -117,6 +143,10 @@
 
   .letter-spacing-wide {
     letter-spacing: himig.to-rem(3px);
+  }
+
+  .stretch-xcondensed {
+    font-stretch: ultra-condensed;
   }
 
   .stretch-condensed {
@@ -161,6 +191,18 @@
 
     * {
       will-change: transform;
+    }
+  }
+
+  .wrap-brackets {
+    &::before {
+      content: '[';
+      margin-inline-end: 0.15rem;
+    }
+
+    &::after {
+      content: ']';
+      margin-inline-start: 0.15rem;
     }
   }
 }

@@ -2,163 +2,93 @@
 
 @mixin render() {
   .ms-navbar__trigger {
-    width: 40px;
-    height: 40px;
+    width: himig.token-get('size-title');
+    height: himig.token-get('size-title');
     display: grid;
     place-items: center;
     @include himig.color-apply('navbar-trigger', (
       fill: rgba(0 0 0 / 0),
       ink: 'primary-200',
     ));
-    @include himig.struct-apply('navbar-trigger', (
-      radius: 'small',
-      padding: 'sm',
-    ));
     border: none;
     cursor: pointer;
     transition: all var(--ms-transition-time) ease;
     z-index: 2;
 
-    @include himig.breakpoint-create('large') {
+    @include himig.breakpoint-create('medium') {
       display: none;
     }
   }
 
   .ms-navbar {
-    position: absolute;
-    opacity: 0;
-    transform-origin: right;
-    top: himig.key-create('navbar-inset-top', calc(56px + 1em));
-    left: 0;
+    display: none;
+    position: static;
+    transform-origin: revert;
+    opacity: 1;
+    transform: revert;
     right: 0;
     z-index: 1;
     transition: all 0.5s ease;
-    transform: translateY(-500);
 
-    @include himig.breakpoint-create('large') {
+    @include himig.breakpoint-create('medium') {
       display: block;
-      position: static;
-      transform-origin: revert;
-      opacity: 1;
-      transform: revert;
     }
 
     .ms-navbar__wrapper {
-      @include himig.struct-apply('navbar-wrapper', (
-        width: (
-          default: 100%,
-          max: auto
-        )
-      ));
-      margin-inline: auto;
+      // @include himig.struct-apply('navbar-wrapper', (
+      //   width: (
+      //     default: 100%,
+      //     max: auto
+      //   )
+      // ));
       display: flex;
       flex-flow: column nowrap;
-      gap: 0.5rem;
       justify-content: flex-end;
-      backdrop-filter: var(--backdrop-filter, blur(10px));
-      -webkit-backdrop-filter: var(--backdrop-filter, blur(10px));
-      @include himig.color-apply('navbar-wrapper', (
-        fill: 'primary-600',
-        border: 'primary-400'
-      ));
-      @include himig.struct-apply('navbar-wrapper', (
-        padding: 'lg',
-        radius: 'lg',
-        border-width: 'xs',
-        border-style: 'solid'
-      ));
-
-      @include himig.breakpoint-create('large') {
-        --backdrop-filter: none;
-        @include himig.color-bind('navbar-wrapper', (
-          fill: #{rgba(0 0 0 / 0)},
-          border: #{rgba(0 0 0 / 0)}
-        ));
-        @include himig.struct-bind('navbar-wrapper', (
-          padding: none,
-          radius: none,
-          border-width: 'none',
-          border-style: none
-        ));
-        flex-flow: row nowrap;
-      }
+      align-items: flex-end;
+      gap: 0.5rem;
     }
 
     .ms-navbar__item {
+      width: 100%;
       display: flex;
       justify-content: center;
-      user-select: none;
-      text-align: center;
+      text-align: left;
       transition: all var(--ms-theme-transition-time) ease;
+      backdrop-filter: blur(24px);
+      user-select: none;
       @include himig.color-apply('navbar-item', (
-        fill: rgba(0 0 0 / 0),
+        fill: rgb(from himig.token-get('surface-400') r g b / 33%),
         ink: 'surface-ink',
-        border: rgba(0 0 0 / 0)
+        border: 'surface-400'
       ));
+      mix-blend-mode: difference;
       @include himig.struct-apply('navbar-item', (
-        width: (max: 100%),
         radius: 'sm',
         border-width: 'xs',
         border-style: 'solid'
       ));
       @include himig.typography-apply('navbar-item', (
-        family: 'title',
-        size: 'lg',
-        weight: 200,
-        line-height: 'condensed'
+        family: 'body',
+        size: himig.to-rem(14px),
+        weight: 200
       ));
-
-      @include himig.breakpoint-create('large') {
-        @include himig.color-bind('navbar-item', (
-          fill: rgba(0 0 0 / 0),
-          ink: 'surface-200',
-          border: 'surface-400'
-        ));
-        @include himig.struct-bind('navbar-item', (
-          width: (
-            width: auto,
-            max: max-content
-          ),
-        ));
-        @include himig.typography-bind('navbar-item', (
-          family: 'body',
-          size: 'sm',
-          weight: 200
-        ));
-        display: flex;
-        justify-content: center;
-        text-align: center;
-      }
 
       a {
         width: 100%;
-        display: inline-block;
+        display: inline-flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        gap: himig.primitive-token-get('gap.md');
         text-align: inherit;
-        padding: 0.5rem 0.7rem;
+        padding: 0.3rem 0.5rem;
+        font-size: inherit;
         transition: all var(--ms-theme-transition-time) ease;
-
-        @include himig.breakpoint-create('large') {
-          max-width: max-content !important;
-          padding: 0.5rem 1.2rem;
-        }
       }
 
       &:hover {
         @include himig.color-bind('navbar-item', (
-          fill: rgb(from himig.token-get('surface-400') r g b / 33%),
+          fill: rgb(from himig.token-get('surface-400') r g b / 70%),
         ));
-      }
-
-      &.is-active {
-        @include himig.color-bind('navbar-item', (
-          fill: rgb(from himig.token-get('surface-400') r g b / 50%),
-          ink: 'surface-ink',
-          border: rgb(from himig.token-get('surface-400') r g b / 33%)
-        ));
-        @include himig.typography-bind('navbar-item', (
-          weight: 400
-        ));
-        letter-spacing: himig.to-rem(-1px);
       }
 
       &.is-external {
@@ -180,8 +110,7 @@
     }
 
     &.is-open {
-      transform: translateY(0);
-      opacity: 1;
+      display: block;
     }
   }
 }

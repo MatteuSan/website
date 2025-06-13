@@ -27,13 +27,12 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       scrollTrigger: {
         trigger: serviceCardRef.current,
         start: 'top 85%',
-        toggleActions: 'play complete play reverse',
+        toggleActions: 'play complete play none',
       }
     });
 
     enter.fromTo(serviceCardRef.current, {
       opacity: 0,
-      y: !isMotionReduced ? 30 : 0,
       duration: 1,
     }, {
       opacity: 1,
@@ -48,7 +47,19 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       y: 0,
     }, '-=0.5');
 
-    enter.from(['.content-1', '.content-2'], {
+    enter.from('.service-card__title', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.8,
+    }, '-=0.5');
+
+    enter.from('.service-card__description', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.8,
+    }, '-=0.5');
+
+    enter.from('.service-card__children', {
       opacity: 0,
       y: !isMotionReduced ? 30 : 0,
       duration: 0.8,
@@ -60,28 +71,14 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
       opacity: 1,
       duration: 0.2,
     }, '-=0.5');
+
+    enter.call(() => {
+      enter.revert();
+    })
   }, { scope: serviceCardRef });
 
   return (
-    <li ref={serviceCardRef} className="service-card" id={title.toLowerCase().replace(/\s/g, '-')}>
-      <div className="service-card__content">
-        <h3 ref={serviceCardTitleRef} className="family-supertitle size-xl @medium:size-2xl weight-normal letter-spacing-condensed line-height-condensed mb-sm">
-          { title }
-        </h3>
-        { description ? (
-          <p className={`content-1 size-sm family-subtitle de-emphasize mb-${children ? 'md' : 'lg'}`}>
-            { description }
-          </p>
-        ) : null }
-        { children ? (
-          <div className="content-2 mb-xl">
-            { children }
-          </div>
-        ) : null }
-        { link ? (
-          <MSButton link={link} type="outlined">View examples</MSButton>
-        ) : null }
-      </div>
+    <li ref={serviceCardRef} className="service-card swiper-slide" id={title.toLowerCase().replace(/\s/g, '-')}>
       { media ? (
         <div className="service-card__media">
           <Image
@@ -94,6 +91,28 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
           />
         </div>
       ) : null }
+      <div className="service-card__content">
+        <div>
+          <h3 ref={serviceCardTitleRef} className={`service-card__title family-mono size-sm de-emphasize wrap-brackets`}>
+            { title }
+          </h3>
+          { description ? (
+            <p className="service-card__description family-supertitle size-xl @medium:size-2xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
+              { description }
+            </p>
+          ) : null }
+        </div>
+        { children ? (
+          <div className="service-card__children">
+            { children }
+          </div>
+        ) : null }
+        { link ? (
+          <div className="w-full flex flow-row wrap-none jc-end ai-center gap-sm">
+            <MSButton link={link} type="outlined">View examples</MSButton>
+          </div>
+        ) : null }
+      </div>
     </li>
   );
 };

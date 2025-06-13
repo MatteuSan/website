@@ -3,19 +3,20 @@ import { DefaultLayout, MainContent } from "./DefaultLayout";
 import { MSButton } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import PreviewImage from "@/components/markdown/PreviewImage";
-import { works } from "@/constants/works";
-import { tools } from "@/constants/tools";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
-import { useRouter } from 'next/router';
+import { Tool, Work } from '@/lib/types';
+import MSTag from '../components/MSTag';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
-  data: typeof works[0] | typeof tools[0];
+  data: Work | Tool;
   description?: string | React.ReactNode;
   previewImage: string;
   previewImageAlt: string;
+  media?: React.ReactNode | string;
+  links?: React.ReactNode | string;
   children?: React.ReactNode | string;
 }
 
@@ -31,13 +32,19 @@ export const MarkdownHeader: React.FC<{ title: string, description: string, smal
   );
 }
 
-const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, previewImage, previewImageAlt, children }) => {
-  const router = useRouter();
-  const basePath = router.pathname.split('/')[1];
+const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, previewImage, previewImageAlt, children, media, links }) => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
     const contentTl = gsap.timeline();
+    const imageTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#preview-image-container',
+        start: 'top 28.4%',
+        end: 'bottom 40%',
+        scrub: true,
+      }
+    });
 
     contentTl.from('.supertitle', {
       opacity: 0,
@@ -68,25 +75,51 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
     contentTl.call(() => {
       contentTl.revert()
     });
+
+    imageTl.to('#preview-image-container', {
+      width: '100%',
+      maxWidth: '100%',
+    });
+
+    imageTl.to('#preview-image-container .preview-image', {
+      borderRadius: 0,
+    }, '<');
   });
 
   return (
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/${previewImage}` }>
-      <MainContent>
-        <section className="py-4xl">
-          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem' } } link={`/${basePath}`}
-                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
-          <h1 className="ms-markdown__title supertitle stretch-condensed">{ metadata.title } <small
-            className="small">({ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' })</small></h1>
-          <h2 className="subtitle">{ metadata.description }</h2>
-          <div className="w-full h-full max-h-md r-lg my-md" style={ { overflow: 'clip' } }>
-            <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
+      <section className="py-4xl">
+        <div className="constrained-layout">
+          <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem', zIndex: 110 }} link={`/`} type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
+          <div>
+            <h2 className="family-supertitle weight-title size-6xl @xlarge:big-ass-text stretch-condensed squeeze-condensed @xlarge:inline-block">{ metadata.title }</h2>
+            <div className="@xlarge:ml-xl @xlarge:inline-block">
+              <small className="block mono de-emphasize wrap-brackets">{ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' }</small>
+              <p className="subtitle">{ metadata.description }</p>
+              <ul className="my-md gap-sm flex flow-row wrap pt-sm" style={{ listStyle: 'none' }}>
+                { data.tags.map((item, i) => (
+                  <li><MSTag key={ i } label={ item }/></li>
+                )) }
+              </ul>
+            </div>
           </div>
+        </div>
+        <div id="preview-image-container" className="constrained-layout my-md" style={{ overflow: 'clip' }}>
+          <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
+        </div>
+        <section className="links constrained flex flow-row wrap gap-sm mt-lg mb-sm">
+          <p className="de-emphasize family-mono wrap-brackets">Links</p>
+          { links }
+        </section>
+        <MainContent>
           <section className="ms-markdown">
             { children }
           </section>
+        </MainContent>
+        <section className="media constrained grid cols-1 @medium:cols-2 gap-md mt-lg">
+          { media }
         </section>
-      </MainContent>
+      </section>
     </DefaultLayout>
   );
 };

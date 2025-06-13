@@ -11,20 +11,21 @@ import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
   BY_WORD,
-  MOTION_PREFERENCES, REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  MOTION_PREFERENCES, REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
 const ServiceSection: React.FC = ( ) => {
   const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const servicesSectionHeaderRef = useRef<HTMLDivElement>(null);
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: servicesSectionRef.current,
-        start: 'bottom 25%',
+        start: 'bottom 45%',
         scrub: true,
       }
     });
@@ -34,16 +35,37 @@ const ServiceSection: React.FC = ( ) => {
         once: true,
       });
 
+      const parallax = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesSectionHeaderRef.current,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: true,
+        }
+      });
+
       services.from(servicesSectionRef.current, {
         opacity: 0,
         y: !isMotionReduced ? 30 : 0,
         duration: 1,
       });
 
+      parallax.from(servicesSectionHeaderRef.current, {
+        y: !isMotionReduced ? 0 : 0,
+        duration: 1,
+      });
+
       const contentSplit = SplitText.create('.content', BY_WORD);
       services.from(contentSplit.words, {
-        ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
-        onComplete: () => contentSplit.revert()
+        ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
+        onComplete: () => {
+          contentSplit.revert();
+        }
+      }, '-=0.5');
+
+      services.from('.content-2', {
+        opacity: 0,
+        y: !isMotionReduced ? 30 : 0,
       }, '-=0.5');
     };
 
@@ -59,52 +81,52 @@ const ServiceSection: React.FC = ( ) => {
   }, { scope: servicesSectionRef });
 
   return (
-    <section id="stuff-i-do" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
-      <section className="constrained mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
-        <div>
-          <h2 className="family-supertitle size-3xl @medium:size-4xl letter-spacing-condensed">Stuff I do</h2>
-          <p className="content de-emphasize size-md weight-light">Here's how I can help you.</p>
+    <section id="services" className="w-full h-screen pb-4xl" ref={servicesSectionRef}>
+      <section className="constrained-layout mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
+        <div ref={servicesSectionHeaderRef} className="mb-2xl @large:mb-3xl">
+          <h2 className="family-mono de-emphasize size-sm wrap-brackets">Services</h2>
+          <p className="content family-supertitle big-ass-text line-height-condensed letter-spacing-condensed">Here's what I can do.</p>
+          <p className="content-2 family-body de-emphasize size-sm mt-md">I take pride in providing premium digital services to clients.</p>
         </div>
       </section>
       <ul className="service-container constrained">
         <MSServiceCard
-          title="Web Design"
-          description="I design interfaces that feel as good as they look—clean, accessible, and always user-centered. Every screen is crafted with care and intention, delivering the kind of experience your users will remember and love."
+          title="Web & Mobile Design"
+          description="I craft bespoke user-centered experiences with care and intention that they will remember and love."
           media={DesignHero}
           alt="Design services image."
-          link="/work?filter=Design"
         >
           <ol className="service-card__list">
             <li data-service-number="01">Responsive Design</li>
-            <li data-service-number="02">Wireframing and Prototyping</li>
-            <li data-service-number="03">Design Audit and Consulting</li>
+            <li data-service-number="02">Wireframing</li>
+            <li data-service-number="03">Content Writing</li>
+            <li data-service-number="04">Interactive Design</li>
           </ol>
         </MSServiceCard>
         <MSServiceCard
           title="Web Development"
-          description="I develop websites and web apps that are beautiful, fast, and accessible—crafted with modern, reliable technologies that scale according to your needs and exceed your users’ expectations."
+          description="I engineer experiences your users deserve—experiences that scale, deliver, and exceed expectations."
           media={DevelopmentHero}
           alt="Development services image."
-          link="/work?filter=Development"
         >
           <ol className="service-card__list">
-            <li data-service-number="01">Front-end Development</li>
-            <li data-service-number="02">SEO and Accessibility</li>
-            <li data-service-number="03">Delightful Interactions</li>
+            <li data-service-number="01">Website & Web App Development</li>
+            <li data-service-number="02">SEO Optimization</li>
+            <li data-service-number="03">Accessibility</li>
+            <li data-service-number="04">Motion & Interactivity</li>
           </ol>
         </MSServiceCard>
         <MSServiceCard
           title="Design Systems"
-          description="I specialize in building custom tools that bring consistency across design and development—unifying product experiences and boosting team productivity. From foundation to adoption, I'll help you create and maintain design systems that scale with your business needs."
+          description="I architect systems that bring organization and consistency to UI/UX—unifying product experiences, boosting team productivity, and scaling experiences to its highest degree."
           media={DesignSystemsHero}
           alt="Design Systems services image."
-          link="/tools?filter=Design%20System"
         >
           <ol className="service-card__list">
-            <li data-service-number="01">Design Tokens</li>
-            <li data-service-number="02">Component Creation</li>
-            <li data-service-number="03">Documentation and Guidelines</li>
-            <li data-service-number="04">Adoption and Onboarding</li>
+            <li data-service-number="01">Design Tokens & Components</li>
+            <li data-service-number="02">Documentation and Guidelines</li>
+            <li data-service-number="03">Adoption and Onboarding</li>
+            <li data-service-number="04">Brand & Identity Development</li>
           </ol>
         </MSServiceCard>
       </ul>

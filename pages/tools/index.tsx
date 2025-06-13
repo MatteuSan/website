@@ -11,8 +11,8 @@ import {
   animateInView,
   BY_CHAR,
   BY_LINE, MOTION_PREFERENCES,
-  REDUCED_TEXT_MASK_ANIMATION,
-  TEXT_MASK_ANIMATION,
+  REDUCED_ANIMATION,
+  SWOOP_IN_ANIMATION,
   useMediaQuery
 } from '@/lib/gsap';
 
@@ -49,7 +49,7 @@ const ToolsPage: NextPage = () => {
     });
 
     tools.from(titleSplit.chars, {
-      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
       onComplete: () => titleSplit.revert()
     }, '-=0.5');
 
@@ -62,7 +62,7 @@ const ToolsPage: NextPage = () => {
     }, '<');
 
     tools.from(subtitleSplit.lines, {
-      ...(!isMotionReduced ? TEXT_MASK_ANIMATION : REDUCED_TEXT_MASK_ANIMATION),
+      ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
       stagger: 0.1,
       onComplete: () => subtitleSplit.revert()
     }, '-=0.5');
@@ -107,7 +107,7 @@ const ToolsPage: NextPage = () => {
           </label>
         </section>
         <section className="mb-4xl">
-          <div className="grid cols-1 @medium:cols-2 {/*@large:cols-3*/} gap-lg" id="projects">
+          <div className="grid cols-1 gap-lg" id="projects">
             <>
               { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
                 return (

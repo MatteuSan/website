@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-// import { SplitText } from 'gsap/dist/SplitText';
 import { useEffect, useState } from 'react';
 
 /**
@@ -47,11 +46,11 @@ export const BY_LINE: SplitText.Vars = {
 /**
  * Animation constants
  */
-export const TEXT_MASK_INITIAL = {
+export const SWOOP_IN_INITIAL = {
   opacity: 1,
   yPercent: 0
 };
-export const TEXT_MASK_ANIMATION = {
+export const SWOOP_IN_ANIMATION = {
   opacity: 0,
   yPercent: 100,
   duration: 0.6,
@@ -59,10 +58,21 @@ export const TEXT_MASK_ANIMATION = {
   ease: 'expo.out',
 };
 
-export const REDUCED_TEXT_MASK_INITIAL = {
+export const POP_INITIAL = {
+  scale: 1,
+};
+export const POP_ANIMATION = {
+  scale: 0,
+  rotation: 270,
+  duration: 0.5,
+  stagger: 0.15,
+  ease: 'expo.out',
+}
+
+export const REDUCED_INITIAL = {
   opacity: 1,
 };
-export const REDUCED_TEXT_MASK_ANIMATION = {
+export const REDUCED_ANIMATION = {
   opacity: 0,
   duration: 0.6,
   stagger: 0.05,
@@ -124,7 +134,7 @@ export const animateInView = (trigger: gsap.DOMTarget, options?: AnimateInViewOp
       trigger,
       start: options?.timing?.start || 'top 95%',
       end: options?.timing?.end || undefined,
-      toggleActions: 'play complete play reverse',
+      toggleActions: 'play complete resume none',
       once: options?.once ?? false,
       invalidateOnRefresh: options?.invalidateOnRefresh || undefined,
     }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { m, AnimatePresence } from 'framer-motion';
 import { animateVariants } from '@/lib/framer';
+import { useLenis } from 'lenis/react';
 
 interface HCNavBarProps {
   trigger: boolean;
@@ -32,11 +33,15 @@ const MSNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
 };
 
 const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) => {
-  const isActive = `/${useRouter().pathname.split('/')[1]}` === link;
   const isLinkExternal: boolean = (link.startsWith('http://') || link.startsWith('https://'));
+  const lenis = useLenis();
 
   return (
-    <li className={ `ms-navbar__item${ isActive ? ' is-active' : '' }${ isLinkExternal ? ' is-external' : '' }` }>
+    <li className={ `ms-navbar__item${ isLinkExternal ? ' is-external' : '' }` } onClick={() => {
+      if (lenis && !isLinkExternal && link.indexOf('/#') === -1) lenis.scrollTo(link, {
+        offset: -130,
+      });
+    }}>
       <Link prefetch role="link" target={isLinkExternal ? '_blank' : '_self'} href={ link }>
         { label || children }
       </Link>

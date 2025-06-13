@@ -21,6 +21,8 @@
     }
 
     p {
+      font-size: himig.token-get('size-subtitle');
+
       &:only-of-type {
         margin: 0 !important;
       }

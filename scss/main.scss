@@ -21,6 +21,24 @@
 
 @use 'utils';
 
+$ms-material-dark: (
+  200: #948b8b,
+  300: #6e6363,
+  400: #3d3838,
+  600: #211f1f,
+  800: #111010,
+  'ink': #fff
+);
+
+$ms-material-light: (
+  200: hsl(43, 100%, 99%),
+  300: hsl(20, 7%, 82%),
+  400: hsl(40, 4%, 72%),
+  600: hsl(60, 2%, 54%),
+  800: hsl(40, 2%, 37%),
+  'ink': #111010
+);
+
 @include himig.init(
   $primary: (
     200: #948b8b,
@@ -63,7 +81,7 @@
     ),
     'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%),
     'transition-time': 0.2s,
-    'viewport-layout-limit': 1477px,
+    'viewport-layout-limit': 1507px,
     'viewport-content-limit': 1077px
   )
 ) {
@@ -79,7 +97,7 @@
   html {
     overflow-x: clip;
     scroll-padding-block-start: calc(55px + 2em);
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -199,13 +217,23 @@
     }
   }
 
+  @include ms-button.extend('icon-only.large') {
+    @include ms-button.struct((
+      height: (
+        default: 100%,
+        max: 100%,
+      ),
+      padding: 'md',
+    ));
+  }
+
   @include ms-card.render(
     $color: (
       border: rgba(0 0 0 / 0)
     ),
     $struct: (
       padding: 'lg',
-      radius: 'lg'
+      radius: 'none'
     ),
     $typography: (
       family: (
@@ -220,31 +248,39 @@
     )
   );
 
-  .ms-card {
+  #works .ms-card {
     &:hover {
-      // box-shadow: 0 5px 40px rgba(#fff, 0.1);
-    }
+      --ms-card-radius: #{himig.primitive-token-get('radius.2xl')};
+      transition: border-radius himig.token-get('time-short') himig.token-get('easing');
 
-    .ms-card__content {
-      --ms-card-padding: 0 #{himig.primitive-token-get('padding.lg')};
-    }
+      .ms-card__media {
+        filter: none !important;
 
-    .ms-card__tags {
-      scrollbar-width: none;
-
-      /**
-       * fallback for older chrome and safari versions
-       */
-      &::-webkit-scrollbar-thumb,
-      &::-webkit-scrollbar-track {
-        width: 0;
-        height: 0;
-        background: none;
+        @include himig.breakpoint-create('large') {
+          filter:
+            saturate(15%)
+            blur(5px)
+            brightness(50%) !important;
+        }
       }
     }
 
-    .ms-card__footer {
-      margin-block-start: auto;
+    .ms-card__details {
+      --ms-card-fill: transparent !important;
+
+      @include himig.breakpoint-create('large') {
+        .ms-card__header {
+          --ms-card-header-padding: #{himig.primitive-token-get('padding.xl')} #{himig.primitive-token-get('padding.xl')} 0;
+          --ms-card-title-size: #{himig.token-get('size-supertitle')};
+          --ms-card-subtitle-size: #{himig.token-get('size-body')};
+          --ms-card-subtitle-weight: #{himig.token-get('weight-subtitle')};
+          --ms-card-subtitle-line-height: #{himig.token-get('line-height-supertitle')};
+        }
+
+        .ms-card__content {
+          --ms-card-padding: 0 #{himig.primitive-token-get('padding.xl')} #{himig.primitive-token-get('padding.xl')};
+        }
+      }
     }
   }
 
@@ -345,7 +381,7 @@
       height: 300%;
       position: absolute;
       inset: -150% 0% 0% -150%;
-      opacity: 0.65;
+      opacity: 0.75;
       animation: 2s steps(1) infinite noise;
     }
   }
@@ -408,6 +444,15 @@
     }
     90% {
       background-position: -10% 10%;
+    }
+  }
+
+  @keyframes loop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
     }
   }
 }

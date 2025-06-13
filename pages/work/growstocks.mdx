@@ -1,12 +1,6 @@
-import { MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
-import Info from "../../components/markdown/Info";
 
 export const metadata = {
   title: 'GrowStocks',
@@ -17,22 +11,6 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 GrowStocks was an online price index and marketplace for Growtopia. It was founded and created by Matteu back in 2018 and maintained ownership of it up until 2020 when it was transferred to a good friend of his and colleague [Christopher Khawand](https://christopher.khawand.dev). The frontend of the application continued to be maintained through its [end of life](https://christopher.khawand.dev/posts/farewell-growstocks) in December of 2023. It featured state of the art price indexing features, reliable and optimized search, a dashboard to manage the data, a marketplace, a payment platform, and a community that was always growing. The application was proudly built using React, SCSS, and Laravel. And it gave birth to a few [open source projects](https://github.com/GrowStocks).
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      There are no links for this project.
-    </Info>
-  </section>
-  <section className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/growstocks/growstocks-item-view.webp" alt="A screen capture of the item page." />
-      <PreviewImage src="/img/growstocks/growstocks-wip.webp" alt="A screen capture of a work-in-progress GrowStocks." />
-    </div>
-  </section>
-</section>
-
 export default function WorkPage({ children }) {
   return (
     <MarkdownLayout
@@ -40,6 +18,15 @@ export default function WorkPage({ children }) {
       data={ WorkInfo }
       previewImage="growstocks.webp"
       previewImageAlt="GrowStocks' webapp design."
+      media={(
+        <>
+          <PreviewImage src="/img/growstocks/growstocks-item-view.webp" alt="A screen capture of the item page." />
+          <PreviewImage src="/img/growstocks/growstocks-wip.webp" alt="A screen capture of a work-in-progress GrowStocks." />
+        </>
+      )}
+      links={(
+        <p className="body">There are no links for this project.</p>
+      )}
     >
       { children }
     </MarkdownLayout>
