@@ -84,7 +84,7 @@ export default function BlogPage({ children }) {
     <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/blog/creating-sentro/headliner.png` }>
       <MainContent>
         <section className="py-4xl">
-          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem', zIndex: 110 } } link="/"
+          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem', zIndex: 110 } } link="/blog"
                     type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
           <MarkdownHeader title={ metadata.title } description={ metadata.description } small={(<>Published <time dateTime="2025-05-31">May 31, 2025</time></>)} />
           {/*<section>

@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
-import { MSCard, MSCardContent, MSCardFooter, MSCardHeader, MSCardMedia } from "../MSCard";
-import { MSButton, MSTag } from "@/components";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { BookOpenIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
+import { MSCard, MSCardContent, MSCardHeader, MSCardMedia } from "../MSCard";
+import { MSTag } from "@/components";
 import { Variants } from 'framer-motion';
 import Link from 'next/link';
 

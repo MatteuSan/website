@@ -248,7 +248,7 @@ $ms-material-light: (
     )
   );
 
-  .ms-card {
+  #works .ms-card {
     &:hover {
       --ms-card-radius: #{himig.primitive-token-get('radius.2xl')};
       transition: border-radius himig.token-get('time-short') himig.token-get('easing');

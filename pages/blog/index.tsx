@@ -79,27 +79,24 @@ const BlogMainPage: NextPage = () => {
   return (
     <DefaultLayout title="BLOG" description="Coming soon.">
       <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={blogSectionRef}>
-        <div className="w-full constrained">
-          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Blog</h2>
-          <p className="content size-md @large:size-lg weight-light">The place where I share my insights on things.</p>
-          <p className="content-2 mt-md size-sm de-emphasize">
-            I write a few posts from time to time sharing bits and pieces of information I find interesting about the things I work on.
-          </p>
+        <div className="w-full constrained-layout">
+          <h2 className="family-mono de-emphasize size-sm wrap-brackets">Blog</h2>
+          <p className="content family-supertitle big-ass-text line-height-condensed letter-spacing-condensed">A few notes on things.</p>
+          <p className="content-2 family-body de-emphasize size-sm mt-md">I write a few posts from time to time sharing bits and pieces of information I find interesting about the things I work on.</p>
         </div>
       </section>
       <MainContent>
-        <section className="flex flow-column gap-md" ref={postsSectionRef}>
+        <section className="grid cols-1 @medium:cols-2 gap-md" ref={postsSectionRef}>
           { blogs.map((blog, index) => (
-            <div key={index} className="blog-post flex flow-column gap-lg p-xl r-lg fill-surface-600 border-xs border-solid border-surface-400">
-              <Link href={`/blog/${blog.slug}`} className="flex flow-column">
-                <div>
-                  <h3 className="title stretch-condensed inline-block">{ blog.title }</h3>
-                  <small className="small ml-sm">Published <time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></small>
-                </div>
-                <p className="body de-emphasize mt-xs">{ blog.description }</p>
-              </Link>
-              <MSButton link={`/blog/${blog.slug}`} type="outlined">Read more</MSButton>
-            </div>
+            <Link href={`/blog/${blog.slug}`}>
+              <div key={index} className="blog-post flex flow-column gap-lg p-xl r-lg fill-surface-600 border-xs border-solid border-surface-400">
+                  <div className="flex flow-column">
+                    <p className="family-mono size-sm de-emphasize wrap-brackets"><time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></p>
+                    <h3 className="title stretch-condensed inline-block">{ blog.title }</h3>
+                    <p className="body de-emphasize mt-xs">{ blog.description }</p>
+                  </div>
+              </div>
+            </Link>
           )) }
         </section>
       </MainContent>
