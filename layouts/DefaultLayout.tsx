@@ -49,7 +49,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
   const router = useRouter();
 
   // @ts-ignore
-  const ogImage: string = ogImageMap[title.toLowerCase()];
+  const ogImage: string = ogImageMap[title ? title.toLowerCase() : 'home'];
 
   const contentVariants = {
     initial: {
