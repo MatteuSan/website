@@ -19,7 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return <h3 className="family-title size-2xl mt-lg mb-sm stretch-condensed" id={handleId(children?.toString())}>{ children }</h3>;
     },
     h4: ({ children }) => <h4 className="subtitle mt-md mb-sm size-sm" id={handleId(children?.toString())}>{children}</h4>,
-    p: ({ children }) => <p className="size-subtitle weight-light mb-md" style={{ lineHeight: '1.6' }}>{children}</p>,
+    p: ({ children }) => <p className="subtitle weight-light mb-md" style={{ lineHeight: '1.6' }}>{children}</p>,
     a: ({ children, href }) => {
       const isLinkExternal: boolean|undefined = href?.startsWith('http') || href?.startsWith('mailto') || href?.startsWith('tel') || href?.startsWith('sms') || href?.startsWith('tg');
 
@@ -46,7 +46,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    li: ({ children }) => (<li className="mb-sm pl-sm" style={{ lineHeight: '1.6' }}>{ children }</li>),
+    li: ({ children }) => (<li className="subtitle weight-light mb-sm pl-sm" style={{ lineHeight: '1.6' }}>{ children }</li>),
     ...components,
   }
 }
