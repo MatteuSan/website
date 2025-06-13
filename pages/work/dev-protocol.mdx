@@ -1,12 +1,6 @@
-import { MSButton, MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { MSButton } from "../../components";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
-import Info from "../../components/markdown/Info";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
@@ -16,26 +10,16 @@ export const metadata = {
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
-Dev Protocol is a solution for sustainability issues of creators activities, it is designed for the blockchain solution and enhance creators to grow their economy. During my time with the company we've made a lot of significant improvements with how they handle user interfaces. It gave birth to their design system, [Hashi](/tools/hashi). With its implementation, the new unified design language now spans across multiple products in the ecosystem. It also laid the foundation for their numerous products including [Niwa](https://niwa.xyz), [Clubs](https://clubs.place), and their main website.
+Dev Protocol is a solution for sustainability issues of creators activities, it is designed for the blockchain solution and enhance creators to grow their economy. During my time with the company we've made a lot of significant improvements with how they handle user interfaces.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      <MSButton link="https://devprotocol.xyz" type="small filled">Website</MSButton>
-      <MSButton link="https://github.com/dev-protocol" type="small filled" icon={['left', <SiGithub />]}>GitHub</MSButton>
-    </Info>
-  </section>
-  <section className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/devprotocol/devprotocol-clubs.webp" alt="Dev Protocol's Clubs." />
-      <PreviewImage src="/img/devprotocol/devprotocol-clubs-dashboard.webp" alt="Dev Protocol's Clubs dashboard." />
-      <PreviewImage src="/img/devprotocol/devprotocol-niwa.webp" alt="Dev Protocol's Niwa." />
-      <PreviewImage src="/img/devprotocol/devprotocol-stakes-social.webp" alt="Dev Protocol's stakes.social." />
-    </div>
-  </section>
-</section>
+My time at the company gave birth to their design system, [Hashi](/tools/hashi). With its implementation, the new unified design language now spans across multiple products in the ecosystem. It also laid the foundation for their numerous products including [Niwa](https://niwa.xyz), [Clubs](https://clubs.place), and their main website.
+
+Hashi unified the experience across their products—all while keeping the identity of each project unique. Making it easier for users to navigate and interact with the Dev Protocol Ecosystem, and it made significant improvements in the time it takes to develop and ship new features.
+
+### Hashi
+Hashi is Dev Protocol's design system. Aiming to bring a unified user experience when using Dev Protocol products, to present an elegant user interface for consumers to interact with, and to be able to create the same user interfaces regardless of any frontend framework. It powers most of the experiences in the Dev Protocol ecosystem including but not limited to: the [Dev Protocol website](https://devprotocol.xyz), [Clubs](https://clubs.place), [Niwa](https://niwa.xyz), and many more products.
+
+It boasts a wide range of utilities, scalable component architecture, great API and developer experience, and the ability to scale the design system based on the product's own design needs. It gives you the ability to customize the global and component-level themes, create layouts, build specialized components and layouts, and more without compromise.
 
 export default function WorkPage({ children }) {
   return (
@@ -44,6 +28,22 @@ export default function WorkPage({ children }) {
       data={ WorkInfo }
       previewImage="devprotocol.webp"
       previewImageAlt="Dev Protocol's landing page."
+      media={(
+        <>
+          <PreviewImage src="/img/devprotocol/devprotocol-clubs.webp" alt="Dev Protocol's Clubs." />
+          <PreviewImage src="/img/devprotocol/devprotocol-clubs-dashboard.webp" alt="Dev Protocol's Clubs dashboard." />
+          <PreviewImage src="/img/devprotocol/devprotocol-niwa.webp" alt="Dev Protocol's Niwa." />
+          <PreviewImage src="/img/devprotocol/devprotocol-stakes-social.webp" alt="Dev Protocol's stakes.social." />
+          <PreviewImage src="/img/hashi.webp" alt="A screen capture of Hashi's website" />
+          <PreviewImage src="/img/hashi/hashi-cover--dark.webp" alt="Hashi's cover image but in dark mode." />
+        </>
+      )}
+      links={(
+        <>
+          <MSButton link="https://devprotocol.xyz" type="small outlined">Website</MSButton>
+          <MSButton link="https://github.com/dev-protocol" type="small outlined">GitHub</MSButton>
+        </>
+      )}
     >
       { children }
     </MarkdownLayout>

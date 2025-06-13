@@ -19,7 +19,7 @@ const HomePage: NextPage = () => {
       <AboutMeSection />
       <MainContent constrained={false}>
         <ServiceSection />
-        <WorksSection works={ workCleanedItems.slice(0, 8) } />
+        <WorksSection works={ workCleanedItems.slice(0, 6) } />
         <CTASection />
       </MainContent>
     </DefaultLayout>

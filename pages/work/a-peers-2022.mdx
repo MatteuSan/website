@@ -1,10 +1,5 @@
-import { MSButton, MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
+import { MSButton } from "../../components";
 import { works } from "../../constants/works";
-import Info from "../../components/markdown/Info";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
@@ -16,26 +11,15 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 A website for the A-PEER! 2022 program in the Regional Lead School for the Arts in Angono. It has a gallery of the participating students' works.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      <MSButton link={ WorkInfo['link'] } type="small filled">Website</MSButton>
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <div className="w-full h-full grid pi-center">
-        <p className="subtitle">No images to show.</p>
-      </div>
-    </div>
-  </section>
-</section>
-
 export default function WorkPage({ children }) {
   return (
-    <MarkdownLayout data={ WorkInfo } metadata={ metadata } previewImage="apeers.webp" previewImageAlt="The A-PEER 2022 landing page.">
+    <MarkdownLayout
+      data={ WorkInfo }
+      metadata={ metadata }
+      previewImage="apeers.webp"
+      previewImageAlt="The A-PEER 2022 landing page."
+      links={<MSButton link={ WorkInfo['link'] } type="small outlined">Website</MSButton>}
+    >
       { children }
     </MarkdownLayout>
   );

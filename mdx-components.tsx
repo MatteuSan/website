@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return <h2 className="family-title size-4xl mt-xl mb-sm stretch-condensed" id={handleId(children?.toString())}>{ children }</h2>;
     },
     h3: ({ children }) => {
-      return <h3 className="family-subtitle size-2xl mt-md mb-sm" id={handleId(children?.toString())}>{ children }</h3>;
+      return <h3 className="family-title size-2xl mt-lg mb-sm stretch-condensed" id={handleId(children?.toString())}>{ children }</h3>;
     },
     h4: ({ children }) => <h4 className="subtitle mt-md mb-sm size-sm" id={handleId(children?.toString())}>{children}</h4>,
     p: ({ children }) => <p className="size-subtitle weight-light mb-md" style={{ lineHeight: '1.6' }}>{children}</p>,

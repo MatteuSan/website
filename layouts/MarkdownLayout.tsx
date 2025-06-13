@@ -107,7 +107,7 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
         <div id="preview-image-container" className="constrained-layout my-md" style={{ overflow: 'clip' }}>
           <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
         </div>
-        <section className="links constrained flex flow-row wrap gap-sm mt-md">
+        <section className="links constrained flex flow-row wrap gap-sm mt-lg mb-sm">
           <p className="de-emphasize family-mono wrap-brackets">Links</p>
           { links }
         </section>
@@ -116,7 +116,7 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
             { children }
           </section>
         </MainContent>
-        <section className="media constrained grid cols-1 @medium:cols-2 gap-md mt-xl">
+        <section className="media constrained grid cols-1 @medium:cols-2 gap-md mt-lg">
           { media }
         </section>
       </section>

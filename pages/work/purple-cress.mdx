@@ -1,12 +1,6 @@
-import { MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
-import Info from "../../components/markdown/Info";
 
 export const metadata = {
   title: 'Purple Cress',
@@ -17,22 +11,6 @@ export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 Purple Cress was a Japanese manga scanlation group. Their scanlation work is diverse. From one-shots, to short form series, to the larger serialized series. It boasts an in-house built manga reader with basic accessibility features, a beautiful UI to navigate the scanlation's portfolio, and an admin panel to manage the content published.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      There are no links for this project.
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/purplecress/purplecress-chapter-view.webp" alt="A screen capture of the series preview page." />
-      <PreviewImage src="/img/purplecress/purplecress-reader.webp" alt="A screen capture of the chapter reader." />
-    </div>
-  </section>
-</section>
-
 export default function WorkPage({ children }) {
   return (
     <MarkdownLayout
@@ -40,6 +18,15 @@ export default function WorkPage({ children }) {
       metadata={ metadata }
       previewImage="purplecress.webp"
       previewImageAlt="The Purple Cress landing page."
+      media={(
+        <>
+          <PreviewImage src="/img/purplecress/purplecress-chapter-view.webp" alt="A screen capture of the series preview page." />
+          <PreviewImage src="/img/purplecress/purplecress-reader.webp" alt="A screen capture of the chapter reader." />
+        </>
+      )}
+      links={(
+        <p className="body">There are no links for this project.</p>
+      )}
     >
       { children }
     </MarkdownLayout>
