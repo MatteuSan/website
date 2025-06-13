@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { m } from 'framer-motion';
 
@@ -14,7 +14,6 @@ import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useLenis } from 'lenis/react';
 import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
