@@ -12,11 +12,10 @@ interface BlankLayoutProps {
 }
 
 const ogImageMap = {
-  'home': '/img/og-image-home.webp',
-  'work': '/img/og-image-work.webp',
-  'tools': '/img/og-image-tools.webp',
-  // TODO: Change this to -blog when done building the page.
-  'blog': '/img/og-image-home.webp',
+  'home': '/img/og-image-home.png',
+  'work': '/img/og-image-work.png',
+  'tools': '/img/og-image-tools.png',
+  'blog': '/img/og-image-blog.png',
 };
 
 export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, previewImage, children }) => {

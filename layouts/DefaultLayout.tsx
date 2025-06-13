@@ -31,9 +31,10 @@ interface MainContentProps extends React.ComponentPropsWithRef<any> {
 }
 
 const ogImageMap = {
-  'home': '/img/og-image-home.webp',
-  'work': '/img/og-image-work.webp',
-  'tools': '/img/og-image-tools.webp',
+  'home': '/img/og-image-home.png',
+  'work': '/img/og-image-work.png',
+  'tools': '/img/og-image-tools.png',
+  'blog': '/img/og-image-blog.png',
 };
 
 export const MainContent: React.FC<MainContentProps> = ({ className, children, constrained = true, ...props }) => {
