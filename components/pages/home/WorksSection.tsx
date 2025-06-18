@@ -72,17 +72,14 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
         <div className="mb-2xl @large:mb-3xl">
           <h2 ref={leadTextRef} className="family-mono de-emphasize size-sm wrap-brackets">Works</h2>
           <p className="content family-supertitle big-ass-text line-height-condensed letter-spacing-condensed">Here's what I did.</p>
-          <p className="content-2 family-body de-emphasize size-sm mt-md">Take a look at the works that companies invested in that—in turn—expanded their online presence and drove business growth.</p>
+          <p className="content-2 family-body de-emphasize size-sm mt-md">Take a look at the works that companies invested in that expanded their online presence and drove business growth.</p>
         </div>
       </section>
       <div>
         <ul className="list-style-none grid cols-1 gap-xl @medium:gap-none @medium:cols-2 mt-lg" id="projects">
           { works.map((item, key) =>  (
             <MSInfoCard index={key} key={ key } item={item} linkBase="work"/>
-          ))
-          }
-          {/*<MSButton link="/work" type="outlined full-width" icon={ ['right', <ArrowRightIcon/>] }>See all
-            works</MSButton>*/}
+          )) }
         </ul>
       </div>
     </section>
