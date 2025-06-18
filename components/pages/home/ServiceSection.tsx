@@ -92,7 +92,7 @@ const ServiceSection: React.FC = ( ) => {
       <ul className="service-container constrained">
         <MSServiceCard
           title="Web & Mobile Design"
-          description="I craft bespoke user-centered experiences with care and intention that they will remember and love."
+          description="I craft bespoke user-centered experiences that your users will remember and love."
           media={DesignHero}
           alt="Design services image."
         >
@@ -118,7 +118,7 @@ const ServiceSection: React.FC = ( ) => {
         </MSServiceCard>
         <MSServiceCard
           title="Design Systems"
-          description="I architect systems that bring organization and consistency to UI/UX—unifying product experiences, boosting team productivity, and scaling experiences to its highest degree."
+          description="I architect design systems that unify product experiences, boost team productivity, and scale experiences to its highest degree."
           media={DesignSystemsHero}
           alt="Design Systems services image."
         >
