@@ -69,7 +69,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
         <p className="lead-text will-split family-supertitle size-3xl @medium:size-4xl @large:size-6xl line-height-condensed letter-spacing-condensed mb-sm">
           Build the experience your users <span className="highlight">deserve</span>.
         </p>
-        <p className="content will-split size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first sketch to final push, I'll help you ship something amazing.</p>
+        <p className="content will-split size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first draft to final push, I'll help you ship something amazing.</p>
       </div>
       <div className="actions flex flow-row gap-md">
         <MSButton type="filled large" icon={ ['left', <EnvelopeIcon />] } link="mailto:matt@matteusan.com">Let's talk</MSButton>
