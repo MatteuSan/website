@@ -16,11 +16,11 @@ const MSFooter: React.FC<MSFooterProps> = ({ title, version, author }) => {
       </h3>
       <p className="ms-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
       <div className="flex flow-row wrap-none jc-center ai-center gap-sm">
-        <Link className="ms-link small" href="/github">GitHub</Link>
-        <Link className="ms-link small" href="/linkedin">LinkedIn</Link>
+        <Link className="ms-link small" href="/github" target="_blank">GitHub</Link>
+        <Link className="ms-link small" href="/linkedin" target="_blank">LinkedIn</Link>
         <Link className="ms-link small" href="/tools">Tools</Link>
         <Link className="ms-link small" href="/blog">Blog</Link>
-        <Link className="ms-link small" href="/resume">Resume</Link>
+        <Link className="ms-link small" href="/resume" target="_blank">Resume</Link>
       </div>
     </footer>
   );
