@@ -39,7 +39,7 @@ export const MSInfoCard: React.FC<MSInfoCardProps> = ({ index, item, linkBase })
         variants={ variants }
         initial="initial"
         whileInView="whileInView"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true }}
         onAnimationComplete={() => {
           requestAnimationFrame(() => {
             if (infoCardRef.current) {
