@@ -24,7 +24,7 @@
       @include himig.color-ink('footer-title', inherit);
       @include himig.typography-apply('footer-title', (
         family: 'supertitle',
-        size: 'subtitle',
+        size: 'lg',
         weight: 'body',
         line-height: 'condensed',
         squeeze: 'tight'

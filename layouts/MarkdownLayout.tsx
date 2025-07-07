@@ -92,10 +92,10 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
         <div className="constrained-layout">
           <MSButton style={{ position: 'relative', left: '-0.9rem', marginBottom: '0.7rem', zIndex: 110 }} link={`/`} type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
           <div>
-            <h2 className="family-supertitle weight-title size-6xl @xlarge:big-ass-text stretch-condensed squeeze-condensed @xlarge:inline-block">{ metadata.title }</h2>
-            <div className="@xlarge:ml-xl @xlarge:inline-block">
+            <h2 className="family-supertitle weight-title size-2xl @medium:size-3xl @xlarge:size-5xl stretch-condensed squeeze-condensed @xlarge:inline-block">{ metadata.title }</h2>
+            <div className="mt-xs @xlarge:mt-none @xlarge:ml-xl @xlarge:inline-block">
               <small className="block mono de-emphasize wrap-brackets">{ data.duration[0] }{ data.duration[1] ? ' - ' + data.duration[1] : '' }</small>
-              <p className="subtitle">{ metadata.description }</p>
+              <p className="family-subtitle weight-light size-sm @medium:size-md @xlarge:size-lg">{ metadata.description }</p>
               <ul className="my-md gap-sm flex flow-row wrap pt-sm" style={{ listStyle: 'none' }}>
                 { data.tags.map((item, i) => (
                   <li><MSTag key={ i } label={ item }/></li>

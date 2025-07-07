@@ -58,28 +58,44 @@
   }
 
   .big-ass-text {
-    font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
-    line-height: 1.15;
+    @include himig.typography-apply('big-ass-text', (
+      size: '6xl',
+      line-height: 'x-short',
+      squeeze: 'tight',
+      stretch: 'condensed'
+    ));
   }
 
   .\@medium\:big-ass-text {
     @include himig.breakpoint-create('medium') {
-      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
-      line-height: 1.15;
+      @include himig.typography-apply('big-ass-text', (
+        size: '6xl',
+        line-height: 'x-short',
+        squeeze: 'tight',
+        stretch: 'condensed'
+      ));
     }
   }
 
   .\@large\:big-ass-text {
     @include himig.breakpoint-create('large') {
-      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
-      line-height: 1.15;
+      @include himig.typography-apply('big-ass-text', (
+        size: '6xl',
+        line-height: 'x-short',
+        squeeze: 'tight',
+        stretch: 'condensed'
+      ));
     }
   }
 
   .\@xlarge\:big-ass-text {
     @include himig.breakpoint-create('xlarge') {
-      font-size: clamp(himig.to-rem(56px), 15vw, himig.to-rem(146px));
-      line-height: 1.15;
+      @include himig.typography-apply('big-ass-text', (
+        size: '6xl',
+        line-height: 'x-short',
+        squeeze: 'tight',
+        stretch: 'condensed'
+      ));
     }
   }
 

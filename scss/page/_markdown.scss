@@ -21,7 +21,11 @@
     }
 
     p {
-      font-size: himig.token-get('size-subtitle');
+      font-size: 1rem;
+
+      @include himig.breakpoint-create('medium') {
+        font-size: himig.primitive-token-get('size.md');
+      }
 
       &:only-of-type {
         margin: 0 !important;

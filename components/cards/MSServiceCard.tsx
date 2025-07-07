@@ -97,7 +97,7 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
             { title }
           </h3>
           { description ? (
-            <p className="service-card__description family-supertitle size-xl @medium:size-2xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
+            <p className="service-card__description family-supertitle size-lg @medium:size-xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
               { description }
             </p>
           ) : null }

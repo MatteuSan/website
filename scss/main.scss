@@ -41,24 +41,30 @@ $ms-material-light: (
 
 @include himig.init(
   $primary: (
-    200: #948b8b,
-    300: #6e6363,
-    400: #3d3838,
-    600: #211f1f,
-    800: #111010,
-    'ink': #fff
+    100: oklch(76% 0.008 17.333deg),
+    200: oklch(64.1% 0.011 17.439deg),
+    300: oklch(46% 0.009 17.49deg),
+    400: oklch(34.6% 0.007 17.497deg),
+    500: oklch(28.8% 0.004 17.412deg),
+    600: oklch(24.6% 0.003 17.363deg),
+    700: oklch(20.3% 0.003 17.421deg),
+    800: oklch(17% 0.002 17.321deg),
+    'ink': oklch(100% 0 0deg)
   ),
   $surface: (
-    200: #948b8b,
-    300: #6e6363,
-    400: #3d3838,
-    600: #211f1f,
-    800: #111010,
-    'ink': #fff
+    100: oklch(76% 0.008 17.333deg),
+    200: oklch(64.1% 0.011 17.439deg),
+    300: oklch(46% 0.009 17.49deg),
+    400: oklch(34.6% 0.007 17.497deg),
+    500: oklch(28.8% 0.004 17.412deg),
+    600: oklch(24.6% 0.003 17.363deg),
+    700: oklch(20.3% 0.003 17.421deg),
+    800: oklch(17% 0.002 17.321deg),
+    'ink': oklch(100% 0 0deg)
   ),
   $supertitle: (
     'family': 'family.serif',
-    'size': 'size.3xl',
+    'size': 'size.2xl',
     'weight': 600,
   ),
   $title: (
@@ -71,16 +77,18 @@ $ms-material-light: (
     'weight': 200
   ),
   $extend: (
-    'accent-ink': #100500 !important,
+    'accent-ink': oklch(13.2% 0.03 61.725deg) !important,
     'ms-orange-inverted': (
-      '200': #59321d,
-      '300': #3d1f08,
-      '400': #281307,
-      '600': #100500,
-      'ink': #da6e28,
+      100: oklch(47.1% 0.065 48.07deg),
+      200: oklch(36.1% 0.065 48.07deg),
+      300: oklch(27.6% 0.058 54.676deg),
+      400: oklch(21.4% 0.041 49.63deg),
+      500: oklch(16.4% 0.041 49.63deg),
+      600: oklch(13.2% 0.03 61.725deg),
+      700: oklch(9.2% 0.03 61.725deg),
+      800: oklch(5.2% 0.03 61.725deg),
+      ink: oklch(65.4% 0.157 49.102deg),
     ),
-    'accent-gradient': linear-gradient(45deg, #c43e00 0%, #ffa040 100%),
-    'transition-time': 0.2s,
     'viewport-layout-limit': 1507px,
     'viewport-content-limit': 1077px
   )
@@ -151,20 +159,20 @@ $ms-material-light: (
   }
 
   @include ms-button.extend('outlined') {
-    box-shadow: 0 3px 0 himig.token-get('accent-800');
+    box-shadow: 0 3px 0 himig.token-get('accent-600');
 
     &:active {
       transform: translateY(3px) !important;
-      box-shadow: 0 0 0 himig.token-get('accent-800') !important;
+      box-shadow: 0 0 0 himig.token-get('accent-600') !important;
     }
   }
 
   @include ms-button.extend('filled') {
-    box-shadow: 0 3px 0 himig.token-get('accent-800');
+    box-shadow: 0 3px 0 himig.token-get('accent-600');
 
     &:active {
       transform: translateY(3px) !important;
-      box-shadow: 0 0 0 himig.token-get('accent-800') !important;
+      box-shadow: 0 0 0 himig.token-get('accent-600') !important;
     }
   }
 
@@ -202,7 +210,7 @@ $ms-material-light: (
       ));
 
       &:active {
-        @include himig.key-bind('button-outline', 2px solid rgba(himig.token-get-raw('ms-orange-inverted-300'), himig.$color-outline-focus-opacity));
+        @include himig.key-bind('button-outline', 2px solid rgb(from himig.token-get-raw('ms-orange-inverted-300') r g b / himig.$color-outline-focus-opacity));
       }
     }
 
@@ -311,7 +319,7 @@ $ms-material-light: (
     &::after {
       @extend %status-chip;
       content: 'On-hiatus';
-      background: himig.primitive-token-get('ms-grey.400');
+      background: himig.primitive-token-get('ms-neutral.400');
       color: #fff;
       font-size: himig.to-rem(12px);
     }
