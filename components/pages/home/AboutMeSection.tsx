@@ -84,14 +84,13 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       </div>
       <div>
         <h2 className="family-mono size-sm de-emphasize wrap-brackets">About me</h2>
-        <p className="lead-text family-supertitle big-ass-text letter-spacing-condensed stretch-xcondensed will-split">Hi, I'm Matt.</p>
+        <p className="lead-text family-supertitle size-5xl @medium:size-6xl line-height-x-short squeeze-tight stretch-x-condensed will-split">Hi, I'm Matt.</p>
         <p className="content mt-sm size-md @large:size-lg weight-light will-split">
           <span className="highlight">A UX Engineer</span> based in the Philippines, <br/>
           and I create bridges from software to users.
         </p>
         <p className="content-2 mt-md size-sm de-emphasize">
-          I've helped businesses establish their presence online <br />
-          and build experiences their users know and love.
+          I've helped businesses establish their presence online and build experiences their users know and love.
         </p>
         <div id="cta" className="content-3 w-full flex flow-row @medium:flow-row wrap-none mt-lg gap-sm @medium:gap-md">
           <MSButton link="mailto:matt@matteusan.com" type={`filled large`} icon={['left', <EnvelopeIcon />]}>Let's talk</MSButton>

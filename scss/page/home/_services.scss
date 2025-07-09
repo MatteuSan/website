@@ -84,14 +84,14 @@
             @include himig.typography-bind('service-card-list-item', (
               size: 'md',
             ));
+
+            &:hover {
+              @include himig.key-bind('service-card-list-item-margin', himig.primitive-token-get('gap.2xl'));
+            }
           }
 
           &:not(:last-child) {
             border-block-end: 1px solid himig.key-create('service-card-list-item-border', himig.token-get('surface-300'));
-          }
-
-          &:hover {
-            @include himig.key-bind('service-card-list-item-margin', himig.primitive-token-get('gap.2xl'));
           }
 
           &::before {

@@ -62,7 +62,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
   }, { scope: ctaSectionRef });
 
   return (
-    <section className="constrained-layout h-half-screen grid pc-center my-4xl @large:my-6xl" ref={ctaSectionRef} id="contact">
+    <section className="constrained-layout h-half-screen grid pc-center my-lg @medium:my-2xl @large:my-6xl" ref={ctaSectionRef} id="contact">
       <div className="copy mb-xl">
         <h2 className="family-mono de-emphasize size-sm wrap-brackets">Contact</h2>
         <p className="lead-text will-split family-supertitle size-2xl @medium:size-3xl line-height-condensed letter-spacing-condensed mb-sm">

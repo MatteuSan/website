@@ -6,7 +6,7 @@
     height: calc(var(--circle-size, 500px) * 2);
     display: block;
     position: absolute;
-    inset: -5svw -15svh 0;
+    inset: -5dvw -15dvh 0;
     z-index: -1;
     background: radial-gradient(circle var(--circle-size, 500px) at 50% 50%, rgb(from himig.token-get('accent-400') r g b / 20%) 0%, transparent 100%);
 
@@ -21,16 +21,16 @@
 
   .ms-hero {
     width: 100%;
-    min-height: calc(100svh);
+    min-height: calc(100dvh);
     display: grid;
     place-items: flex-end;
     position: relative;
     margin-inline: auto;
-    margin-block-end: himig.primitive-token-get('margin.5xl');
-    padding-block: himig.primitive-token-get('padding.4xl');
+    margin-block-end: himig.primitive-token-get('margin.6xl');
+    padding-block: himig.primitive-token-get('padding.2xl');
     overflow: clip;
 
-    @include himig.breakpoint-create('large') {
+    @include himig.breakpoint-create('xlarge') {
       padding-block: himig.primitive-token-get('padding.5xl');
     }
 

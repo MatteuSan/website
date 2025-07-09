@@ -19,7 +19,7 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
     const exit = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
-        start: 'top top',
+        start: 'bottom 50%',
         end: 'bottom top',
         scrub: true,
       }
@@ -30,15 +30,15 @@ const MSHero = forwardRef<HTMLDivElement, MSHeroProps>((props, ref) => {
       duration: 1
     });
 
-    exit.to(heroRef.current, {
-      y: -50,
-      ease: 'power2',
-    });
-    exit.to('.ms-hero__wrapper', {
-      y: -100,
-      duration: 2,
-      ease: 'power2',
-    }, '<');
+    // exit.to(heroRef.current, {
+    //   y: -50,
+    //   ease: 'power2',
+    // });
+    // exit.to('.ms-hero__wrapper', {
+    //   y: -100,
+    //   duration: 2,
+    //   ease: 'power2',
+    // }, '<');
     exit.to(heroRef.current, {
       opacity: 0,
     });
