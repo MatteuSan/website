@@ -257,14 +257,18 @@ $ms-material-light: (
   );
 
   #works .ms-card {
-    &:hover {
-      --ms-card-radius: #{himig.primitive-token-get('radius.2xl')};
-      transition: border-radius himig.token-get('time-short') himig.token-get('easing');
-
-      .ms-card__media {
+    .ms-card__media {
+      &:hover {
         filter: none !important;
+      }
+    }
 
-        @include himig.breakpoint-create('large') {
+    @include himig.breakpoint-create('medium') {
+      &:hover {
+        --ms-card-radius: #{himig.primitive-token-get('radius.2xl')};
+        transition: border-radius himig.token-get('time-short') himig.token-get('easing');
+
+        .ms-card__media {
           filter:
             saturate(15%)
             blur(5px)
