@@ -80,13 +80,13 @@ $ms-material-light: (
     'ink': oklch(100% 0 0deg)
   ),
   $supertitle: (
-    'family': ('Instrument Serif', sans-serif),
+    'family': ('Instrument Serif', 'Noto Display Serif', serif),
     'size': 'size.2xl',
     'squeeze': 'squeeze.tight',
     'weight': 600,
   ),
   $title: (
-    'family': ('Instrument Serif', sans-serif),
+    'family': ('Instrument Serif', 'Noto Display Serif', serif),
     'size': 'size.xl',
     'squeeze': 'squeeze.tight',
     'weight': 400
