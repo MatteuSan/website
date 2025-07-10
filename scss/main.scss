@@ -17,9 +17,26 @@
 @use 'components/preview-image';
 
 @use 'page/home';
+@use 'page/error';
 @use 'page/markdown';
 
 @use 'utils';
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  // font-stretch: condensed;
+  src: url('./fonts/InstrumentSerif-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  // font-stretch: condensed;
+  src: url('./fonts/InstrumentSerif-Italic.woff2') format('woff2');
+}
 
 $ms-material-dark: (
   200: #948b8b,
@@ -63,13 +80,15 @@ $ms-material-light: (
     'ink': oklch(100% 0 0deg)
   ),
   $supertitle: (
-    'family': 'family.serif',
+    'family': ('Instrument Serif', sans-serif),
     'size': 'size.2xl',
+    'squeeze': 'squeeze.tight',
     'weight': 600,
   ),
   $title: (
-    'family': 'family.serif',
+    'family': ('Instrument Serif', sans-serif),
     'size': 'size.xl',
+    'squeeze': 'squeeze.tight',
     'weight': 400
   ),
   $subtitle: (
@@ -369,6 +388,7 @@ $ms-material-light: (
 
   // Pages
   @include home.render();
+  @include error.render();
   @include markdown.render();
 
   // Markdown components

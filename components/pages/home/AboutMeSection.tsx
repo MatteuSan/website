@@ -84,9 +84,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = () => {
       </div>
       <div>
         <h2 className="family-mono size-sm de-emphasize wrap-brackets">About me</h2>
-        <p className="lead-text family-supertitle size-5xl @medium:size-6xl line-height-x-short squeeze-tight stretch-x-condensed will-split">Hi, I'm Matt.</p>
-        <p className="content mt-sm size-md @large:size-lg weight-light will-split">
-          <span className="highlight">A UX Engineer</span> based in the Philippines, <br/>
+        <p className="lead-text family-supertitle size-5xl @medium:size-6xl weight-light line-height-x-short stretch-condensed will-split">Hi, I’m Matt.</p>
+        <p className="content mt-sm size-md @large:size-lg weight-light will-split">A <span className="highlight"> UX Engineer</span> based in the Philippines, <br/>
           and I create bridges from software to users.
         </p>
         <p className="content-2 mt-md size-sm de-emphasize">

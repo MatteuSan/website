@@ -1,4 +1,4 @@
-@use 'pkg:@matteusan/himig';
+@use '@matteusan/himig';
 
 @mixin render() {
   // Text
@@ -6,7 +6,7 @@
     display: inline-block;
     position: relative;
     border-radius: himig.token-get('radius-small');
-    font-family: himig.token-get('family-title');
+    font-family: himig.token-get('family-supertitle');
     font-style: italic;
     font-weight: himig.token-get('weight-subtitle');
     text-decoration: underline;

@@ -26,7 +26,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: workSectionRef.current,
-        start: 'bottom 55%',
+        start: 'bottom 77%',
         scrub: true,
       }
     });
@@ -69,7 +69,7 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
       <section className="constrained-layout w-full mt-6xl">
         <div className="mb-2xl @large:mb-3xl">
           <h2 ref={leadTextRef} className="family-mono de-emphasize size-sm wrap-brackets">Works</h2>
-          <p className="content family-supertitle size-3xl @medium:size-5xl @large:size-6xl line-height-x-short squeeze-tight stretch-condensed">Here's what I did.</p>
+          <p className="content family-supertitle size-3xl @medium:size-5xl @large:size-6xl line-height-x-short squeeze-tight stretch-condensed">Here’s what I did.</p>
           <p className="content-2 family-body de-emphasize size-sm mt-md">Take a look at the works that companies invested in that expanded their online presence and drove business growth.</p>
         </div>
       </section>

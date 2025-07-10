@@ -1,26 +1,24 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { BlankLayout } from '@/layouts/BlankLayout';
-import { MSButton, MSCard } from '../components';
+import { MSButton } from '../components';
 import Link from 'next/link';
 
 const NotFound: NextPage = () => {
   return (
     <BlankLayout title="Error - 404" description="Page not found.">
       <section className="constrained h-screen grid pi-center">
-        <div className="w-full" style={{ maxWidth: 570 }}>
-          <MSCard>
-            <div className="p-xl">
-              <h1 className="family-supertitle size-6xl letter-spacing-condensed text-center text-surface-ink">
-                Error 404
-              </h1>
-              <p className="subtitle">The page you were looking for was not found. Maybe you've mistyped the URL?</p>
-            </div>
-            <div className="px-xl pb-xl">
-              <MSButton link="/" type="filled large full-width">Return home</MSButton>
-              <small className="block mt-md">If the problem still persists, please contact me at <Link className="ms-link" href="mailto:matt@matteusan.com?subject=There's something wrong on the website">matt@matteusan.com</Link>.</small>
-            </div>
-          </MSCard>
+        <div className="w-full fill-gradient r-xl" style={{ maxWidth: 570 }}>
+          <div className="p-xl">
+            <h1 className="family-supertitle size-4xl line-height-short squeeze-tight text-center text-surface-ink">
+              Error 404
+            </h1>
+            <p className="family-subtitle size-md weight-light">The page you were looking for was not found. Maybe you've mistyped the URL?</p>
+          </div>
+          <div className="px-xl pb-xl">
+            <MSButton link="/" type="filled large full-width">Return home</MSButton>
+            <small className="block mt-md">If the problem still persists, please contact me at <Link className="ms-link" href="mailto:matt@matteusan.com?subject=There's something wrong on the website">matt@matteusan.com</Link>.</small>
+          </div>
         </div>
       </section>
     </BlankLayout>

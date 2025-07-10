@@ -85,7 +85,7 @@ const ServiceSection: React.FC = ( ) => {
       <section className="constrained-layout mx-auto mb-md flex flow-row wrap-none jc-space-between ai-center gap-sm">
         <div ref={servicesSectionHeaderRef} className="mb-lg @large:mb-xl">
           <h2 className="family-mono de-emphasize size-sm wrap-brackets">Services</h2>
-          <p className="content family-supertitle size-3xl @medium:size-5xl @large:size-6xl line-height-x-short squeeze-tight stretch-condensed">Here's what I do.</p>
+          <p className="content family-supertitle size-3xl @medium:size-5xl @large:size-6xl line-height-x-short squeeze-tight stretch-condensed">Here’s what I do.</p>
           <p className="content-2 family-body de-emphasize size-sm mt-md">I take pride in providing premium digital services to clients.</p>
         </div>
       </section>
