@@ -21,6 +21,8 @@
     ));
 
     .ms-footer__title {
+      width: max-content;
+      margin: 0 auto;
       @include himig.color-ink('footer-title', inherit);
       @include himig.typography-apply('footer-title', (
         family: 'supertitle',
@@ -29,9 +31,9 @@
         line-height: 'condensed',
         squeeze: 'tight'
       ));
-      transition: all var(--ms-transition-time) ease;
+      transition: color himig.token-get('time-short') himig.token-get('easing');
       font-stretch: condensed;
-      cursor: default;
+      cursor: pointer;
 
       &:hover {
         @include himig.color-ink('footer-title', 'accent-400', 'bind');

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useLenis } from 'lenis/react';
 
 interface MSFooterProps {
   title: string;
@@ -8,11 +9,20 @@ interface MSFooterProps {
 }
 
 const MSFooter: React.FC<MSFooterProps> = ({ title, version, author }) => {
+  const lenis = useLenis();
+
   return (
     <footer className="ms-footer">
-      <h3 className="ms-footer__title">
+      <h3
+        className="ms-footer__title"
+        onClick={() => {
+          if (lenis) {
+            lenis.scrollTo('#about-me', { offset: 0 });
+          }
+        }}
+      >
         { title }
-        { version && <span className="ms-footer__version">v{ version }</span> }
+        {/*{ version && <span className="ms-footer__version">v{ version }</span> }*/}
       </h3>
       <p className="ms-footer__copyright">Copyright &copy; { new Date().getFullYear() } - { author }</p>
       <div className="flex flow-row wrap-none jc-center ai-center gap-sm">

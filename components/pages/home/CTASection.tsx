@@ -66,7 +66,7 @@ const CTASection: React.FC<CTASectionProps> = () => {
       <div className="copy mb-xl">
         <h2 className="family-mono de-emphasize size-sm wrap-brackets">Contact</h2>
         <p className="lead-text will-split family-supertitle size-2xl @medium:size-3xl line-height-condensed letter-spacing-condensed mb-sm">
-          Build the experience your users <span className="highlight">deserve</span>.
+          Let’s build the experience your users <span className="highlight">deserve</span>.
         </p>
         <p className="content will-split size-md @medium:size-lg weight-light">Have a project in mind? Let's bring it to life. From first draft to final push, I'll help you ship something amazing.</p>
       </div>

@@ -1,7 +1,9 @@
+import { Tool } from '@/lib/types';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { DefaultLayout, MainContent } from '@/layouts/DefaultLayout';
-import { MSHero, MSInfoCard } from '@/components';
+import { MSHero, MSInfoCard, MSTag } from '@/components';
 
 import { tools } from '@/constants/tools';
 import { useRouter } from "next/router";
@@ -78,13 +80,25 @@ const ToolsPage: NextPage = () => {
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
     }, '<50%');
+
+    tools.from('.filters', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
+
+    tools.from('.tools-list', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
   });
 
   return (
     <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences.">
-      <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
+      <section className="mt-6xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
         <div className="w-full constrained">
-          <h2 className="lead-text family-supertitle size-4xl letter-spacing-condensed">Tools</h2>
+          <h2 className="lead-text family-supertitle size-3xl letter-spacing-condensed">Tools</h2>
           <p className="content size-md @large:size-lg weight-light">Empowering teams (and you!) to build better experiences.</p>
           <p className="content-2 mt-md size-sm de-emphasize">
             I created these tools to help me build better software. Each one reflects my philosophy of building with care, clarity, and scalability in mind.
@@ -92,8 +106,8 @@ const ToolsPage: NextPage = () => {
         </div>
       </section>
       <MainContent>
-        <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
-          <h3 className="subtitle">
+        <section className="filters flex flow-row wrap-none jc-space-between ai-center gap-sm">
+          <h3 className="subtitle size-md">
             { filteredItems.length != 0 ? `Found ${ filteredItems.length } ${ filteredItems.length >= 2 ? 'items' : 'item' }.` : (
               <span style={ { color: 'rgba(0,0,0,0)' } } aria-hidden="true">Hidden text</span>) }
           </h3>
@@ -106,19 +120,47 @@ const ToolsPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="mb-4xl">
-          <div className="grid cols-1 gap-lg" id="projects">
-            <>
-              { filteredItems.length != 0 ? filteredItems.map((item: any, key: any) => {
+        <section className="tools-list mb-4xl">
+          <div className="grid cols-1 @medium:cols-2 gap-lg" id="projects">
+            { filteredItems.length != 0 ? filteredItems.map((item: Tool, key: any) => {
+              if (!item.slug && item.links) {
                 return (
-                  <MSInfoCard key={ key } index={ key } item={ item } linkBase="tools"/>
+                  <Link href={item.links.docs ? item.links.docs : item.links.src ? item.links.src : '#'} target="_blank" rel="noopener noreferrer">
+                    <div key={key} className="tool-card flex flow-column gap-md p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
+                      <div className="flex flow-column">
+                        <h3 className="title stretch-condensed inline-block">{ item.name }</h3>
+                        <p className="body de-emphasize mt-xs truncate-1">{ item.desc }</p>
+                      </div>
+                      <div className="flex flow-row wrap-none gap-xs ai-center">
+                        { item.tags.map((tag: any, key: number)=> (
+                          <MSTag key={key}>{ tag }</MSTag>
+                        )) }
+                      </div>
+                    </div>
+                  </Link>
                 );
-              }) : (
-                <div className="grid pi-center p-2xl border-xs start-1 end-3">
-                  <p className="subtitle">No items found.</p>
-                </div>
-              ) }
-            </>
+              }
+
+              return (
+                <Link href={`/tools/${item.slug}`}>
+                  <div key={key} className="tool-card flex flow-column gap-md p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
+                    <div className="flex flow-column">
+                      <h3 className="title stretch-condensed inline-block">{ item.name }</h3>
+                      <p className="body de-emphasize mt-xs truncate-1">{ item.desc }</p>
+                    </div>
+                    <div className="flex flow-row wrap-none gap-xs ai-center">
+                      { item.tags.map((tag: any, key: number)=> (
+                        <MSTag key={key}>{ tag }</MSTag>
+                      )) }
+                    </div>
+                  </div>
+                </Link>
+              );
+            }) : (
+              <div className="grid pi-center p-2xl border-xs start-1 end-3">
+                <p className="subtitle">No items found.</p>
+              </div>
+            ) }
           </div>
         </section>
       </MainContent>

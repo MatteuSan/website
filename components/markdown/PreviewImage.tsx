@@ -1,13 +1,15 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import React from 'react';
 import Image from 'next/image';
 import { m } from 'framer-motion';
 
 interface PreviewImageProps {
-  src: string;
+  src: StaticImport|string;
   alt: string;
+  hasIndependentAnimation?: boolean;
 }
 
-const PreviewImage: React.FC<PreviewImageProps> = ({ src,alt }) => {
+const PreviewImage: React.FC<PreviewImageProps> = ({ src, alt, hasIndependentAnimation = true }) => {
   const enterAnimation = {
     initial: { opacity: 0, y: 50 },
     enter: { opacity: 1, y: 0, transition: { duration: 0.7 } },
@@ -17,15 +19,15 @@ const PreviewImage: React.FC<PreviewImageProps> = ({ src,alt }) => {
     <m.div
       className="preview-image"
       data-alt={alt}
-      variants={enterAnimation}
+      variants={hasIndependentAnimation ? enterAnimation : undefined}
       initial="initial"
       whileInView="enter"
       viewport={{ once: true, margin: '-20%' }}
     >
       <Image
         decoding="async"
-        width={ 1920 }
-        height={ 1080 }
+        width={1920}
+        height={1080}
         alt={alt}
         src={src}
         loading="lazy"

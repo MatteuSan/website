@@ -19,7 +19,18 @@ export const tools: Tool[] = [
     'desc': 'MatteuSan\'s personal design system for building user interfaces.',
     'status': 'Active',
     'links': {
-      'src': 'https://github.com/MatteuSan/himig'
+      'src': 'https://github.com/MatteuSan/himig/tree/main/packages/himig'
+    },
+    'tech': ['SCSS', 'TypeScript'],
+    'tags': ['Design System', 'Open Source'],
+    'duration': [2020, 'Present']
+  },
+  {
+    'name': 'Pintig',
+    'desc': 'A higher-level core library for building design systems using Sentro at TeuLabs.',
+    'status': 'Active',
+    'links': {
+      'src': 'https://github.com/MatteuSan/himig/tree/main/packages/pintig'
     },
     'tech': ['SCSS', 'TypeScript'],
     'tags': ['Design System', 'Open Source'],

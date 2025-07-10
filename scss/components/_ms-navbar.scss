@@ -53,7 +53,7 @@
       display: flex;
       justify-content: center;
       text-align: left;
-      transition: all var(--ms-theme-transition-time) ease;
+      transition: background himig.token-get('time-short') himig.token-get('easing');
       backdrop-filter: blur(24px);
       user-select: none;
       @include himig.color-apply('navbar-item', (
@@ -82,7 +82,6 @@
         text-align: inherit;
         padding: 0.3rem 0.5rem;
         font-size: inherit;
-        transition: all var(--ms-theme-transition-time) ease;
       }
 
       &:hover {

@@ -15,7 +15,6 @@ import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
 import Link from 'next/link';
 import { blogs } from '@/constants/blogs';
-import { MSButton } from '@/components';
 
 const BlogMainPage: NextPage = () => {
   const blogSectionRef = React.useRef<HTMLDivElement>(null);
@@ -77,24 +76,24 @@ const BlogMainPage: NextPage = () => {
   });
 
   return (
-    <DefaultLayout title="BLOG" description="Coming soon.">
-      <section className="mt-3xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={blogSectionRef}>
-        <div className="w-full constrained-layout">
+    <DefaultLayout title="BLOG" description="I write a few posts from time to time sharing bits and pieces of information I find interesting about the things I work on.">
+      <section className="mt-6xl mb-lg w-full h-quarter-screen flex flow-column jc-end" ref={blogSectionRef}>
+        <div className="w-full constrained">
           <h2 className="family-mono de-emphasize size-sm wrap-brackets">Blog</h2>
-          <p className="content family-supertitle big-ass-text line-height-condensed letter-spacing-condensed">A few notes on things.</p>
+          <p className="content family-supertitle size-3xl line-height-x-short squeeze-tight stretch-condensed">A few notes on things.</p>
           <p className="content-2 family-body de-emphasize size-sm mt-md">I write a few posts from time to time sharing bits and pieces of information I find interesting about the things I work on.</p>
         </div>
       </section>
       <MainContent>
-        <section className="grid cols-1 @medium:cols-2 gap-md" ref={postsSectionRef}>
+        <section className="grid cols-1 @medium:cols-2 gap-md mb-6xl" ref={postsSectionRef}>
           { blogs.map((blog, index) => (
             <Link href={`/blog/${blog.slug}`}>
-              <div key={index} className="blog-post flex flow-column gap-lg p-xl r-lg fill-surface-600 border-xs border-solid border-surface-400">
-                  <div className="flex flow-column">
-                    <p className="family-mono size-sm de-emphasize wrap-brackets"><time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></p>
-                    <h3 className="title stretch-condensed inline-block">{ blog.title }</h3>
-                    <p className="body de-emphasize mt-xs">{ blog.description }</p>
-                  </div>
+              <div key={index} className="blog-post flex flow-column gap-sm p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
+                <div className="flex flow-column">
+                  <p className="family-mono size-xs de-emphasize wrap-brackets mb-xs"><time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></p>
+                  <h3 className="title stretch-condensed inline-block">{ blog.title }</h3>
+                </div>
+                <p className="body de-emphasize mt-xs">{ blog.description }</p>
               </div>
             </Link>
           )) }
