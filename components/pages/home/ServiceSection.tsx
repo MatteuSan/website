@@ -94,7 +94,7 @@ const ServiceSection: React.FC = ( ) => {
           title="Web & Mobile Design"
           description="I craft bespoke user-centered experiences that your users will remember and love."
           media={DesignHero}
-          alt="Design services image."
+          alt="Design for the 'wearecoral' conversion page."
         >
           <ol className="service-card__list">
             <li data-service-number="01">Responsive Design</li>
@@ -107,7 +107,7 @@ const ServiceSection: React.FC = ( ) => {
           title="Web Development"
           description="I engineer experiences your users deserve—experiences that scale, deliver, and exceed expectations."
           media={DevelopmentHero}
-          alt="Development services image."
+          alt="Developing INM Audio's landing page."
         >
           <ol className="service-card__list">
             <li data-service-number="01">Website & Web App Development</li>
@@ -120,7 +120,7 @@ const ServiceSection: React.FC = ( ) => {
           title="Design Systems"
           description="I architect design systems that unify product experiences, boost team productivity, and scale experiences to its highest degree."
           media={DesignSystemsHero}
-          alt="Design Systems services image."
+          alt="Creating GDSC-MU's design system."
         >
           <ol className="service-card__list">
             <li data-service-number="01">Design Tokens & Components</li>
