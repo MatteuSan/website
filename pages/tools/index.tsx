@@ -80,6 +80,18 @@ const ToolsPage: NextPage = () => {
       y: !isMotionReduced ? 30 : 0,
       duration: 0.5,
     }, '<50%');
+
+    tools.from('.filters', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
+
+    tools.from('.tools-list', {
+      opacity: 0,
+      y: !isMotionReduced ? 30 : 0,
+      duration: 0.5,
+    }, '-=0.5');
   });
 
   return (
@@ -94,7 +106,7 @@ const ToolsPage: NextPage = () => {
         </div>
       </section>
       <MainContent>
-        <section className="flex flow-row wrap-none jc-space-between ai-center gap-sm">
+        <section className="filters flex flow-row wrap-none jc-space-between ai-center gap-sm">
           <h3 className="subtitle size-md">
             { filteredItems.length != 0 ? `Found ${ filteredItems.length } ${ filteredItems.length >= 2 ? 'items' : 'item' }.` : (
               <span style={ { color: 'rgba(0,0,0,0)' } } aria-hidden="true">Hidden text</span>) }
@@ -108,7 +120,7 @@ const ToolsPage: NextPage = () => {
             </select>
           </label>
         </section>
-        <section className="mb-4xl">
+        <section className="tools-list mb-4xl">
           <div className="grid cols-1 @medium:cols-2 gap-lg" id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: Tool, key: any) => {
               if (!item.slug && item.links) {
