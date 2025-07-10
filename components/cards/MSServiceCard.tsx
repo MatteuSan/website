@@ -1,7 +1,6 @@
 import PreviewImage from '@/components/markdown/PreviewImage';
 import React from 'react';
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from 'next/image';
 import { MSButton } from '@/components';
 
 import gsap from 'gsap';
