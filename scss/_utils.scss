@@ -28,7 +28,7 @@
       right: -3px;
       border-radius: himig.token-get('radius-small');
       background: rgb(from himig.token-get('accent-400') r g b / 33%);
-      transition: all var(--ms-transition-time) ease;
+      transition: transform himig.token-get('time-short') himig.token-get('easing');
       transform: rotate(-1deg);
       z-index: -1;
     }
@@ -55,6 +55,10 @@
       font-weight: himig.primitive-token-get('weight.normal');
       letter-spacing: himig.to-rem(-1px);
     }
+  }
+
+  .truncate-1 {
+    @include himig.break(1);
   }
 
   .big-ass-text {

@@ -2,7 +2,12 @@
 
 @mixin render() {
   .fill-gradient {
-    background: himig.key-create('footer-fill', #{radial-gradient(circle at 50% 100%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
+    background: himig.key-create('util-fill-gradient-fill', #{radial-gradient(circle at 50% 100%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)});
     border: 1px solid rgb(from himig.token-get('surface-400') r g b / 50%);
+    transition: background himig.token-get('time-short') himig.token-get('easing');
+
+    &.has-hover-state:hover {
+      --ms-util-fill-gradient-fill: #{radial-gradient(circle at 50% 50%, rgb(from himig.token-get('surface-400') r g b / 50%) 0%, transparent 100%)};
+    }
   }
 }

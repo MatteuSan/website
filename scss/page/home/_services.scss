@@ -78,7 +78,7 @@
             weight: 200,
             line-height: 'wide'
           ));
-          transition: all var(--ms-transition-time) ease;
+          transition: margin-inline-end himig.token-get('time-short') himig.token-get('easing');
 
           @include himig.breakpoint-create('medium') {
             @include himig.typography-bind('service-card-list-item', (
@@ -104,7 +104,7 @@
             color: himig.key-create('service-card-list-item-border', himig.token-get('surface-200'));
             font-size: himig.primitive-token-get('size.xs');
             line-height: himig.primitive-token-get('line-height.normal');
-            transition: all var(--ms-transition-time) ease;
+            transition: margin-inline-end himig.token-get('time-short') himig.token-get('easing');
 
             @include himig.breakpoint-create('medium') {
               font-size: himig.primitive-token-get('size.sm');

@@ -112,6 +112,11 @@ $ms-material-light: (
     'viewport-content-limit': 1077px
   )
 ) {
+  :root {
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
+  }
+
   #__next {
     min-height: 100dvh;
     display: flex;
