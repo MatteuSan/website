@@ -111,6 +111,24 @@ const ToolsPage: NextPage = () => {
         <section className="mb-4xl">
           <div className="grid cols-1 @medium:cols-2 gap-lg" id="projects">
             { filteredItems.length != 0 ? filteredItems.map((item: Tool, key: any) => {
+              if (!item.slug && item.links) {
+                return (
+                  <Link href={item.links.docs ? item.links.docs : item.links.src ? item.links.src : '#'} target="_blank" rel="noopener noreferrer">
+                    <div key={key} className="tool-card flex flow-column gap-md p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
+                      <div className="flex flow-column">
+                        <h3 className="title stretch-condensed inline-block">{ item.name }</h3>
+                        <p className="body de-emphasize mt-xs truncate-1">{ item.desc }</p>
+                      </div>
+                      <div className="flex flow-row wrap-none gap-xs ai-center">
+                        { item.tags.map((tag: any, key: number)=> (
+                          <MSTag key={key}>{ tag }</MSTag>
+                        )) }
+                      </div>
+                    </div>
+                  </Link>
+                );
+              }
+
               return (
                 <Link href={`/tools/${item.slug}`}>
                   <div key={key} className="tool-card flex flow-column gap-md p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
