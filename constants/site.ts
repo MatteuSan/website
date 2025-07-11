@@ -1,8 +1,8 @@
 export const site = {
   'name': 'MatteuSan',
-  'version': '3.4.0',
+  'version': '3.5.1',
   'author': 'MatteuSan',
   'url': 'https://matteusan.com',
-  'themeColor': '#ff6a00',
+  'themeColor': '#eb5c00',
   'twitter': '@MatteuSan'
 };

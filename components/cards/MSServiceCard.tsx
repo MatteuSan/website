@@ -1,6 +1,6 @@
+import PreviewImage from '@/components/markdown/PreviewImage';
 import React from 'react';
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from 'next/image';
 import { MSButton } from '@/components';
 
 import gsap from 'gsap';
@@ -81,13 +81,10 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
     <li ref={serviceCardRef} className="service-card swiper-slide" id={title.toLowerCase().replace(/\s/g, '-')}>
       { media ? (
         <div className="service-card__media">
-          <Image
-            decoding="async"
+          <PreviewImage
             src={media}
             alt={alt || `${title} services media.`}
-            width={1920}
-            height={1080}
-            loading="lazy"
+            hasIndependentAnimation={false}
           />
         </div>
       ) : null }
@@ -97,7 +94,7 @@ const MSServiceCard: React.FC<ServiceCardProps> = ({ title, description, media, 
             { title }
           </h3>
           { description ? (
-            <p className="service-card__description family-supertitle size-lg @medium:size-xl weight-normal line-height-condensed letter-spacing-condensed mt-xs">
+            <p className="service-card__description family-supertitle size-lg @medium:size-xl weight-normal line-height-x-short mt-xs">
               { description }
             </p>
           ) : null }
