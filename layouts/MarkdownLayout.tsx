@@ -24,10 +24,10 @@ export const MarkdownHeader: React.FC<{ title: string, description: string, smal
   return (
     <>
       <div className="flex flow-column wrap-none gap-xs">
+        { small ? <p className="ink-surface-200 small mb-sm">{ small }</p> : 'null' }
         <h1 className="ms-markdown__title supertitle stretch-condensed">{ title }</h1>
-        { small ? <p className="small mb-sm">{ small }</p> : 'null' }
       </div>
-      <h2 className="subtitle">{ description }</h2>
+      <h2 className="family-subtitle weight-light size-md @large:size-md line-height-subtitle">{ description }</h2>
     </>
   );
 }
@@ -112,9 +112,9 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
           { links }
         </section>
         <MainContent>
-          <section className="ms-markdown">
+          <article className="ms-markdown">
             { children }
-          </section>
+          </article>
         </MainContent>
         <section className="media constrained grid cols-1 @medium:cols-2 gap-md mt-lg">
           { media }

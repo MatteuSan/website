@@ -21,7 +21,7 @@ const itemsWithoutSlug = tools.filter((item) => item?.slug == null);
 
 const cleanedItems = itemsWithSlug.concat(itemsWithoutSlug);
 
-const validToolTags = ['Design System', 'Library', 'Open Source'];
+const validToolTags = ['Library', 'Design System', 'Open Source'];
 
 const ToolsPage: NextPage = () => {
   const toolsSectionRef = React.useRef<HTMLDivElement>(null);

@@ -6,7 +6,7 @@
       family: 'supertitle',
       size: '4xl',
       weight: 'normal',
-      line-height: 'normal'
+      line-height: 'x-short'
     ));
     letter-spacing: himig.to-rem(-1px);
 
@@ -18,6 +18,14 @@
   .ms-markdown {
     .preview-image {
       aspect-ratio: auto;
+    }
+
+    li {
+      font-size: 1rem;
+
+      @include himig.breakpoint-create('medium') {
+        font-size: himig.primitive-token-get('size.md');
+      }
     }
 
     p {
