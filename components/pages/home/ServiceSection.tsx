@@ -92,7 +92,7 @@ const ServiceSection: React.FC = ( ) => {
       <ul className="service-container constrained">
         <MSServiceCard
           title="Web & Mobile Design"
-          description="I craft bespoke user-centered experiences that your users will remember and love."
+          description="I craft bespoke user-centered experiences that users remember and love."
           media={DesignHero}
           alt="Design for the 'wearecoral' conversion page."
         >
