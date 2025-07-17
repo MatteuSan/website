@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { m } from 'framer-motion';
+import { m, Variants } from 'framer-motion';
 
 import {
   MSHeader,
@@ -52,17 +52,15 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
   // @ts-ignore
   const ogImage: string = ogImageMap[title ? title.toLowerCase() : 'home'];
 
-  const contentVariants = {
+  const contentVariants: Variants = {
     initial: {
       opacity: 0,
-      // y: 50,
     },
     enter: {
       opacity: 1,
-      // y: 0,
       transition: {
         duration: 1,
-        easings: [0.83, 0, 0.17, 1]
+        ease: [0.83, 0, 0.17, 1]
       }
     },
     exit: {
@@ -70,24 +68,24 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
     }
   };
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
-
-    tl.from('.ms-header', {
+  const headerVariants: Variants = {
+    initial: {
       opacity: 0,
-      top: '-100%',
-      duration: 0.7,
-      ease: 'power2.out',
-    });
-
-    tl.from('.ms-footer', {
+      y: '-100%'
+    },
+    enter: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.83, 0, 0.17, 1]
+      }
+    },
+    exit: {
       opacity: 0,
-      duration: 0.7,
-      ease: 'power2.out',
-    });
-
-    tl.call(() => tl.revert() as unknown as void);
-  });
+      y: '-100%'
+    },
+  };
 
   return (
     <>
@@ -120,32 +118,37 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         <meta name="theme-color" content={ site.themeColor }/>
 
       </Head>
-      <MSHeader title={ site.name } actionSection={
-        <div className="flex flow-column wrap-none ai-end gap-md">
-          <HCNavbarTrigger
-            onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
-            trigger={ isNavbarOpen }
-          />
-          <MSNavbar trigger={ isNavbarOpen }>
-            <HCNavbarItem link={router.pathname !== '/' ? '/#about-me' : '#about-me'}>
-              <span>About Me</span>
-              <span aria-hidden className="family-mono de-emphasize wrap-brackets">01</span>
-            </HCNavbarItem>
-            <HCNavbarItem link={router.pathname !== '/' ? '/#services' : '#services'}>
-              <span>Services</span>
-              <span aria-hidden className="family-mono de-emphasize wrap-brackets">02</span>
-            </HCNavbarItem>
-            <HCNavbarItem link={router.pathname !== '/' ? '/#works' : '#works'}>
-              <span>Works</span>
-              <span aria-hidden className="family-mono de-emphasize wrap-brackets">03</span>
-            </HCNavbarItem>
-            <HCNavbarItem link={router.pathname !== '/' ? '/#contact' : '#contact'}>
-              <span>Contact</span>
-              <span aria-hidden className="family-mono de-emphasize wrap-brackets">04</span>
-            </HCNavbarItem>
-          </MSNavbar>
-        </div>
-      } isScrollable={hasHero} />
+      <MSHeader
+        title={ site.name }
+        actionSection={(
+          <div className="flex flow-column wrap-none ai-end gap-md">
+            <HCNavbarTrigger
+              onClick={ () => setIsNavbarOpen(!isNavbarOpen) }
+              trigger={ isNavbarOpen }
+            />
+            <MSNavbar trigger={ isNavbarOpen }>
+              <HCNavbarItem link={router.pathname !== '/' ? '/#about-me' : '#about-me'}>
+                <span>About Me</span>
+                <span aria-hidden className="family-mono de-emphasize wrap-brackets">01</span>
+              </HCNavbarItem>
+              <HCNavbarItem link={router.pathname !== '/' ? '/#services' : '#services'}>
+                <span>Services</span>
+                <span aria-hidden className="family-mono de-emphasize wrap-brackets">02</span>
+              </HCNavbarItem>
+              <HCNavbarItem link={router.pathname !== '/' ? '/#works' : '#works'}>
+                <span>Works</span>
+                <span aria-hidden className="family-mono de-emphasize wrap-brackets">03</span>
+              </HCNavbarItem>
+              <HCNavbarItem link={router.pathname !== '/' ? '/#contact' : '#contact'}>
+                <span>Contact</span>
+                <span aria-hidden className="family-mono de-emphasize wrap-brackets">04</span>
+              </HCNavbarItem>
+            </MSNavbar>
+          </div>
+        )}
+        isScrollable={hasHero}
+        {...animateVariants(headerVariants)}
+      />
       <m.section id="content" {...animateVariants(contentVariants)}>
         { children }
       </m.section>
