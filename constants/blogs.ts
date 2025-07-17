@@ -1,20 +1,14 @@
 export const blogs = [
-  /*{
-    title: 'My process for building software',
-    description: 'In here, I share my thought process and personal framework for building great software.',
-    publishedAt: '2025-06-31',
-    slug: 'my-process-for-building-software',
-  },*/
+  {
+    title: 'The Goldilocks Zone',
+    description: 'My thoughts on building imperfectly usable software.',
+    publishedAt: '2025-07-18',
+    slug: 'the-goldilocks-zone',
+  },
   {
     title: 'Creating Sentro',
     description: 'Creating a low-level tool to build and manage design systems at scale.',
     publishedAt: '2025-05-31',
     slug: 'creating-sentro',
   },
-  {
-    title: 'The Goldilocks Zone',
-    description: 'My thoughts on building imperfectly usable software.',
-    publishedAt: '2025-07-18',
-    slug: 'the-goldilocks-zone',
-  }
 ];

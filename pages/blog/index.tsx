@@ -87,7 +87,7 @@ const BlogMainPage: NextPage = () => {
         <section className="grid cols-1 @medium:cols-2 gap-md mb-6xl" ref={postsSectionRef}>
           { blogs.map((blog, index) => (
             <Link href={`/blog/${blog.slug}`}>
-              <div key={index} className="blog-post flex flow-column gap-sm p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
+              <div key={index} className="blog-post h-full flex flow-column gap-sm p-lg @medium:p-xl r-lg fill-gradient has-hover-state">
                 <div className="flex flow-column">
                   <p className="family-mono size-xs de-emphasize wrap-brackets mb-xs"><time dateTime={blog.publishedAt}>{ blog.publishedAt }</time></p>
                   <h3 className="title stretch-condensed inline-block">{ blog.title }</h3>
