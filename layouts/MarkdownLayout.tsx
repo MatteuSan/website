@@ -1,13 +1,12 @@
 import React from 'react';
 import { DefaultLayout, MainContent } from "./DefaultLayout";
-import { MSButton } from "@/components";
+import { MSButton, MSTag } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import PreviewImage from "@/components/markdown/PreviewImage";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { MOTION_PREFERENCES, useMediaQuery } from '@/lib/gsap';
 import { Tool, Work } from '@/lib/types';
-import MSTag from '../components/MSTag';
 
 interface MarkdownLayoutProps {
   metadata: { title: string, description: string };
@@ -17,7 +16,7 @@ interface MarkdownLayoutProps {
   previewImageAlt: string;
   media?: React.ReactNode | string;
   links?: React.ReactNode | string;
-  children?: React.ReactNode | string;
+  children?: React.ReactNode;
 }
 
 export const MarkdownHeader: React.FC<{ title: string, description: string, small?: string|React.ReactNode }> = ({ title, description, small }) => {
@@ -108,8 +107,10 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
           <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
         </div>
         <section className="links constrained flex flow-row wrap gap-sm mt-lg mb-sm">
-          <p className="de-emphasize family-mono wrap-brackets">Links</p>
-          { links }
+          <h2 className="de-emphasize family-mono wrap-brackets">Links</h2>
+          <li>
+            { links }
+          </li>
         </section>
         <MainContent>
           <article className="ms-markdown">
