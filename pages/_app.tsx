@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence, domAnimation, LazyMotion, MotionConfig } from 'framer-motion';
 
-import '../scss/main.scss';
+import '@/scss/main.scss';
 
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';

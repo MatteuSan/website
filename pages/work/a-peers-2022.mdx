@@ -1,4 +1,5 @@
 import { MSButton } from "../../components";
+import PreviewImage from '../../components/markdown/PreviewImage';
 import { works } from "../../constants/works";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
 
@@ -9,7 +10,7 @@ export const metadata = {
 
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
-A website for the A-PEER! 2022 program in the Regional Lead School for the Arts in Angono. It has a gallery of the participating students' works.
+A website for the A-PEER! 2022 program in the Regional Lead School for the Arts in Angono. This project was made in collaboration with Luwal Sining-Pagganap, Mediarama Productions, and the RLSAA Applied Arts Department. It showcases the mid-year works of each senior high school department has created.
 
 export default function WorkPage({ children }) {
   return (
@@ -21,6 +22,12 @@ export default function WorkPage({ children }) {
       links={(
         <>
           <li><MSButton link={ WorkInfo['link'] } type="small outlined">Website</MSButton></li>
+        </>
+      )}
+      media={(
+        <>
+          <PreviewImage src="/img/apeers/apeers-gallery.png" alt="The art gallery page." />
+          <PreviewImage src="/img/apeers/apeers-preview.png" alt="The individual showcase page." />
         </>
       )}
     >

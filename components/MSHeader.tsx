@@ -25,15 +25,15 @@ const MSHeader: React.FC<MSHeaderProps> = forwardRef<HTMLDivElement, MSHeaderPro
       ref={ref}
       {...motionProps}
     >
-      <div className="ms-header__brand">
+      <section className="ms-header__brand">
         <Link prefetch href="/">
           <h1 className="title">{ title }</h1>
         </Link>
-      </div>
+      </section>
       { actionSection &&
-        <div className="ms-header__actions">
+        <section className="ms-header__actions">
           { actionSection }
-        </div>
+        </section>
       }
     </m.header>
   );
