@@ -106,11 +106,11 @@ const MarkdownLayout: React.FC<MarkdownLayoutProps> = ({ metadata, data, preview
         <div id="preview-image-container" className="constrained-layout my-md" style={{ overflow: 'clip' }}>
           <PreviewImage src={ `/img/${ previewImage }` } alt={ previewImageAlt }/>
         </div>
-        <section className="links constrained flex flow-row wrap gap-sm mt-lg mb-sm">
+        <section className="links constrained flex flow-row wrap gap-sm mt-lg ai-center mb-sm">
           <h2 className="de-emphasize family-mono wrap-brackets">Links</h2>
-          <li>
+          <ul className="flex flow-row wrap gap-sm list-style-none">
             { links }
-          </li>
+          </ul>
         </section>
         <MainContent>
           <article className="ms-markdown">

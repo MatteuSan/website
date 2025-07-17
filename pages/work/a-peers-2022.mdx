@@ -18,7 +18,11 @@ export default function WorkPage({ children }) {
       metadata={ metadata }
       previewImage="apeers.webp"
       previewImageAlt="The A-PEER 2022 landing page."
-      links={<MSButton link={ WorkInfo['link'] } type="small outlined">Website</MSButton>}
+      links={(
+        <>
+          <li><MSButton link={ WorkInfo['link'] } type="small outlined">Website</MSButton></li>
+        </>
+      )}
     >
       { children }
     </MarkdownLayout>
