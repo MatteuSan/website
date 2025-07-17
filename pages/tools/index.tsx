@@ -11,8 +11,7 @@ import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/dist/SplitText';
 import {
   animateInView,
-  BY_CHAR,
-  BY_LINE, MOTION_PREFERENCES,
+  BY_LINE, BY_WORD, MOTION_PREFERENCES,
   REDUCED_ANIMATION,
   SWOOP_IN_ANIMATION,
   useMediaQuery
@@ -37,8 +36,8 @@ const ToolsPage: NextPage = () => {
   }
 
   useGSAP(() => {
-    const titleSplit = SplitText.create('.lead-text', BY_CHAR);
-    const subtitleSplit = SplitText.create('.content', BY_LINE);
+    const titleSplit = SplitText.create('.content', BY_WORD);
+    const subtitleSplit = SplitText.create('.content-2', BY_LINE);
 
     const tools = animateInView(toolsSectionRef.current, {
       once: true,
@@ -50,7 +49,7 @@ const ToolsPage: NextPage = () => {
       duration: 1
     });
 
-    tools.from(titleSplit.chars, {
+    tools.from(titleSplit.words, {
       ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
       onComplete: () => titleSplit.revert()
     }, '-=0.5');
@@ -98,10 +97,10 @@ const ToolsPage: NextPage = () => {
     <DefaultLayout title="TOOLS" description="Empowering teams (and you!) to build better experiences.">
       <section className="mt-6xl mb-3xl w-full h-quarter-screen flex flow-column jc-end" ref={toolsSectionRef}>
         <div className="w-full constrained">
-          <h2 className="lead-text family-supertitle size-3xl letter-spacing-condensed">Tools</h2>
-          <p className="content size-md @large:size-lg weight-light">Empowering teams (and you!) to build better experiences.</p>
+          <h2 className="family-mono de-emphasize size-sm wrap-brackets">Tools</h2>
+          <p className="content family-supertitle size-3xl line-height-x-short squeeze-tight stretch-condensed">Equipping devs to build better experiences.</p>
           <p className="content-2 mt-md size-sm de-emphasize">
-            I created these tools to help me build better software. Each one reflects my philosophy of building with care, clarity, and scalability in mind.
+            I created these tools to help me build better software. Each one reflects my philosophy of building with care, delight, and scalability in mind.
           </p>
         </div>
       </section>

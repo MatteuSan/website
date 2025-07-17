@@ -4,8 +4,7 @@ import { DefaultLayout, MainContent } from "@/layouts/DefaultLayout";
 
 import {
   animateInView,
-  BY_CHAR,
-  BY_LINE,
+  BY_LINE, BY_WORD,
   MOTION_PREFERENCES,
   REDUCED_ANIMATION,
   SWOOP_IN_ANIMATION,
@@ -23,8 +22,8 @@ const BlogMainPage: NextPage = () => {
   const isMotionReduced = useMediaQuery(MOTION_PREFERENCES.isReduced);
 
   useGSAP(() => {
-    const titleSplit = SplitText.create('.lead-text', BY_CHAR);
-    const subtitleSplit = SplitText.create('.content', BY_LINE);
+    const titleSplit = SplitText.create('.content', BY_WORD);
+    const subtitleSplit = SplitText.create('.content-2', BY_LINE);
 
     const blog = animateInView(blogSectionRef.current, {
       once: true,
@@ -36,7 +35,7 @@ const BlogMainPage: NextPage = () => {
       duration: 1
     });
 
-    blog.from(titleSplit.chars, {
+    blog.from(titleSplit.words, {
       ...(!isMotionReduced ? SWOOP_IN_ANIMATION : REDUCED_ANIMATION),
       onComplete: () => titleSplit.revert()
     }, '-=0.5');
