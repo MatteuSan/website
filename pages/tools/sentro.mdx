@@ -1,14 +1,7 @@
 import { tools } from '../../constants/tools';
-import { MSButton, MSTitleBar } from "../../components";
-import {
-  BookOpenIcon,
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { MSButton } from "../../components";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
-import Info from "../../components/markdown/Info";
 
 export const metadata = {
   title: 'Sentro',
@@ -19,25 +12,25 @@ export const ToolInfo = tools.filter(tool => tool.name === metadata.title)[0];
 
 Sentro is a low-level library for building token-driven design systems. It features token and key management, a way to create themeable and scalable components, helpful tools to improve the developer experiece, a way to manage themes, and create consistent and maintainable design systems.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ ToolInfo }>
-      <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
-      <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/sentro/sentro-sample-code.webp" alt="A design system using Sentro as its core." />
-    </div>
-  </section>
-</section>
-
 export default function ToolPage({ children }) {
   return (
-    <MarkdownLayout data={ ToolInfo } metadata={ metadata } previewImage="sentro/sentro.webp" previewImageAlt="Sentro's cover image.">
+    <MarkdownLayout
+      data={ ToolInfo }
+      metadata={ metadata }
+      previewImage="sentro/sentro.webp"
+      previewImageAlt="Sentro's cover image."
+      media={(
+        <>
+          <PreviewImage src="/img/sentro/sentro-sample-code.webp" alt="A design system using Sentro as its core." />
+        </>
+      )}
+      links={(
+        <>
+          <MSButton link={ToolInfo.links['docs']} type="small filled">Docs</MSButton>
+          <MSButton link={ToolInfo.links['src']} type="small filled">Source</MSButton>
+        </>
+      )}
+    >
       { children }
     </MarkdownLayout>
   );

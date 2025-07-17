@@ -36,7 +36,7 @@ export const works: Work[] = [
   },
   {
     'name': 'GrowStocks',
-    'desc': 'Growtopia\'s Online Price Checker and tech solutions.',
+    'desc': 'Growtopia\'s Online Price Checker and tech solutions company.',
     'media': 'growstocks.webp',
     'status': 'Archived',
     'slug': 'growstocks',

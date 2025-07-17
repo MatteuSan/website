@@ -1,12 +1,6 @@
-import { MSButton, MSTitleBar } from "../../components";
-import {
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { MSButton } from "../../components";
 import PreviewImage from "../../components/markdown/PreviewImage";
 import { works } from "../../constants/works";
-import Info from "../../components/markdown/Info";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
@@ -17,22 +11,6 @@ export const metadata = {
 export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
 
 Pycord is a modern Discord bot framework built in Python. The goal is to make an intuitive interface, one that is simple to use without compromising  the features. The library is maintained by the core team, with the support of the community. New features are added regularly to keep up with the ever-changing Discord API. Apart from developing the website, I've also built the [guide](https://guide.pycord.dev/) website, it is now maintained by the core team.
-
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ WorkInfo }>
-      <MSButton link="https://pycord.dev" type="small filled">Website</MSButton>
-      <MSButton link="https://github.com/Pycord-Development" type="small filled" icon={['left', <SiGithub />]}>Source</MSButton>
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-
-    </div>
-  </section>
-</section>
 
 export default function WorkPage({ children }) {
   return (

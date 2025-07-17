@@ -1,14 +1,6 @@
 import { tools } from '../../constants/tools';
-import { MSButton, MSTitleBar } from "../../components";
-import {
-  BookOpenIcon,
-  PaintBrushIcon,
-  PhotoIcon,
-  QuestionMarkCircleIcon
-} from "@heroicons/react/24/outline";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { MSButton } from "../../components";
 import PreviewImage from "../../components/markdown/PreviewImage";
-import Info from "../../components/markdown/Info";
 import MarkdownLayout from "../../layouts/MarkdownLayout";
 
 export const metadata = {
@@ -22,27 +14,27 @@ Hashi is Dev Protocol's design system. Aiming to bring a unified user experience
 
 It boasts a wide range of utilities, scalable component architecture, great API and developer experience, and the ability to scale the design system based on the product's own design needs. It gives you the ability to customize the global and component-level themes, create layouts, build specialized components and layouts, and more without compromise.
 
-<section id="other-content" className="grid cols-1 @large:cols-3 gap-md mt-4xl">
-  <section>
-    <MSTitleBar clsssName="jc-center" icon={<QuestionMarkCircleIcon />}>Info</MSTitleBar>
-    <Info data={ ToolInfo }>
-      <MSButton link={ToolInfo.links['docs']} icon={['left', <BookOpenIcon />]} type="small filled">Docs</MSButton>
-      <MSButton link={ToolInfo.links['figma']} icon={['left', <PaintBrushIcon />]} type="small filled">Figma</MSButton>
-      <MSButton link={ToolInfo.links['src']} icon={['left', <SiGithub />]} type="small filled">Source</MSButton>
-    </Info>
-  </section>
-  <section  className="start-1 end-1 @large:start-2 @large:end-4">
-    <MSTitleBar clsssName="jc-center" icon={<PhotoIcon />}>Media</MSTitleBar>
-    <div className="w-full grid cols-1 gap-md mt-md">
-      <PreviewImage src="/img/hashi.webp" alt="A screen capture of Hashi's website" />
-      <PreviewImage src="/img/hashi/hashi-cover--dark.webp" alt="Hashi's cover image but in dark mode." />
-    </div>
-  </section>
-</section>
-
 export default function ToolPage({ children }) {
   return (
-    <MarkdownLayout data={ ToolInfo } metadata={ metadata } previewImage="hashi.webp" previewImageAlt="Hashi's cover image.">
+    <MarkdownLayout
+      data={ ToolInfo }
+      metadata={ metadata }
+      previewImage="hashi.webp"
+      previewImageAlt="Hashi's cover image."
+      media={(
+        <>
+          <PreviewImage src="/img/hashi.webp" alt="A screen capture of Hashi's website" />
+          <PreviewImage src="/img/hashi/hashi-cover--dark.webp" alt="Hashi's cover image but in dark mode." />
+        </>
+      )}
+      links={(
+        <>
+          <MSButton link={ToolInfo.links['docs']} type="small outlined">Docs</MSButton>
+          <MSButton link={ToolInfo.links['figma']} type="small outlined">Figma</MSButton>
+          <MSButton link={ToolInfo.links['src']} type="small outlined">Source</MSButton>
+        </>
+      )}
+    >
       { children }
     </MarkdownLayout>
   );
