@@ -1,0 +1,36 @@
+import { MSButton } from "../../components";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { DefaultLayout, MainContent } from "../../layouts/DefaultLayout";
+import { MarkdownHeader } from "../../layouts/MarkdownLayout";
+
+export const metadata = {
+  title: 'The Goldilocks Zone',
+  description: 'My thoughts on building imperfectly usable software.'
+}
+
+I came across a [video](https://www.youtube.com/watch?v=DRmnkaWQp4o) recently talking about web design trends in 2025. It specifically caught my eye since I've been trying to do some experimentation on said trends in this very website you're reading from. Numerous revisions, trying to make everything sit right; I can truly say that this website revamp has been the toughest one yet.
+
+Throughout the revision, I've only ever asked myself one thing: How can I make it fun while maintaining usability and accessibility? I've seen dozens of websites that went for more bold and fun designs that 'wow' their visitors. Websites that use motion, bold typography, walls of text, etc., to prove a point and drive engagement are getting all the more prominent these days, especially with the rise of AI frontend code.
+
+There's one particular section that resonated with me. The OP talked about imperfection and how designers embrace it to give the website a more human touch rather than just a result of prompting. Imperfect styles, imperfect layout, typically something you'd find by ignoring rules and conventions. I've quickly found out that you can't just throw everything at the wall and hope that something sticks. Web design in and of itself isn't just a science, but also an art form. And just like any other art form, everything is done with care and intention.
+
+With that, in the last section, the OP talked about how adding a small amount of friction to the website can result in positive reactions. And I agree with that. It's essentially a call to us, web designers and developers, to stop assuming that our users are all dumb and lazy. Humans are naturally curious, and urging them to shut their brains off is not helping. Humans learn by pattern recognition and stitching clumps of information together to form a cohesive thought. This is how babies learn to communicate. They're not fluent in a language from the get-go. They take in input from the world around them, process it into an output, and reiterate based on feedback.
+
+Understanding the fundamentals of web design is key. By exploring both the abstract and philosophical aspects, you can create experiences that go leaps beyond conventional designs, making them enjoyable and refreshing, while maintaining usability. Don’t hesitate to think outside the box. Learn, experiment, observe, iterate, and repeat. I will be doing the same.
+
+export default function BlogPage({ children }) {
+  return (
+    <DefaultLayout title={ metadata.title } description={ metadata.description } previewImage={ `/img/blog/creating-sentro/headliner.png` }>
+      <MainContent>
+        <section className="py-4xl">
+          <MSButton style={ { position: 'relative', left: '-0.9rem', marginBottom: '0.7rem', zIndex: 110 } } link="/blog"
+                    type="small" icon={ ['left', <ArrowLeftIcon/>] }>Go back</MSButton>
+          <MarkdownHeader title={ metadata.title } description={ metadata.description } small={(<>Published <time dateTime="2025-07-18">July 18, 2025</time></>)} />
+          <section className="ms-markdown mt-xl">
+            { children }
+          </section>
+        </section>
+      </MainContent>
+    </DefaultLayout>
+  );
+}
