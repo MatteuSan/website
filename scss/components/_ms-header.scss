@@ -36,7 +36,10 @@ $header-style: 'default' !default;
     color: himig.key-create('header-ink', $header-ink);
     mix-blend-mode: difference;
     z-index: 100;
-    transition: all himig.token-get('time-short') himig.token-get('easing');
+    // transition: all himig.token-get('time-short') himig.token-get('easing');
+    transition-property: background, color, border;
+    transition-duration: himig.token-get('time-short');
+    transition-timing-function: himig.token-get('easing');
 
     @include himig.breakpoint-create('medium') {
       @include himig.key-bind('header-alignment', flex-start);
