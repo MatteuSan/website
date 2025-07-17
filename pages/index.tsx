@@ -15,7 +15,7 @@ const workCleanedItems = workItemsWithSlug.concat(workItemsWithoutSlug);
 
 const finalWorks = [
   ...workCleanedItems.slice(0, 6)
-]
+];
 
 const HomePage: NextPage = () => {
   return (
