@@ -26,7 +26,8 @@ const WorksSection: React.FC<WorksSectionProps> = ({ works }) => {
     const exitPage = gsap.timeline({
       scrollTrigger: {
         trigger: workSectionRef.current,
-        start: 'bottom 77%',
+        start: 'bottom 50%',
+        end: 'bottom 22%',
         scrub: true,
       }
     });
