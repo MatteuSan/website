@@ -12,8 +12,6 @@ import {
 
 import { site } from '@/constants/site';
 import { animateVariants } from '@/lib/framer';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { useRouter } from 'next/router';
 
 interface DefaultLayoutProps {
