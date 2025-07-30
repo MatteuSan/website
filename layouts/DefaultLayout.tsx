@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { m, Variants } from 'framer-motion';
 
@@ -46,6 +46,7 @@ export const MainContent: React.FC<MainContentProps> = ({ className, children, c
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, hasHero = false, previewImage, children }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const router = useRouter();
+  const transitionContainerRef = useRef(null);
 
   // @ts-ignore
   const ogImage: string = ogImageMap[title ? title.toLowerCase() : 'home'];
@@ -81,7 +82,6 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
     },
     exit: {
       opacity: 0,
-      y: '-100%'
     },
   };
 
@@ -151,6 +151,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         { children }
       </m.section>
       <MSFooter title={ site.name } version={ site.version } author={ site.author } />
+      <m.div ref={transitionContainerRef} aria-hidden="true"></m.div>
     </>
   );
 };
