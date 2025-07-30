@@ -26,7 +26,7 @@ export const MarkdownHeader: React.FC<{ title: string, description: string, smal
         { small ? <p className="ink-surface-200 small mb-sm">{ small }</p> : 'null' }
         <h1 className="ms-markdown__title supertitle stretch-condensed">{ title }</h1>
       </div>
-      <h2 className="family-subtitle weight-light size-md @large:size-md line-height-subtitle">{ description }</h2>
+      <h2 className="family-subtitle weight-light size-md @large:size-lg line-height-subtitle">{ description }</h2>
     </>
   );
 }
