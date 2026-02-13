@@ -183,6 +183,7 @@ $ms-material-light: (
   }
 
   @include ms-button.extend('outlined') {
+    transition-property: background, color, border, box-shadow, transform !important;
     box-shadow: 0 3px 0 himig.token-get('accent-600');
 
     &:active {
@@ -192,6 +193,7 @@ $ms-material-light: (
   }
 
   @include ms-button.extend('filled') {
+    transition-property: background, color, border, box-shadow, transform !important;
     box-shadow: 0 3px 0 himig.token-get('accent-600');
 
     &:active {
