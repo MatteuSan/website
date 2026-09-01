@@ -32,7 +32,7 @@ export const works: Work[] = [
     'status': 'Active',
     'tech': ['SCSS', 'TS', 'React', 'Three', 'R3F'],
     'tags': ['Design', 'Development', '3D Interactivity'],
-    'duration': [2024, 'present'],
+    'duration': [2024, 2026],
   },
   {
     'name': 'wearecoral',
