@@ -1,0 +1,47 @@
+import { MSButton } from "../../components";
+import PreviewImage from "../../components/markdown/PreviewImage";
+import { works } from "../../constants/works";
+import MarkdownLayout from "../../layouts/MarkdownLayout";
+
+export const metadata = {
+  title: 'GraphWorks',
+  description: 'Headphones.com\'s headphone measurement repository and visualization platform.',
+}
+
+export const WorkInfo = works.filter(item => item.name === metadata.title)[0];
+
+Working with the team at [Headphones.com](https://headphones.com) for a year and a half, we've recently launched [GraphWorks](https://graph.headphones.com) — a platform for all things headphone visualization. It is — to date — one of the most collaborative and complex projects I've ever had the pleasure to work with.
+
+GraphWorks was created initially as a way for the content team to easily export data visualizations of their headphone measurements in a number of more nuanced visualization techniques (i.e. sample percentile view, and rig difference view). After a while it quickly became apparent that the audio community would benefit greatly from accessing these measurements.
+
+When I got to work on GraphWorks, there was already a working version in place. However, it had a few major problems: 1) query performance isn't ideal, 2) the current architecture isn't scalable, 3) scaling the UI is getting pretty hard as time goes on, and most crucially 4) the graph isn't behaving like it was supposed to.
+
+The working version at that time had a slow response time, overkill data querying methods, messy graph functions, and un-necessary bloat. The unscalable architecture prevented us from putting in new features — particularly in the visualizer. So they tasked me to do the rewrite of the entire application.
+
+GraphWorks was rewritten in Next.js, visx, Drizzle ORM — using PostgreSQL as our database, Better Auth, and Resend for emails. This architecture allowed us to add crucial features for the team such as: rig difference view, sample percentile view, optimized no-averaging view, preference bounds gradients, scalable component architecture, robust permissions system, and more. And it improved on search and data query performances.
+
+export default function WorkPage({ children }) {
+  return (
+    <MarkdownLayout
+      metadata={ metadata }
+      data={ WorkInfo }
+      previewImage="graphworks.jpg"
+      previewImageAlt="GraphWorks' landing page."
+      media={(
+        <>
+          <PreviewImage src="/img/graphworks/graphworks-item-page.png" alt="Prisma's Lumen and its measurements." />
+          <PreviewImage src="/img/graphworks/graphworks-percentile-1.jpg" alt="HD 490 Pro's percentile visualization." />
+          <PreviewImage src="/img/graphworks/graphworks-percentile-2.jpg" alt="FT1 & HD 480 Pro's percentile visualization." />
+          <PreviewImage src="/img/graphworks/graphworks-difference-1.jpg" alt="HD 620 S' rig difference visualization." />
+        </>
+      )}
+      links={(
+        <>
+          <li><MSButton link="https://graph.headphones.com" type="small outlined">Website</MSButton></li>
+        </>
+      )}
+    >
+      { children }
+    </MarkdownLayout>
+  );
+}

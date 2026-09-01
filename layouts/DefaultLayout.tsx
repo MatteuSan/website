@@ -91,7 +91,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"/>
 
-        <title>{ title ? title + ' - ' +  site.name : site.name }</title>
+        <title>{ title ? title + ' — ' +  site.name : site.name }</title>
         <meta property="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta name="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
 
@@ -100,14 +100,14 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
         <link rel="icon" type="img/png" sizes="16x16" href="/favicons/favicon-16x16.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
 
-        <meta property="og:title" content={ title ? title + ' - ' +  site.name : site.name }/>
+        <meta property="og:title" content={ title ? title + ' — ' +  site.name : site.name }/>
         <meta property="og:description"
               content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content={ previewImage ? previewImage : ogImage }/>
         <meta property="og:url" content={ site.url }/>
 
-        <meta name="twitter:title" content={ title ? title + ' - ' +  site.name : site.name }/>
+        <meta name="twitter:title" content={ title ? title + ' — ' +  site.name : site.name }/>
         <meta name="twitter:description"
               content={ description || `UX Engineer. Creating bridges from software to user.` }/>
         <meta name="twitter:image" content={ previewImage ? previewImage : ogImage }/>
