@@ -45,7 +45,7 @@ export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, pr
 
         <title>{ title } - { site.name }</title>
         <meta property="description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
+              content={ description || `Design Engineer. Creating a meaningful bridge from software to user.` }/>
 
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png"/>
         <link rel="icon" type="img/png" sizes="32x32" href="/favicons/favicon-32x32.png"/>
@@ -54,14 +54,14 @@ export const BlankLayout: React.FC<BlankLayoutProps> = ({ title, description, pr
 
         <meta property="og:title" content={ `${ title } - ${ site.name }` }/>
         <meta property="og:description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
+              content={ description || `Design Engineer. Creating a meaningful bridge from software to user.` }/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content={ previewImage ? previewImage : ogImage }/>
         <meta property="og:url" content={ site.url }/>
 
         <meta name="twitter:title" content={ `${ title } - ${ site.name }` }/>
         <meta name="twitter:description"
-              content={ description || `UX Engineer. Creating a meaningful bridge from software to user.` }/>
+              content={ description || `Design Engineer. Creating a meaningful bridge from software to user.` }/>
         <meta name="twitter:image" content={ previewImage ? previewImage : ogImage }/>
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:site" content={ site.twitter }/>
