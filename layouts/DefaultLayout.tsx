@@ -92,8 +92,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
               content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"/>
 
         <title>{ title ? title + ' — ' +  site.name : site.name }</title>
-        <meta property="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
-        <meta name="description" content={ description || `UX Engineer. Creating bridges from software to user.` }/>
+        <meta property="description" content={ description || `Design Engineer. Creating bridges from software to user.` }/>
+        <meta name="description" content={ description || `Design Engineer. Creating bridges from software to user.` }/>
 
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png"/>
         <link rel="icon" type="img/png" sizes="32x32" href="/favicons/favicon-32x32.png"/>
@@ -102,14 +102,14 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description
 
         <meta property="og:title" content={ title ? title + ' — ' +  site.name : site.name }/>
         <meta property="og:description"
-              content={ description || `UX Engineer. Creating bridges from software to user.` }/>
+              content={ description || `Design Engineer. Creating bridges from software to user.` }/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content={ previewImage ? previewImage : ogImage }/>
         <meta property="og:url" content={ site.url }/>
 
         <meta name="twitter:title" content={ title ? title + ' — ' +  site.name : site.name }/>
         <meta name="twitter:description"
-              content={ description || `UX Engineer. Creating bridges from software to user.` }/>
+              content={ description || `Design Engineer. Creating bridges from software to user.` }/>
         <meta name="twitter:image" content={ previewImage ? previewImage : ogImage }/>
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:site" content={ site.twitter }/>
