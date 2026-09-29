@@ -2,17 +2,6 @@ import { Work } from "@/lib/types";
 
 export const works: Work[] = [
   {
-    'name': 'GraphWorks',
-    'desc': 'Headphones.com\'s headphone measurement repository and visualization platform.',
-    'media': 'graphworks.jpg',
-    'link': 'https://graph.headphones.com',
-    'slug': 'graphworks',
-    'status': 'Active',
-    'tech': ['SCSS', 'TS', 'React', 'Visx'],
-    'tags': ['Design', 'Development', 'Fullstack'],
-    'duration': [2025, 2026],
-  },
-  {
     'name': 'Dev Protocol',
     'desc': 'Decentralized funding for sustainable creator economy.',
     'media': 'devprotocol.webp',
@@ -22,6 +11,17 @@ export const works: Work[] = [
     'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
     'tags': ['Design', 'Development', 'Design System'],
     'duration': [2021, 2024],
+  },
+  {
+    'name': 'GraphWorks',
+    'desc': 'Headphones.com\'s headphone measurement repository and visualization platform.',
+    'media': 'graphworks.jpg',
+    'link': 'https://graph.headphones.com',
+    'slug': 'graphworks',
+    'status': 'Active',
+    'tech': ['SCSS', 'TS', 'React', 'Visx'],
+    'tags': ['Design', 'Development', 'Fullstack'],
+    'duration': [2025, 2026],
   },
   {
     'name': 'INM Audio',
