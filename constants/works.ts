@@ -2,17 +2,6 @@ import { Work } from "@/lib/types";
 
 export const works: Work[] = [
   {
-    'name': 'Dev Protocol',
-    'desc': 'Decentralized funding for sustainable creator economy.',
-    'media': 'devprotocol.webp',
-    // 'link': 'https://devprotocol.xyz',
-    'slug': 'dev-protocol',
-    'status': 'Archived',
-    'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
-    'tags': ['Design', 'Development', 'Design System'],
-    'duration': [2021, 2024],
-  },
-  {
     'name': 'GraphWorks',
     'desc': 'Headphones.com\'s headphone measurement repository and visualization platform.',
     'media': 'graphworks.jpg',
@@ -33,6 +22,17 @@ export const works: Work[] = [
     'tech': ['SCSS', 'TS', 'React', 'Three', 'R3F'],
     'tags': ['Design', 'Development', '3D Interactivity'],
     'duration': [2024, 2026],
+  },
+  {
+    'name': 'Dev Protocol',
+    'desc': 'Decentralized funding for sustainable creator economy.',
+    'media': 'devprotocol.webp',
+    // 'link': 'https://devprotocol.xyz',
+    'slug': 'dev-protocol',
+    'status': 'Archived',
+    'tech': ['SCSS', 'Tailwind', 'TS', 'React', 'Vue', 'Svelte'],
+    'tags': ['Design', 'Development', 'Design System'],
+    'duration': [2021, 2024],
   },
   {
     'name': 'wearecoral',
